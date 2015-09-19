@@ -1,0 +1,9 @@
+A:\Documents\Visual Studio 2008\Projects\PAMI\Conexion\obj\Debug\ResolveAssemblyReference.cache
+A:\Documents\Visual Studio 2008\Projects\PAMI\Conexion\bin\Debug\Conexion.dll
+A:\Documents\Visual Studio 2008\Projects\PAMI\Conexion\bin\Debug\Conexion.pdb
+A:\Documents\Visual Studio 2008\Projects\PAMI\Conexion\bin\Debug\Excepciones.dll
+A:\Documents\Visual Studio 2008\Projects\PAMI\Conexion\bin\Debug\Validator.dll
+A:\Documents\Visual Studio 2008\Projects\PAMI\Conexion\bin\Debug\Validator.pdb
+A:\Documents\Visual Studio 2008\Projects\PAMI\Conexion\bin\Debug\Excepciones.pdb
+A:\Documents\Visual Studio 2008\Projects\PAMI\Conexion\obj\Debug\Conexion.dll
+A:\Documents\Visual Studio 2008\Projects\PAMI\Conexion\obj\Debug\Conexion.pdb

@@ -1,0 +1,5 @@
+A:\Documents\Visual Studio 2008\Projects\PAMI\Excepciones\bin\Debug\Excepciones.dll
+A:\Documents\Visual Studio 2008\Projects\PAMI\Excepciones\bin\Debug\Excepciones.pdb
+A:\Documents\Visual Studio 2008\Projects\PAMI\Excepciones\obj\Debug\ResolveAssemblyReference.cache
+A:\Documents\Visual Studio 2008\Projects\PAMI\Excepciones\obj\Debug\Excepciones.dll
+A:\Documents\Visual Studio 2008\Projects\PAMI\Excepciones\obj\Debug\Excepciones.pdb

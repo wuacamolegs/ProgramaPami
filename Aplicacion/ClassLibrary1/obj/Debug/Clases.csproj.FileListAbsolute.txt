@@ -1,0 +1,11 @@
+A:\Documents\Visual Studio 2008\Projects\PAMI\ClassLibrary1\obj\Debug\ResolveAssemblyReference.cache
+A:\Documents\Visual Studio 2008\Projects\PAMI\ClassLibrary1\bin\Debug\ClassLibrary1.dll
+A:\Documents\Visual Studio 2008\Projects\PAMI\ClassLibrary1\bin\Debug\ClassLibrary1.pdb
+A:\Documents\Visual Studio 2008\Projects\PAMI\ClassLibrary1\bin\Debug\Conexion.dll
+A:\Documents\Visual Studio 2008\Projects\PAMI\ClassLibrary1\bin\Debug\Excepciones.dll
+A:\Documents\Visual Studio 2008\Projects\PAMI\ClassLibrary1\bin\Debug\Validator.dll
+A:\Documents\Visual Studio 2008\Projects\PAMI\ClassLibrary1\bin\Debug\Validator.pdb
+A:\Documents\Visual Studio 2008\Projects\PAMI\ClassLibrary1\bin\Debug\Conexion.pdb
+A:\Documents\Visual Studio 2008\Projects\PAMI\ClassLibrary1\bin\Debug\Excepciones.pdb
+A:\Documents\Visual Studio 2008\Projects\PAMI\ClassLibrary1\obj\Debug\ClassLibrary1.dll
+A:\Documents\Visual Studio 2008\Projects\PAMI\ClassLibrary1\obj\Debug\ClassLibrary1.pdb
