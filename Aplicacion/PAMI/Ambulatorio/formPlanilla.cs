@@ -13,20 +13,38 @@ using System.Text.RegularExpressions;
 
 namespace PAMI.PlanillaPami
 {
-    public partial class PlanillasPami : Form
+    public partial class formPlanilla : Form
     {       
-        public PlanillasPami()
+
+        //Variables
+        Planilla unaPlanilla = new Planilla();
+
+
+        public formPlanilla()
         {
             InitializeComponent();
 
         }
 
+        public void AbrirParaNuevaPlanilla()
+        {
+            btnBuscar.Visible = false;
+            btnValidar.Visible = true;
+            rellenarGrillaCeldasBlancas();
+        }
+
+        public void AbrirParaBuscar()
+        {
+            btnValidar.Visible = false;
+            btnBuscar.Visible = true;
+            btnAceptar.Visible = false;
+        }
+
         private void Planilla_Load(object sender, EventArgs e)
         {
-            CrearGrilla();
-            txtAnio.Text = DateTime.Now.Year.ToString();
             cmbMes.SelectedIndex = DateTime.Now.Month - 2;
-
+            txtAnio.Text = DateTime.Now.Year.ToString();
+            CrearGrilla();
         }
 
         private void CrearGrilla()
@@ -81,7 +99,10 @@ namespace PAMI.PlanillaPami
             clm_Validacion.ReadOnly = true;
             clm_Validacion.HeaderText = "Validación";
             dgPlanilla.Columns.Add(clm_Validacion);
+        }
 
+        private void rellenarGrillaCeldasBlancas()
+        {
             for (int i = 1; i <= 1000; i++)
             {
                 dgPlanilla.Rows.Add("");
@@ -167,15 +188,14 @@ namespace PAMI.PlanillaPami
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
-        }
-        
+        }      
 
         private void btnValidar_Click(object sender, EventArgs e)
         {
             if (true)//rellenarCeldas() != 0)
             {
-                try{
-
+                try{   //TODO VALIDAR QUE SE HAYA SELECCIONADO ASOCIACION, MEDICO, PERIODO..ETC
+                     
                     Planilla unaPlanilla = new Planilla();
                     int estado = 0;
 
@@ -311,6 +331,32 @@ namespace PAMI.PlanillaPami
         private void btnLimpiar_Click(object sender, EventArgs e)
         {
             dgPlanilla.Rows.Clear();
+        }
+
+        private void btnBuscar_Click(object sender, EventArgs e)
+        {
+            if (validarCombosSeleccionados() == "")
+            {
+                DataSet ds = unaPlanilla.TraerPlanillasPorMedico(Convert.ToInt64(cmbAsociacion.SelectedValue), Convert.ToInt64(cmbMedico.SelectedValue));
+                cargarGrilla(ds);
+            }
+            else
+            {
+                MessageBox.Show("Seleccionar Asociación / Médico", "Faltan Datos");
+            }
+        }
+
+        private void cargarGrilla(DataSet ds)
+        {
+            dgPlanilla.DataSource = ds.Tables[0];
+        }
+
+        private string validarCombosSeleccionados()
+        {
+            string strErrores = "";
+            strErrores = strErrores + Validator.validarNuloEnComboBox(cmbAsociacion.SelectedIndex, "Asociación");
+            strErrores = strErrores + Validator.validarNuloEnComboBox(cmbMedico.SelectedIndex, "Médico");
+            return strErrores;
         }
     }
 }

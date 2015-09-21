@@ -60,6 +60,12 @@
     <Compile Include="Afiliado\NuevoEditarAfiliado.Designer.cs">
       <DependentUpon>NuevoEditarAfiliado.cs</DependentUpon>
     </Compile>
+    <Compile Include="Ambulatorio\NuevoAmbulatorio.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ambulatorio\NuevoAmbulatorio.Designer.cs">
+      <DependentUpon>NuevoAmbulatorio.cs</DependentUpon>
+    </Compile>
     <Compile Include="Exportacion\ExportarDatos.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -78,11 +84,11 @@
     <Compile Include="Nomenclador\ListadoNomenclador.Designer.cs">
       <DependentUpon>ListadoNomenclador.cs</DependentUpon>
     </Compile>
-    <Compile Include="Ambulatorio\Planilla.cs">
+    <Compile Include="Ambulatorio\formPlanilla.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Ambulatorio\Planilla.Designer.cs">
-      <DependentUpon>Planilla.cs</DependentUpon>
+    <Compile Include="Ambulatorio\formPlanilla.Designer.cs">
+      <DependentUpon>formPlanilla.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -91,6 +97,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Afiliado\NuevoEditarAfiliado.resx">
       <DependentUpon>NuevoEditarAfiliado.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ambulatorio\NuevoAmbulatorio.resx">
+      <DependentUpon>NuevoAmbulatorio.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Exportacion\ExportarDatos.resx">
       <DependentUpon>ExportarDatos.cs</DependentUpon>
@@ -101,8 +110,8 @@
     <EmbeddedResource Include="Nomenclador\ListadoNomenclador.resx">
       <DependentUpon>ListadoNomenclador.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Ambulatorio\Planilla.resx">
-      <DependentUpon>Planilla.cs</DependentUpon>
+    <EmbeddedResource Include="Ambulatorio\formPlanilla.resx">
+      <DependentUpon>formPlanilla.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

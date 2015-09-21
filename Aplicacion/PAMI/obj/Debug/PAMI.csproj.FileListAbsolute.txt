@@ -20,3 +20,25 @@ A:\Documents\Visual Studio 2008\Projects\PAMI\PAMI\obj\Debug\PAMI.PlanillaPami.P
 A:\Documents\Visual Studio 2008\Projects\PAMI\PAMI\obj\Debug\PAMI.Exportacion.ExportarDatos.resources
 A:\Documents\Visual Studio 2008\Projects\PAMI\PAMI\obj\Debug\PAMI.Afiliados.formAfiliado.resources
 A:\Documents\Visual Studio 2008\Projects\PAMI\PAMI\obj\Debug\PAMI.Nomenclador.ListadoNomenclador.resources
+A:\Documents\PAMI\ProgramaPami\Aplicacion\PAMI\bin\Debug\PAMI.exe.config
+A:\Documents\PAMI\ProgramaPami\Aplicacion\PAMI\obj\Debug\PAMI.exe
+A:\Documents\PAMI\ProgramaPami\Aplicacion\PAMI\obj\Debug\PAMI.pdb
+A:\Documents\PAMI\ProgramaPami\Aplicacion\PAMI\bin\Debug\PAMI.exe
+A:\Documents\PAMI\ProgramaPami\Aplicacion\PAMI\bin\Debug\PAMI.pdb
+A:\Documents\PAMI\ProgramaPami\Aplicacion\PAMI\bin\Debug\ClassLibrary1.dll
+A:\Documents\PAMI\ProgramaPami\Aplicacion\PAMI\bin\Debug\Conexion.dll
+A:\Documents\PAMI\ProgramaPami\Aplicacion\PAMI\bin\Debug\Excepciones.dll
+A:\Documents\PAMI\ProgramaPami\Aplicacion\PAMI\bin\Debug\Validator.dll
+A:\Documents\PAMI\ProgramaPami\Aplicacion\PAMI\bin\Debug\Validator.pdb
+A:\Documents\PAMI\ProgramaPami\Aplicacion\PAMI\bin\Debug\Conexion.pdb
+A:\Documents\PAMI\ProgramaPami\Aplicacion\PAMI\bin\Debug\Excepciones.pdb
+A:\Documents\PAMI\ProgramaPami\Aplicacion\PAMI\bin\Debug\ClassLibrary1.pdb
+A:\Documents\PAMI\ProgramaPami\Aplicacion\PAMI\obj\Debug\ResolveAssemblyReference.cache
+A:\Documents\PAMI\ProgramaPami\Aplicacion\PAMI\obj\Debug\PAMI.Afiliados.listadoAfiliados.resources
+A:\Documents\PAMI\ProgramaPami\Aplicacion\PAMI\obj\Debug\PAMI.Afiliados.formAfiliado.resources
+A:\Documents\PAMI\ProgramaPami\Aplicacion\PAMI\obj\Debug\PAMI.Exportacion.ExportarDatos.resources
+A:\Documents\PAMI\ProgramaPami\Aplicacion\PAMI\obj\Debug\PAMI.MenuInicial.resources
+A:\Documents\PAMI\ProgramaPami\Aplicacion\PAMI\obj\Debug\PAMI.Nomenclador.ListadoNomenclador.resources
+A:\Documents\PAMI\ProgramaPami\Aplicacion\PAMI\obj\Debug\PAMI.PlanillaPami.formPlanilla.resources
+A:\Documents\PAMI\ProgramaPami\Aplicacion\PAMI\obj\Debug\PAMI.Properties.Resources.resources
+A:\Documents\PAMI\ProgramaPami\Aplicacion\PAMI\obj\Debug\PAMI.csproj.GenerateResource.Cache

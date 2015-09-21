@@ -88,7 +88,7 @@ namespace PAMI
 
         private void cargarPlanillaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            PlanillasPami planilla = new PlanillasPami();
+            formPlanilla planilla = new formPlanilla();
             planilla.Show();
         }
 

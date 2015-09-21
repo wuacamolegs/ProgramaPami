@@ -1,6 +1,6 @@
 ﻿namespace PAMI.PlanillaPami
 {
-    partial class PlanillasPami
+    partial class formPlanilla
     {
         /// <summary>
         /// Required designer variable.
@@ -42,6 +42,7 @@
             this.btnValidar = new System.Windows.Forms.Button();
             this.btnAceptar = new System.Windows.Forms.Button();
             this.btnCerrar = new System.Windows.Forms.Button();
+            this.btnBuscar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgPlanilla)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -65,7 +66,7 @@
             this.label2.Location = new System.Drawing.Point(2, 38);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(34, 17);
+            this.label2.Size = new System.Drawing.Size(41, 20);
             this.label2.TabIndex = 2;
             this.label2.Text = "Mes";
             // 
@@ -76,7 +77,7 @@
             this.label3.Location = new System.Drawing.Point(153, 38);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(33, 17);
+            this.label3.Size = new System.Drawing.Size(38, 20);
             this.label3.TabIndex = 3;
             this.label3.Text = "Año";
             // 
@@ -99,7 +100,7 @@
             this.cmbMes.Location = new System.Drawing.Point(45, 36);
             this.cmbMes.Margin = new System.Windows.Forms.Padding(4);
             this.cmbMes.Name = "cmbMes";
-            this.cmbMes.Size = new System.Drawing.Size(100, 24);
+            this.cmbMes.Size = new System.Drawing.Size(100, 28);
             this.cmbMes.TabIndex = 4;
             // 
             // groupBox1
@@ -117,7 +118,7 @@
             this.cmbMedico.FormattingEnabled = true;
             this.cmbMedico.Location = new System.Drawing.Point(6, 36);
             this.cmbMedico.Name = "cmbMedico";
-            this.cmbMedico.Size = new System.Drawing.Size(276, 24);
+            this.cmbMedico.Size = new System.Drawing.Size(276, 28);
             this.cmbMedico.TabIndex = 0;
             // 
             // groupBox2
@@ -135,7 +136,7 @@
             this.cmbAsociacion.FormattingEnabled = true;
             this.cmbAsociacion.Location = new System.Drawing.Point(6, 36);
             this.cmbAsociacion.Name = "cmbAsociacion";
-            this.cmbAsociacion.Size = new System.Drawing.Size(276, 24);
+            this.cmbAsociacion.Size = new System.Drawing.Size(276, 28);
             this.cmbAsociacion.TabIndex = 0;
             // 
             // groupBox3
@@ -155,12 +156,12 @@
             // 
             this.txtAnio.Location = new System.Drawing.Point(188, 34);
             this.txtAnio.Name = "txtAnio";
-            this.txtAnio.Size = new System.Drawing.Size(94, 23);
+            this.txtAnio.Size = new System.Drawing.Size(94, 26);
             this.txtAnio.TabIndex = 5;
             // 
             // btnLimpiar
             // 
-            this.btnLimpiar.Location = new System.Drawing.Point(962, 45);
+            this.btnLimpiar.Location = new System.Drawing.Point(1126, 45);
             this.btnLimpiar.Name = "btnLimpiar";
             this.btnLimpiar.Size = new System.Drawing.Size(121, 30);
             this.btnLimpiar.TabIndex = 8;
@@ -170,7 +171,7 @@
             // 
             // btnValidar
             // 
-            this.btnValidar.Location = new System.Drawing.Point(1113, 45);
+            this.btnValidar.Location = new System.Drawing.Point(980, 44);
             this.btnValidar.Name = "btnValidar";
             this.btnValidar.Size = new System.Drawing.Size(121, 30);
             this.btnValidar.TabIndex = 9;
@@ -196,11 +197,22 @@
             this.btnCerrar.Text = "Cerrar";
             this.btnCerrar.UseVisualStyleBackColor = true;
             // 
+            // btnBuscar
+            // 
+            this.btnBuscar.Location = new System.Drawing.Point(980, 45);
+            this.btnBuscar.Name = "btnBuscar";
+            this.btnBuscar.Size = new System.Drawing.Size(121, 29);
+            this.btnBuscar.TabIndex = 12;
+            this.btnBuscar.Text = "Buscar";
+            this.btnBuscar.UseVisualStyleBackColor = true;
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
+            // 
             // PlanillasPami
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1260, 560);
+            this.Controls.Add(this.btnBuscar);
             this.Controls.Add(this.btnCerrar);
             this.Controls.Add(this.btnAceptar);
             this.Controls.Add(this.btnValidar);
@@ -239,5 +251,6 @@
         private System.Windows.Forms.Button btnValidar;
         private System.Windows.Forms.Button btnAceptar;
         private System.Windows.Forms.Button btnCerrar;
+        private System.Windows.Forms.Button btnBuscar;
     }
 }

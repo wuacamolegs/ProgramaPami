@@ -158,6 +158,13 @@ namespace Clases
             parameterList.Add(new SqlParameter("@Mes", this.Mes));
             parameterList.Add(new SqlParameter("@Anio", this.Anio));
         }
+
+        private void settearListaParametrosConAsociacionMedico()
+        {
+            this.parameterList.Clear();
+            parameterList.Add(new SqlParameter("@AsociacionID", this.Asociacion));
+            parameterList.Add(new SqlParameter("@MedicoID", this.Medico));
+        }
        
         #endregion
 
@@ -174,6 +181,13 @@ namespace Clases
             settearListaParametrosConPlanilla();
             DataSet ds = SQLHelper.ExecuteDataSet("ImportarPlanilla", CommandType.StoredProcedure, NombreTabla(), parameterList);
             return ds;
+        }
+
+        
+        public DataSet TraerPlanillasPorMedico(long AsociacionID, long MedicoID)
+        {
+            settearListaParametrosConAsociacionMedico();
+            return this.TraerListado(parameterList, "ActualPorMedicoAsociacion");
         }
 
 
