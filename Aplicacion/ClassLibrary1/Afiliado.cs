@@ -122,7 +122,7 @@ namespace Clases
             parameterList.Add(new SqlParameter("@Nombre", this.Nombre));
             parameterList.Add(new SqlParameter("@Beneficio", this.Beneficio));
             parameterList.Add(new SqlParameter("@Parentesco", this.Parentesco));
-            parameterList.Add(new SqlParameter("@TipoDni", this.TipoDocumento));
+            parameterList.Add(new SqlParameter("@Tipo_Dni", this.TipoDocumento));
             parameterList.Add(new SqlParameter("@Dni", this.Documento));
         }
 
@@ -132,7 +132,7 @@ namespace Clases
             parameterList.Add(new SqlParameter("@Nombre", this.Nombre));
             parameterList.Add(new SqlParameter("@Beneficio", this.Beneficio));
             parameterList.Add(new SqlParameter("@Parentesco", this.Parentesco));
-            parameterList.Add(new SqlParameter("@TipoDni", this.TipoDocumento));
+            parameterList.Add(new SqlParameter("@Tipo_Dni", this.TipoDocumento));
             parameterList.Add(new SqlParameter("@Dni", this.Documento));
             parameterList.Add(new SqlParameter("@Sexo", this.Sexo));
             parameterList.Add(new SqlParameter("@FechaNac", this.FechaNacimiento));
@@ -143,6 +143,11 @@ namespace Clases
             this.parameterList.Clear();
             parameterList.Add(new SqlParameter("@Beneficio", this.Beneficio));
             parameterList.Add(new SqlParameter("@Parentesco", this.Parentesco));
+        }
+
+        private void setearListaParametrosAgregarMedicoMatricula(Profesional medico)
+        {
+            parameterList.Add(new SqlParameter("@MedicoMatricula", medico.Matricula));
         }
        
         #endregion
@@ -193,6 +198,12 @@ namespace Clases
         {
             setearListaParametrosConBeneficioParentesco();
             this.Eliminar(parameterList);
+        }
+
+        public DataSet TraerAfiliadosConFiltrosPorMedico(Profesional Medico)
+        {
+            setearListaParametrosAgregarMedicoMatricula(Medico);
+            return this.TraerListado(parameterList, "ConFiltrosPorPadronMedico");
         }
     }
 }

@@ -1,65 +1,70 @@
-
-
 use [PAMI]
 go
 
 CREATE PROCEDURE PAMI.TraerListadoCabecera
 AS
 	BEGIN
-		SELECT * FROM RetransmitirNoviembre.dbo.Cabecera
+		SELECT * FROM PAMI.Cabecera
 	END
 GO
 
 CREATE PROCEDURE PAMI.TraerListadoProfesionales
 AS
 	BEGIN
-		SELECT * FROM RetransmitirNoviembre.dbo.Profesional
+		SELECT * FROM PAMI.Profesional
 	END
 GO
 
 CREATE PROCEDURE PAMI.TraerListadoPrestador
 AS
 	BEGIN
-		SELECT * FROM RetransmitirNoviembre.dbo.Prestador
+		SELECT * FROM PAMI.Prestador
 	END
 GO
 
 CREATE PROCEDURE PAMI.TraerListadoBocaAtencion
 AS
 	BEGIN
-		SELECT * FROM RetransmitirNoviembre.dbo.Boca_Atencion
+		SELECT * FROM PAMI.BocaAtencion
 	END
 GO
 
 CREATE PROCEDURE PAMI.TraerListadoREL_MODULOSXPRESTADOR
 AS
 	BEGIN
-		SELECT * FROM RetransmitirNoviembre.dbo.Modulos_Prestador
+		SELECT * FROM PAMI.REL_ModulosXPrestador
 	END
 GO
 
 CREATE PROCEDURE PAMI.TraerListadoREL_PROFESIONALESXPRESTADOR
 AS
 	BEGIN
-		SELECT * FROM RetransmitirNoviembre.dbo.Profesionales_Prestador
+		SELECT * FROM PAMI.REL_ProfesionalesXPrestador
 	END
 GO
 
 CREATE PROCEDURE PAMI.TraerListadoBENEFICIO
 AS
 	BEGIN
-		SELECT * FROM RetransmitirNoviembre.dbo.Beneficio
+		SELECT * FROM PAMI.Beneficio
 	END
 GO
 
 CREATE PROCEDURE PAMI.TraerListadoAFILIADO
 AS
 	BEGIN
-		SELECT * FROM RetransmitirNoviembre.dbo.Afiliados
+		SELECT * FROM PAMI.Afiliados
 	END
 GO
 
 CREATE PROCEDURE PAMI.TraerListadoAMBULATORIOS
+AS
+	BEGIN
+		SELECT * FROM PAMI.Ambulatorio
+	END
+GO
+
+CREATE PROCEDURE PAMI.TraerListadoAMBULATORIOS2
 AS
 	BEGIN
 		SELECT ambulatorio_red_cuit, '',ambulatorio_profesional_matricula_nacional,ambulatorio_codigo,0,0,13745,0,
@@ -69,16 +74,16 @@ AS
 	END
 GO
 
-ALTER PROCEDURE PAMI.TraerListadoDatosAmbulatorio
+CREATE PROCEDURE PAMI.TraerListadoDatosAmbulatorio
 	@Ambulatorio int
 AS
 	BEGIN
-		SELECT '','','',0,da_diagnostico_codigo_clasificacion, da_diagnostico_codigo, da_diagnostico_tipo FROM RetransmitirNoviembre.dbo.Diagnosticos_Ambulatorio WHERE da_ambulatorio_codigo = @Ambulatorio
-		select null,null,null,pra_ambulatorio_codigo, 1 , pra_prestacion_codigo ,
-		CONVERT(VARCHAR(10),CONVERT(datetime, pra_practica_fecha),103) + ' ' + CONVERT(VARCHAR(5),CONVERT(datetime, pra_practica_fecha),8),
-		pra_cantidad, 1, null
-		from RetransmitirNoviembre.dbo.PracticasRealizadas_Ambulatorio2 
-		WHERE pra_ambulatorio_codigo = @Ambulatorio
+		SELECT '','','',0,diagnostico_clasificacion_tipo, diagnostico_codigo, diagnostico_tipo FROM PAMI.REL_DiagnosticosXAmbulatorio WHERE c_ambulatorio_default = @Ambulatorio
+		select null,null,null,c_ambulatorio_default, 1 , practica_codigo ,
+		CONVERT(VARCHAR(10),CONVERT(datetime, practica_fecha),103) + ' ' + CONVERT(VARCHAR(5),CONVERT(datetime, practica_fecha),8),
+		practica_cantidad, 1, null
+		from PAMI.REL_PracticasRealizadasXAmbulatorio 
+		WHERE c_ambulatorio_default = @Ambulatorio
 	END
 GO
 
@@ -97,8 +102,7 @@ AS
 	 DECLARE practicasAmb CURSOR FOR (SELECT pra_ambulatorio_codigo, pra_prestacion_codigo FROM RetransmitirNoviembre.dbo.PracticasRealizadas_ambulatorio2)
 	 
 	 OPEN practicasAmb;
-	 
-	 
+	 	 
 	 FETCH NEXT FROM practicasAmb INTO @ambulatorio, @practica;
 	 
 	 WHILE @@FETCH_STATUS = 0

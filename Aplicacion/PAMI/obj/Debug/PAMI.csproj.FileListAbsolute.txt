@@ -42,3 +42,4 @@ A:\Documents\PAMI\ProgramaPami\Aplicacion\PAMI\obj\Debug\PAMI.Nomenclador.Listad
 A:\Documents\PAMI\ProgramaPami\Aplicacion\PAMI\obj\Debug\PAMI.PlanillaPami.formPlanilla.resources
 A:\Documents\PAMI\ProgramaPami\Aplicacion\PAMI\obj\Debug\PAMI.Properties.Resources.resources
 A:\Documents\PAMI\ProgramaPami\Aplicacion\PAMI\obj\Debug\PAMI.csproj.GenerateResource.Cache
+A:\Documents\PAMI\ProgramaPami\Aplicacion\PAMI\obj\Debug\PAMI.Ambulatorio.NuevoAmbulatorio.resources

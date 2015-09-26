@@ -111,42 +111,42 @@ namespace PAMI.Afiliados
             DataGridViewTextBoxColumn clm_ApellidoNombre = new DataGridViewTextBoxColumn();
             clm_ApellidoNombre.Width = 240;
             clm_ApellidoNombre.ReadOnly = true;
-            clm_ApellidoNombre.DataPropertyName = "afiliado_apellidoNombre";
+            clm_ApellidoNombre.DataPropertyName = "apellido_nombre";
             clm_ApellidoNombre.HeaderText = "Apellido y Nombre";
             dgAfiliados.Columns.Add(clm_ApellidoNombre);
 
             DataGridViewTextBoxColumn clm_beneficio = new DataGridViewTextBoxColumn();
             clm_beneficio.Width = 160;
             clm_beneficio.ReadOnly = true;
-            clm_beneficio.DataPropertyName = "afiliado_beneficio_id";
+            clm_beneficio.DataPropertyName = "beneficio";
             clm_beneficio.HeaderText = "Beneficio";
             dgAfiliados.Columns.Add(clm_beneficio);
 
             DataGridViewTextBoxColumn clm_parentesco = new DataGridViewTextBoxColumn();
             clm_parentesco.Width = 80;
             clm_parentesco.ReadOnly = true;
-            clm_parentesco.DataPropertyName = "afiliado_parentesco_id";
+            clm_parentesco.DataPropertyName = "parentesco";
             clm_parentesco.HeaderText = "Parentesco";
             dgAfiliados.Columns.Add(clm_parentesco);
 
             DataGridViewTextBoxColumn clm_tipoDni = new DataGridViewTextBoxColumn();
             clm_tipoDni.Width = 80;
             clm_tipoDni.ReadOnly = true;
-            clm_tipoDni.DataPropertyName = "afiliado_tipo_documento";
+            clm_tipoDni.DataPropertyName = "documento_tipo";
             clm_tipoDni.HeaderText = "Tipo Doc";
             dgAfiliados.Columns.Add(clm_tipoDni);
 
             DataGridViewTextBoxColumn clm_numero_documento = new DataGridViewTextBoxColumn();
             clm_numero_documento.Width = 80;
             clm_numero_documento.ReadOnly = true;
-            clm_numero_documento.DataPropertyName = "afiliado_numero_documento";
+            clm_numero_documento.DataPropertyName = "documento_numero";
             clm_numero_documento.HeaderText = "Documento";
             dgAfiliados.Columns.Add(clm_numero_documento);
 
             DataGridViewTextBoxColumn clm_fechaNacimiento = new DataGridViewTextBoxColumn();
             clm_fechaNacimiento.Width = 120;
             clm_fechaNacimiento.ReadOnly = true;
-            clm_fechaNacimiento.DataPropertyName = "afiliado_fecha_nacimiento";
+            clm_fechaNacimiento.DataPropertyName = "fecha_nacimiento";
             clm_fechaNacimiento.HeaderText = "Fecha Nacimiento";
             dgAfiliados.Columns.Add(clm_fechaNacimiento);
 

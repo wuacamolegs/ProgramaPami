@@ -78,6 +78,12 @@
     <Compile Include="MenuInicial.Designer.cs">
       <DependentUpon>MenuInicial.cs</DependentUpon>
     </Compile>
+    <Compile Include="Nomenclador\formPracticas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Nomenclador\formPracticas.Designer.cs">
+      <DependentUpon>formPracticas.cs</DependentUpon>
+    </Compile>
     <Compile Include="Nomenclador\ListadoNomenclador.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -106,6 +112,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MenuInicial.resx">
       <DependentUpon>MenuInicial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Nomenclador\formPracticas.resx">
+      <DependentUpon>formPracticas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Nomenclador\ListadoNomenclador.resx">
       <DependentUpon>ListadoNomenclador.cs</DependentUpon>
@@ -153,7 +162,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Prestadores\" />
-    <Folder Include="Red\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

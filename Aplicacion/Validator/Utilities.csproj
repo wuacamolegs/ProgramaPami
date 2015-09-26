@@ -60,22 +60,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BarraEstado.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="BarraEstado.Designer.cs">
-      <DependentUpon>BarraEstado.cs</DependentUpon>
-    </Compile>
+    <Compile Include="DropDownListManager.cs" />
     <Compile Include="Editor.cs" />
     <Compile Include="FSLogger.cs" />
     <Compile Include="MessageBoxPersonalizado.cs" />
     <Compile Include="Validator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="BarraEstado.resx">
-      <DependentUpon>BarraEstado.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

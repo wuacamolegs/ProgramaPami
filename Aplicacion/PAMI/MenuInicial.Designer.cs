@@ -35,6 +35,7 @@
             this.aMBULATORIOSToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cargarNuevoAmbulatorioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cargarPlanillaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.listadoAmbulatoriosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.nOMENCLADORToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.búsquedaPrácticaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.nuevaPrácticaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -46,7 +47,6 @@
             this.pRESTADORESToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.dIAGNOSTICOSToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.eXPORTARDATOSToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.listadoAmbulatoriosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -108,6 +108,7 @@
             this.cargarNuevoAmbulatorioToolStripMenuItem.Name = "cargarNuevoAmbulatorioToolStripMenuItem";
             this.cargarNuevoAmbulatorioToolStripMenuItem.Size = new System.Drawing.Size(241, 28);
             this.cargarNuevoAmbulatorioToolStripMenuItem.Text = "Nuevo Ambulatorio";
+            this.cargarNuevoAmbulatorioToolStripMenuItem.Click += new System.EventHandler(this.cargarNuevoAmbulatorioToolStripMenuItem_Click);
             // 
             // cargarPlanillaToolStripMenuItem
             // 
@@ -115,6 +116,13 @@
             this.cargarPlanillaToolStripMenuItem.Size = new System.Drawing.Size(241, 28);
             this.cargarPlanillaToolStripMenuItem.Text = "Nueva Planilla";
             this.cargarPlanillaToolStripMenuItem.Click += new System.EventHandler(this.cargarPlanillaToolStripMenuItem_Click);
+            // 
+            // listadoAmbulatoriosToolStripMenuItem
+            // 
+            this.listadoAmbulatoriosToolStripMenuItem.Name = "listadoAmbulatoriosToolStripMenuItem";
+            this.listadoAmbulatoriosToolStripMenuItem.Size = new System.Drawing.Size(241, 28);
+            this.listadoAmbulatoriosToolStripMenuItem.Text = "Listado Ambulatorios";
+            this.listadoAmbulatoriosToolStripMenuItem.Click += new System.EventHandler(this.listadoAmbulatoriosToolStripMenuItem_Click);
             // 
             // nOMENCLADORToolStripMenuItem
             // 
@@ -193,12 +201,6 @@
             this.eXPORTARDATOSToolStripMenuItem.Text = "EXPORTAR DATOS";
             this.eXPORTARDATOSToolStripMenuItem.Click += new System.EventHandler(this.eXPORTARDATOSToolStripMenuItem_Click);
             // 
-            // listadoAmbulatoriosToolStripMenuItem
-            // 
-            this.listadoAmbulatoriosToolStripMenuItem.Name = "listadoAmbulatoriosToolStripMenuItem";
-            this.listadoAmbulatoriosToolStripMenuItem.Size = new System.Drawing.Size(241, 28);
-            this.listadoAmbulatoriosToolStripMenuItem.Text = "Listado Ambulatorios";
-            // 
             // MenuInicial
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -206,7 +208,7 @@
             this.ClientSize = new System.Drawing.Size(941, 540);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "MenuInicial";
             this.Text = "- PAMI -";
             this.Load += new System.EventHandler(this.MenuInicial_Load);

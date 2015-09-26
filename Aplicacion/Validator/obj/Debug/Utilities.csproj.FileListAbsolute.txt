@@ -5,3 +5,8 @@ A:\Documents\Visual Studio 2008\Projects\PAMI\Validator\obj\Debug\Validator.dll
 A:\Documents\Visual Studio 2008\Projects\PAMI\Validator\obj\Debug\Validator.pdb
 A:\Documents\Visual Studio 2008\Projects\PAMI\Validator\obj\Debug\Utilities.BarraEstado.resources
 A:\Documents\Visual Studio 2008\Projects\PAMI\Validator\obj\Debug\Utilities.csproj.GenerateResource.Cache
+A:\Documents\PAMI\ProgramaPami\Aplicacion\Validator\bin\Debug\Validator.dll
+A:\Documents\PAMI\ProgramaPami\Aplicacion\Validator\bin\Debug\Validator.pdb
+A:\Documents\PAMI\ProgramaPami\Aplicacion\Validator\obj\Debug\ResolveAssemblyReference.cache
+A:\Documents\PAMI\ProgramaPami\Aplicacion\Validator\obj\Debug\Validator.dll
+A:\Documents\PAMI\ProgramaPami\Aplicacion\Validator\obj\Debug\Validator.pdb

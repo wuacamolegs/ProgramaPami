@@ -1,0 +1,112 @@
+
+SON 4 INSTITUCIONES
+
+Asociación de Oftalmólogos de Río Negro
+a- Padron RN
+b- Padron NQN
+
+Asociación de Hematologia y Hemoterapia Norpatagónica
+c- Padron RN
+d- Padron NQN  
+
+-----------------------------------------------------------------------------
+CABECERA
+-----------------------------------------------------------------------------
+
+cambian CUIT, Nombre de usuario, Y SAP entre asociaciones y padrones!!
+
+a-Asociación de Oftalmólogos de Río Negro 
+PADRON RN
+
+1 Cuit Prestador: 30689632447
+2 Nro.de Emulacion xxxxx
+3 Fecha de Emulación xxxxx
+4 Mes y año de datos prestacionales depende de la facturacion
+5 Nombre del Prestador "Asociación de Oftalmólogos de Río Negro"
+6 Tipo de Prestador  2 - Institucion
+7 Nombre de Usuario UP3068963244701 
+8 Nro. de Instalacion de Efectores xxxxx Mama lo sabe
+
+
+b- Asociación de Oftalmólogos de Río Negro 
+PADRON NQN
+
+1 Cuit Prestador: 30689632447
+2 Nro.de Emulacion xxxxx
+3 Fecha de Emulación xxxxx
+4 Mes y año de datos prestacionales depende de la facturacion
+5 Nombre del Prestador "Asociación de Oftalmólogos de Río Negro"
+6 Tipo de Prestador  2 - Institucion
+7 Nombre de Usuario UP30689632447 
+8 Nro. de Instalacion de Efectores xxxxx Mama lo sabe
+
+
+c- Asociación de Hematologia y Hemoterapia Norpatagónica
+PADRON RN
+
+1 Cuit Prestador: 30708916532
+2 Nro.de Emulacion xxxxx
+3 Fecha de Emulación xxxxx
+4 Mes y año de datos prestacionales depende de la facturacion
+5 Nombre del Prestador "Asociación de Hematologia y Hemoterapia Norpatagónica"
+6 Tipo de Prestador  2 - Institucion
+7 Nombre de Usuario UP30708916532
+8 Nro. de Instalacion de Efectores xxxxx Mama lo sabe
+
+
+d- Asociación de Hematologia y Hemoterapia Norpatagónica
+PADRON NQN
+
+1 Cuit Prestador: 30708916532
+2 Nro.de Emulacion xxxxx
+3 Fecha de Emulación xxxxx
+4 Mes y año de datos prestacionales depende de la facturacion
+5 Nombre del Prestador "Asociación de Hematologia y Hemoterapia Norpatagónica"
+6 Tipo de Prestador  2 - Institucion
+7 Nombre de Usuario UP30708916532N1
+8 Nro. de Instalacion de Efectores xxxxx Mama lo sabe
+
+
+-------------------------------------------------------------------------------
+DATOS PRESTADOR
+-------------------------------------------------------------------------------
+
+1-Asociación de Oftalmólogos de Río Negro 
+PADRON RN 
+PADRON NQN
+
+CUIT: 30689632447
+Código del prestador:
+SAP: 59826 
+Tipo prestador: 2-Institucion 
+Tipo de iva:
+mail del prestador: elbiohernandez@gmail.com 
+Fecha de alta: (fecha a partir de la cual el prestador está habilitado)
+Nombre del prestador: "Asociación de Oftalmólogos de Río Negro"
+
+
+2-Asociación de Hematologia y Hemoterapia Norpatagónica
+PADRON RN 
+PADRON NQN
+
+CUIT: 30708916532
+Código del prestador:
+SAP: 65031
+Tipo prestador: 2-Institucion 
+Tipo de iva:
+mail del prestador: elbiohernandez@gmail.com 
+Fecha de alta: (fecha a partir de la cual el prestador está habilitado)
+Nombre del prestador: "Asociación de Hematologia y Hemoterapia Norpatagónica"
+
+
+
+--------------------------------------------------------------------------------
+PRESTADOR
+--------------------------------------------------------------------------------
+
+
+
+
+pda prestacion
+
+nivel atencion 1.2.3

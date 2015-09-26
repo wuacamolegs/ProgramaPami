@@ -19,3 +19,26 @@ A:\Documents\Visual Studio 2008\Projects\PAMI\PAMI\bin\Release\ClassLibrary1.pdb
 A:\Documents\Visual Studio 2008\Projects\PAMI\PAMI\obj\Release\PAMI.PlanillaPami.PlanillasPami.resources
 A:\Documents\Visual Studio 2008\Projects\PAMI\PAMI\obj\Release\PAMI.Exportacion.ExportarDatos.resources
 A:\Documents\Visual Studio 2008\Projects\PAMI\PAMI\obj\Release\PAMI.Afiliados.formAfiliado.resources
+A:\Documents\PAMI\ProgramaPami\Aplicacion\PAMI\obj\Release\ResolveAssemblyReference.cache
+A:\Documents\PAMI\ProgramaPami\Aplicacion\PAMI\obj\Release\PAMI.Afiliados.listadoAfiliados.resources
+A:\Documents\PAMI\ProgramaPami\Aplicacion\PAMI\obj\Release\PAMI.Afiliados.formAfiliado.resources
+A:\Documents\PAMI\ProgramaPami\Aplicacion\PAMI\obj\Release\PAMI.Ambulatorio.NuevoAmbulatorio.resources
+A:\Documents\PAMI\ProgramaPami\Aplicacion\PAMI\obj\Release\PAMI.Exportacion.ExportarDatos.resources
+A:\Documents\PAMI\ProgramaPami\Aplicacion\PAMI\obj\Release\PAMI.MenuInicial.resources
+A:\Documents\PAMI\ProgramaPami\Aplicacion\PAMI\obj\Release\PAMI.Nomenclador.ListadoNomenclador.resources
+A:\Documents\PAMI\ProgramaPami\Aplicacion\PAMI\obj\Release\PAMI.PlanillaPami.formPlanilla.resources
+A:\Documents\PAMI\ProgramaPami\Aplicacion\PAMI\obj\Release\PAMI.Properties.Resources.resources
+A:\Documents\PAMI\ProgramaPami\Aplicacion\PAMI\obj\Release\PAMI.csproj.GenerateResource.Cache
+A:\Documents\PAMI\ProgramaPami\Aplicacion\PAMI\obj\Release\PAMI.exe
+A:\Documents\PAMI\ProgramaPami\Aplicacion\PAMI\obj\Release\PAMI.pdb
+A:\Documents\PAMI\ProgramaPami\Aplicacion\PAMI\bin\Release\PAMI.exe.config
+A:\Documents\PAMI\ProgramaPami\Aplicacion\PAMI\bin\Release\PAMI.exe
+A:\Documents\PAMI\ProgramaPami\Aplicacion\PAMI\bin\Release\PAMI.pdb
+A:\Documents\PAMI\ProgramaPami\Aplicacion\PAMI\bin\Release\ClassLibrary1.dll
+A:\Documents\PAMI\ProgramaPami\Aplicacion\PAMI\bin\Release\Conexion.dll
+A:\Documents\PAMI\ProgramaPami\Aplicacion\PAMI\bin\Release\Excepciones.dll
+A:\Documents\PAMI\ProgramaPami\Aplicacion\PAMI\bin\Release\Validator.dll
+A:\Documents\PAMI\ProgramaPami\Aplicacion\PAMI\bin\Release\Validator.pdb
+A:\Documents\PAMI\ProgramaPami\Aplicacion\PAMI\bin\Release\Conexion.pdb
+A:\Documents\PAMI\ProgramaPami\Aplicacion\PAMI\bin\Release\Excepciones.pdb
+A:\Documents\PAMI\ProgramaPami\Aplicacion\PAMI\bin\Release\ClassLibrary1.pdb

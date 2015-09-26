@@ -46,8 +46,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Afiliado.cs" />
+    <Compile Include="Asociacion.cs" />
     <Compile Include="Base.cs" />
+    <Compile Include="Diagnostico.cs" />
     <Compile Include="Planilla.cs" />
+    <Compile Include="Profesional.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

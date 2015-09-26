@@ -1,0 +1,28 @@
+DIFERENCIAR ENTRE PRACTICAS UNILATERALES Y BILATERALES
+que no se puedan cargar mas de dos si son bilaterales.
+Poner un cantidad maximo a las practicas
+
+Chequear que un afiliado no tenga ambulatorios ese dia en el que estoy cargando.
+en realidad un afiliado pudo haber ido en un mismo dia a dos medicos,
+pero tengo que chequear que no se pisen las horas!
+
+Relacionar medicos con asociaciones 
+y padron con asociaciones.
+Asi si un medico de rn atiende a pacientes de nqn pueda cargarlos
+
+En los ambulatorios no poner cantidades, que se carguen tantas  veces como cantidades
+
+Autocompletar horas cada 1 min 
+
+Asociar Médicos y asociaciones. Y afiliados con padrones RN NQN
+
+Mostrar ambulatorios actuales para un médico , la planilla entera y poder editarlos.
+
+En el listado planilla que se pueda buscar por medico, afiliado, fecha
+practicas, agregar cantidad maxima. 
+
+
+TABLA C#
+
+PRÁCTICAS
+Codigo, descripcion, cantidad max. 

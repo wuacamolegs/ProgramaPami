@@ -12,6 +12,7 @@ using PAMI.Afiliados;
 using PAMI.PlanillaPami;
 using PAMI.Exportacion;
 using PAMI.Nomenclador;
+using PAMI.Ambulatorio;
 using Utilities;
 
 namespace PAMI
@@ -89,6 +90,7 @@ namespace PAMI
         private void cargarPlanillaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             formPlanilla planilla = new formPlanilla();
+            planilla.AbrirParaNuevaPlanilla();
             planilla.Show();
         }
 
@@ -96,6 +98,19 @@ namespace PAMI
         {
             ListadoNomenclador nomenclador = new ListadoNomenclador();
             nomenclador.Show();
+        }
+
+        private void listadoAmbulatoriosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            formPlanilla planilla = new formPlanilla();
+            planilla.AbrirParaBuscar();
+            planilla.Show();
+        }
+
+        private void cargarNuevoAmbulatorioToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            NuevoAmbulatorio ambulatorio = new NuevoAmbulatorio();
+            ambulatorio.Show();
         }
 
     }

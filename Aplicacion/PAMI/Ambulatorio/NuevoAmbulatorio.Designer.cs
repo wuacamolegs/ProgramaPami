@@ -28,31 +28,36 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(NuevoAmbulatorio));
             this.label1 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
             this.label24 = new System.Windows.Forms.Label();
             this.label25 = new System.Windows.Forms.Label();
-            this.label26 = new System.Windows.Forms.Label();
-            this.label27 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
-            this.comboBox4 = new System.Windows.Forms.ComboBox();
-            this.comboBox5 = new System.Windows.Forms.ComboBox();
-            this.comboBox6 = new System.Windows.Forms.ComboBox();
+            this.cmbAsociacion = new System.Windows.Forms.ComboBox();
+            this.cmbMedico = new System.Windows.Forms.ComboBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnBuscar = new System.Windows.Forms.PictureBox();
+            this.txtDocumento = new System.Windows.Forms.TextBox();
+            this.txtBeneficio = new System.Windows.Forms.TextBox();
+            this.txtNombreApellido = new System.Windows.Forms.TextBox();
+            this.dgAfiliados = new System.Windows.Forms.DataGridView();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label27 = new System.Windows.Forms.Label();
+            this.sas = new System.Windows.Forms.GroupBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.cmbDiagnostico = new System.Windows.Forms.ComboBox();
+            this.label26 = new System.Windows.Forms.Label();
+            this.maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
+            this.btnNuevo = new System.Windows.Forms.Button();
+            this.dgPracticas = new System.Windows.Forms.DataGridView();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            this.groupBox3.SuspendLayout();
-            this.groupBox4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnBuscar)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgAfiliados)).BeginInit();
+            this.sas.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgPracticas)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -64,17 +69,16 @@
             this.label1.Size = new System.Drawing.Size(91, 20);
             this.label1.TabIndex = 0;
             this.label1.Text = "Asociación";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // label17
             // 
             this.label17.AutoSize = true;
             this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.label17.Location = new System.Drawing.Point(12, 26);
+            this.label17.Location = new System.Drawing.Point(11, 34);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(64, 20);
+            this.label17.Size = new System.Drawing.Size(145, 20);
             this.label17.TabIndex = 16;
-            this.label17.Text = "Afiliado";
+            this.label17.Text = "Nombre y Apellido";
             // 
             // label18
             // 
@@ -90,7 +94,7 @@
             // 
             this.label24.AutoSize = true;
             this.label24.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.label24.Location = new System.Drawing.Point(11, 18);
+            this.label24.Location = new System.Drawing.Point(10, 186);
             this.label24.Name = "label24";
             this.label24.Size = new System.Drawing.Size(55, 20);
             this.label24.TabIndex = 23;
@@ -100,90 +104,37 @@
             // 
             this.label25.AutoSize = true;
             this.label25.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.label25.Location = new System.Drawing.Point(11, 81);
+            this.label25.Location = new System.Drawing.Point(11, 286);
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(80, 20);
             this.label25.TabIndex = 24;
             this.label25.Text = "Prácticas";
             // 
-            // label26
+            // cmbAsociacion
             // 
-            this.label26.AutoSize = true;
-            this.label26.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.label26.Location = new System.Drawing.Point(12, 27);
-            this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(98, 20);
-            this.label26.TabIndex = 25;
-            this.label26.Text = "Diagnóstico";
+            this.cmbAsociacion.BackColor = System.Drawing.SystemColors.Window;
+            this.cmbAsociacion.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbAsociacion.FormattingEnabled = true;
+            this.cmbAsociacion.Location = new System.Drawing.Point(15, 38);
+            this.cmbAsociacion.Name = "cmbAsociacion";
+            this.cmbAsociacion.Size = new System.Drawing.Size(456, 28);
+            this.cmbAsociacion.TabIndex = 1;
+            this.cmbAsociacion.SelectedIndexChanged += new System.EventHandler(this.cmbAsociacion_SelectedIndexChanged);
             // 
-            // label27
+            // cmbMedico
             // 
-            this.label27.AutoSize = true;
-            this.label27.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.label27.Location = new System.Drawing.Point(12, 94);
-            this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(79, 20);
-            this.label27.TabIndex = 26;
-            this.label27.Text = "Beneficio";
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(15, 38);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(456, 28);
-            this.comboBox1.TabIndex = 1;
-            // 
-            // comboBox2
-            // 
-            this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(15, 102);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(456, 28);
-            this.comboBox2.TabIndex = 2;
-            // 
-            // comboBox3
-            // 
-            this.comboBox3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(15, 49);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(456, 28);
-            this.comboBox3.TabIndex = 3;
-            // 
-            // comboBox4
-            // 
-            this.comboBox4.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox4.FormattingEnabled = true;
-            this.comboBox4.Location = new System.Drawing.Point(16, 117);
-            this.comboBox4.Name = "comboBox4";
-            this.comboBox4.Size = new System.Drawing.Size(456, 28);
-            this.comboBox4.TabIndex = 4;
-            // 
-            // comboBox5
-            // 
-            this.comboBox5.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox5.FormattingEnabled = true;
-            this.comboBox5.Location = new System.Drawing.Point(16, 50);
-            this.comboBox5.Name = "comboBox5";
-            this.comboBox5.Size = new System.Drawing.Size(216, 28);
-            this.comboBox5.TabIndex = 5;
-            // 
-            // comboBox6
-            // 
-            this.comboBox6.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox6.FormattingEnabled = true;
-            this.comboBox6.Location = new System.Drawing.Point(237, 50);
-            this.comboBox6.Name = "comboBox6";
-            this.comboBox6.Size = new System.Drawing.Size(234, 28);
-            this.comboBox6.TabIndex = 32;
+            this.cmbMedico.BackColor = System.Drawing.SystemColors.Window;
+            this.cmbMedico.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbMedico.FormattingEnabled = true;
+            this.cmbMedico.Location = new System.Drawing.Point(15, 102);
+            this.cmbMedico.Name = "cmbMedico";
+            this.cmbMedico.Size = new System.Drawing.Size(456, 28);
+            this.cmbMedico.TabIndex = 2;
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.comboBox2);
-            this.groupBox1.Controls.Add(this.comboBox1);
+            this.groupBox1.Controls.Add(this.cmbMedico);
+            this.groupBox1.Controls.Add(this.cmbAsociacion);
             this.groupBox1.Controls.Add(this.label18);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
@@ -195,89 +146,191 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.comboBox4);
-            this.groupBox2.Controls.Add(this.comboBox3);
+            this.groupBox2.Controls.Add(this.btnBuscar);
+            this.groupBox2.Controls.Add(this.txtDocumento);
+            this.groupBox2.Controls.Add(this.txtBeneficio);
+            this.groupBox2.Controls.Add(this.txtNombreApellido);
+            this.groupBox2.Controls.Add(this.dgAfiliados);
+            this.groupBox2.Controls.Add(this.label2);
             this.groupBox2.Controls.Add(this.label27);
             this.groupBox2.Controls.Add(this.label17);
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.groupBox2.Location = new System.Drawing.Point(13, 169);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(533, 170);
+            this.groupBox2.Size = new System.Drawing.Size(533, 525);
             this.groupBox2.TabIndex = 34;
             this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Afiliado";
             // 
-            // groupBox3
+            // btnBuscar
             // 
-            this.groupBox3.Controls.Add(this.comboBox6);
-            this.groupBox3.Controls.Add(this.comboBox5);
-            this.groupBox3.Controls.Add(this.label26);
-            this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.groupBox3.Location = new System.Drawing.Point(13, 345);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(533, 100);
-            this.groupBox3.TabIndex = 35;
-            this.groupBox3.TabStop = false;
+            this.btnBuscar.BackColor = System.Drawing.Color.Transparent;
+            this.btnBuscar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnBuscar.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.btnBuscar.Image = ((System.Drawing.Image)(resources.GetObject("btnBuscar.Image")));
+            this.btnBuscar.Location = new System.Drawing.Point(490, 129);
+            this.btnBuscar.Name = "btnBuscar";
+            this.btnBuscar.Size = new System.Drawing.Size(25, 25);
+            this.btnBuscar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.btnBuscar.TabIndex = 37;
+            this.btnBuscar.TabStop = false;
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
             // 
-            // groupBox4
+            // txtDocumento
             // 
-            this.groupBox4.Controls.Add(this.dataGridView1);
-            this.groupBox4.Controls.Add(this.textBox2);
-            this.groupBox4.Controls.Add(this.label25);
-            this.groupBox4.Controls.Add(this.label24);
-            this.groupBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.groupBox4.Location = new System.Drawing.Point(14, 456);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(532, 267);
-            this.groupBox4.TabIndex = 36;
-            this.groupBox4.TabStop = false;
+            this.txtDocumento.Location = new System.Drawing.Point(251, 130);
+            this.txtDocumento.MaxLength = 15;
+            this.txtDocumento.Name = "txtDocumento";
+            this.txtDocumento.Size = new System.Drawing.Size(220, 26);
+            this.txtDocumento.TabIndex = 36;
+            this.txtDocumento.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDocumento_KeyPress);
             // 
-            // dataGridView1
+            // txtBeneficio
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(15, 109);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(456, 144);
-            this.dataGridView1.TabIndex = 7;
+            this.txtBeneficio.Location = new System.Drawing.Point(14, 130);
+            this.txtBeneficio.MaxLength = 14;
+            this.txtBeneficio.Name = "txtBeneficio";
+            this.txtBeneficio.Size = new System.Drawing.Size(218, 26);
+            this.txtBeneficio.TabIndex = 35;
+            this.txtBeneficio.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBeneficio_KeyPress);
             // 
-            // textBox2
+            // txtNombreApellido
             // 
-            this.textBox2.Location = new System.Drawing.Point(15, 41);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(216, 26);
-            this.textBox2.TabIndex = 6;
+            this.txtNombreApellido.Location = new System.Drawing.Point(14, 67);
+            this.txtNombreApellido.MaxLength = 60;
+            this.txtNombreApellido.Name = "txtNombreApellido";
+            this.txtNombreApellido.Size = new System.Drawing.Size(457, 26);
+            this.txtNombreApellido.TabIndex = 34;
+            this.txtNombreApellido.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNombreApellido_KeyPress);
             // 
-            // button1
+            // dgAfiliados
             // 
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.button1.Location = new System.Drawing.Point(552, 684);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(119, 39);
-            this.button1.TabIndex = 8;
-            this.button1.Text = "Nuevo";
-            this.button1.UseVisualStyleBackColor = true;
+            this.dgAfiliados.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgAfiliados.Location = new System.Drawing.Point(14, 175);
+            this.dgAfiliados.Name = "dgAfiliados";
+            this.dgAfiliados.RowTemplate.Height = 24;
+            this.dgAfiliados.Size = new System.Drawing.Size(501, 334);
+            this.dgAfiliados.TabIndex = 33;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.label2.Location = new System.Drawing.Point(247, 99);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(95, 20);
+            this.label2.TabIndex = 32;
+            this.label2.Text = "Documento";
+            // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.label27.Location = new System.Drawing.Point(11, 99);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(79, 20);
+            this.label27.TabIndex = 30;
+            this.label27.Text = "Beneficio";
+            // 
+            // sas
+            // 
+            this.sas.Controls.Add(this.dgPracticas);
+            this.sas.Controls.Add(this.label3);
+            this.sas.Controls.Add(this.cmbDiagnostico);
+            this.sas.Controls.Add(this.label26);
+            this.sas.Controls.Add(this.maskedTextBox1);
+            this.sas.Controls.Add(this.label25);
+            this.sas.Controls.Add(this.label24);
+            this.sas.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.sas.Location = new System.Drawing.Point(562, 17);
+            this.sas.Name = "sas";
+            this.sas.Size = new System.Drawing.Size(489, 677);
+            this.sas.TabIndex = 36;
+            this.sas.TabStop = false;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(11, 15);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(98, 20);
+            this.label3.TabIndex = 28;
+            this.label3.Text = "Ambulatorio";
+            // 
+            // cmbDiagnostico
+            // 
+            this.cmbDiagnostico.BackColor = System.Drawing.SystemColors.Window;
+            this.cmbDiagnostico.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbDiagnostico.FormattingEnabled = true;
+            this.cmbDiagnostico.Location = new System.Drawing.Point(15, 102);
+            this.cmbDiagnostico.Name = "cmbDiagnostico";
+            this.cmbDiagnostico.Size = new System.Drawing.Size(455, 28);
+            this.cmbDiagnostico.TabIndex = 26;
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.label26.Location = new System.Drawing.Point(11, 79);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(98, 20);
+            this.label26.TabIndex = 27;
+            this.label26.Text = "Diagnóstico";
+            // 
+            // maskedTextBox1
+            // 
+            this.maskedTextBox1.Location = new System.Drawing.Point(15, 219);
+            this.maskedTextBox1.Mask = "00/00/0000";
+            this.maskedTextBox1.Name = "maskedTextBox1";
+            this.maskedTextBox1.Size = new System.Drawing.Size(114, 26);
+            this.maskedTextBox1.TabIndex = 25;
+            this.maskedTextBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.maskedTextBox1.ValidatingType = typeof(System.DateTime);
+            // 
+            // btnNuevo
+            // 
+            this.btnNuevo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.btnNuevo.Location = new System.Drawing.Point(914, 717);
+            this.btnNuevo.Name = "btnNuevo";
+            this.btnNuevo.Size = new System.Drawing.Size(119, 39);
+            this.btnNuevo.TabIndex = 8;
+            this.btnNuevo.Text = "Nuevo";
+            this.btnNuevo.UseVisualStyleBackColor = true;
+            // 
+            // dgPracticas
+            // 
+            this.dgPracticas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgPracticas.Location = new System.Drawing.Point(14, 327);
+            this.dgPracticas.Name = "dgPracticas";
+            this.dgPracticas.RowTemplate.Height = 24;
+            this.dgPracticas.Size = new System.Drawing.Size(457, 332);
+            this.dgPracticas.TabIndex = 38;
+            this.dgPracticas.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgPracticas_CellValueChanged);
+            this.dgPracticas.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.dgPracticas_EditingControlShowing);
             // 
             // NuevoAmbulatorio
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(683, 732);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.groupBox4);
-            this.Controls.Add(this.groupBox3);
+            this.ClientSize = new System.Drawing.Size(1063, 763);
+            this.Controls.Add(this.btnNuevo);
+            this.Controls.Add(this.sas);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Name = "NuevoAmbulatorio";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Nuevo Ambulatorio";
+            this.Load += new System.EventHandler(this.NuevoAmbulatorio_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
-            this.groupBox4.ResumeLayout(false);
-            this.groupBox4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnBuscar)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgAfiliados)).EndInit();
+            this.sas.ResumeLayout(false);
+            this.sas.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgPracticas)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -289,20 +342,23 @@
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label label24;
         private System.Windows.Forms.Label label25;
-        private System.Windows.Forms.Label label26;
-        private System.Windows.Forms.Label label27;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.ComboBox comboBox3;
-        private System.Windows.Forms.ComboBox comboBox4;
-        private System.Windows.Forms.ComboBox comboBox5;
-        private System.Windows.Forms.ComboBox comboBox6;
+        private System.Windows.Forms.ComboBox cmbAsociacion;
+        private System.Windows.Forms.ComboBox cmbMedico;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.GroupBox groupBox4;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.GroupBox sas;
+        private System.Windows.Forms.Button btnNuevo;
+        private System.Windows.Forms.MaskedTextBox maskedTextBox1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label27;
+        private System.Windows.Forms.DataGridView dgAfiliados;
+        private System.Windows.Forms.TextBox txtNombreApellido;
+        private System.Windows.Forms.TextBox txtDocumento;
+        private System.Windows.Forms.TextBox txtBeneficio;
+        private System.Windows.Forms.PictureBox btnBuscar;
+        private System.Windows.Forms.ComboBox cmbDiagnostico;
+        private System.Windows.Forms.Label label26;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.DataGridView dgPracticas;
     }
 }

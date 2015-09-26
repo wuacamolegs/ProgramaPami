@@ -35,8 +35,6 @@ namespace PAMI.Exportacion
 
             //LO HAGO AHORA ASI PARA NOVIEMBRE!!!!
 
-            this.barraEstado1.Value = 0;
-
             this.timer1.Interval = 1;
             this.timer1.Enabled = true; 
 
@@ -44,12 +42,10 @@ namespace PAMI.Exportacion
             DataSet ds = new DataSet();
 
             //CABECERA
-            this.barraEstado1.Value++;
             ds = traerListadosBD("Cabecera");
             ExportarEncabezado("CABECERA", ds);
 
             //PROFESIONALES                  
-            this.barraEstado1.Value++;
             ds = traerListadosBD("Profesionales");
             ExportarEncabezado("PROFESIONAL",ds);
 
@@ -116,7 +112,6 @@ namespace PAMI.Exportacion
 
             for (int j = 0; j < cantidadFilas; j++)
             {
-                this.barraEstado1.Value++;
                 fs.EscribirEncabezado("AMBULATORIO");
                 for (int i = 0; i < cantidadColumnas; i++)
                 {
@@ -210,16 +205,10 @@ namespace PAMI.Exportacion
             return SQLHelper.ExecuteDataSet("TraerListado" + Tabla, CommandType.StoredProcedure, Tabla);
         }
 
-        private void timer1_Tick(object sender, EventArgs e)
+        
+        private void ExportarDatos_Load(object sender, EventArgs e)
         {
-            if (this.barraEstado1.Value > 0)
-            {
-                this.barraEstado1.Value++;
-            }
-            else
-            {
-                this.timer1.Enabled = false;
-            } 
+
         }
 
     }

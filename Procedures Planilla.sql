@@ -12,11 +12,11 @@ AS
 	END
 GO				
 
-ALTER PROCEDURE PAMI.ActualizarPadronAfiliados
+CREATE PROCEDURE PAMI.ActualizarPadronAfiliados
 AS
 	BEGIN TRANSACTION
 		--TRUNCATE TABLE PAMI.Afiliado
-		INSERT INTO PAMI.Afiliado(afiliado_beneficio_id, afiliado_parentesco_id,afiliado_apellidoNombre,afiliado_fecha_nacimiento, afiliado_tipo_documento, afiliado_numero_documento,afiliado_sexo)
+		INSERT INTO PAMI.AfiliadosPami(beneficio,parentesco,apellido_nombre,fecha_nacimiento, documento_tipo, documento_numero,sexo)
 		(SELECT 
 			CONVERT(varchar(12),substring(padron,5,12)),
 			CONVERT(numeric(2),substring(padron,17,2)),
@@ -40,15 +40,15 @@ CREATE PROCEDURE PAMI.traerListadoAfiliadosConFiltros
     @Parentesco numeric(2,0) = null
 AS 
 BEGIN
-    SELECT afiliado_apellidoNombre, afiliado_tipo_documento, afiliado_numero_documento, afiliado_beneficio_id, afiliado_parentesco_id, afiliado_fecha_nacimiento 
-    FROM PAMI.Afiliado
+    SELECT apellido_nombre, documento_tipo, documento_numero, beneficio, parentesco, fecha_nacimiento 
+    FROM PAMI.AfiliadosPami
     WHERE	
-           (afiliado_apellidoNombre LIKE (CASE WHEN @Nombre <> '' THEN '%' + @Nombre + '%' ELSE afiliado_apellidoNombre END)
-	OR   	afiliado_apellidoNombre LIKE (CASE WHEN @Apellido <> '' THEN '%' + @Apellido + '%' ELSE afiliado_apellidoNombre END))					
-    AND		afiliado_tipo_documento LIKE (CASE WHEN @Tipo_Dni <> '' THEN '%' + @Tipo_Dni + '%' ELSE afiliado_tipo_documento END)      
-    AND		(@Dni is null OR @Dni = 0 OR CONVERT(VARCHAR(15), afiliado_numero_documento) LIKE '%' + CONVERT(VARCHAR(15), @Dni) + '%')
-    AND		(@Beneficio is null OR @Beneficio = 0 OR CONVERT(VARCHAR(12), afiliado_beneficio_id) LIKE '%' + CONVERT(VARCHAR(15), @Beneficio) + '%')
-    AND		(@Parentesco is null OR @Parentesco = 0 OR CONVERT(VARCHAR(2), afiliado_parentesco_id) LIKE '%' + CONVERT(VARCHAR(2), @Parentesco) + '%')
+           (apellido_nombre LIKE (CASE WHEN @Nombre <> '' THEN '%' + @Nombre + '%' ELSE apellido_nombre END)
+	OR   	apellido_nombre LIKE (CASE WHEN @Apellido <> '' THEN '%' + @Apellido + '%' ELSE apellido_nombre END))					
+    AND		documento_tipo LIKE (CASE WHEN @Tipo_Dni <> '' THEN '%' + @Tipo_Dni + '%' ELSE documento_tipo END)      
+    AND		(@Dni is null OR @Dni = 0 OR CONVERT(VARCHAR(15), documento_numero) LIKE '%' + CONVERT(VARCHAR(15), @Dni) + '%')
+    AND		(@Beneficio is null OR @Beneficio = 0 OR CONVERT(VARCHAR(12), beneficio) LIKE '%' + CONVERT(VARCHAR(15), @Beneficio) + '%')
+    AND		(@Parentesco is null OR @Parentesco = 0 OR CONVERT(VARCHAR(2), parentesco) LIKE '%' + CONVERT(VARCHAR(2), @Parentesco) + '%')
 END
 GO
 
@@ -64,8 +64,8 @@ AS
 BEGIN
 	DECLARE @Errores varchar(100);
 	SET @Errores = '';
-	IF(NOT EXISTS (SELECT * FROM PAMI.Afiliado WHERE afiliado_apellidoNombre LIKE '%' + @Nombre + '%'
-											 AND afiliado_beneficio_id + afiliado_parentesco_id LIKE @Beneficio))
+	IF(NOT EXISTS (SELECT * FROM PAMI.AfiliadosPami WHERE apellido_nombre LIKE '%' + @Nombre + '%'
+											 AND beneficio + parentesco LIKE @Beneficio))
 	BEGIN 
 		SET @Errores = @Errores + ' Beneficio y/o Nombre no se corresponden\n'
 	END
@@ -104,9 +104,9 @@ BEGIN TRANSACTION
 	 SET @CantidadRegistros = (SELECT COUNT(*) FROM @Planilla);
 	
 	 SELECT COUNT(*) FROM PAMI.Afiliado, PAMI.Diagnostico, PAMI.Nomenclador, PAMI.Profesional
-	 WHERE afiliado_apellidoNombre LIKE ('%' + @Afiliado + '%') AND
-		   afiliado_beneficio_id = SUBSTRING(@BeneficioParentesco,1,12) AND
-		   afiliado_parentesco_id = SUBSTRING(@BeneficioParentesco,13,2) AND
+	 WHERE apellido_nombre LIKE ('%' + @Afiliado + '%') AND
+		   beneficio = SUBSTRING(@BeneficioParentesco,1,12) AND
+		   parentesco = SUBSTRING(@BeneficioParentesco,13,2) AND
 		  (diagnostico_descripcion LIKE ('%' + @Diagnostico + '%') OR diagnostico_codigo = @Diagnostico) AND
 		   practica_codigo = @Practica AND
 		   profesional_codigo = @Medico

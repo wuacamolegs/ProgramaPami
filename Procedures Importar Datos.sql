@@ -15,7 +15,7 @@ ALTER PROCEDURE PAMI.ActualizarPadronAfiliados
 AS
 	BEGIN TRANSACTION
 		--TRUNCATE TABLE PAMI.AfiliadosPami
-		INSERT INTO PAMI.AfiliadosPami(afiliado_beneficio_id, afiliado_parentesco_id,afiliado_apellidoNombre,afiliado_fecha_nacimiento, afiliado_tipo_documento, afiliado_numero_documento,afiliado_sexo)
+		INSERT INTO PAMI.AfiliadosPami(beneficio,parentesco,apellido_nombre,fecha_nacimiento, documento_tipo, documento_numero,sexo)
 		(SELECT 
 			CONVERT(varchar(12),substring(padron,5,12)),
 			CONVERT(numeric(2),substring(padron,17,2)),
@@ -25,7 +25,7 @@ AS
 			CONVERT(numeric(15,0),substring(padron,83,8)),
 			substring(padron,98,1)
 		 FROM PAMI.padron);
-		 TRUNCATE TABLE PAMI.padron;
+		 --TRUNCATE TABLE PAMI.padron;
 	COMMIT
 GO
 

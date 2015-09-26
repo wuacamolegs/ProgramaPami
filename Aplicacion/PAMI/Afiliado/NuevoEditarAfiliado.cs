@@ -56,6 +56,7 @@ namespace PAMI.Afiliados
         {
             btnGuardar.Visible = false;
             btnNuevo.Visible = true;
+            cmbSexo.BackColor = Color.White;
         }
 
         #endregion
@@ -243,6 +244,13 @@ namespace PAMI.Afiliados
             Validator.SoloNumeros(e);
         }
 
+        
+
         #endregion
+
+        private void formAfiliado_Load(object sender, EventArgs e)
+        {
+            cmbSexo.ForeColor = SystemColors.WindowText;
+        }
     }
 }
