@@ -108,4 +108,13 @@ CREATE TABLE PAMI.Asociacion(
 	asociacion_nombre varchar(50) NOT NULL,
 	asociacion_nombreCorto varchar(30) NOT NULL
 	) 
+	
 
+CREATE TYPE PAMI.TVP_Planilla AS TABLE(
+	tvp_fecha varchar(10),
+	tvp_nombre varchar(60),
+	tvp_beneficio varchar(14),
+	tvp_diagnostico varchar(10),
+	tvp_practicas varchar(10),
+	tvp_hora varchar(5)
+	)

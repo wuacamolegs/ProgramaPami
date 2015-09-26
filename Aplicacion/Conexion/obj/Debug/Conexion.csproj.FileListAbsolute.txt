@@ -16,3 +16,12 @@ A:\Documents\PAMI\ProgramaPami\Aplicacion\Conexion\bin\Debug\Excepciones.pdb
 A:\Documents\PAMI\ProgramaPami\Aplicacion\Conexion\obj\Debug\ResolveAssemblyReference.cache
 A:\Documents\PAMI\ProgramaPami\Aplicacion\Conexion\obj\Debug\Conexion.dll
 A:\Documents\PAMI\ProgramaPami\Aplicacion\Conexion\obj\Debug\Conexion.pdb
+C:\Users\MARTIN\Documents\GitHub\ProgramaPami\Aplicacion\Conexion\bin\Debug\Conexion.dll
+C:\Users\MARTIN\Documents\GitHub\ProgramaPami\Aplicacion\Conexion\bin\Debug\Conexion.pdb
+C:\Users\MARTIN\Documents\GitHub\ProgramaPami\Aplicacion\Conexion\bin\Debug\Excepciones.dll
+C:\Users\MARTIN\Documents\GitHub\ProgramaPami\Aplicacion\Conexion\bin\Debug\Validator.dll
+C:\Users\MARTIN\Documents\GitHub\ProgramaPami\Aplicacion\Conexion\bin\Debug\Validator.pdb
+C:\Users\MARTIN\Documents\GitHub\ProgramaPami\Aplicacion\Conexion\bin\Debug\Excepciones.pdb
+C:\Users\MARTIN\Documents\GitHub\ProgramaPami\Aplicacion\Conexion\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\MARTIN\Documents\GitHub\ProgramaPami\Aplicacion\Conexion\obj\Debug\Conexion.dll
+C:\Users\MARTIN\Documents\GitHub\ProgramaPami\Aplicacion\Conexion\obj\Debug\Conexion.pdb

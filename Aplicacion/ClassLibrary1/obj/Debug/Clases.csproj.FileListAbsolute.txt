@@ -20,3 +20,14 @@ A:\Documents\PAMI\ProgramaPami\Aplicacion\ClassLibrary1\bin\Debug\Excepciones.pd
 A:\Documents\PAMI\ProgramaPami\Aplicacion\ClassLibrary1\obj\Debug\ResolveAssemblyReference.cache
 A:\Documents\PAMI\ProgramaPami\Aplicacion\ClassLibrary1\obj\Debug\ClassLibrary1.dll
 A:\Documents\PAMI\ProgramaPami\Aplicacion\ClassLibrary1\obj\Debug\ClassLibrary1.pdb
+C:\Users\MARTIN\Documents\GitHub\ProgramaPami\Aplicacion\ClassLibrary1\bin\Debug\ClassLibrary1.dll
+C:\Users\MARTIN\Documents\GitHub\ProgramaPami\Aplicacion\ClassLibrary1\bin\Debug\ClassLibrary1.pdb
+C:\Users\MARTIN\Documents\GitHub\ProgramaPami\Aplicacion\ClassLibrary1\bin\Debug\Conexion.dll
+C:\Users\MARTIN\Documents\GitHub\ProgramaPami\Aplicacion\ClassLibrary1\bin\Debug\Excepciones.dll
+C:\Users\MARTIN\Documents\GitHub\ProgramaPami\Aplicacion\ClassLibrary1\bin\Debug\Validator.dll
+C:\Users\MARTIN\Documents\GitHub\ProgramaPami\Aplicacion\ClassLibrary1\bin\Debug\Validator.pdb
+C:\Users\MARTIN\Documents\GitHub\ProgramaPami\Aplicacion\ClassLibrary1\bin\Debug\Conexion.pdb
+C:\Users\MARTIN\Documents\GitHub\ProgramaPami\Aplicacion\ClassLibrary1\bin\Debug\Excepciones.pdb
+C:\Users\MARTIN\Documents\GitHub\ProgramaPami\Aplicacion\ClassLibrary1\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\MARTIN\Documents\GitHub\ProgramaPami\Aplicacion\ClassLibrary1\obj\Debug\ClassLibrary1.dll
+C:\Users\MARTIN\Documents\GitHub\ProgramaPami\Aplicacion\ClassLibrary1\obj\Debug\ClassLibrary1.pdb

@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.Globalization;
 using Clases;
 using Utilities;
 using Excepciones;
@@ -30,7 +31,7 @@ namespace PAMI.PlanillaPami
         {
             btnBuscar.Visible = false;
             btnValidar.Visible = true;
-            rellenarGrillaCeldasBlancas();
+   
         }
 
         public void AbrirParaBuscar()
@@ -45,6 +46,7 @@ namespace PAMI.PlanillaPami
             cmbMes.SelectedIndex = DateTime.Now.Month - 2;
             txtAnio.Text = DateTime.Now.Year.ToString();
             CrearGrilla();
+            rellenarGrillaCeldasBlancas();
         }
 
         private void CrearGrilla()
@@ -192,16 +194,14 @@ namespace PAMI.PlanillaPami
 
         private void btnValidar_Click(object sender, EventArgs e)
         {
-            if (true)//rellenarCeldas() != 0)
+            if (rellenarCeldas() != 0)
             {
-                try{   //TODO VALIDAR QUE SE HAYA SELECCIONADO ASOCIACION, MEDICO, PERIODO..ETC
-                     
+                try
+                {
                     Planilla unaPlanilla = new Planilla();
                     int estado = 0;
-
                     foreach (DataGridViewRow oneRow in dgPlanilla.Rows)
                     {
-
                         if (oneRow.Cells[0].Value.ToString() == "")
                         {
                             break;
@@ -238,8 +238,8 @@ namespace PAMI.PlanillaPami
                         unaPlanilla.Medico = Convert.ToInt64(cmbMedico.SelectedValue);
                         unaPlanilla.Asociacion = Convert.ToInt64(cmbAsociacion.SelectedValue);
 
-                        //   unaPlanilla.ImportarPlanilla();
-                        //   unaPlanilla.Dispose();  o crearGrilla. dispose la elimina completamente!
+                        // unaPlanilla.ImportarPlanilla();
+                        // unaPlanilla.Dispose(); dispose la elimina completamente!
                     }
                 }
                 catch (ErrorConsultaException ex)
@@ -262,7 +262,7 @@ namespace PAMI.PlanillaPami
                 {
                     MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-            }   
+            }
         }
 
         private int rellenarCeldas()
@@ -274,7 +274,7 @@ namespace PAMI.PlanillaPami
 
             try
             {
-                //Cuento cantidad de filas con datos
+                 //Cuento cantidad de filas con datos
                 while (dgPlanilla.Rows[filaActual].Cells[4].Value != null) { cantidadFilas++; filaActual++; }
 
                 if (cantidadFilas != 0)
@@ -282,46 +282,40 @@ namespace PAMI.PlanillaPami
                     filaActual = 0;
 
                     //COMPLETO Y PONGO EN MAYS LAS CADENAS (las fechas quedan todas juntas sin barras ni guiones)
+ 
                     while (columnaActual < 4)
                     {
-                        while (filaActual < cantidadFilas)
+
+                        //Completo columnas con numeros
+                        if (columnaActual != 1 || columnaActual != 3)
                         {
-                            if (dgPlanilla.Rows[filaActual].Cells[columnaActual].Value.ToString() == "")
+                            while (filaActual < cantidadFilas)
                             {
-                                dgPlanilla.Rows[filaActual].Cells[columnaActual].Value = dgPlanilla.Rows[filaActual - 1].Cells[columnaActual].Value;
+                                if (dgPlanilla.Rows[filaActual].Cells[columnaActual].Value.ToString() == "")
+                                {
+                                    dgPlanilla.Rows[filaActual].Cells[columnaActual].Value = dgPlanilla.Rows[filaActual - 1].Cells[columnaActual].Value;
+                                }
+                                filaActual++;
                             }
-                            dgPlanilla.Rows[filaActual].Cells[columnaActual].Value = Editor.NormalizarCadena(dgPlanilla.Rows[filaActual].Cells[columnaActual].Value.ToString());
-                            filaActual++;
                         }
+                        else  //completo columnas con letras
+                        {
+                            while (filaActual < cantidadFilas)
+                            {
+                                if (dgPlanilla.Rows[filaActual].Cells[columnaActual].Value.ToString() == "")
+                                {
+                                    dgPlanilla.Rows[filaActual].Cells[columnaActual].Value = dgPlanilla.Rows[filaActual - 1].Cells[columnaActual].Value;
+                                }
+                                dgPlanilla.Rows[filaActual].Cells[columnaActual].Value = Editor.NormalizarCadena(dgPlanilla.Rows[filaActual].Cells[columnaActual].Value.ToString());
+                                filaActual++;
+                            }
+                       }
                         filaActual = 0;
                         columnaActual++;
-                    }
-
-                    //Arreglar Fechas y Horas
-
-                    while (filaActual < cantidadFilas)
-                    {
-
-                    }                   
-                }
+                    }                 
+             }
             }
             catch (ErrorConsultaException ex)
-            {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            catch (BadInsertException ex)
-            {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            catch (NoDataException ex)
-            {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            catch (NoEntidadException ex)
-            {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -331,6 +325,7 @@ namespace PAMI.PlanillaPami
         private void btnLimpiar_Click(object sender, EventArgs e)
         {
             dgPlanilla.Rows.Clear();
+            rellenarGrillaCeldasBlancas();
         }
 
         private void btnBuscar_Click(object sender, EventArgs e)
@@ -357,6 +352,11 @@ namespace PAMI.PlanillaPami
             strErrores = strErrores + Validator.validarNuloEnComboBox(cmbAsociacion.SelectedIndex, "Asociación");
             strErrores = strErrores + Validator.validarNuloEnComboBox(cmbMedico.SelectedIndex, "Médico");
             return strErrores;
+        }
+
+        private void btnAceptar_Click(object sender, EventArgs e)
+        {
+            //VALIDAR QUE SE ELIGIERON COSAS EN LOS COMBOS!
         }
     }
 }

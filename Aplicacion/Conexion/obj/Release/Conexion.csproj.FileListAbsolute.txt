@@ -16,3 +16,12 @@ A:\Documents\PAMI\ProgramaPami\Aplicacion\Conexion\bin\Release\Excepciones.pdb
 A:\Documents\PAMI\ProgramaPami\Aplicacion\Conexion\obj\Release\ResolveAssemblyReference.cache
 A:\Documents\PAMI\ProgramaPami\Aplicacion\Conexion\obj\Release\Conexion.dll
 A:\Documents\PAMI\ProgramaPami\Aplicacion\Conexion\obj\Release\Conexion.pdb
+C:\Users\MARTIN\Documents\GitHub\ProgramaPami\Aplicacion\Conexion\bin\Release\Conexion.dll
+C:\Users\MARTIN\Documents\GitHub\ProgramaPami\Aplicacion\Conexion\bin\Release\Conexion.pdb
+C:\Users\MARTIN\Documents\GitHub\ProgramaPami\Aplicacion\Conexion\bin\Release\Excepciones.dll
+C:\Users\MARTIN\Documents\GitHub\ProgramaPami\Aplicacion\Conexion\bin\Release\Validator.dll
+C:\Users\MARTIN\Documents\GitHub\ProgramaPami\Aplicacion\Conexion\bin\Release\Validator.pdb
+C:\Users\MARTIN\Documents\GitHub\ProgramaPami\Aplicacion\Conexion\bin\Release\Excepciones.pdb
+C:\Users\MARTIN\Documents\GitHub\ProgramaPami\Aplicacion\Conexion\obj\Release\ResolveAssemblyReference.cache
+C:\Users\MARTIN\Documents\GitHub\ProgramaPami\Aplicacion\Conexion\obj\Release\Conexion.dll
+C:\Users\MARTIN\Documents\GitHub\ProgramaPami\Aplicacion\Conexion\obj\Release\Conexion.pdb

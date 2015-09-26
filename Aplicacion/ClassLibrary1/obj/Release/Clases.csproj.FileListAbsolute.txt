@@ -20,3 +20,14 @@ A:\Documents\PAMI\ProgramaPami\Aplicacion\ClassLibrary1\bin\Release\Excepciones.
 A:\Documents\PAMI\ProgramaPami\Aplicacion\ClassLibrary1\obj\Release\ResolveAssemblyReference.cache
 A:\Documents\PAMI\ProgramaPami\Aplicacion\ClassLibrary1\obj\Release\ClassLibrary1.dll
 A:\Documents\PAMI\ProgramaPami\Aplicacion\ClassLibrary1\obj\Release\ClassLibrary1.pdb
+C:\Users\MARTIN\Documents\GitHub\ProgramaPami\Aplicacion\ClassLibrary1\bin\Release\ClassLibrary1.dll
+C:\Users\MARTIN\Documents\GitHub\ProgramaPami\Aplicacion\ClassLibrary1\bin\Release\ClassLibrary1.pdb
+C:\Users\MARTIN\Documents\GitHub\ProgramaPami\Aplicacion\ClassLibrary1\bin\Release\Conexion.dll
+C:\Users\MARTIN\Documents\GitHub\ProgramaPami\Aplicacion\ClassLibrary1\bin\Release\Excepciones.dll
+C:\Users\MARTIN\Documents\GitHub\ProgramaPami\Aplicacion\ClassLibrary1\bin\Release\Validator.dll
+C:\Users\MARTIN\Documents\GitHub\ProgramaPami\Aplicacion\ClassLibrary1\bin\Release\Validator.pdb
+C:\Users\MARTIN\Documents\GitHub\ProgramaPami\Aplicacion\ClassLibrary1\bin\Release\Conexion.pdb
+C:\Users\MARTIN\Documents\GitHub\ProgramaPami\Aplicacion\ClassLibrary1\bin\Release\Excepciones.pdb
+C:\Users\MARTIN\Documents\GitHub\ProgramaPami\Aplicacion\ClassLibrary1\obj\Release\ResolveAssemblyReference.cache
+C:\Users\MARTIN\Documents\GitHub\ProgramaPami\Aplicacion\ClassLibrary1\obj\Release\ClassLibrary1.dll
+C:\Users\MARTIN\Documents\GitHub\ProgramaPami\Aplicacion\ClassLibrary1\obj\Release\ClassLibrary1.pdb

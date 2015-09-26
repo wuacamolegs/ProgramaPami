@@ -66,7 +66,7 @@
             this.label2.Location = new System.Drawing.Point(2, 38);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(41, 20);
+            this.label2.Size = new System.Drawing.Size(34, 17);
             this.label2.TabIndex = 2;
             this.label2.Text = "Mes";
             // 
@@ -77,7 +77,7 @@
             this.label3.Location = new System.Drawing.Point(153, 38);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(38, 20);
+            this.label3.Size = new System.Drawing.Size(33, 17);
             this.label3.TabIndex = 3;
             this.label3.Text = "Año";
             // 
@@ -100,7 +100,7 @@
             this.cmbMes.Location = new System.Drawing.Point(45, 36);
             this.cmbMes.Margin = new System.Windows.Forms.Padding(4);
             this.cmbMes.Name = "cmbMes";
-            this.cmbMes.Size = new System.Drawing.Size(100, 28);
+            this.cmbMes.Size = new System.Drawing.Size(100, 24);
             this.cmbMes.TabIndex = 4;
             // 
             // groupBox1
@@ -116,9 +116,13 @@
             // cmbMedico
             // 
             this.cmbMedico.FormattingEnabled = true;
+            this.cmbMedico.Items.AddRange(new object[] {
+            "1",
+            "2",
+            "3"});
             this.cmbMedico.Location = new System.Drawing.Point(6, 36);
             this.cmbMedico.Name = "cmbMedico";
-            this.cmbMedico.Size = new System.Drawing.Size(276, 28);
+            this.cmbMedico.Size = new System.Drawing.Size(276, 24);
             this.cmbMedico.TabIndex = 0;
             // 
             // groupBox2
@@ -134,9 +138,13 @@
             // cmbAsociacion
             // 
             this.cmbAsociacion.FormattingEnabled = true;
+            this.cmbAsociacion.Items.AddRange(new object[] {
+            "1",
+            "2",
+            "3"});
             this.cmbAsociacion.Location = new System.Drawing.Point(6, 36);
             this.cmbAsociacion.Name = "cmbAsociacion";
-            this.cmbAsociacion.Size = new System.Drawing.Size(276, 28);
+            this.cmbAsociacion.Size = new System.Drawing.Size(276, 24);
             this.cmbAsociacion.TabIndex = 0;
             // 
             // groupBox3
@@ -156,7 +164,7 @@
             // 
             this.txtAnio.Location = new System.Drawing.Point(188, 34);
             this.txtAnio.Name = "txtAnio";
-            this.txtAnio.Size = new System.Drawing.Size(94, 26);
+            this.txtAnio.Size = new System.Drawing.Size(94, 23);
             this.txtAnio.TabIndex = 5;
             // 
             // btnLimpiar
@@ -187,6 +195,7 @@
             this.btnAceptar.TabIndex = 10;
             this.btnAceptar.Text = "Aceptar";
             this.btnAceptar.UseVisualStyleBackColor = true;
+            this.btnAceptar.Click += new System.EventHandler(this.btnAceptar_Click);
             // 
             // btnCerrar
             // 
@@ -207,12 +216,11 @@
             this.btnBuscar.UseVisualStyleBackColor = true;
             this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
             // 
-            // PlanillasPami
+            // formPlanilla
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1260, 560);
-            this.Controls.Add(this.btnBuscar);
             this.Controls.Add(this.btnCerrar);
             this.Controls.Add(this.btnAceptar);
             this.Controls.Add(this.btnValidar);
@@ -221,9 +229,10 @@
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.dgPlanilla);
+            this.Controls.Add(this.btnBuscar);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.Margin = new System.Windows.Forms.Padding(4);
-            this.Name = "PlanillasPami";
+            this.Name = "formPlanilla";
             this.Text = "Planilla";
             this.Load += new System.EventHandler(this.Planilla_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgPlanilla)).EndInit();

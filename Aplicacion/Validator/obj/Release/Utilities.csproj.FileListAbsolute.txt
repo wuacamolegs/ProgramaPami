@@ -10,3 +10,8 @@ A:\Documents\PAMI\ProgramaPami\Aplicacion\Validator\bin\Release\Validator.pdb
 A:\Documents\PAMI\ProgramaPami\Aplicacion\Validator\obj\Release\ResolveAssemblyReference.cache
 A:\Documents\PAMI\ProgramaPami\Aplicacion\Validator\obj\Release\Validator.dll
 A:\Documents\PAMI\ProgramaPami\Aplicacion\Validator\obj\Release\Validator.pdb
+C:\Users\MARTIN\Documents\GitHub\ProgramaPami\Aplicacion\Validator\bin\Release\Validator.dll
+C:\Users\MARTIN\Documents\GitHub\ProgramaPami\Aplicacion\Validator\bin\Release\Validator.pdb
+C:\Users\MARTIN\Documents\GitHub\ProgramaPami\Aplicacion\Validator\obj\Release\ResolveAssemblyReference.cache
+C:\Users\MARTIN\Documents\GitHub\ProgramaPami\Aplicacion\Validator\obj\Release\Validator.dll
+C:\Users\MARTIN\Documents\GitHub\ProgramaPami\Aplicacion\Validator\obj\Release\Validator.pdb
