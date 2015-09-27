@@ -191,5 +191,10 @@ namespace Clases
         }
 
 
+
+        public DataSet TraerTablasPlanilla()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

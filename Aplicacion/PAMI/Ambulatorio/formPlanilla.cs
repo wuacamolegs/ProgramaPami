@@ -16,22 +16,22 @@ namespace PAMI.PlanillaPami
 {
     public partial class formPlanilla : Form
     {       
-
         //Variables
-        Planilla unaPlanilla = new Planilla();
-
+        Planilla otraPlanilla = new Planilla();
+        DataTable TablaDiagnosticos = new DataTable();
+        DataTable TablaBeneficioParentesco = new DataTable();
+        DataTable TablaDNI = new DataTable();
+        DataTable TablaNomenclador = new DataTable();
 
         public formPlanilla()
         {
             InitializeComponent();
-
         }
 
         public void AbrirParaNuevaPlanilla()
         {
             btnBuscar.Visible = false;
             btnValidar.Visible = true;
-   
         }
 
         public void AbrirParaBuscar()
@@ -199,6 +199,22 @@ namespace PAMI.PlanillaPami
                 try
                 {
                     Planilla unaPlanilla = new Planilla();
+
+                    //ValidarCombos Seleccionados
+                    //traer tablas para verificar datos
+                    DataSet ds = unaPlanilla.TraerTablasPlanilla(); //TODO falta hacer método.   
+                    /*el ds va a tener en TABLE
+                     * 0  beneficios afiliados
+                     * 1  dnis afiliados
+                     * 2  Diagnosticos
+                     * 3  Nomenclador
+                     */
+
+                    TablaBeneficioParentesco = ds.Tables[0];
+                    TablaDNI = ds.Tables[1];
+                    TablaDiagnosticos = ds.Tables[2];
+                    TablaNomenclador = ds.Tables[3];
+
                     int estado = 0;
                     foreach (DataGridViewRow oneRow in dgPlanilla.Rows)
                     {
@@ -214,9 +230,20 @@ namespace PAMI.PlanillaPami
 
                         if (strErrores == "")
                         {
-                            oneRow.Cells[6].Value = true;
-                            unaPlanilla.tablaPlanilla.Rows.Add(oneRow);
-                            oneRow.Cells[7].Value = "Correcto";
+
+                            //VALIDAR QUE ESTEN EN LAS TABLAS!
+                            strErrores = ValidarExistenciaEnTablas(oneRow);
+                            if (strErrores == "")
+                            {
+                                oneRow.Cells[6].Value = true;
+                                unaPlanilla.tablaPlanilla.Rows.Add(oneRow);
+                                oneRow.Cells[7].Value = "Correcto";
+                            }
+                            else
+                            {
+                                estado = -1;
+                                oneRow.Cells[7].Value = strErrores;
+                            }
                         }
                         else
                         {
@@ -228,18 +255,15 @@ namespace PAMI.PlanillaPami
                     }
                     if (estado == -1)
                     {
-                        MessageBox.Show("Datos Invalidos", "");
+                        MessageBox.Show("Datos Inválidos", "");
                     }
-
                     else
                     {
                         unaPlanilla.Mes = cmbMes.SelectedIndex + 1;
                         unaPlanilla.Anio = Convert.ToInt64(txtAnio.Text);
                         unaPlanilla.Medico = Convert.ToInt64(cmbMedico.SelectedValue);
                         unaPlanilla.Asociacion = Convert.ToInt64(cmbAsociacion.SelectedValue);
-
-                        // unaPlanilla.ImportarPlanilla();
-                        // unaPlanilla.Dispose(); dispose la elimina completamente!
+                        MessageBox.Show("Planilla lista para Importar","Validación Exitosa");
                     }
                 }
                 catch (ErrorConsultaException ex)
@@ -265,6 +289,39 @@ namespace PAMI.PlanillaPami
             }
         }
 
+        private string ValidarExistenciaEnTablas(DataGridViewRow oneRow)
+        {
+            string strErrores = "No se encontraron: ";
+            
+            //Verificar beneficio DNI
+            bool beneficio = TablaBeneficioParentesco.AsEnumerable().Any(x => x.Field<string>("Beneficio") == oneRow.Cells[2].Value.ToString());
+            bool dni = TablaDNI.AsEnumerable().Any(x => x.Field<string>("Documento") == oneRow.Cells[2].Value.ToString());
+            if (beneficio || dni)
+            {
+                strErrores = strErrores + "Beneficio/Doc, ";
+            }
+
+            //Verificar Diagnostico
+            if (TablaDiagnosticos.AsEnumerable().Any(x => x.Field<string>("Diagnostico_Codigo") == oneRow.Cells[3].Value.ToString())
+                ||
+                TablaDiagnosticos.AsEnumerable().Any(x => x.Field<string>("Diagnostico_Descripcion").Contains(oneRow.Cells[3].Value.ToString())))
+            {}else
+                {strErrores = strErrores + "Diagnostico, ";}
+
+            //Verificar Nomenclador
+            if (TablaNomenclador.AsEnumerable().Any(x => x.Field<string>("Practica") == oneRow.Cells[4].Value.ToString()))
+            {
+                strErrores = strErrores + "Practica.";
+            }
+
+            if (strErrores == "No se encontraron: ")
+            {
+                strErrores = "";
+            }
+
+            return strErrores;    
+        }
+
         private int rellenarCeldas()
         {
             //Completar espacios vacios en fecha, nombre,beneficio y diagnostico\
@@ -279,41 +336,27 @@ namespace PAMI.PlanillaPami
 
                 if (cantidadFilas != 0)
                 {
-                    filaActual = 0;
+                    filaActual = 1;
 
-                    //COMPLETO Y PONGO EN MAYS LAS CADENAS (las fechas quedan todas juntas sin barras ni guiones)
- 
-                    while (columnaActual < 4)
+                    while (filaActual < cantidadFilas)
                     {
-
-                        //Completo columnas con numeros
-                        if (columnaActual != 1 || columnaActual != 3)
+                        while (columnaActual < 4)
                         {
-                            while (filaActual < cantidadFilas)
+                            if (dgPlanilla.Rows[filaActual].Cells[columnaActual].Value.ToString() == "")
                             {
-                                if (dgPlanilla.Rows[filaActual].Cells[columnaActual].Value.ToString() == "")
-                                {
-                                    dgPlanilla.Rows[filaActual].Cells[columnaActual].Value = dgPlanilla.Rows[filaActual - 1].Cells[columnaActual].Value;
-                                }
-                                filaActual++;
+                                dgPlanilla.Rows[filaActual].Cells[columnaActual].Value = dgPlanilla.Rows[filaActual - 1].Cells[columnaActual].Value;
                             }
+                            columnaActual++;
                         }
-                        else  //completo columnas con letras
-                        {
-                            while (filaActual < cantidadFilas)
-                            {
-                                if (dgPlanilla.Rows[filaActual].Cells[columnaActual].Value.ToString() == "")
-                                {
-                                    dgPlanilla.Rows[filaActual].Cells[columnaActual].Value = dgPlanilla.Rows[filaActual - 1].Cells[columnaActual].Value;
-                                }
-                                dgPlanilla.Rows[filaActual].Cells[columnaActual].Value = Editor.NormalizarCadena(dgPlanilla.Rows[filaActual].Cells[columnaActual].Value.ToString());
-                                filaActual++;
-                            }
-                       }
-                        filaActual = 0;
-                        columnaActual++;
-                    }                 
-             }
+                        columnaActual = 0;
+
+                        dgPlanilla.Rows[filaActual].Cells[2].Value = Regex.Match(dgPlanilla.Rows[filaActual].Cells[2].Value.ToString(), @"\d+").Value;
+                        dgPlanilla.Rows[filaActual].Cells[4].Value = Regex.Match(dgPlanilla.Rows[filaActual].Cells[4].Value.ToString(), @"\d+").Value;
+                        dgPlanilla.Rows[filaActual].Cells[1].Value = Editor.NormalizarCadena(dgPlanilla.Rows[filaActual].Cells[1].Value.ToString());
+                        dgPlanilla.Rows[filaActual].Cells[3].Value = Editor.NormalizarCadena(dgPlanilla.Rows[filaActual].Cells[3].Value.ToString());
+                        filaActual++;                  
+                    }
+                }
             }
             catch (ErrorConsultaException ex)
             {
@@ -332,7 +375,7 @@ namespace PAMI.PlanillaPami
         {
             if (validarCombosSeleccionados() == "")
             {
-                DataSet ds = unaPlanilla.TraerPlanillasPorMedico(Convert.ToInt64(cmbAsociacion.SelectedValue), Convert.ToInt64(cmbMedico.SelectedValue));
+                DataSet ds = otraPlanilla.TraerPlanillasPorMedico(Convert.ToInt64(cmbAsociacion.SelectedValue), Convert.ToInt64(cmbMedico.SelectedValue));
                 cargarGrilla(ds);
             }
             else
