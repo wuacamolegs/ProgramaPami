@@ -60,6 +60,18 @@
     <Compile Include="Afiliado\NuevoEditarAfiliado.Designer.cs">
       <DependentUpon>NuevoEditarAfiliado.cs</DependentUpon>
     </Compile>
+    <Compile Include="Ambulatorio\AmbulatorioExistente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ambulatorio\AmbulatorioExistente.Designer.cs">
+      <DependentUpon>AmbulatorioExistente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Ambulatorio\EditarAmbulatorio.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ambulatorio\EditarAmbulatorio.Designer.cs">
+      <DependentUpon>EditarAmbulatorio.cs</DependentUpon>
+    </Compile>
     <Compile Include="Ambulatorio\NuevoAmbulatorio.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -103,6 +115,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Afiliado\NuevoEditarAfiliado.resx">
       <DependentUpon>NuevoEditarAfiliado.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ambulatorio\AmbulatorioExistente.resx">
+      <DependentUpon>AmbulatorioExistente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ambulatorio\EditarAmbulatorio.resx">
+      <DependentUpon>EditarAmbulatorio.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Ambulatorio\NuevoAmbulatorio.resx">
       <DependentUpon>NuevoAmbulatorio.cs</DependentUpon>

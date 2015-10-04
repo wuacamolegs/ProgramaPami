@@ -40,7 +40,7 @@
             this.txtAnio = new System.Windows.Forms.TextBox();
             this.btnLimpiar = new System.Windows.Forms.Button();
             this.btnValidar = new System.Windows.Forms.Button();
-            this.btnAceptar = new System.Windows.Forms.Button();
+            this.btnImportar = new System.Windows.Forms.Button();
             this.btnCerrar = new System.Windows.Forms.Button();
             this.btnBuscar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgPlanilla)).BeginInit();
@@ -66,7 +66,7 @@
             this.label2.Location = new System.Drawing.Point(2, 38);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(34, 17);
+            this.label2.Size = new System.Drawing.Size(41, 20);
             this.label2.TabIndex = 2;
             this.label2.Text = "Mes";
             // 
@@ -77,7 +77,7 @@
             this.label3.Location = new System.Drawing.Point(153, 38);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(33, 17);
+            this.label3.Size = new System.Drawing.Size(38, 20);
             this.label3.TabIndex = 3;
             this.label3.Text = "Año";
             // 
@@ -100,7 +100,7 @@
             this.cmbMes.Location = new System.Drawing.Point(45, 36);
             this.cmbMes.Margin = new System.Windows.Forms.Padding(4);
             this.cmbMes.Name = "cmbMes";
-            this.cmbMes.Size = new System.Drawing.Size(100, 24);
+            this.cmbMes.Size = new System.Drawing.Size(100, 28);
             this.cmbMes.TabIndex = 4;
             // 
             // groupBox1
@@ -122,7 +122,7 @@
             "3"});
             this.cmbMedico.Location = new System.Drawing.Point(6, 36);
             this.cmbMedico.Name = "cmbMedico";
-            this.cmbMedico.Size = new System.Drawing.Size(276, 24);
+            this.cmbMedico.Size = new System.Drawing.Size(276, 28);
             this.cmbMedico.TabIndex = 0;
             // 
             // groupBox2
@@ -144,7 +144,7 @@
             "3"});
             this.cmbAsociacion.Location = new System.Drawing.Point(6, 36);
             this.cmbAsociacion.Name = "cmbAsociacion";
-            this.cmbAsociacion.Size = new System.Drawing.Size(276, 24);
+            this.cmbAsociacion.Size = new System.Drawing.Size(276, 28);
             this.cmbAsociacion.TabIndex = 0;
             // 
             // groupBox3
@@ -164,7 +164,7 @@
             // 
             this.txtAnio.Location = new System.Drawing.Point(188, 34);
             this.txtAnio.Name = "txtAnio";
-            this.txtAnio.Size = new System.Drawing.Size(94, 23);
+            this.txtAnio.Size = new System.Drawing.Size(94, 26);
             this.txtAnio.TabIndex = 5;
             // 
             // btnLimpiar
@@ -187,15 +187,15 @@
             this.btnValidar.UseVisualStyleBackColor = true;
             this.btnValidar.Click += new System.EventHandler(this.btnValidar_Click);
             // 
-            // btnAceptar
+            // btnImportar
             // 
-            this.btnAceptar.Location = new System.Drawing.Point(962, 511);
-            this.btnAceptar.Name = "btnAceptar";
-            this.btnAceptar.Size = new System.Drawing.Size(121, 30);
-            this.btnAceptar.TabIndex = 10;
-            this.btnAceptar.Text = "Aceptar";
-            this.btnAceptar.UseVisualStyleBackColor = true;
-            this.btnAceptar.Click += new System.EventHandler(this.btnAceptar_Click);
+            this.btnImportar.Location = new System.Drawing.Point(962, 511);
+            this.btnImportar.Name = "btnImportar";
+            this.btnImportar.Size = new System.Drawing.Size(121, 30);
+            this.btnImportar.TabIndex = 10;
+            this.btnImportar.Text = "Importar";
+            this.btnImportar.UseVisualStyleBackColor = true;
+            this.btnImportar.Click += new System.EventHandler(this.btnImportar_Click);
             // 
             // btnCerrar
             // 
@@ -218,11 +218,11 @@
             // 
             // formPlanilla
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1260, 560);
             this.Controls.Add(this.btnCerrar);
-            this.Controls.Add(this.btnAceptar);
+            this.Controls.Add(this.btnImportar);
             this.Controls.Add(this.btnValidar);
             this.Controls.Add(this.btnLimpiar);
             this.Controls.Add(this.groupBox3);
@@ -258,7 +258,7 @@
         private System.Windows.Forms.TextBox txtAnio;
         private System.Windows.Forms.Button btnLimpiar;
         private System.Windows.Forms.Button btnValidar;
-        private System.Windows.Forms.Button btnAceptar;
+        private System.Windows.Forms.Button btnImportar;
         private System.Windows.Forms.Button btnCerrar;
         private System.Windows.Forms.Button btnBuscar;
     }

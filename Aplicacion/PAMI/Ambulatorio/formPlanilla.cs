@@ -38,7 +38,7 @@ namespace PAMI.PlanillaPami
         {
             btnValidar.Visible = false;
             btnBuscar.Visible = true;
-            btnAceptar.Visible = false;
+            btnImportar.Visible = false;
         }
 
         private void Planilla_Load(object sender, EventArgs e)
@@ -397,7 +397,7 @@ namespace PAMI.PlanillaPami
             return strErrores;
         }
 
-        private void btnAceptar_Click(object sender, EventArgs e)
+        private void btnImportar_Click(object sender, EventArgs e)
         {
             //VALIDAR QUE SE ELIGIERON COSAS EN LOS COMBOS!
         }
