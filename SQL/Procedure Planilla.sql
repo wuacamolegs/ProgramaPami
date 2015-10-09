@@ -63,3 +63,7 @@ BEGIN
 RETURN @AmbulatorioExistente
 
 END
+
+
+truncate table PAMI.AfiliadosPami
+select * from PAMI.AfiliadosPami

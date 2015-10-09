@@ -13,6 +13,8 @@ using PAMI.PlanillaPami;
 using PAMI.Exportacion;
 using PAMI.Nomenclador;
 using PAMI.Ambulatorio;
+using PAMI.Asociaciones;
+using PAMI.Prestadores;
 using Utilities;
 
 namespace PAMI
@@ -109,8 +111,61 @@ namespace PAMI
 
         private void cargarNuevoAmbulatorioToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            NuevoAmbulatorio ambulatorio = new NuevoAmbulatorio();
+            NuevoEditarAmbulatorio ambulatorio = new NuevoEditarAmbulatorio();
             ambulatorio.Show();
+        }
+
+        private void dIAGNOSTICOSToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openFileDialog1 = new OpenFileDialog();
+            openFileDialog1.Filter = "Text Files (.txt)|*.txt";
+            DialogResult result = openFileDialog1.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                try
+                {
+                    string ruta = openFileDialog1.FileName;
+                    List<SqlParameter> parameterList = new List<SqlParameter>();
+                    parameterList.Add(new SqlParameter("@Ruta", ruta));
+                    Conexion.SQLHelper.ExecuteNonQuery("ImportarDiagnosticos", CommandType.StoredProcedure, parameterList);
+                    MessageBox.Show("Listo", "");
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void pRESTADORESToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void profesionalesPorPrestadorToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            formAsociacionMedicos asocMedicos = new formAsociacionMedicos();
+            asocMedicos.Show();
+        }
+
+        private void nuevaPrácticaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            formPracticas practicas = new formPracticas();
+            practicas.Show();
+        }
+
+        private void nuevoPrestadorToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            formPrestador prestador = new formPrestador();
+            prestador.Show();
+        }
+
+        private void editarPrestadorToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            formPrestador prestador = new formPrestador();
+            prestador.AbrirParaBuscar();
+            prestador.Show();
         }
 
     }

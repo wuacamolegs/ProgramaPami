@@ -38,6 +38,7 @@ namespace Utilities
             }
 
             combo.DataSource = dataSource;
+            combo.SelectedIndex = -1;
         }
 
       

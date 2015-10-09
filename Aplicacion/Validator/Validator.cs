@@ -128,7 +128,6 @@ namespace Utilities
                 strError += "El " + nombreListado + " debe tener seleccionado al menos un elemento. \n";
             }
             return strError;
-
         }
 
         public static void SoloLetras(KeyPressEventArgs pE)
@@ -149,7 +148,6 @@ namespace Utilities
             {
                 pE.Handled = true;
             }
-
         }
 
         public static void SoloNumeros(KeyPressEventArgs e) 
@@ -208,7 +206,7 @@ namespace Utilities
 
         public static string ValidarEsBeneficio(string beneficio, string campo)
         {
-            if (beneficio.Length == 8)
+            if (beneficio.Length == 12)
             {
                 return "";
             }

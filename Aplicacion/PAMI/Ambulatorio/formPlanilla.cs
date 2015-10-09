@@ -10,6 +10,7 @@ using System.Globalization;
 using Clases;
 using Utilities;
 using Excepciones;
+using PAMI.Ambulatorio;
 using System.Text.RegularExpressions;
 
 namespace PAMI.PlanillaPami
@@ -17,11 +18,11 @@ namespace PAMI.PlanillaPami
     public partial class formPlanilla : Form
     {       
         //Variables
-        Planilla otraPlanilla = new Planilla();
+        Planilla unaPlanilla = new Planilla();
         DataTable TablaDiagnosticos = new DataTable();
-        DataTable TablaBeneficioParentesco = new DataTable();
-        DataTable TablaDNI = new DataTable();
+        DataTable TablaAfiliados = new DataTable();
         DataTable TablaNomenclador = new DataTable();
+        DataTable TablaFechaHora = new DataTable();
 
         public formPlanilla()
         {
@@ -43,16 +44,46 @@ namespace PAMI.PlanillaPami
 
         private void Planilla_Load(object sender, EventArgs e)
         {
-            cmbMes.SelectedIndex = DateTime.Now.Month - 2;
+            Utilities.DropDownListManager.CargarCombo(cmbMes, Base.TablaMeses(), "numeroMes", "nombreMes", false, "");
+            cmbMes.SelectedIndex = DateTime.Today.AddMonths(-2).Month; 
             txtAnio.Text = DateTime.Now.Year.ToString();
             CrearGrilla();
             rellenarGrillaCeldasBlancas();
+            crearTablas();
+
+            //Combo Asociacion
+            Asociacion unaAsociacion = new Asociacion();
+            DataSet dsAsociacion = unaAsociacion.TraerListado("Completo");
+            Utilities.DropDownListManager.CargarCombo(cmbAsociacion, dsAsociacion.Tables[0], "asociacion_id", "asociacion_nombre", false, "");
+            unaAsociacion.Dispose();
+
+            cmbAsociacion.SelectedIndex = -1;
+            
+        }
+
+        private void crearTablas()
+        {
+            //TABLA DIAGNOSTICOS
+            TablaDiagnosticos.Columns.Add("Diagnostico_Codigo",typeof(string));
+            TablaDiagnosticos.Columns.Add("Diagnostico_Descripcion", typeof(string));
+
+            //TABLA AFILIADOS
+            TablaAfiliados.Columns.Add("Beneficio", typeof(string));
+            TablaAfiliados.Columns.Add("Documento", typeof(string));
+
+            //TABLA NOMENCLADOR
+            TablaNomenclador.Columns.Add("Practica", typeof(string));
+
+            //TABLA FECHA Y HORA
+            TablaFechaHora.Columns.Add("Fecha", typeof(string));
+            TablaFechaHora.Columns.Add("Hora", typeof(string));
         }
 
         private void CrearGrilla()
         {
             dgPlanilla.Columns.Clear();
             dgPlanilla.AutoGenerateColumns = false;
+            dgPlanilla.RowHeadersVisible = false;
 
             DataGridViewTextBoxColumn clm_Fecha = new DataGridViewTextBoxColumn();
             clm_Fecha.Width = 100;
@@ -61,7 +92,7 @@ namespace PAMI.PlanillaPami
             dgPlanilla.Columns.Add(clm_Fecha);
 
             DataGridViewTextBoxColumn clm_Nombre = new DataGridViewTextBoxColumn();
-            clm_Nombre.Width = 160;
+            clm_Nombre.Width = 180;
             clm_Nombre.ReadOnly = false;
             clm_Nombre.HeaderText = "Apellido y Nombre";
             dgPlanilla.Columns.Add(clm_Nombre);
@@ -91,16 +122,26 @@ namespace PAMI.PlanillaPami
             dgPlanilla.Columns.Add(clm_Hora);
 
             DataGridViewCheckBoxColumn clm_Estado = new DataGridViewCheckBoxColumn();
-            clm_Estado.Width = 53;
+            clm_Estado.Width = 63;
             clm_Estado.ReadOnly = true;
             clm_Estado.HeaderText = "Estado";
             dgPlanilla.Columns.Add(clm_Estado);
 
             DataGridViewTextBoxColumn clm_Validacion = new DataGridViewTextBoxColumn();
-            clm_Validacion.Width = 400;
+            clm_Validacion.Width = 405;
             clm_Validacion.ReadOnly = true;
             clm_Validacion.HeaderText = "Validación";
             dgPlanilla.Columns.Add(clm_Validacion);
+
+            DataGridViewCellStyle miestilo = new DataGridViewCellStyle();
+            miestilo.Font = new Font("Agency FB", 11);           
+
+            dgPlanilla.EnableHeadersVisualStyles = false;
+            dgPlanilla.ColumnHeadersDefaultCellStyle = miestilo;
+            dgPlanilla.ColumnHeadersDefaultCellStyle.ForeColor = Color.DarkCyan;
+            dgPlanilla.ColumnHeadersDefaultCellStyle.BackColor = Color.Gainsboro; 
+
+
         }
 
         private void rellenarGrillaCeldasBlancas()
@@ -194,26 +235,32 @@ namespace PAMI.PlanillaPami
 
         private void btnValidar_Click(object sender, EventArgs e)
         {
-            if (rellenarCeldas() != 0)
+
+            //validar que se hayan seleccionado combos. Segun asociacion las practicas!! 
+            string strCombos = validarCombosSeleccionados();
+
+            if (rellenarCeldas() != 0 && strCombos == "")
             {
                 try
                 {
-                    Planilla unaPlanilla = new Planilla();
-
-                    //ValidarCombos Seleccionados
                     //traer tablas para verificar datos
-                    DataSet ds = unaPlanilla.TraerTablasPlanilla(); //TODO falta hacer método.   
+                    unaPlanilla.Mes = cmbMes.SelectedIndex + 1;
+                    unaPlanilla.Anio = Convert.ToInt64(txtAnio.Text);
+                    unaPlanilla.Medico = Convert.ToInt64(cmbMedico.SelectedValue);
+                    unaPlanilla.Asociacion = Convert.ToInt64(cmbAsociacion.SelectedValue);
+
+
+                    DataSet ds = unaPlanilla.TraerTablasPlanilla(unaPlanilla.Asociacion,unaPlanilla.Medico);  
                     /*el ds va a tener en TABLE
                      * 0  beneficios afiliados
-                     * 1  dnis afiliados
-                     * 2  Diagnosticos
-                     * 3  Nomenclador
-                     */
+                     * 1  Diagnosticos
+                     * 2  Nomenclador
+                     * 3  Fechas y horas ya cargadas para el medico este*/
 
-                    TablaBeneficioParentesco = ds.Tables[0];
-                    TablaDNI = ds.Tables[1];
-                    TablaDiagnosticos = ds.Tables[2];
-                    TablaNomenclador = ds.Tables[3];
+                    TablaAfiliados = ds.Tables[0];
+                    TablaDiagnosticos = ds.Tables[1];
+                    TablaNomenclador = ds.Tables[2];
+                    TablaFechaHora = ds.Tables[3];
 
                     int estado = 0;
                     foreach (DataGridViewRow oneRow in dgPlanilla.Rows)
@@ -230,14 +277,18 @@ namespace PAMI.PlanillaPami
 
                         if (strErrores == "")
                         {
-
                             //VALIDAR QUE ESTEN EN LAS TABLAS!
                             strErrores = ValidarExistenciaEnTablas(oneRow);
                             if (strErrores == "")
                             {
+                                DataRow newRow = TablaFechaHora.NewRow();
+                                newRow["Fecha"] = oneRow.Cells[0].Value.ToString();
+                                newRow["Hora"] = oneRow.Cells[5].Value.ToString();
+
+                                TablaFechaHora.Rows.Add(newRow);
                                 oneRow.Cells[6].Value = true;
-                                unaPlanilla.tablaPlanilla.Rows.Add(oneRow);
-                                oneRow.Cells[7].Value = "Correcto";
+                                oneRow.Cells[7].Value = "Listo Para Importar";
+
                             }
                             else
                             {
@@ -255,15 +306,11 @@ namespace PAMI.PlanillaPami
                     }
                     if (estado == -1)
                     {
-                        MessageBox.Show("Datos Inválidos", "");
+                        MessageBox.Show("Datos Inválidos.", "");
                     }
                     else
                     {
-                        unaPlanilla.Mes = cmbMes.SelectedIndex + 1;
-                        unaPlanilla.Anio = Convert.ToInt64(txtAnio.Text);
-                        unaPlanilla.Medico = Convert.ToInt64(cmbMedico.SelectedValue);
-                        unaPlanilla.Asociacion = Convert.ToInt64(cmbAsociacion.SelectedValue);
-                        MessageBox.Show("Planilla lista para Importar","Validación Exitosa");
+                        MessageBox.Show("Planilla lista para Importar.", "Validación Exitosa");
                     }
                 }
                 catch (ErrorConsultaException ex)
@@ -287,36 +334,42 @@ namespace PAMI.PlanillaPami
                     MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
+            else {}
         }
 
         private string ValidarExistenciaEnTablas(DataGridViewRow oneRow)
         {
-            string strErrores = "No se encontraron: ";
+            string strErrores = "No se encontró: ";
             
             //Verificar beneficio DNI
-            bool beneficio = TablaBeneficioParentesco.AsEnumerable().Any(x => x.Field<string>("Beneficio") == oneRow.Cells[2].Value.ToString());
-            bool dni = TablaDNI.AsEnumerable().Any(x => x.Field<string>("Documento") == oneRow.Cells[2].Value.ToString());
-            if (beneficio || dni)
-            {
-                strErrores = strErrores + "Beneficio/Doc, ";
-            }
+            bool beneficio = TablaAfiliados.AsEnumerable().Any(x => x.Field<string>("Beneficio") == oneRow.Cells[2].Value.ToString());
+            bool dni = TablaAfiliados.AsEnumerable().Any(x => x.Field<string>("Documento") == oneRow.Cells[2].Value.ToString());
+            if (dni || beneficio)  //TODO CAMBIAR A beneficio || dni
+            { }else {strErrores = strErrores + "Afiliado, ";}
 
             //Verificar Diagnostico
             if (TablaDiagnosticos.AsEnumerable().Any(x => x.Field<string>("Diagnostico_Codigo") == oneRow.Cells[3].Value.ToString())
                 ||
-                TablaDiagnosticos.AsEnumerable().Any(x => x.Field<string>("Diagnostico_Descripcion").Contains(oneRow.Cells[3].Value.ToString())))
+                TablaDiagnosticos.AsEnumerable().Any(x => Editor.NormalizarCadena(x.Field<string>("Diagnostico_Descripcion")).Contains(oneRow.Cells[3].Value.ToString()))
+                )
             {}else
                 {strErrores = strErrores + "Diagnostico, ";}
 
             //Verificar Nomenclador
-            if (TablaNomenclador.AsEnumerable().Any(x => x.Field<string>("Practica") == oneRow.Cells[4].Value.ToString()))
+            if (!TablaNomenclador.AsEnumerable().Any(x => x.Field<string>("Practica") == oneRow.Cells[4].Value.ToString()))
             {
                 strErrores = strErrores + "Practica.";
             }
 
-            if (strErrores == "No se encontraron: ")
+            if (strErrores == "No se encontró: ")
             {
                 strErrores = "";
+                //Verificar que no se haya cargado algo a esa hora!
+
+                if (TablaFechaHora.AsEnumerable().Any(x => (x.Field<string>("Fecha") == oneRow.Cells[0].Value.ToString()) && (x.Field<string>("Hora") == oneRow.Cells[5].Value.ToString())))
+                {
+                    strErrores = strErrores + "Ya existe un ambulatorio en ese horario.";
+                }
             }
 
             return strErrores;    
@@ -324,18 +377,27 @@ namespace PAMI.PlanillaPami
 
         private int rellenarCeldas()
         {
-            //Completar espacios vacios en fecha, nombre,beneficio y diagnostico\
+            //Completar espacios vacios en fecha, nombre,beneficio y diagnostico.
             int filaActual = 0;
             int columnaActual = 0;
             int cantidadFilas = 0; //contador filas con datos
 
             try
-            {
+            {          
                  //Cuento cantidad de filas con datos
                 while (dgPlanilla.Rows[filaActual].Cells[4].Value != null) { cantidadFilas++; filaActual++; }
 
-                if (cantidadFilas != 0)
+                if (cantidadFilas > 1)
                 {
+                    //Arreglo fila 0
+                    filaActual = 0;
+                    dgPlanilla.Rows[filaActual].Cells[2].Value = Regex.Match(dgPlanilla.Rows[filaActual].Cells[2].Value.ToString(), @"\d+").Value;
+                    dgPlanilla.Rows[filaActual].Cells[4].Value = Regex.Match(dgPlanilla.Rows[filaActual].Cells[4].Value.ToString(), @"\d+").Value;
+                    dgPlanilla.Rows[filaActual].Cells[1].Value = Editor.NormalizarCadena(dgPlanilla.Rows[filaActual].Cells[1].Value.ToString());
+                    dgPlanilla.Rows[filaActual].Cells[3].Value = Editor.NormalizarCadena(dgPlanilla.Rows[filaActual].Cells[3].Value.ToString());
+                    dgPlanilla.Rows[filaActual].Cells[5].Value = Editor.NormalizarHora(dgPlanilla.Rows[filaActual].Cells[5].Value.ToString());
+
+
                     filaActual = 1;
 
                     while (filaActual < cantidadFilas)
@@ -354,6 +416,7 @@ namespace PAMI.PlanillaPami
                         dgPlanilla.Rows[filaActual].Cells[4].Value = Regex.Match(dgPlanilla.Rows[filaActual].Cells[4].Value.ToString(), @"\d+").Value;
                         dgPlanilla.Rows[filaActual].Cells[1].Value = Editor.NormalizarCadena(dgPlanilla.Rows[filaActual].Cells[1].Value.ToString());
                         dgPlanilla.Rows[filaActual].Cells[3].Value = Editor.NormalizarCadena(dgPlanilla.Rows[filaActual].Cells[3].Value.ToString());
+                        dgPlanilla.Rows[filaActual].Cells[5].Value = Editor.NormalizarHora(dgPlanilla.Rows[filaActual].Cells[5].Value.ToString());
                         filaActual++;                  
                     }
                 }
@@ -375,7 +438,7 @@ namespace PAMI.PlanillaPami
         {
             if (validarCombosSeleccionados() == "")
             {
-                DataSet ds = otraPlanilla.TraerPlanillasPorMedico(Convert.ToInt64(cmbAsociacion.SelectedValue), Convert.ToInt64(cmbMedico.SelectedValue));
+                DataSet ds = unaPlanilla.TraerPlanillasPorMedico(Convert.ToInt64(cmbAsociacion.SelectedValue), Convert.ToInt64(cmbMedico.SelectedValue));
                 cargarGrilla(ds);
             }
             else
@@ -399,7 +462,106 @@ namespace PAMI.PlanillaPami
 
         private void btnImportar_Click(object sender, EventArgs e)
         {
-            //VALIDAR QUE SE ELIGIERON COSAS EN LOS COMBOS!
+
+            //TODO: Validar combobox seleccionados! TODO!! 
+
+
+            //Validar que todos estan correctos.
+            bool estadocheckbox = false;
+            estadocheckbox = (dgPlanilla.Rows[0].Cells[4].Value != null);
+
+            foreach (DataGridViewRow row in dgPlanilla.Rows)
+            {
+                DataGridViewCheckBoxCell chk = (DataGridViewCheckBoxCell)row.Cells[6];
+                if (chk.Value == chk.FalseValue && row.Cells[4].Value != null)
+                {
+                    MessageBox.Show("Existen Datos Inválidos", "Error al Importar");
+                    estadocheckbox = false;
+                    break; 
+                }
+                if (row.Cells[4].Value == null) { break; }
+            }
+            
+            if (estadocheckbox)
+            {
+                unaPlanilla.Mes = cmbMes.SelectedIndex;
+                unaPlanilla.Anio = Convert.ToInt64(txtAnio.Text);
+                unaPlanilla.Medico = Convert.ToInt64(cmbMedico.SelectedValue);
+                unaPlanilla.Asociacion = Convert.ToInt64(cmbAsociacion.SelectedValue);
+
+
+                //Verificar que no tiene ambulatorios en ese dia con otro médico. 
+
+                DataSet ds = new DataSet();
+
+                foreach (DataGridViewRow row in dgPlanilla.Rows)
+                {
+                    if (row.Cells[4].Value != null)
+                    {
+                        unaPlanilla.Fecha = row.Cells[0].Value.ToString();
+                        unaPlanilla.Beneficio = row.Cells[2].Value.ToString();
+                        unaPlanilla.Diagnostico = row.Cells[3].Value.ToString();
+                        unaPlanilla.Practica = row.Cells[4].Value.ToString();
+                        unaPlanilla.Hora = row.Cells[5].Value.ToString();
+
+                        ds = unaPlanilla.ImportarAmbulatorio();
+
+                        //ERROR DE AMBULATORIO YA EXISTENTE. NO SE IMPORTO
+
+                        if (ds.Tables.Count != 0)
+                        {
+                            DataRow newRow = unaPlanilla.tablaPlanilla.NewRow();
+
+                            newRow["Planilla_medico_secundario_matricula"] = ds.Tables[0].Rows[0]["MedicoID"].ToString();
+                            newRow["Planilla_medico_secundario_nombre"] = ds.Tables[0].Rows[0]["Medico"].ToString(); ;
+                            newRow["Planilla_beneficio"] = ds.Tables[0].Rows[0]["Beneficio"].ToString();
+                            newRow["Planilla_practica"] = ds.Tables[0].Rows[0]["Practica"].ToString();
+                            newRow["Planilla_fecha"] = ds.Tables[0].Rows[0]["Fecha"].ToString();
+                            newRow["Planilla_hora"] = ds.Tables[0].Rows[0]["Hora"].ToString();
+
+                            row.Cells[7].Value = "Ya posee un ambulatorio existente";
+                            unaPlanilla.tablaPlanilla.Rows.Add(newRow);
+                        }
+                        else
+                        {
+                            row.Cells[7].Value = "Importado Correctamente";
+                        }
+                    }
+                }
+
+                //Mostrar ambulatorios no cargados.
+
+                if (unaPlanilla.tablaPlanilla.Rows.Count != 0)
+                {
+                    AmbulatorioExistente ambulatorios = new AmbulatorioExistente();
+                    ambulatorios.abrirCon(unaPlanilla, unaPlanilla.Medico);
+                    ambulatorios.Show();
+                }
+                else
+                {
+                    DialogResult result = MessageBox.Show("Planilla Importada Correctamente", "Importar Planilla", MessageBoxButtons.OKCancel);
+                    if (result == DialogResult.Yes)
+                    {
+                        this.Close();
+                    }
+                }
+            }
+        }
+
+        private void cmbAsociacion_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Asociacion unaAsociacion = new Asociacion();
+            unaAsociacion.ID = Convert.ToInt64(cmbAsociacion.SelectedValue);
+            unaAsociacion.Nombre = cmbAsociacion.Text;
+            DataSet ds = unaAsociacion.TraerMedicosPorAsociacion();
+            unaAsociacion.Dispose();
+
+            Utilities.DropDownListManager.CargarCombo(cmbMedico, ds.Tables[0], "profesional_matricula", "profesional_nombre", false, "");
+        }
+
+        private void btnCerrar_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

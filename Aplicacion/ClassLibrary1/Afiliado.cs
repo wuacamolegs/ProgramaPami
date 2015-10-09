@@ -21,7 +21,7 @@ namespace Clases
 
         string _nombre;
         Int64 _beneficio;
-        Int64 _parentesco;
+        string _parentesco;
         string _tipoDocumento;
         Int64 _documento;
         string _fechaNacimiento;
@@ -53,7 +53,7 @@ namespace Clases
             set { _beneficio = value; }
         }
 
-        public Int64 Parentesco
+        public string Parentesco
         {
             get { return _parentesco; }
             set { _parentesco = value; }
@@ -103,13 +103,14 @@ namespace Clases
         public void DataRowToObjectCompleto(DataRow dr)
         {
             // Esto es tal cual lo devuelve el stored de la DB
-            this.Nombre = (dr["afiliado_apellidoNombre"]).ToString();
-            this.Beneficio = Convert.ToInt64(dr["afiliado_beneficio_id"]);
-            this.Parentesco = Convert.ToInt64(dr["afiliado_parentesco_id"]);
-            this.TipoDocumento = (dr["afiliado_tipo_documento"]).ToString();
-            this.Documento = Convert.ToInt64(dr["afiliado_numero_documento"]);
-            this.FechaNacimiento = (dr["afiliado_fecha_nacimiento"]).ToString();
-            this.Sexo = (dr["afiliado_sexo"]).ToString();
+
+            this.Nombre = (dr["apellido_nombre"]).ToString();
+            this.Beneficio = Convert.ToInt64(dr["beneficio"]);
+            this.Parentesco = (dr["parentesco"]).ToString();
+            this.TipoDocumento = (dr["documento_tipo"]).ToString();
+            this.Documento = Convert.ToInt64(dr["documento_numero"]);
+            this.FechaNacimiento = (dr["fecha_nacimiento"]).ToString();
+            this.Sexo = (dr["sexo"]).ToString();
         }
 
         #endregion

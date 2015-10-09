@@ -37,9 +37,15 @@
             this.cargarPlanillaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.listadoAmbulatoriosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.nOMENCLADORToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.búsquedaPrácticaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.nuevaPrácticaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.búsquedaPrácticaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.dIAGNOSTICOSToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.nuevoDiagnosticoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.listadoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pRESTADORESToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.nuevoPrestadorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.editarPrestadorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.profesionalesPorPrestadorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.rEDToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aCTUALIZARDATOSToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aFILIADOSToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -58,6 +64,7 @@
             this.aFILIADOSToolStripMenuItem,
             this.aMBULATORIOSToolStripMenuItem,
             this.nOMENCLADORToolStripMenuItem,
+            this.dIAGNOSTICOSToolStripMenuItem1,
             this.pRESTADORESToolStripMenuItem,
             this.rEDToolStripMenuItem,
             this.aCTUALIZARDATOSToolStripMenuItem,
@@ -65,7 +72,7 @@
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(8, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(941, 31);
+            this.menuStrip1.Size = new System.Drawing.Size(1087, 31);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "Menu";
             // 
@@ -127,11 +134,18 @@
             // nOMENCLADORToolStripMenuItem
             // 
             this.nOMENCLADORToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.búsquedaPrácticaToolStripMenuItem,
-            this.nuevaPrácticaToolStripMenuItem});
+            this.nuevaPrácticaToolStripMenuItem,
+            this.búsquedaPrácticaToolStripMenuItem});
             this.nOMENCLADORToolStripMenuItem.Name = "nOMENCLADORToolStripMenuItem";
             this.nOMENCLADORToolStripMenuItem.Size = new System.Drawing.Size(150, 27);
             this.nOMENCLADORToolStripMenuItem.Text = "NOMENCLADOR";
+            // 
+            // nuevaPrácticaToolStripMenuItem
+            // 
+            this.nuevaPrácticaToolStripMenuItem.Name = "nuevaPrácticaToolStripMenuItem";
+            this.nuevaPrácticaToolStripMenuItem.Size = new System.Drawing.Size(194, 28);
+            this.nuevaPrácticaToolStripMenuItem.Text = "Nueva Práctica";
+            this.nuevaPrácticaToolStripMenuItem.Click += new System.EventHandler(this.nuevaPrácticaToolStripMenuItem_Click);
             // 
             // búsquedaPrácticaToolStripMenuItem
             // 
@@ -140,17 +154,58 @@
             this.búsquedaPrácticaToolStripMenuItem.Text = "Listado";
             this.búsquedaPrácticaToolStripMenuItem.Click += new System.EventHandler(this.búsquedaPrácticaToolStripMenuItem_Click);
             // 
-            // nuevaPrácticaToolStripMenuItem
+            // dIAGNOSTICOSToolStripMenuItem1
             // 
-            this.nuevaPrácticaToolStripMenuItem.Name = "nuevaPrácticaToolStripMenuItem";
-            this.nuevaPrácticaToolStripMenuItem.Size = new System.Drawing.Size(194, 28);
-            this.nuevaPrácticaToolStripMenuItem.Text = "Nueva Práctica";
+            this.dIAGNOSTICOSToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.nuevoDiagnosticoToolStripMenuItem,
+            this.listadoToolStripMenuItem});
+            this.dIAGNOSTICOSToolStripMenuItem1.Name = "dIAGNOSTICOSToolStripMenuItem1";
+            this.dIAGNOSTICOSToolStripMenuItem1.Size = new System.Drawing.Size(144, 27);
+            this.dIAGNOSTICOSToolStripMenuItem1.Text = "DIAGNOSTICOS";
+            // 
+            // nuevoDiagnosticoToolStripMenuItem
+            // 
+            this.nuevoDiagnosticoToolStripMenuItem.Name = "nuevoDiagnosticoToolStripMenuItem";
+            this.nuevoDiagnosticoToolStripMenuItem.Size = new System.Drawing.Size(225, 28);
+            this.nuevoDiagnosticoToolStripMenuItem.Text = "Nuevo Diagnóstico";
+            // 
+            // listadoToolStripMenuItem
+            // 
+            this.listadoToolStripMenuItem.Name = "listadoToolStripMenuItem";
+            this.listadoToolStripMenuItem.Size = new System.Drawing.Size(225, 28);
+            this.listadoToolStripMenuItem.Text = "Listado";
             // 
             // pRESTADORESToolStripMenuItem
             // 
+            this.pRESTADORESToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.nuevoPrestadorToolStripMenuItem,
+            this.editarPrestadorToolStripMenuItem,
+            this.profesionalesPorPrestadorToolStripMenuItem});
             this.pRESTADORESToolStripMenuItem.Name = "pRESTADORESToolStripMenuItem";
             this.pRESTADORESToolStripMenuItem.Size = new System.Drawing.Size(133, 27);
             this.pRESTADORESToolStripMenuItem.Text = "PRESTADORES";
+            this.pRESTADORESToolStripMenuItem.Click += new System.EventHandler(this.pRESTADORESToolStripMenuItem_Click);
+            // 
+            // nuevoPrestadorToolStripMenuItem
+            // 
+            this.nuevoPrestadorToolStripMenuItem.Name = "nuevoPrestadorToolStripMenuItem";
+            this.nuevoPrestadorToolStripMenuItem.Size = new System.Drawing.Size(289, 28);
+            this.nuevoPrestadorToolStripMenuItem.Text = "Nuevo Prestador";
+            this.nuevoPrestadorToolStripMenuItem.Click += new System.EventHandler(this.nuevoPrestadorToolStripMenuItem_Click);
+            // 
+            // editarPrestadorToolStripMenuItem
+            // 
+            this.editarPrestadorToolStripMenuItem.Name = "editarPrestadorToolStripMenuItem";
+            this.editarPrestadorToolStripMenuItem.Size = new System.Drawing.Size(289, 28);
+            this.editarPrestadorToolStripMenuItem.Text = "Editar Prestador";
+            this.editarPrestadorToolStripMenuItem.Click += new System.EventHandler(this.editarPrestadorToolStripMenuItem_Click);
+            // 
+            // profesionalesPorPrestadorToolStripMenuItem
+            // 
+            this.profesionalesPorPrestadorToolStripMenuItem.Name = "profesionalesPorPrestadorToolStripMenuItem";
+            this.profesionalesPorPrestadorToolStripMenuItem.Size = new System.Drawing.Size(289, 28);
+            this.profesionalesPorPrestadorToolStripMenuItem.Text = "Profesionales Por Prestador";
+            this.profesionalesPorPrestadorToolStripMenuItem.Click += new System.EventHandler(this.profesionalesPorPrestadorToolStripMenuItem_Click);
             // 
             // rEDToolStripMenuItem
             // 
@@ -193,6 +248,7 @@
             this.dIAGNOSTICOSToolStripMenuItem.Name = "dIAGNOSTICOSToolStripMenuItem";
             this.dIAGNOSTICOSToolStripMenuItem.Size = new System.Drawing.Size(208, 28);
             this.dIAGNOSTICOSToolStripMenuItem.Text = "DIAGNOSTICOS";
+            this.dIAGNOSTICOSToolStripMenuItem.Click += new System.EventHandler(this.dIAGNOSTICOSToolStripMenuItem_Click);
             // 
             // eXPORTARDATOSToolStripMenuItem
             // 
@@ -205,11 +261,12 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(941, 540);
+            this.ClientSize = new System.Drawing.Size(1087, 540);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "MenuInicial";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "- PAMI -";
             this.Load += new System.EventHandler(this.MenuInicial_Load);
             this.menuStrip1.ResumeLayout(false);
@@ -240,6 +297,12 @@
         private System.Windows.Forms.ToolStripMenuItem búsquedaPrácticaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem nuevaPrácticaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem listadoAmbulatoriosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem dIAGNOSTICOSToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem listadoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem nuevoDiagnosticoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem profesionalesPorPrestadorToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem nuevoPrestadorToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem editarPrestadorToolStripMenuItem;
     }
 }
 

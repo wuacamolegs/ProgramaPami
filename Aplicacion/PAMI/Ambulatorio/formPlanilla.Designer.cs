@@ -52,69 +52,79 @@
             // dgPlanilla
             // 
             this.dgPlanilla.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgPlanilla.Location = new System.Drawing.Point(13, 102);
-            this.dgPlanilla.Margin = new System.Windows.Forms.Padding(4);
+            this.dgPlanilla.Location = new System.Drawing.Point(13, 154);
+            this.dgPlanilla.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dgPlanilla.Name = "dgPlanilla";
-            this.dgPlanilla.Size = new System.Drawing.Size(1234, 389);
+            this.dgPlanilla.RowTemplate.Height = 24;
+            this.dgPlanilla.Size = new System.Drawing.Size(1234, 519);
             this.dgPlanilla.TabIndex = 0;
             this.dgPlanilla.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dgPlanilla_KeyDown);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.label2.Location = new System.Drawing.Point(2, 38);
+            this.label2.Font = new System.Drawing.Font("Agency FB", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.DarkCyan;
+            this.label2.Location = new System.Drawing.Point(10, 36);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(41, 20);
+            this.label2.Size = new System.Drawing.Size(33, 24);
             this.label2.TabIndex = 2;
             this.label2.Text = "Mes";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.label3.Location = new System.Drawing.Point(153, 38);
+            this.label3.Font = new System.Drawing.Font("Agency FB", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.DarkCyan;
+            this.label3.Location = new System.Drawing.Point(254, 37);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(38, 20);
+            this.label3.Size = new System.Drawing.Size(31, 24);
             this.label3.TabIndex = 3;
             this.label3.Text = "Año";
             // 
             // cmbMes
             // 
+            this.cmbMes.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbMes.ForeColor = System.Drawing.SystemColors.InactiveCaptionText;
             this.cmbMes.FormattingEnabled = true;
             this.cmbMes.Items.AddRange(new object[] {
-            "Enero",
-            "Febrero",
-            "Marzo",
-            "Abril",
-            "Mayo",
-            "Junio",
-            "Julio",
-            "Agosto",
-            "Septiembre",
-            "Octubre",
-            "Noviembre",
-            "Diciembre"});
-            this.cmbMes.Location = new System.Drawing.Point(45, 36);
-            this.cmbMes.Margin = new System.Windows.Forms.Padding(4);
+            "01",
+            "02",
+            "03",
+            "04",
+            "05",
+            "06",
+            "07",
+            "08",
+            "09",
+            "10",
+            "11",
+            "11"});
+            this.cmbMes.Location = new System.Drawing.Point(60, 33);
+            this.cmbMes.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cmbMes.Name = "cmbMes";
-            this.cmbMes.Size = new System.Drawing.Size(100, 28);
+            this.cmbMes.Size = new System.Drawing.Size(169, 32);
             this.cmbMes.TabIndex = 4;
             // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.cmbMedico);
-            this.groupBox1.Location = new System.Drawing.Point(335, 12);
+            this.groupBox1.Font = new System.Drawing.Font("Agency FB", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox1.ForeColor = System.Drawing.Color.DarkCyan;
+            this.groupBox1.Location = new System.Drawing.Point(422, 21);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(288, 83);
+            this.groupBox1.Size = new System.Drawing.Size(412, 83);
             this.groupBox1.TabIndex = 5;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Médico";
             // 
             // cmbMedico
             // 
+            this.cmbMedico.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbMedico.Font = new System.Drawing.Font("Calibri Light", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbMedico.ForeColor = System.Drawing.SystemColors.InactiveCaptionText;
             this.cmbMedico.FormattingEnabled = true;
             this.cmbMedico.Items.AddRange(new object[] {
             "1",
@@ -122,21 +132,26 @@
             "3"});
             this.cmbMedico.Location = new System.Drawing.Point(6, 36);
             this.cmbMedico.Name = "cmbMedico";
-            this.cmbMedico.Size = new System.Drawing.Size(276, 28);
+            this.cmbMedico.Size = new System.Drawing.Size(389, 36);
             this.cmbMedico.TabIndex = 0;
             // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.cmbAsociacion);
-            this.groupBox2.Location = new System.Drawing.Point(30, 12);
+            this.groupBox2.Font = new System.Drawing.Font("Agency FB", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox2.ForeColor = System.Drawing.Color.DarkCyan;
+            this.groupBox2.Location = new System.Drawing.Point(13, 21);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(288, 83);
+            this.groupBox2.Size = new System.Drawing.Size(403, 83);
             this.groupBox2.TabIndex = 6;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Asociación";
             // 
             // cmbAsociacion
             // 
+            this.cmbAsociacion.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbAsociacion.Font = new System.Drawing.Font("Calibri Light", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbAsociacion.ForeColor = System.Drawing.SystemColors.InactiveCaptionText;
             this.cmbAsociacion.FormattingEnabled = true;
             this.cmbAsociacion.Items.AddRange(new object[] {
             "1",
@@ -144,8 +159,9 @@
             "3"});
             this.cmbAsociacion.Location = new System.Drawing.Point(6, 36);
             this.cmbAsociacion.Name = "cmbAsociacion";
-            this.cmbAsociacion.Size = new System.Drawing.Size(276, 28);
+            this.cmbAsociacion.Size = new System.Drawing.Size(382, 36);
             this.cmbAsociacion.TabIndex = 0;
+            this.cmbAsociacion.SelectedIndexChanged += new System.EventHandler(this.cmbAsociacion_SelectedIndexChanged);
             // 
             // groupBox3
             // 
@@ -153,74 +169,101 @@
             this.groupBox3.Controls.Add(this.cmbMes);
             this.groupBox3.Controls.Add(this.label3);
             this.groupBox3.Controls.Add(this.label2);
-            this.groupBox3.Location = new System.Drawing.Point(629, 12);
+            this.groupBox3.Font = new System.Drawing.Font("Agency FB", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox3.ForeColor = System.Drawing.Color.DarkCyan;
+            this.groupBox3.Location = new System.Drawing.Point(855, 21);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(288, 83);
+            this.groupBox3.Size = new System.Drawing.Size(392, 83);
             this.groupBox3.TabIndex = 7;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Periodo";
             // 
             // txtAnio
             // 
-            this.txtAnio.Location = new System.Drawing.Point(188, 34);
+            this.txtAnio.Location = new System.Drawing.Point(292, 34);
             this.txtAnio.Name = "txtAnio";
-            this.txtAnio.Size = new System.Drawing.Size(94, 26);
+            this.txtAnio.Size = new System.Drawing.Size(94, 31);
             this.txtAnio.TabIndex = 5;
             // 
             // btnLimpiar
             // 
-            this.btnLimpiar.Location = new System.Drawing.Point(1126, 45);
+            this.btnLimpiar.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.btnLimpiar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnLimpiar.Font = new System.Drawing.Font("Agency FB", 12F);
+            this.btnLimpiar.ForeColor = System.Drawing.Color.DarkCyan;
+            this.btnLimpiar.Location = new System.Drawing.Point(13, 691);
             this.btnLimpiar.Name = "btnLimpiar";
-            this.btnLimpiar.Size = new System.Drawing.Size(121, 30);
+            this.btnLimpiar.Size = new System.Drawing.Size(161, 37);
             this.btnLimpiar.TabIndex = 8;
             this.btnLimpiar.Text = "Limpiar";
-            this.btnLimpiar.UseVisualStyleBackColor = true;
+            this.btnLimpiar.UseVisualStyleBackColor = false;
             this.btnLimpiar.Click += new System.EventHandler(this.btnLimpiar_Click);
             // 
             // btnValidar
             // 
-            this.btnValidar.Location = new System.Drawing.Point(980, 44);
+            this.btnValidar.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.btnValidar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnValidar.Font = new System.Drawing.Font("Agency FB", 12F);
+            this.btnValidar.ForeColor = System.Drawing.Color.DarkCyan;
+            this.btnValidar.Location = new System.Drawing.Point(1087, 110);
             this.btnValidar.Name = "btnValidar";
-            this.btnValidar.Size = new System.Drawing.Size(121, 30);
+            this.btnValidar.Size = new System.Drawing.Size(161, 37);
             this.btnValidar.TabIndex = 9;
             this.btnValidar.Text = "Validar";
-            this.btnValidar.UseVisualStyleBackColor = true;
+            this.btnValidar.UseVisualStyleBackColor = false;
             this.btnValidar.Click += new System.EventHandler(this.btnValidar_Click);
             // 
             // btnImportar
             // 
-            this.btnImportar.Location = new System.Drawing.Point(962, 511);
+            this.btnImportar.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.btnImportar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnImportar.Font = new System.Drawing.Font("Agency FB", 12F);
+            this.btnImportar.ForeColor = System.Drawing.Color.DarkCyan;
+            this.btnImportar.Location = new System.Drawing.Point(915, 691);
             this.btnImportar.Name = "btnImportar";
-            this.btnImportar.Size = new System.Drawing.Size(121, 30);
+            this.btnImportar.Size = new System.Drawing.Size(161, 37);
             this.btnImportar.TabIndex = 10;
             this.btnImportar.Text = "Importar";
-            this.btnImportar.UseVisualStyleBackColor = true;
+            this.btnImportar.UseVisualStyleBackColor = false;
             this.btnImportar.Click += new System.EventHandler(this.btnImportar_Click);
             // 
             // btnCerrar
             // 
-            this.btnCerrar.Location = new System.Drawing.Point(1113, 511);
+            this.btnCerrar.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.btnCerrar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnCerrar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnCerrar.Font = new System.Drawing.Font("Agency FB", 12F);
+            this.btnCerrar.ForeColor = System.Drawing.Color.DarkCyan;
+            this.btnCerrar.Location = new System.Drawing.Point(1086, 691);
             this.btnCerrar.Name = "btnCerrar";
-            this.btnCerrar.Size = new System.Drawing.Size(121, 30);
+            this.btnCerrar.Size = new System.Drawing.Size(161, 37);
             this.btnCerrar.TabIndex = 11;
             this.btnCerrar.Text = "Cerrar";
-            this.btnCerrar.UseVisualStyleBackColor = true;
+            this.btnCerrar.UseVisualStyleBackColor = false;
+            this.btnCerrar.Click += new System.EventHandler(this.btnCerrar_Click);
             // 
             // btnBuscar
             // 
-            this.btnBuscar.Location = new System.Drawing.Point(980, 45);
+            this.btnBuscar.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.btnBuscar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnBuscar.Font = new System.Drawing.Font("Agency FB", 12F);
+            this.btnBuscar.ForeColor = System.Drawing.Color.DarkCyan;
+            this.btnBuscar.Location = new System.Drawing.Point(1086, 110);
             this.btnBuscar.Name = "btnBuscar";
-            this.btnBuscar.Size = new System.Drawing.Size(121, 29);
+            this.btnBuscar.Size = new System.Drawing.Size(161, 37);
             this.btnBuscar.TabIndex = 12;
             this.btnBuscar.Text = "Buscar";
-            this.btnBuscar.UseVisualStyleBackColor = true;
+            this.btnBuscar.UseVisualStyleBackColor = false;
             this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
             // 
             // formPlanilla
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1260, 560);
+            this.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.CancelButton = this.btnCerrar;
+            this.ClientSize = new System.Drawing.Size(1273, 736);
             this.Controls.Add(this.btnCerrar);
             this.Controls.Add(this.btnImportar);
             this.Controls.Add(this.btnValidar);
@@ -231,8 +274,11 @@
             this.Controls.Add(this.dgPlanilla);
             this.Controls.Add(this.btnBuscar);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.Margin = new System.Windows.Forms.Padding(4);
+            this.ForeColor = System.Drawing.Color.Black;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "formPlanilla";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Planilla";
             this.Load += new System.EventHandler(this.Planilla_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgPlanilla)).EndInit();

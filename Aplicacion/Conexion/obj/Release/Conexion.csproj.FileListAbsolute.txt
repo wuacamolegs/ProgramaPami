@@ -7,15 +7,6 @@ A:\Documents\Visual Studio 2008\Projects\PAMI\Conexion\bin\Release\Excepciones.p
 A:\Documents\Visual Studio 2008\Projects\PAMI\Conexion\obj\Release\ResolveAssemblyReference.cache
 A:\Documents\Visual Studio 2008\Projects\PAMI\Conexion\obj\Release\Conexion.dll
 A:\Documents\Visual Studio 2008\Projects\PAMI\Conexion\obj\Release\Conexion.pdb
-A:\Documents\PAMI\ProgramaPami\Aplicacion\Conexion\bin\Release\Conexion.dll
-A:\Documents\PAMI\ProgramaPami\Aplicacion\Conexion\bin\Release\Conexion.pdb
-A:\Documents\PAMI\ProgramaPami\Aplicacion\Conexion\bin\Release\Excepciones.dll
-A:\Documents\PAMI\ProgramaPami\Aplicacion\Conexion\bin\Release\Validator.dll
-A:\Documents\PAMI\ProgramaPami\Aplicacion\Conexion\bin\Release\Validator.pdb
-A:\Documents\PAMI\ProgramaPami\Aplicacion\Conexion\bin\Release\Excepciones.pdb
-A:\Documents\PAMI\ProgramaPami\Aplicacion\Conexion\obj\Release\ResolveAssemblyReference.cache
-A:\Documents\PAMI\ProgramaPami\Aplicacion\Conexion\obj\Release\Conexion.dll
-A:\Documents\PAMI\ProgramaPami\Aplicacion\Conexion\obj\Release\Conexion.pdb
 C:\Users\MARTIN\Documents\GitHub\ProgramaPami\Aplicacion\Conexion\bin\Release\Conexion.dll
 C:\Users\MARTIN\Documents\GitHub\ProgramaPami\Aplicacion\Conexion\bin\Release\Conexion.pdb
 C:\Users\MARTIN\Documents\GitHub\ProgramaPami\Aplicacion\Conexion\bin\Release\Excepciones.dll
@@ -25,3 +16,12 @@ C:\Users\MARTIN\Documents\GitHub\ProgramaPami\Aplicacion\Conexion\bin\Release\Ex
 C:\Users\MARTIN\Documents\GitHub\ProgramaPami\Aplicacion\Conexion\obj\Release\ResolveAssemblyReference.cache
 C:\Users\MARTIN\Documents\GitHub\ProgramaPami\Aplicacion\Conexion\obj\Release\Conexion.dll
 C:\Users\MARTIN\Documents\GitHub\ProgramaPami\Aplicacion\Conexion\obj\Release\Conexion.pdb
+A:\Documents\PAMI\ProgramaPami\Aplicacion\Conexion\bin\Release\Conexion.dll
+A:\Documents\PAMI\ProgramaPami\Aplicacion\Conexion\bin\Release\Conexion.pdb
+A:\Documents\PAMI\ProgramaPami\Aplicacion\Conexion\bin\Release\Excepciones.dll
+A:\Documents\PAMI\ProgramaPami\Aplicacion\Conexion\bin\Release\Validator.dll
+A:\Documents\PAMI\ProgramaPami\Aplicacion\Conexion\bin\Release\Validator.pdb
+A:\Documents\PAMI\ProgramaPami\Aplicacion\Conexion\bin\Release\Excepciones.pdb
+A:\Documents\PAMI\ProgramaPami\Aplicacion\Conexion\obj\Release\ResolveAssemblyReference.cache
+A:\Documents\PAMI\ProgramaPami\Aplicacion\Conexion\obj\Release\Conexion.dll
+A:\Documents\PAMI\ProgramaPami\Aplicacion\Conexion\obj\Release\Conexion.pdb

@@ -86,7 +86,8 @@ namespace PAMI.Afiliados
 
                        if (result == DialogResult.Yes)
                        {
-                           unAfiliado.TraerAfiliadoPorBeneficio();
+                           //Saque el this.traerAfiliadoPorBeneficio porque ya en nuevoAfiliado me hace el data row. 
+                           //fijarme si no rompe esto.
                            this.abrirParaEditar(unAfiliado);
                        }
                        if (result == DialogResult.No)
@@ -177,7 +178,7 @@ namespace PAMI.Afiliados
                 {
                     unAfiliado.Nombre = txtApellidoNombre.Text;
                     unAfiliado.Beneficio = Convert.ToInt64(txtBeneficio.Text);
-                    unAfiliado.Parentesco = Convert.ToInt64(txtParentesco.Text);
+                    unAfiliado.Parentesco = txtParentesco.Text;
                     unAfiliado.Documento = Convert.ToInt64(txtDocumento.Text);
                     unAfiliado.FechaNacimiento = txtFechaNacimiento.Text;
                     unAfiliado.Sexo = cmbSexo.SelectedItem.ToString();
@@ -244,6 +245,11 @@ namespace PAMI.Afiliados
             Validator.SoloNumeros(e);
         }
 
+        private void txtFechaNacimiento_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            Validator.SoloNumeros(e);
+        }
+
         
 
         #endregion
@@ -252,5 +258,7 @@ namespace PAMI.Afiliados
         {
             cmbSexo.ForeColor = SystemColors.WindowText;
         }
+
+
     }
 }

@@ -12,6 +12,21 @@
     <AssemblyName>PAMI</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -66,17 +81,17 @@
     <Compile Include="Ambulatorio\AmbulatorioExistente.Designer.cs">
       <DependentUpon>AmbulatorioExistente.cs</DependentUpon>
     </Compile>
-    <Compile Include="Ambulatorio\EditarAmbulatorio.cs">
+    <Compile Include="Ambulatorio\NuevoEditarAmbulatorio.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Ambulatorio\EditarAmbulatorio.Designer.cs">
-      <DependentUpon>EditarAmbulatorio.cs</DependentUpon>
+    <Compile Include="Ambulatorio\NuevoEditarAmbulatorio.Designer.cs">
+      <DependentUpon>NuevoEditarAmbulatorio.cs</DependentUpon>
     </Compile>
-    <Compile Include="Ambulatorio\NuevoAmbulatorio.cs">
+    <Compile Include="Asociaciones\formAsociacionMedicos.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Ambulatorio\NuevoAmbulatorio.Designer.cs">
-      <DependentUpon>NuevoAmbulatorio.cs</DependentUpon>
+    <Compile Include="Asociaciones\formAsociacionMedicos.Designer.cs">
+      <DependentUpon>formAsociacionMedicos.cs</DependentUpon>
     </Compile>
     <Compile Include="Exportacion\ExportarDatos.cs">
       <SubType>Form</SubType>
@@ -108,6 +123,24 @@
     <Compile Include="Ambulatorio\formPlanilla.Designer.cs">
       <DependentUpon>formPlanilla.cs</DependentUpon>
     </Compile>
+    <Compile Include="Prestadores\formPrestador.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Prestadores\formPrestador.Designer.cs">
+      <DependentUpon>formPrestador.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Profesionales\formProfesional.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Profesionales\formProfesional.Designer.cs">
+      <DependentUpon>formProfesional.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Profesionales\ListadoProfesional.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Profesionales\ListadoProfesional.Designer.cs">
+      <DependentUpon>ListadoProfesional.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Afiliado\listadoAfiliados.resx">
@@ -119,11 +152,11 @@
     <EmbeddedResource Include="Ambulatorio\AmbulatorioExistente.resx">
       <DependentUpon>AmbulatorioExistente.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Ambulatorio\EditarAmbulatorio.resx">
-      <DependentUpon>EditarAmbulatorio.cs</DependentUpon>
+    <EmbeddedResource Include="Ambulatorio\NuevoEditarAmbulatorio.resx">
+      <DependentUpon>NuevoEditarAmbulatorio.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Ambulatorio\NuevoAmbulatorio.resx">
-      <DependentUpon>NuevoAmbulatorio.cs</DependentUpon>
+    <EmbeddedResource Include="Asociaciones\formAsociacionMedicos.resx">
+      <DependentUpon>formAsociacionMedicos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Exportacion\ExportarDatos.resx">
       <DependentUpon>ExportarDatos.cs</DependentUpon>
@@ -139,6 +172,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Ambulatorio\formPlanilla.resx">
       <DependentUpon>formPlanilla.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Prestadores\formPrestador.resx">
+      <DependentUpon>formPrestador.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Profesionales\formProfesional.resx">
+      <DependentUpon>formProfesional.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Profesionales\ListadoProfesional.resx">
+      <DependentUpon>ListadoProfesional.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -179,7 +221,36 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Prestadores\" />
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.2.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 2.0 %28x86%29</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.0 %28x86%29</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

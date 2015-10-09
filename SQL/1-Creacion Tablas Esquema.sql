@@ -117,3 +117,9 @@ CREATE TYPE PAMI.TVP_Planilla AS TABLE(
 	tvp_practicas varchar(10),
 	tvp_hora varchar(5)
 	)
+
+CREATE TYPE PAMI.TVP_Profesionales AS TABLE(
+	tvp_estado bit,
+	tvp_matricula varchar(6),
+	tvp_medico_nombre varchar(60)
+	)

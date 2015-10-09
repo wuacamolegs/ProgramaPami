@@ -21,6 +21,22 @@ namespace Utilities
             return cadena; 
 
         }
+
+        public static string NormalizarHora(string cadena)
+        {
+           // string cadenaAux = Regex.Match(cadena, @"\d+").Value;
+            cadena = Regex.Replace(cadena, @"[^\d]", "");
+
+            if (cadena.Length == 3)
+            {
+                cadena = '0' + cadena.Substring(0, 1) + ':' + cadena.Substring(1, 2);
+            }else if (cadena.Length == 4)
+            {
+                cadena = cadena.Substring(0, 2) + ':' + cadena.Substring(2, 2);
+            }
+            
+            return cadena;
+        }
     
     
     }

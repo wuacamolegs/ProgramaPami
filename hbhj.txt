@@ -1,0 +1,46 @@
+Importar Planilla
+No valida correspondencia entre nombre y beneficio del afiliado
+
+El campo afiliado admite beneficios y dni. Pueden tener guiones, letras, las saca solo.
+Admite: DNI 37819986, 158875454-00 
+
+El campo beneficio en realidad tienen que ser beneficio + parentesco! 
+
+El diagnostico tambien puede ser codigo o descripcion. La descripcion hace un like.
+Si dice GLAUCOMA, y busca en los diagnosticos, va a machear con GLAUCOMA SEVERA, POSIBLE GLAUCOMA. Selecciona el primero con el que machea.
+
+
+
+
+
+Nuevo Profesional
+Luego de crear nuevo profesional asociarlo a las Asociaciones.
+
+
+
+
+
+
+
+ACTUALIZAR DATOS
+borra los actuales y carga los nuevo
+
+DIAGNOSTICOS
+TXT --> UNICODE
+GUARDAR EL TXT CON CODIFICACION UNICODE!
+CODIGO;DESCRIPCION
+
+SE FIJA QUE S1 CONTENGA A S2
+S1: SUPUESTA GLAUCOMA COMPLICADA
+S2: GLAUCOMA
+--> Es valido. lo toma como Glaucoma.
+
+
+PADRON
+TXT --> UNICODE
+GUARDAR EL TXT CON CODIFICACION UNICODE!
+
+
+NOMENCLADOR
+EXCEL --> CVS (delimitado por comas) --> TXT UNICODE
+GUARDAR EL EXCEL COMO CVS delimitado por comas. Abrir con block de notas y guardar como txt CODIFICACION:UNICODE

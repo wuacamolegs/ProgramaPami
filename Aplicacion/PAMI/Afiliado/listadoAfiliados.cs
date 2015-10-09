@@ -107,9 +107,10 @@ namespace PAMI.Afiliados
         {
             dgAfiliados.Columns.Clear();
             dgAfiliados.AutoGenerateColumns = false;
+            dgAfiliados.RowHeadersVisible = false;
 
             DataGridViewTextBoxColumn clm_ApellidoNombre = new DataGridViewTextBoxColumn();
-            clm_ApellidoNombre.Width = 240;
+            clm_ApellidoNombre.Width = 260;
             clm_ApellidoNombre.ReadOnly = true;
             clm_ApellidoNombre.DataPropertyName = "apellido_nombre";
             clm_ApellidoNombre.HeaderText = "Apellido y Nombre";
@@ -123,7 +124,7 @@ namespace PAMI.Afiliados
             dgAfiliados.Columns.Add(clm_beneficio);
 
             DataGridViewTextBoxColumn clm_parentesco = new DataGridViewTextBoxColumn();
-            clm_parentesco.Width = 80;
+            clm_parentesco.Width = 90;
             clm_parentesco.ReadOnly = true;
             clm_parentesco.DataPropertyName = "parentesco";
             clm_parentesco.HeaderText = "Parentesco";
@@ -153,6 +154,15 @@ namespace PAMI.Afiliados
             //le inserto a la grilla el dataset obtenido
             dgAfiliados.DataSource = dsAfiliados.Tables[0];
 
+
+            DataGridViewCellStyle miestilo = new DataGridViewCellStyle();
+            miestilo.Font = new Font("Agency FB", 11);
+
+            dgAfiliados.EnableHeadersVisualStyles = false;
+            dgAfiliados.ColumnHeadersDefaultCellStyle = miestilo;
+            dgAfiliados.ColumnHeadersDefaultCellStyle.ForeColor = Color.DarkCyan;
+            dgAfiliados.ColumnHeadersDefaultCellStyle.BackColor = Color.Gainsboro; 
+
         }
 
         private void cargarDatosGridAfiliado()
@@ -160,7 +170,7 @@ namespace PAMI.Afiliados
             try
             {
                 unAfiliado.Beneficio = Convert.ToInt64(dgAfiliados.CurrentRow.Cells[1].Value);
-                unAfiliado.Parentesco = Convert.ToInt64(dgAfiliados.CurrentRow.Cells[2].Value);
+                unAfiliado.Parentesco = dgAfiliados.CurrentRow.Cells[2].Value.ToString();
                 unAfiliado.TraerAfiliadoPorBeneficio();
             }
             catch (Exception e)
@@ -182,7 +192,7 @@ namespace PAMI.Afiliados
             }
             if (txtParentesco.Text != "")
             {
-                unAfiliado.Parentesco = Convert.ToInt64(txtParentesco.Text);
+                unAfiliado.Parentesco = txtParentesco.Text;
             }
             if (txtDocumento.Text != "")
             {

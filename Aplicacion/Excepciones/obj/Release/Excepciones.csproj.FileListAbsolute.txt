@@ -3,13 +3,13 @@ A:\Documents\Visual Studio 2008\Projects\PAMI\Excepciones\bin\Release\Excepcione
 A:\Documents\Visual Studio 2008\Projects\PAMI\Excepciones\obj\Release\ResolveAssemblyReference.cache
 A:\Documents\Visual Studio 2008\Projects\PAMI\Excepciones\obj\Release\Excepciones.dll
 A:\Documents\Visual Studio 2008\Projects\PAMI\Excepciones\obj\Release\Excepciones.pdb
-A:\Documents\PAMI\ProgramaPami\Aplicacion\Excepciones\bin\Release\Excepciones.dll
-A:\Documents\PAMI\ProgramaPami\Aplicacion\Excepciones\bin\Release\Excepciones.pdb
-A:\Documents\PAMI\ProgramaPami\Aplicacion\Excepciones\obj\Release\ResolveAssemblyReference.cache
-A:\Documents\PAMI\ProgramaPami\Aplicacion\Excepciones\obj\Release\Excepciones.dll
-A:\Documents\PAMI\ProgramaPami\Aplicacion\Excepciones\obj\Release\Excepciones.pdb
 C:\Users\MARTIN\Documents\GitHub\ProgramaPami\Aplicacion\Excepciones\bin\Release\Excepciones.dll
 C:\Users\MARTIN\Documents\GitHub\ProgramaPami\Aplicacion\Excepciones\bin\Release\Excepciones.pdb
 C:\Users\MARTIN\Documents\GitHub\ProgramaPami\Aplicacion\Excepciones\obj\Release\ResolveAssemblyReference.cache
 C:\Users\MARTIN\Documents\GitHub\ProgramaPami\Aplicacion\Excepciones\obj\Release\Excepciones.dll
 C:\Users\MARTIN\Documents\GitHub\ProgramaPami\Aplicacion\Excepciones\obj\Release\Excepciones.pdb
+A:\Documents\PAMI\ProgramaPami\Aplicacion\Excepciones\bin\Release\Excepciones.dll
+A:\Documents\PAMI\ProgramaPami\Aplicacion\Excepciones\bin\Release\Excepciones.pdb
+A:\Documents\PAMI\ProgramaPami\Aplicacion\Excepciones\obj\Release\ResolveAssemblyReference.cache
+A:\Documents\PAMI\ProgramaPami\Aplicacion\Excepciones\obj\Release\Excepciones.dll
+A:\Documents\PAMI\ProgramaPami\Aplicacion\Excepciones\obj\Release\Excepciones.pdb

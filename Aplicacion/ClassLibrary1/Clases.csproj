@@ -50,6 +50,8 @@
     <Compile Include="Base.cs" />
     <Compile Include="Diagnostico.cs" />
     <Compile Include="Planilla.cs" />
+    <Compile Include="Practica.cs" />
+    <Compile Include="Prestador.cs" />
     <Compile Include="Profesional.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

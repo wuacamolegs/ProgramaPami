@@ -42,7 +42,6 @@ A:\Documents\PAMI\ProgramaPami\Aplicacion\PAMI\obj\Debug\PAMI.Nomenclador.Listad
 A:\Documents\PAMI\ProgramaPami\Aplicacion\PAMI\obj\Debug\PAMI.PlanillaPami.formPlanilla.resources
 A:\Documents\PAMI\ProgramaPami\Aplicacion\PAMI\obj\Debug\PAMI.Properties.Resources.resources
 A:\Documents\PAMI\ProgramaPami\Aplicacion\PAMI\obj\Debug\PAMI.csproj.GenerateResource.Cache
-A:\Documents\PAMI\ProgramaPami\Aplicacion\PAMI\obj\Debug\PAMI.Ambulatorio.NuevoAmbulatorio.resources
 C:\Users\MARTIN\Documents\GitHub\ProgramaPami\Aplicacion\PAMI\bin\Debug\PAMI.exe.config
 C:\Users\MARTIN\Documents\GitHub\ProgramaPami\Aplicacion\PAMI\obj\Debug\PAMI.exe
 C:\Users\MARTIN\Documents\GitHub\ProgramaPami\Aplicacion\PAMI\obj\Debug\PAMI.pdb
@@ -67,3 +66,10 @@ C:\Users\MARTIN\Documents\GitHub\ProgramaPami\Aplicacion\PAMI\bin\Debug\Validato
 C:\Users\MARTIN\Documents\GitHub\ProgramaPami\Aplicacion\PAMI\bin\Debug\Conexion.pdb
 C:\Users\MARTIN\Documents\GitHub\ProgramaPami\Aplicacion\PAMI\bin\Debug\Excepciones.pdb
 C:\Users\MARTIN\Documents\GitHub\ProgramaPami\Aplicacion\PAMI\bin\Debug\ClassLibrary1.pdb
+A:\Documents\PAMI\ProgramaPami\Aplicacion\PAMI\obj\Debug\PAMI.Ambulatorio.AmbulatorioExistente.resources
+A:\Documents\PAMI\ProgramaPami\Aplicacion\PAMI\obj\Debug\PAMI.Nomenclador.formPracticas.resources
+A:\Documents\PAMI\ProgramaPami\Aplicacion\PAMI\obj\Debug\PAMI.Ambulatorio.NuevoEditarAmbulatorio.resources
+A:\Documents\PAMI\ProgramaPami\Aplicacion\PAMI\obj\Debug\PAMI.Asociaciones.formAsociacionMedicos.resources
+A:\Documents\PAMI\ProgramaPami\Aplicacion\PAMI\obj\Debug\PAMI.Prestadores.formPrestador.resources
+A:\Documents\PAMI\ProgramaPami\Aplicacion\PAMI\obj\Debug\PAMI.Profesionales.formProfesional.resources
+A:\Documents\PAMI\ProgramaPami\Aplicacion\PAMI\obj\Debug\PAMI.Profesionales.ListadoProfesional.resources

@@ -5,8 +5,8 @@ ALTER PROCEDURE PAMI.traerListadoAfiliadosConFiltros
     @Nombre nvarchar(60) = null, 
     @Tipo_Dni varchar(3) = null,
     @Dni numeric(15,0) = null,
-    @Beneficio numeric(12,0) = null,
-    @Parentesco numeric(2,0) = null
+    @Beneficio varchar(12) = null,
+    @Parentesco varchar(2) = null
 AS 
 BEGIN
     SELECT apellido_nombre, documento_tipo, documento_numero, beneficio, parentesco, fecha_nacimiento 
@@ -19,9 +19,9 @@ BEGIN
 END
 GO
 
-CREATE PROCEDURE PAMI.TraerListadoAfiliadosPorBeneficio
-	@Beneficio numeric(12,0),
-	@Parentesco numeric(2,0)
+ALTER PROCEDURE PAMI.TraerListadoAfiliadosPorBeneficio
+	@Beneficio varchar(12),
+	@Parentesco varchar(2)
 AS
 BEGIN
 	SELECT TOP 1 apellido_nombre, documento_tipo, documento_numero, beneficio, parentesco, fecha_nacimiento, sexo 
@@ -29,10 +29,10 @@ BEGIN
 END
 GO
 
-CREATE PROCEDURE PAMI.InsertAfiliado
+ALTER PROCEDURE PAMI.InsertAfiliado
 	@Nombre nvarchar(60),
-	@Beneficio numeric(12,0),
-	@Parentesco numeric(2,0),
+	@Beneficio varchar(12),
+	@Parentesco varchar(2),
 	@Tipo_Dni varchar(3),
 	@Dni numeric(15,0),
 	@Sexo varchar(1),
@@ -44,10 +44,10 @@ BEGIN
 END
 GO
 
-CREATE PROCEDURE PAMI.UpdateAfiliado
+ALTER PROCEDURE PAMI.UpdateAfiliado
 	@Nombre nvarchar(60),
-	@Beneficio numeric(12,0),
-	@Parentesco numeric(2,0),
+	@Beneficio varchar(12),
+	@Parentesco varchar(2),
 	@Tipo_Dni varchar(3),
 	@Dni numeric(15,0),
 	@Sexo varchar(1),
@@ -64,16 +64,12 @@ BEGIN
 END
 GO
 
-CREATE PROCEDURE PAMI.DeleteAfiliado
-	@Beneficio numeric(12,0),
-	@Parentesco numeric(2,0)
+ALTER PROCEDURE PAMI.DeleteAfiliado
+	@Beneficio varchar(12),
+	@Parentesco varchar(2)
 AS
 BEGIN
 	DELETE PAMI.AfiliadosPami WHERE beneficio = @Beneficio AND parentesco = @Parentesco
 END
 
-
-select * from PAMI.Nomenclador
-
-
-DELETE PAMI.Nomenclador WHERE [CÓDIGO DE MÓDULO] not in ('36','37','38','75','5','6','34'
+select * from PAMI.AfiliadosPami

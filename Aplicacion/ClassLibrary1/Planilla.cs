@@ -21,7 +21,7 @@ namespace Clases
 
         string _fecha;
         string _nombre;
-        Int64 _beneficio;
+        string _beneficio;
         string _diagnostico;
         string _practica;
         string _hora;
@@ -37,10 +37,11 @@ namespace Clases
       
         public Planilla()
         {
+            tablaPlanilla.Columns.Add("Planilla_medico_secundario_matricula", typeof(string));
+            tablaPlanilla.Columns.Add("Planilla_medico_secundario_nombre", typeof(string));
+            tablaPlanilla.Columns.Add("Planilla_beneficio", typeof(string));
+            tablaPlanilla.Columns.Add("Planilla_practica", typeof(string));
             tablaPlanilla.Columns.Add("Planilla_fecha", typeof(string));
-            tablaPlanilla.Columns.Add("Planilla_nombre", typeof(string));
-            tablaPlanilla.Columns.Add("Planilla_beneficio", typeof(Int64));
-            tablaPlanilla.Columns.Add("Planilla_diagnostico", typeof(string));
             tablaPlanilla.Columns.Add("Planilla_hora", typeof(string));
         }
 
@@ -66,7 +67,7 @@ namespace Clases
             set { _nombre = value; }
         }
 
-        public Int64 Beneficio
+        public string Beneficio
         {
             get { return _beneficio; }
             set { _beneficio = value; }
@@ -149,6 +150,23 @@ namespace Clases
             parameterList.Add(new SqlParameter("@Hora", this.Hora));
         }
 
+        private void settearListaParametrosCompleta()
+        {
+            this.parameterList.Clear();
+            parameterList.Add(new SqlParameter("@Asociacion", this.Asociacion));
+            parameterList.Add(new SqlParameter("@Medico", this.Medico));
+            parameterList.Add(new SqlParameter("@Mes", this.Mes));
+            parameterList.Add(new SqlParameter("@Anio", this.Anio));
+
+            parameterList.Add(new SqlParameter("@Fecha", this.Fecha));
+            parameterList.Add(new SqlParameter("@Nombre", this.Nombre));
+            parameterList.Add(new SqlParameter("@Beneficio", this.Beneficio));
+            parameterList.Add(new SqlParameter("@Diagnostico", this.Diagnostico));
+            parameterList.Add(new SqlParameter("@Practica", this.Practica));
+            parameterList.Add(new SqlParameter("@Hora", this.Hora));
+
+        }
+
         private void settearListaParametrosConPlanilla()
         {
             this.parameterList.Clear();
@@ -176,7 +194,7 @@ namespace Clases
             return ds.Tables[0].Rows[0]["Estado"].ToString();
         }
 
-        public DataSet  ImportarPlanilla()
+        public DataSet ImportarPlanilla()
         {
             settearListaParametrosConPlanilla();
             DataSet ds = SQLHelper.ExecuteDataSet("ImportarPlanilla", CommandType.StoredProcedure, NombreTabla(), parameterList);
@@ -190,11 +208,19 @@ namespace Clases
             return this.TraerListado(parameterList, "ActualPorMedicoAsociacion");
         }
 
-
-
-        public DataSet TraerTablasPlanilla()
+        public DataSet TraerTablasPlanilla(long Asociacion, long MedicoID)
         {
-            throw new NotImplementedException();
+            settearListaParametrosConAsociacionMedico();
+            return this.TraerListado(parameterList, "TablasParaValidar");
+        }
+
+        public DataSet ImportarAmbulatorio()
+        {
+            //IMPORTA AMBULATORIO Y DEVUELVE UNA FILA SI HUBO ERROR.
+            //YA TIENE AMBULATORIO EXISTENTE. Devuelve el medico que ya tiene ambulatorio.
+
+            settearListaParametrosCompleta();
+            return this.GuardarYObtenerID(parameterList);
         }
     }
 }
