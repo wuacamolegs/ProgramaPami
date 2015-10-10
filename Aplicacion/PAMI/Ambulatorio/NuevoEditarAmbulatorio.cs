@@ -77,10 +77,8 @@ namespace PAMI.Ambulatorio
         {
             try
             {
-                Profesional Medico = new Profesional();
-                Medico.Matricula = cmbMedico.SelectedValue.ToString() ;
                 cargarDatosFiltros();
-                DataSet dsAfiliados = unAfiliado.TraerAfiliadosConFiltrosPorMedico(Medico);
+                DataSet dsAfiliados = unAfiliado.TraerAfiliadosConFiltrosPorAsociacionID(Convert.ToInt64(cmbAsociacion.SelectedValue));
                 cargarGrillaAfiliadosCon(dsAfiliados);
             }
             catch (ErrorConsultaException ex)
@@ -99,7 +97,7 @@ namespace PAMI.Ambulatorio
             limpiarUnAfiliado();
             if (txtBeneficio.Text != "")
             {
-                unAfiliado.Beneficio = Convert.ToInt64(txtBeneficio.Text);
+                unAfiliado.Beneficio = txtBeneficio.Text;
             }
             if (txtDocumento.Text != "")
             {

@@ -42,10 +42,12 @@
             this.cmbTipoDocumento = new System.Windows.Forms.ComboBox();
             this.txtDocumento = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnGuardar = new System.Windows.Forms.Button();
             this.txtFechaNacimiento = new System.Windows.Forms.MaskedTextBox();
             this.btnNuevo = new System.Windows.Forms.Button();
             this.btnCerrar = new System.Windows.Forms.Button();
-            this.btnGuardar = new System.Windows.Forms.Button();
+            this.cmbPadron = new System.Windows.Forms.ComboBox();
+            this.label14 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -227,14 +229,29 @@
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.txtBeneficio);
             this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Controls.Add(this.btnGuardar);
+            this.groupBox1.Controls.Add(this.btnNuevo);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(12, 15);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox1.Size = new System.Drawing.Size(851, 150);
+            this.groupBox1.Size = new System.Drawing.Size(851, 236);
             this.groupBox1.TabIndex = 14;
             this.groupBox1.TabStop = false;
+            // 
+            // btnGuardar
+            // 
+            this.btnGuardar.Font = new System.Drawing.Font("Agency FB", 12F);
+            this.btnGuardar.ForeColor = System.Drawing.Color.DarkCyan;
+            this.btnGuardar.Location = new System.Drawing.Point(509, 176);
+            this.btnGuardar.Margin = new System.Windows.Forms.Padding(4);
+            this.btnGuardar.Name = "btnGuardar";
+            this.btnGuardar.Size = new System.Drawing.Size(161, 37);
+            this.btnGuardar.TabIndex = 19;
+            this.btnGuardar.Text = "Guardar";
+            this.btnGuardar.UseVisualStyleBackColor = true;
+            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
             // txtFechaNacimiento
             // 
@@ -250,11 +267,11 @@
             // 
             this.btnNuevo.Font = new System.Drawing.Font("Agency FB", 12F);
             this.btnNuevo.ForeColor = System.Drawing.Color.DarkCyan;
-            this.btnNuevo.Location = new System.Drawing.Point(532, 172);
+            this.btnNuevo.Location = new System.Drawing.Point(509, 176);
             this.btnNuevo.Margin = new System.Windows.Forms.Padding(4);
             this.btnNuevo.Name = "btnNuevo";
             this.btnNuevo.Size = new System.Drawing.Size(161, 37);
-            this.btnNuevo.TabIndex = 15;
+            this.btnNuevo.TabIndex = 18;
             this.btnNuevo.Text = "Nuevo";
             this.btnNuevo.UseVisualStyleBackColor = true;
             this.btnNuevo.Click += new System.EventHandler(this.btnNuevo_Click);
@@ -263,7 +280,7 @@
             // 
             this.btnCerrar.Font = new System.Drawing.Font("Agency FB", 12F);
             this.btnCerrar.ForeColor = System.Drawing.Color.DarkCyan;
-            this.btnCerrar.Location = new System.Drawing.Point(701, 172);
+            this.btnCerrar.Location = new System.Drawing.Point(690, 191);
             this.btnCerrar.Margin = new System.Windows.Forms.Padding(4);
             this.btnCerrar.Name = "btnCerrar";
             this.btnCerrar.Size = new System.Drawing.Size(161, 37);
@@ -272,29 +289,39 @@
             this.btnCerrar.UseVisualStyleBackColor = true;
             this.btnCerrar.Click += new System.EventHandler(this.btnCerrar_Click);
             // 
-            // btnGuardar
+            // cmbPadron
             // 
-            this.btnGuardar.Font = new System.Drawing.Font("Agency FB", 12F);
-            this.btnGuardar.ForeColor = System.Drawing.Color.DarkCyan;
-            this.btnGuardar.Location = new System.Drawing.Point(532, 172);
-            this.btnGuardar.Margin = new System.Windows.Forms.Padding(4);
-            this.btnGuardar.Name = "btnGuardar";
-            this.btnGuardar.Size = new System.Drawing.Size(161, 37);
-            this.btnGuardar.TabIndex = 17;
-            this.btnGuardar.Text = "Guardar";
-            this.btnGuardar.UseVisualStyleBackColor = true;
-            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
+            this.cmbPadron.Font = new System.Drawing.Font("Calibri Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbPadron.FormattingEnabled = true;
+            this.cmbPadron.Items.AddRange(new object[] {
+            "Río Negro",
+            "Neuquén"});
+            this.cmbPadron.Location = new System.Drawing.Point(20, 196);
+            this.cmbPadron.Name = "cmbPadron";
+            this.cmbPadron.Size = new System.Drawing.Size(281, 32);
+            this.cmbPadron.TabIndex = 29;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Agency FB", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.ForeColor = System.Drawing.Color.DarkCyan;
+            this.label14.Location = new System.Drawing.Point(16, 165);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(52, 24);
+            this.label14.TabIndex = 28;
+            this.label14.Text = "Padrón";
             // 
             // formAfiliado
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.ClientSize = new System.Drawing.Size(876, 228);
+            this.ClientSize = new System.Drawing.Size(876, 254);
+            this.Controls.Add(this.cmbPadron);
+            this.Controls.Add(this.label14);
             this.Controls.Add(this.btnCerrar);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.btnNuevo);
-            this.Controls.Add(this.btnGuardar);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "formAfiliado";
@@ -304,6 +331,7 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -323,9 +351,11 @@
         private System.Windows.Forms.ComboBox cmbTipoDocumento;
         private System.Windows.Forms.TextBox txtDocumento;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Button btnNuevo;
         private System.Windows.Forms.Button btnCerrar;
-        private System.Windows.Forms.Button btnGuardar;
         private System.Windows.Forms.MaskedTextBox txtFechaNacimiento;
+        private System.Windows.Forms.ComboBox cmbPadron;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Button btnNuevo;
+        private System.Windows.Forms.Button btnGuardar;
     }
 }

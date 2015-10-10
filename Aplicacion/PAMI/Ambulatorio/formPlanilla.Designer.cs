@@ -53,7 +53,7 @@
             // 
             this.dgPlanilla.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgPlanilla.Location = new System.Drawing.Point(13, 154);
-            this.dgPlanilla.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dgPlanilla.Margin = new System.Windows.Forms.Padding(4);
             this.dgPlanilla.Name = "dgPlanilla";
             this.dgPlanilla.RowTemplate.Height = 24;
             this.dgPlanilla.Size = new System.Drawing.Size(1234, 519);
@@ -63,24 +63,24 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Agency FB", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Font = new System.Drawing.Font("Franklin Gothic Book", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.DarkCyan;
             this.label2.Location = new System.Drawing.Point(10, 36);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(33, 24);
+            this.label2.Size = new System.Drawing.Size(44, 24);
             this.label2.TabIndex = 2;
             this.label2.Text = "Mes";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Agency FB", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Font = new System.Drawing.Font("Franklin Gothic Book", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.DarkCyan;
             this.label3.Location = new System.Drawing.Point(254, 37);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(31, 24);
+            this.label3.Size = new System.Drawing.Size(40, 24);
             this.label3.TabIndex = 3;
             this.label3.Text = "Año";
             // 
@@ -103,15 +103,15 @@
             "11",
             "11"});
             this.cmbMes.Location = new System.Drawing.Point(60, 33);
-            this.cmbMes.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cmbMes.Margin = new System.Windows.Forms.Padding(4);
             this.cmbMes.Name = "cmbMes";
-            this.cmbMes.Size = new System.Drawing.Size(169, 32);
+            this.cmbMes.Size = new System.Drawing.Size(169, 31);
             this.cmbMes.TabIndex = 4;
             // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.cmbMedico);
-            this.groupBox1.Font = new System.Drawing.Font("Agency FB", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox1.Font = new System.Drawing.Font("Franklin Gothic Book", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.ForeColor = System.Drawing.Color.DarkCyan;
             this.groupBox1.Location = new System.Drawing.Point(422, 21);
             this.groupBox1.Name = "groupBox1";
@@ -138,7 +138,7 @@
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.cmbAsociacion);
-            this.groupBox2.Font = new System.Drawing.Font("Agency FB", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox2.Font = new System.Drawing.Font("Franklin Gothic Book", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.ForeColor = System.Drawing.Color.DarkCyan;
             this.groupBox2.Location = new System.Drawing.Point(13, 21);
             this.groupBox2.Name = "groupBox2";
@@ -169,7 +169,7 @@
             this.groupBox3.Controls.Add(this.cmbMes);
             this.groupBox3.Controls.Add(this.label3);
             this.groupBox3.Controls.Add(this.label2);
-            this.groupBox3.Font = new System.Drawing.Font("Agency FB", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox3.Font = new System.Drawing.Font("Franklin Gothic Book", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox3.ForeColor = System.Drawing.Color.DarkCyan;
             this.groupBox3.Location = new System.Drawing.Point(855, 21);
             this.groupBox3.Name = "groupBox3";
@@ -182,15 +182,15 @@
             // 
             this.txtAnio.Location = new System.Drawing.Point(292, 34);
             this.txtAnio.Name = "txtAnio";
-            this.txtAnio.Size = new System.Drawing.Size(94, 31);
+            this.txtAnio.Size = new System.Drawing.Size(94, 28);
             this.txtAnio.TabIndex = 5;
             // 
             // btnLimpiar
             // 
             this.btnLimpiar.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.btnLimpiar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.btnLimpiar.Font = new System.Drawing.Font("Agency FB", 12F);
-            this.btnLimpiar.ForeColor = System.Drawing.Color.DarkCyan;
+            this.btnLimpiar.Font = new System.Drawing.Font("Franklin Gothic Book", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLimpiar.ForeColor = System.Drawing.Color.DarkSlateGray;
             this.btnLimpiar.Location = new System.Drawing.Point(13, 691);
             this.btnLimpiar.Name = "btnLimpiar";
             this.btnLimpiar.Size = new System.Drawing.Size(161, 37);
@@ -203,8 +203,8 @@
             // 
             this.btnValidar.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.btnValidar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.btnValidar.Font = new System.Drawing.Font("Agency FB", 12F);
-            this.btnValidar.ForeColor = System.Drawing.Color.DarkCyan;
+            this.btnValidar.Font = new System.Drawing.Font("Franklin Gothic Book", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnValidar.ForeColor = System.Drawing.Color.DarkSlateGray;
             this.btnValidar.Location = new System.Drawing.Point(1087, 110);
             this.btnValidar.Name = "btnValidar";
             this.btnValidar.Size = new System.Drawing.Size(161, 37);
@@ -217,8 +217,8 @@
             // 
             this.btnImportar.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.btnImportar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.btnImportar.Font = new System.Drawing.Font("Agency FB", 12F);
-            this.btnImportar.ForeColor = System.Drawing.Color.DarkCyan;
+            this.btnImportar.Font = new System.Drawing.Font("Franklin Gothic Book", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnImportar.ForeColor = System.Drawing.Color.DarkSlateGray;
             this.btnImportar.Location = new System.Drawing.Point(915, 691);
             this.btnImportar.Name = "btnImportar";
             this.btnImportar.Size = new System.Drawing.Size(161, 37);
@@ -232,8 +232,8 @@
             this.btnCerrar.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.btnCerrar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.btnCerrar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCerrar.Font = new System.Drawing.Font("Agency FB", 12F);
-            this.btnCerrar.ForeColor = System.Drawing.Color.DarkCyan;
+            this.btnCerrar.Font = new System.Drawing.Font("Franklin Gothic Book", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCerrar.ForeColor = System.Drawing.Color.DarkSlateGray;
             this.btnCerrar.Location = new System.Drawing.Point(1086, 691);
             this.btnCerrar.Name = "btnCerrar";
             this.btnCerrar.Size = new System.Drawing.Size(161, 37);
@@ -276,7 +276,7 @@
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.ForeColor = System.Drawing.Color.Black;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "formPlanilla";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Planilla";

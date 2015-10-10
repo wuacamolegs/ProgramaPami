@@ -99,6 +99,18 @@
     <Compile Include="Exportacion\ExportarDatos.Designer.cs">
       <DependentUpon>ExportarDatos.cs</DependentUpon>
     </Compile>
+    <Compile Include="Importar_Datos\ImportarNomenclador.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Importar_Datos\ImportarNomenclador.Designer.cs">
+      <DependentUpon>ImportarNomenclador.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Importar_Datos\ImportarPadron.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Importar_Datos\ImportarPadron.Designer.cs">
+      <DependentUpon>ImportarPadron.cs</DependentUpon>
+    </Compile>
     <Compile Include="MenuInicial.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -160,6 +172,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Exportacion\ExportarDatos.resx">
       <DependentUpon>ExportarDatos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Importar_Datos\ImportarNomenclador.resx">
+      <DependentUpon>ImportarNomenclador.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Importar_Datos\ImportarPadron.resx">
+      <DependentUpon>ImportarPadron.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MenuInicial.resx">
       <DependentUpon>MenuInicial.cs</DependentUpon>

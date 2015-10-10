@@ -42,13 +42,14 @@ namespace PAMI.Afiliados
                 txtFechaNacimiento.Text = afiliado.FechaNacimiento.ToString();
                 cmbSexo.SelectedItem = afiliado.Sexo;
                 cmbTipoDocumento.SelectedItem = afiliado.TipoDocumento;
+                cmbPadron.SelectedIndex = Convert.ToInt32(afiliado.Padron);
 
                 txtBeneficio.Enabled = false;
                 txtParentesco.Enabled = false;
             }
             catch (Exception e)
             {
-                MessageBox.Show(e.Message, "Error");
+               MessageBox.Show(e.Message, "Error");
             }
         }
         
@@ -177,12 +178,13 @@ namespace PAMI.Afiliados
                 else
                 {
                     unAfiliado.Nombre = txtApellidoNombre.Text;
-                    unAfiliado.Beneficio = Convert.ToInt64(txtBeneficio.Text);
+                    unAfiliado.Beneficio = txtBeneficio.Text;
                     unAfiliado.Parentesco = txtParentesco.Text;
                     unAfiliado.Documento = Convert.ToInt64(txtDocumento.Text);
                     unAfiliado.FechaNacimiento = txtFechaNacimiento.Text;
                     unAfiliado.Sexo = cmbSexo.SelectedItem.ToString();
                     unAfiliado.TipoDocumento = cmbTipoDocumento.SelectedItem.ToString();
+                    unAfiliado.Padron = cmbPadron.SelectedIndex;
                     return true;
                 }
             }
@@ -213,6 +215,7 @@ namespace PAMI.Afiliados
                 strErrores = strErrores + Validator.ValidarNulo(txtDocumento.Text, "Numero Documento");
                 strErrores = strErrores + Validator.validarNuloEnComboBox(cmbSexo.SelectedIndex, "Sexo");
                 strErrores = strErrores + Validator.ValidarFecha(txtFechaNacimiento.Text, "Fecha Nacimiento");
+                strErrores = strErrores + Validator.validarNuloEnComboBox(cmbPadron.SelectedIndex, "Padrón");
             }
             catch (Exception ex)
             {

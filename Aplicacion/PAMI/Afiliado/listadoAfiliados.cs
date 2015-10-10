@@ -110,7 +110,7 @@ namespace PAMI.Afiliados
             dgAfiliados.RowHeadersVisible = false;
 
             DataGridViewTextBoxColumn clm_ApellidoNombre = new DataGridViewTextBoxColumn();
-            clm_ApellidoNombre.Width = 260;
+            clm_ApellidoNombre.Width = 355;
             clm_ApellidoNombre.ReadOnly = true;
             clm_ApellidoNombre.DataPropertyName = "apellido_nombre";
             clm_ApellidoNombre.HeaderText = "Apellido y Nombre";
@@ -160,8 +160,10 @@ namespace PAMI.Afiliados
 
             dgAfiliados.EnableHeadersVisualStyles = false;
             dgAfiliados.ColumnHeadersDefaultCellStyle = miestilo;
-            dgAfiliados.ColumnHeadersDefaultCellStyle.ForeColor = Color.DarkCyan;
-            dgAfiliados.ColumnHeadersDefaultCellStyle.BackColor = Color.Gainsboro; 
+            dgAfiliados.ColumnHeadersDefaultCellStyle.ForeColor = Color.Purple;//Color.DarkCyan;
+            dgAfiliados.ColumnHeadersDefaultCellStyle.BackColor = Color.Gainsboro;
+
+            dgAfiliados.AllowUserToAddRows = false;
 
         }
 
@@ -169,7 +171,7 @@ namespace PAMI.Afiliados
         {
             try
             {
-                unAfiliado.Beneficio = Convert.ToInt64(dgAfiliados.CurrentRow.Cells[1].Value);
+                unAfiliado.Beneficio = dgAfiliados.CurrentRow.Cells[1].Value.ToString();
                 unAfiliado.Parentesco = dgAfiliados.CurrentRow.Cells[2].Value.ToString();
                 unAfiliado.TraerAfiliadoPorBeneficio();
             }
@@ -188,7 +190,7 @@ namespace PAMI.Afiliados
             limpiarUnAfiliado();
             if (txtBeneficio.Text != "")
             {
-                unAfiliado.Beneficio = Convert.ToInt64(txtBeneficio.Text);
+                unAfiliado.Beneficio = txtBeneficio.Text;
             }
             if (txtParentesco.Text != "")
             {

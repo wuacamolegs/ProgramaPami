@@ -73,3 +73,5 @@ A:\Documents\PAMI\ProgramaPami\Aplicacion\PAMI\obj\Debug\PAMI.Asociaciones.formA
 A:\Documents\PAMI\ProgramaPami\Aplicacion\PAMI\obj\Debug\PAMI.Prestadores.formPrestador.resources
 A:\Documents\PAMI\ProgramaPami\Aplicacion\PAMI\obj\Debug\PAMI.Profesionales.formProfesional.resources
 A:\Documents\PAMI\ProgramaPami\Aplicacion\PAMI\obj\Debug\PAMI.Profesionales.ListadoProfesional.resources
+A:\Documents\PAMI\ProgramaPami\Aplicacion\PAMI\obj\Debug\PAMI.Importar_Datos.ImportarPadron.resources
+A:\Documents\PAMI\ProgramaPami\Aplicacion\PAMI\obj\Debug\PAMI.Importar_Datos.ImportarNomenclador.resources

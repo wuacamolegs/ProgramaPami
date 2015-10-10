@@ -228,5 +228,26 @@ namespace Utilities
                 return "El Parentesco debe tener 2 dígitos\n";
             }
         }
+
+        public static string ValidarEsMail(string mail, string campo)
+        {
+           String expresion;
+           expresion = "\\w+([-+.']\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*";
+           if (Regex.IsMatch(mail,expresion))
+           {
+              if (Regex.Replace(mail, expresion, String.Empty).Length == 0)
+              {
+                 return "";
+              }
+              else
+              {
+                  return "Mail con formato inválido\n";
+              }
+           }
+           else
+           {
+               return "Mail con formato inválido\n";
+           }
+        }
     }
 }

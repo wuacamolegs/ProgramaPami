@@ -31,6 +31,9 @@ namespace Clases
         Int64 _numero;
         Int64 _piso;
         string _depto;
+        string _mail;
+        Int64 _asoc;
+        Int64 _padron;
 
         #endregion
       
@@ -94,13 +97,11 @@ namespace Clases
             set { _calle = value; }
         }
 
-
         public Int64 DireccionNumero
         {
             get { return _numero; }
             set { _numero = value; }
         }
-
 
         public Int64 DireccionPiso
         {
@@ -108,14 +109,29 @@ namespace Clases
             set { _piso = value; }
         }
 
-
         public string DireccionDepto
         {
             get { return _depto; }
             set { _depto = value; }
         }
 
+        public string Mail
+        {
+            get { return _mail; }
+            set { _mail = value; }
+        }
 
+        public Int64 AsocID
+        {
+            get { return _asoc; }
+            set { _asoc = value; }
+        }
+
+        public Int64 Padron
+        {
+            get { return _padron; }
+            set { _padron = value; }
+        }
         
         #endregion
 
@@ -146,6 +162,8 @@ namespace Clases
             this.DireccionPiso = Convert.ToInt64(dataRow["d_piso"]);
             this.DireccionDepto = dataRow["d_departamento"].ToString();
             this.TipoPrestador = Convert.ToInt64(dataRow["tipo_prestador"]);
+            this.Mail = (dataRow["d_mail"]).ToString();
+            this.Padron = Convert.ToInt64(dataRow["padron"]);
         }
 
         private void setearListaParametrosConCuitYUsuario()
@@ -170,12 +188,24 @@ namespace Clases
             parameterList.Add(new SqlParameter("@Piso", this.DireccionPiso));
             parameterList.Add(new SqlParameter("@Depto",this.DireccionDepto));
             parameterList.Add(new SqlParameter("@TipoPrestador", this.TipoPrestador));
+            parameterList.Add(new SqlParameter("@Mail", this.Mail));
+            parameterList.Add(new SqlParameter("@AsocID", this.AsocID));
+            parameterList.Add(new SqlParameter("@Padron", this.Padron));
+
         }
+
+        private void setearListaParametrosConAsociacionID(Int64 AsocID)
+        {
+            parameterList.Clear();
+            parameterList.Add(new SqlParameter("@AsocID", AsocID));
+        }
+
 
 
         public bool NuevoPrestador()
         {
             if (this.TraerPrestadorPorCuitYUsuario())
+
             { //el prestador ya existe, le cargue los datos
                 return false;
             }
@@ -202,16 +232,11 @@ namespace Clases
             }
         }
 
-
-
-
         public void UpdatePrestador()
         {
             setearListaParametrosCompleta();
             this.Modificar(parameterList);
         }
-
-
 
         public bool TraerListadoPorAsociacionID(Int64 AsocID)
         {
@@ -228,10 +253,11 @@ namespace Clases
             }
         }
 
-        private void setearListaParametrosConAsociacionID(Int64 AsocID)
+
+        public void DeletePrestador()
         {
-            parameterList.Clear();
-            parameterList.Add(new SqlParameter("@AsocID", AsocID));
+            setearListaParametrosConAsociacionID(this.AsocID);
+            this.Eliminar(parameterList);
         }
     }
 }

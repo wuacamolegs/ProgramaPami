@@ -46,13 +46,15 @@
             this.nuevoPrestadorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editarPrestadorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.profesionalesPorPrestadorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.rEDToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aCTUALIZARDATOSToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aFILIADOSToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.nOMENCLADORToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.pRESTADORESToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.dIAGNOSTICOSToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.eXPORTARDATOSToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pROFESIONALToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.lISTADOToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.nUEVOToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -66,13 +68,13 @@
             this.nOMENCLADORToolStripMenuItem,
             this.dIAGNOSTICOSToolStripMenuItem1,
             this.pRESTADORESToolStripMenuItem,
-            this.rEDToolStripMenuItem,
             this.aCTUALIZARDATOSToolStripMenuItem,
-            this.eXPORTARDATOSToolStripMenuItem});
+            this.eXPORTARDATOSToolStripMenuItem,
+            this.pROFESIONALToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(8, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(1087, 31);
+            this.menuStrip1.Size = new System.Drawing.Size(1228, 31);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "Menu";
             // 
@@ -207,12 +209,6 @@
             this.profesionalesPorPrestadorToolStripMenuItem.Text = "Profesionales Por Prestador";
             this.profesionalesPorPrestadorToolStripMenuItem.Click += new System.EventHandler(this.profesionalesPorPrestadorToolStripMenuItem_Click);
             // 
-            // rEDToolStripMenuItem
-            // 
-            this.rEDToolStripMenuItem.Name = "rEDToolStripMenuItem";
-            this.rEDToolStripMenuItem.Size = new System.Drawing.Size(53, 27);
-            this.rEDToolStripMenuItem.Text = "RED";
-            // 
             // aCTUALIZARDATOSToolStripMenuItem
             // 
             this.aCTUALIZARDATOSToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -236,6 +232,7 @@
             this.nOMENCLADORToolStripMenuItem1.Name = "nOMENCLADORToolStripMenuItem1";
             this.nOMENCLADORToolStripMenuItem1.Size = new System.Drawing.Size(208, 28);
             this.nOMENCLADORToolStripMenuItem1.Text = "NOMENCLADOR";
+            this.nOMENCLADORToolStripMenuItem1.Click += new System.EventHandler(this.nOMENCLADORToolStripMenuItem1_Click);
             // 
             // pRESTADORESToolStripMenuItem1
             // 
@@ -257,11 +254,33 @@
             this.eXPORTARDATOSToolStripMenuItem.Text = "EXPORTAR DATOS";
             this.eXPORTARDATOSToolStripMenuItem.Click += new System.EventHandler(this.eXPORTARDATOSToolStripMenuItem_Click);
             // 
+            // pROFESIONALToolStripMenuItem
+            // 
+            this.pROFESIONALToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.lISTADOToolStripMenuItem1,
+            this.nUEVOToolStripMenuItem});
+            this.pROFESIONALToolStripMenuItem.Name = "pROFESIONALToolStripMenuItem";
+            this.pROFESIONALToolStripMenuItem.Size = new System.Drawing.Size(131, 27);
+            this.pROFESIONALToolStripMenuItem.Text = "PROFESIONAL";
+            // 
+            // lISTADOToolStripMenuItem1
+            // 
+            this.lISTADOToolStripMenuItem1.Name = "lISTADOToolStripMenuItem1";
+            this.lISTADOToolStripMenuItem1.Size = new System.Drawing.Size(152, 28);
+            this.lISTADOToolStripMenuItem1.Text = "LISTADO";
+            this.lISTADOToolStripMenuItem1.Click += new System.EventHandler(this.lISTADOToolStripMenuItem1_Click);
+            // 
+            // nUEVOToolStripMenuItem
+            // 
+            this.nUEVOToolStripMenuItem.Name = "nUEVOToolStripMenuItem";
+            this.nUEVOToolStripMenuItem.Size = new System.Drawing.Size(152, 28);
+            this.nUEVOToolStripMenuItem.Text = "NUEVO";
+            // 
             // MenuInicial
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1087, 540);
+            this.ClientSize = new System.Drawing.Size(1228, 540);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Margin = new System.Windows.Forms.Padding(4);
@@ -282,7 +301,6 @@
         private System.Windows.Forms.ToolStripMenuItem aFILIADOSToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aMBULATORIOSToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem pRESTADORESToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem rEDToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem nOMENCLADORToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem búsquedaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem nuevoAfiliadoToolStripMenuItem;
@@ -303,6 +321,9 @@
         private System.Windows.Forms.ToolStripMenuItem profesionalesPorPrestadorToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem nuevoPrestadorToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem editarPrestadorToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem pROFESIONALToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem lISTADOToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem nUEVOToolStripMenuItem;
     }
 }
 

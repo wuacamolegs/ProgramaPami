@@ -47,16 +47,17 @@ namespace PAMI.Nomenclador
             txtCodigo.Text = "";
             txtDescripcion.Text = "";
             cmbModulo.SelectedIndex = -1;
+            dgNomenclador.DataSource = null;
         }
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
-          //  try
-           // {
+            try
+            {
                 cargarDatosFiltros();
                 DataSet dsNomenclador = unaPractica.BuscarPracticasPorFiltros();
                 cargarGrillaCon(dsNomenclador);
-          /*  }
+            }
             catch (ErrorConsultaException ex)
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -64,7 +65,7 @@ namespace PAMI.Nomenclador
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }*/
+            }
 
         }
 
@@ -193,7 +194,13 @@ namespace PAMI.Nomenclador
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
-
+            DialogResult result = MessageBox.Show("Está seguro?", "Eliminar Práctica", MessageBoxButtons.YesNo);
+            if (result == DialogResult.Yes)
+            {
+                cargarDatosGridNomenclador();
+                unaPractica.EliminarPractica();
+                btnLimpiar_Click(sender, e);
+            }
         }
     }
 }

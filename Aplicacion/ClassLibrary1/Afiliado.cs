@@ -20,12 +20,13 @@ namespace Clases
         #region atributos
 
         string _nombre;
-        Int64 _beneficio;
+        string _beneficio;
         string _parentesco;
         string _tipoDocumento;
         Int64 _documento;
         string _fechaNacimiento;
         string _sexo;
+        Int64 _padron;
 
         #endregion
 
@@ -47,7 +48,7 @@ namespace Clases
             set { _nombre = value; }
         }
 
-        public Int64 Beneficio
+        public string Beneficio
         {
             get { return _beneficio; }
             set { _beneficio = value; }
@@ -83,6 +84,12 @@ namespace Clases
             set { _sexo = value; }
         }
 
+        public Int64 Padron
+        {
+            get { return _padron; }
+            set { _padron = value; }
+        }
+
         #endregion
 
         #region metodos publicos
@@ -105,12 +112,13 @@ namespace Clases
             // Esto es tal cual lo devuelve el stored de la DB
 
             this.Nombre = (dr["apellido_nombre"]).ToString();
-            this.Beneficio = Convert.ToInt64(dr["beneficio"]);
+            this.Beneficio = (dr["beneficio"]).ToString();
             this.Parentesco = (dr["parentesco"]).ToString();
             this.TipoDocumento = (dr["documento_tipo"]).ToString();
             this.Documento = Convert.ToInt64(dr["documento_numero"]);
             this.FechaNacimiento = (dr["fecha_nacimiento"]).ToString();
             this.Sexo = (dr["sexo"]).ToString();
+            this.Padron = Convert.ToInt64(dr["padron_codigo"]);
         }
 
         #endregion
@@ -137,6 +145,7 @@ namespace Clases
             parameterList.Add(new SqlParameter("@Dni", this.Documento));
             parameterList.Add(new SqlParameter("@Sexo", this.Sexo));
             parameterList.Add(new SqlParameter("@FechaNac", this.FechaNacimiento));
+            parameterList.Add(new SqlParameter("@Padron", this.Padron));
         }
 
         private void setearListaParametrosConBeneficioParentesco()
@@ -146,9 +155,9 @@ namespace Clases
             parameterList.Add(new SqlParameter("@Parentesco", this.Parentesco));
         }
 
-        private void setearListaParametrosAgregarMedicoMatricula(Profesional medico)
+        private void setearListaParametrosAgregarAsociacionID(Int64 asocID)
         {
-            parameterList.Add(new SqlParameter("@MedicoMatricula", medico.Matricula));
+            parameterList.Add(new SqlParameter("@AsocID", asocID));
         }
        
         #endregion
@@ -201,10 +210,10 @@ namespace Clases
             this.Eliminar(parameterList);
         }
 
-        public DataSet TraerAfiliadosConFiltrosPorMedico(Profesional Medico)
+        public DataSet TraerAfiliadosConFiltrosPorAsociacionID(Int64 asocID)
         {
-            setearListaParametrosAgregarMedicoMatricula(Medico);
-            return this.TraerListado(parameterList, "ConFiltrosPorPadronMedico");
+            setearListaParametrosAgregarAsociacionID(asocID);
+            return this.TraerListado(parameterList, "ConFiltrosPorPadronAsoc");
         }
     }
 }

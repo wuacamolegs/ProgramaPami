@@ -58,8 +58,6 @@ A:\Documents\PAMI\ProgramaPami\Aplicacion\PAMI\obj\Release\ResolveAssemblyRefere
 A:\Documents\PAMI\ProgramaPami\Aplicacion\PAMI\obj\Release\PAMI.Afiliados.listadoAfiliados.resources
 A:\Documents\PAMI\ProgramaPami\Aplicacion\PAMI\obj\Release\PAMI.Afiliados.formAfiliado.resources
 A:\Documents\PAMI\ProgramaPami\Aplicacion\PAMI\obj\Release\PAMI.Ambulatorio.AmbulatorioExistente.resources
-A:\Documents\PAMI\ProgramaPami\Aplicacion\PAMI\obj\Release\PAMI.Ambulatorio.EditarAmbulatorio.resources
-A:\Documents\PAMI\ProgramaPami\Aplicacion\PAMI\obj\Release\PAMI.Ambulatorio.NuevoAmbulatorio.resources
 A:\Documents\PAMI\ProgramaPami\Aplicacion\PAMI\obj\Release\PAMI.Exportacion.ExportarDatos.resources
 A:\Documents\PAMI\ProgramaPami\Aplicacion\PAMI\obj\Release\PAMI.MenuInicial.resources
 A:\Documents\PAMI\ProgramaPami\Aplicacion\PAMI\obj\Release\PAMI.Nomenclador.formPracticas.resources
@@ -70,7 +68,6 @@ A:\Documents\PAMI\ProgramaPami\Aplicacion\PAMI\obj\Release\PAMI.csproj.GenerateR
 A:\Documents\PAMI\ProgramaPami\Aplicacion\PAMI\obj\Release\PAMI.exe
 A:\Documents\PAMI\ProgramaPami\Aplicacion\PAMI\obj\Release\PAMI.pdb
 A:\Documents\PAMI\ProgramaPami\Aplicacion\PAMI\obj\Release\PAMI.Ambulatorio.NuevoEditarAmbulatorio.resources
-A:\Documents\PAMI\ProgramaPami\Aplicacion\PAMI\obj\Release\PAMI.Asociacion.formAsociacionMedicos.resources
 A:\Documents\PAMI\ProgramaPami\Aplicacion\PAMI\obj\Release\PAMI.Prestadores.formPrestador.resources
 A:\Documents\PAMI\ProgramaPami\Aplicacion\PAMI\obj\Release\PAMI.Profesionales.formProfesional.resources
 A:\Documents\PAMI\ProgramaPami\Aplicacion\PAMI\obj\Release\PAMI.Profesionales.ListadoProfesional.resources

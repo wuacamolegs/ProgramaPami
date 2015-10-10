@@ -15,6 +15,8 @@ using PAMI.Nomenclador;
 using PAMI.Ambulatorio;
 using PAMI.Asociaciones;
 using PAMI.Prestadores;
+using PAMI.Importar_Datos;
+using PAMI.Profesionales;
 using Utilities;
 
 namespace PAMI
@@ -58,28 +60,8 @@ namespace PAMI
 
         private void aFILIADOSToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            OpenFileDialog openFileDialog1 = new OpenFileDialog();
-            openFileDialog1.Filter = "Text Files (.txt)|PADRON_UGL*.txt";
-            DialogResult result = openFileDialog1.ShowDialog();
-            if (result == DialogResult.OK)
-            {
-                try
-                {
-                    string ruta = openFileDialog1.FileName;
-                    List<SqlParameter> parameterList = new List<SqlParameter>();
-                    parameterList.Add(new SqlParameter("@Ruta", ruta));
-                    Conexion.SQLHelper.ExecuteNonQuery("ImportarPadron", CommandType.StoredProcedure, parameterList);
-                    MessageBox.Show("Listo", "");
-                }
-                catch (ErrorConsultaException ex)
-                {
-                    MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
+            ImportarPadron padron = new ImportarPadron();
+            padron.Show();
         }
 
         private void eXPORTARDATOSToolStripMenuItem_Click(object sender, EventArgs e)
@@ -157,15 +139,26 @@ namespace PAMI
 
         private void nuevoPrestadorToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            formPrestador prestador = new formPrestador();
+            formPrestador prestador = new formPrestador("Nuevo");
             prestador.Show();
         }
 
         private void editarPrestadorToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            formPrestador prestador = new formPrestador();
-            prestador.AbrirParaBuscar();
+            formPrestador prestador = new formPrestador("Editar");
             prestador.Show();
+        }
+
+        private void nOMENCLADORToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            ImportarNomenclador nomenclador = new ImportarNomenclador();
+            nomenclador.Show();
+        }
+
+        private void lISTADOToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            ListadoProfesional prof = new ListadoProfesional();
+            prof.Show();
         }
 
     }
