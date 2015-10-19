@@ -60,6 +60,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AutocompleteComboBox.cs" />
+    <Compile Include="DataGridViewFilter.cs" />
     <Compile Include="DropDownListManager.cs" />
     <Compile Include="Editor.cs" />
     <Compile Include="FSLogger.cs" />

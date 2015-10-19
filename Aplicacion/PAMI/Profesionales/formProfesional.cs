@@ -16,9 +16,10 @@ namespace PAMI.Profesionales
             InitializeComponent();
         }
 
-        private void textBox10_TextChanged(object sender, EventArgs e)
-        {
 
+        internal void abrirParaEditar(Clases.Profesional unProfesional)
+        {
+            throw new NotImplementedException();
         }
     }
 }

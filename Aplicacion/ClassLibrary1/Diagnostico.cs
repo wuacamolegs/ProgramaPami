@@ -45,7 +45,6 @@ namespace Clases
         
         #endregion
 
-
         #region metodos publicos
 
         public override string NombreTabla()
@@ -58,6 +57,22 @@ namespace Clases
             return "Diagnosticos";
         }
         #endregion
-        
+
+        #region seters
+
+        private void setearListaParametrosConAsociacionID(long AsocID)
+        {
+            parameterList.Clear();
+            parameterList.Add(new SqlParameter("@AsocID", AsocID));
+        }
+
+        #endregion
+
+        public DataSet TraerListadoDiagnosticoPorAsociacion(Int64 AsocID)
+        {
+            setearListaParametrosConAsociacionID(AsocID);
+            return this.TraerListado(parameterList, "PorAsocID");
+        }
+
     }
 }

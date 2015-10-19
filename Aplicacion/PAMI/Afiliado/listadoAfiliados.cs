@@ -55,7 +55,6 @@ namespace PAMI.Afiliados
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
         }
 
         private void btnLimpiar_Click(object sender, EventArgs e)
@@ -117,7 +116,7 @@ namespace PAMI.Afiliados
             dgAfiliados.Columns.Add(clm_ApellidoNombre);
 
             DataGridViewTextBoxColumn clm_beneficio = new DataGridViewTextBoxColumn();
-            clm_beneficio.Width = 160;
+            clm_beneficio.Width = 140;
             clm_beneficio.ReadOnly = true;
             clm_beneficio.DataPropertyName = "beneficio";
             clm_beneficio.HeaderText = "Beneficio";
@@ -138,14 +137,14 @@ namespace PAMI.Afiliados
             dgAfiliados.Columns.Add(clm_tipoDni);
 
             DataGridViewTextBoxColumn clm_numero_documento = new DataGridViewTextBoxColumn();
-            clm_numero_documento.Width = 80;
+            clm_numero_documento.Width = 90;
             clm_numero_documento.ReadOnly = true;
             clm_numero_documento.DataPropertyName = "documento_numero";
             clm_numero_documento.HeaderText = "Documento";
             dgAfiliados.Columns.Add(clm_numero_documento);
 
             DataGridViewTextBoxColumn clm_fechaNacimiento = new DataGridViewTextBoxColumn();
-            clm_fechaNacimiento.Width = 120;
+            clm_fechaNacimiento.Width = 130;
             clm_fechaNacimiento.ReadOnly = true;
             clm_fechaNacimiento.DataPropertyName = "fecha_nacimiento";
             clm_fechaNacimiento.HeaderText = "Fecha Nacimiento";
@@ -156,11 +155,11 @@ namespace PAMI.Afiliados
 
 
             DataGridViewCellStyle miestilo = new DataGridViewCellStyle();
-            miestilo.Font = new Font("Agency FB", 11);
+            miestilo.Font = new Font("Franklin Gothic Book", 9);
 
             dgAfiliados.EnableHeadersVisualStyles = false;
             dgAfiliados.ColumnHeadersDefaultCellStyle = miestilo;
-            dgAfiliados.ColumnHeadersDefaultCellStyle.ForeColor = Color.Purple;//Color.DarkCyan;
+            dgAfiliados.ColumnHeadersDefaultCellStyle.ForeColor = Color.DarkSlateGray;
             dgAfiliados.ColumnHeadersDefaultCellStyle.BackColor = Color.Gainsboro;
 
             dgAfiliados.AllowUserToAddRows = false;
@@ -246,7 +245,42 @@ namespace PAMI.Afiliados
             btnEliminar.Enabled = true;
         }
 
+        private void txtBeneficio_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btnBuscar_Click(sender, e);
+            }
+        }
+
+        private void txtParentesco_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btnBuscar_Click(sender, e);
+            }
+        }
+
+        private void txtDocumento_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btnBuscar_Click(sender, e);
+            }
+        }
+
+        private void txtNombreApellido_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btnBuscar_Click(sender, e);
+            }
+        }
         #endregion
+
+        
+
+
 
     }
 }

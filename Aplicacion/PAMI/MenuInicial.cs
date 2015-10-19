@@ -19,6 +19,7 @@ using PAMI.Importar_Datos;
 using PAMI.Profesionales;
 using Utilities;
 
+
 namespace PAMI
 {
     public partial class MenuInicial : Form
@@ -40,125 +41,243 @@ namespace PAMI
             }
         }
 
-        private void aMBULATORIOSToolStripMenuItem_Click(object sender, EventArgs e)
+        private void btnAfiliado_Click(object sender, EventArgs e)
         {
+            botonesACero();
+            btnAfiliado.BackColor = Color.DarkCyan;
+            btnAfiliado.ForeColor = Color.White;
 
+            btn2BusquedaAfiliado.Visible = true;
+            btn2NuevoAfiliado.Visible = true;
         }
 
-        private void búsquedaToolStripMenuItem_Click(object sender, EventArgs e)
+
+        private void btnAmbulatorio_Click(object sender, EventArgs e)
         {
-            listadoAfiliados afiliados = new listadoAfiliados();
-            afiliados.Show();
+            botonesACero();
+            btnAmbulatorio.BackColor = Color.DarkCyan;
+            btnAmbulatorio.ForeColor = Color.White;
+
+            btn3NuevoAmbulatorio.Visible = true;
+            btn3NuevaPlanilla.Visible = true;
+            btn3Busqueda.Visible = true;
         }
 
-        private void nuevoAfiliadoToolStripMenuItem_Click(object sender, EventArgs e)
+
+        private void btnDiagnostico_Click(object sender, EventArgs e)
+        {
+            botonesACero();
+            btnDiagnostico.BackColor = Color.DarkCyan;
+            btnDiagnostico.ForeColor = Color.White;
+        }
+
+        private void btnProfesionales_Click(object sender, EventArgs e)
+        {
+            botonesACero();
+            btnProfesionales.BackColor = Color.DarkCyan;
+            btnProfesionales.ForeColor = Color.White;
+
+            btn5BusquedaProfesional.Visible = true;
+            btn5NuevoProfesional.Visible = true;
+            btn5Contador.Visible = true;
+        }
+
+        private void btnPrestadores_Click(object sender, EventArgs e)
+        {
+            botonesACero();
+            btnPrestadores.BackColor = Color.DarkCyan;
+            btnPrestadores.ForeColor = Color.White;
+
+            btn6BusquedaPrestador.Visible = true;
+            btn6NuevoPrestador.Visible = true;
+            btn6ProfesionalesxAsociacion.Visible = true;
+        }
+
+        private void btnNomenclador_Click(object sender, EventArgs e)
+        {
+            botonesACero();
+            btnNomenclador.BackColor = Color.DarkCyan;
+            btnNomenclador.ForeColor = Color.White;
+
+            btn7Busqueda.Visible = true;
+            btn7Nuevo.Visible = true;
+        }
+
+        private void btnDatos_Click(object sender, EventArgs e)
+        {
+            botonesACero();
+            btnDatos.BackColor = Color.DarkCyan;
+            btnDatos.ForeColor = Color.White;
+
+            btn8Diagnosticos.Visible = true;
+            btn8Exportar.Visible = true;
+            btn8Nomenclador.Visible = true;
+            btn8Padron.Visible = true;
+        }
+
+
+        private void botonesACero()
+        {
+            btnAfiliado.BackColor = Color.LightGray;
+            btnAmbulatorio.BackColor = Color.LightGray;
+            btnDatos.BackColor = Color.LightGray;
+            btnDiagnostico.BackColor = Color.LightGray;
+            btnNomenclador.BackColor = Color.LightGray;
+            btnPrestadores.BackColor = Color.LightGray;
+            btnProfesionales.BackColor = Color.LightGray;
+
+            btnAfiliado.ForeColor = Color.DarkCyan;
+            btnAmbulatorio.ForeColor = Color.DarkCyan;
+            btnDatos.ForeColor = Color.DarkCyan;
+            btnDiagnostico.ForeColor = Color.DarkCyan;
+            btnNomenclador.ForeColor = Color.DarkCyan;
+            btnPrestadores.ForeColor = Color.DarkCyan;
+            btnProfesionales.ForeColor = Color.DarkCyan;
+
+            btn2BusquedaAfiliado.Visible = false;
+            btn2NuevoAfiliado.Visible = false;
+
+            btn3NuevoAmbulatorio.Visible = false;
+            btn3NuevaPlanilla.Visible = false;
+            btn3Busqueda.Visible = false;
+            
+            btn5BusquedaProfesional.Visible = false;
+            btn5NuevoProfesional.Visible = false;
+            btn5Contador.Visible = false;
+
+            btn6BusquedaPrestador.Visible = false;
+            btn6NuevoPrestador.Visible = false;
+            btn6ProfesionalesxAsociacion.Visible = false;
+
+            btn7Busqueda.Visible = false;
+            btn7Nuevo.Visible = false;
+
+            btn8Diagnosticos.Visible = false;
+            btn8Exportar.Visible = false;
+            btn8Nomenclador.Visible = false;
+            btn8Padron.Visible = false;
+        }
+
+        private void btn2NuevoAfiliado_Click(object sender, EventArgs e)
         {
             formAfiliado nuevoAfiliado = new formAfiliado();
             nuevoAfiliado.abrirNuevo();
             nuevoAfiliado.Show();
+            botonesACero();
         }
 
-        private void aFILIADOSToolStripMenuItem1_Click(object sender, EventArgs e)
+        private void btn2BusquedaAfiliado_Click(object sender, EventArgs e)
         {
-            ImportarPadron padron = new ImportarPadron();
-            padron.Show();
+            listadoAfiliados afiliados = new listadoAfiliados();
+            afiliados.Show();
+            botonesACero();
         }
 
-        private void eXPORTARDATOSToolStripMenuItem_Click(object sender, EventArgs e)
+        private void btn3NuevoAmbulatorio_Click(object sender, EventArgs e)
         {
-            ExportarDatos exportar = new ExportarDatos();
-            exportar.Show();
-
+            NuevoEditarAmbulatorio ambulatorio = new NuevoEditarAmbulatorio();
+            ambulatorio.Show();
+            botonesACero();
         }
 
-        private void cargarPlanillaToolStripMenuItem_Click(object sender, EventArgs e)
+        private void btn3NuevaPlanilla_Click(object sender, EventArgs e)
         {
             formPlanilla planilla = new formPlanilla();
             planilla.AbrirParaNuevaPlanilla();
             planilla.Show();
+            botonesACero();
         }
 
-        private void búsquedaPrácticaToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            ListadoNomenclador nomenclador = new ListadoNomenclador();
-            nomenclador.Show();
-        }
-
-        private void listadoAmbulatoriosToolStripMenuItem_Click(object sender, EventArgs e)
+        private void btn3Busqueda_Click(object sender, EventArgs e)
         {
             formPlanilla planilla = new formPlanilla();
             planilla.AbrirParaBuscar();
             planilla.Show();
+            botonesACero();
         }
 
-        private void cargarNuevoAmbulatorioToolStripMenuItem_Click(object sender, EventArgs e)
+        private void btn5NuevoProfesional_Click(object sender, EventArgs e)
         {
-            NuevoEditarAmbulatorio ambulatorio = new NuevoEditarAmbulatorio();
-            ambulatorio.Show();
+            formProfesional prof = new formProfesional();
+            prof.Show();
+            botonesACero();
         }
 
-        private void dIAGNOSTICOSToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            OpenFileDialog openFileDialog1 = new OpenFileDialog();
-            openFileDialog1.Filter = "Text Files (.txt)|*.txt";
-            DialogResult result = openFileDialog1.ShowDialog();
-            if (result == DialogResult.OK)
-            {
-                try
-                {
-                    string ruta = openFileDialog1.FileName;
-                    List<SqlParameter> parameterList = new List<SqlParameter>();
-                    parameterList.Add(new SqlParameter("@Ruta", ruta));
-                    Conexion.SQLHelper.ExecuteNonQuery("ImportarDiagnosticos", CommandType.StoredProcedure, parameterList);
-                    MessageBox.Show("Listo", "");
-
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
-        }
-
-        private void pRESTADORESToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void profesionalesPorPrestadorToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            formAsociacionMedicos asocMedicos = new formAsociacionMedicos();
-            asocMedicos.Show();
-        }
-
-        private void nuevaPrácticaToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            formPracticas practicas = new formPracticas();
-            practicas.Show();
-        }
-
-        private void nuevoPrestadorToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            formPrestador prestador = new formPrestador("Nuevo");
-            prestador.Show();
-        }
-
-        private void editarPrestadorToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            formPrestador prestador = new formPrestador("Editar");
-            prestador.Show();
-        }
-
-        private void nOMENCLADORToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            ImportarNomenclador nomenclador = new ImportarNomenclador();
-            nomenclador.Show();
-        }
-
-        private void lISTADOToolStripMenuItem1_Click(object sender, EventArgs e)
+        private void btn5BusquedaProfesional_Click(object sender, EventArgs e)
         {
             ListadoProfesional prof = new ListadoProfesional();
             prof.Show();
+            botonesACero();
+        }
+
+        private void btn6NuevoPrestador_Click(object sender, EventArgs e)
+        {
+            formPrestador prestador = new formPrestador("Nuevo");
+            prestador.Show();
+            botonesACero();
+        }
+
+        private void btn6ProfesionalesxAsociacion_Click(object sender, EventArgs e)
+        {
+            formAsociacionMedicos asocMedicos = new formAsociacionMedicos();
+            asocMedicos.Show();
+            botonesACero();
+        }
+
+        private void btn6BusquedaPrestador_Click(object sender, EventArgs e)
+        {
+            formPrestador prestador = new formPrestador("Editar");
+            prestador.Show();
+            botonesACero();
+        }
+
+        private void btn7NuevaPractica_Click(object sender, EventArgs e)
+        {
+            formPracticas practicas = new formPracticas();
+            practicas.Show();
+            botonesACero();
+        }
+
+        private void btn7Busqueda_Click(object sender, EventArgs e)
+        {
+            ListadoNomenclador nomenclador = new ListadoNomenclador();
+            nomenclador.Show();
+            botonesACero();
+        }
+
+        private void btn8Padron_Click(object sender, EventArgs e)
+        {
+            ImportarPadron padron = new ImportarPadron();
+            padron.Show();
+            botonesACero();
+        }
+
+        private void btn8Exportar_Click(object sender, EventArgs e)
+        {
+            ExportarDatos exportar = new ExportarDatos();
+            exportar.Show();
+            botonesACero();
+        }
+
+        private void btn8Nomenclador_Click(object sender, EventArgs e)
+        {
+            ImportarNomenclador nomenclador = new ImportarNomenclador();
+            nomenclador.Show();
+            botonesACero();
+        }
+
+        private void btn8Diagnosticos_Click(object sender, EventArgs e)
+        {
+            ImportarDiagnosticos diagnosticos = new ImportarDiagnosticos();
+            diagnosticos.Show();
+            botonesACero();
+        }
+
+        private void btn5Contador_Click(object sender, EventArgs e)
+        {
+            ContadorPracticasProfesional contador = new ContadorPracticasProfesional();
+            contador.Show();
+            botonesACero();
         }
 
     }

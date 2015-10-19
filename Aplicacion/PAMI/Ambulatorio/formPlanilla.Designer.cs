@@ -52,11 +52,11 @@
             // dgPlanilla
             // 
             this.dgPlanilla.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgPlanilla.Location = new System.Drawing.Point(13, 154);
+            this.dgPlanilla.Location = new System.Drawing.Point(13, 145);
             this.dgPlanilla.Margin = new System.Windows.Forms.Padding(4);
             this.dgPlanilla.Name = "dgPlanilla";
-            this.dgPlanilla.RowTemplate.Height = 24;
-            this.dgPlanilla.Size = new System.Drawing.Size(1234, 519);
+            this.dgPlanilla.RowTemplate.Height = 30;
+            this.dgPlanilla.Size = new System.Drawing.Size(1515, 583);
             this.dgPlanilla.TabIndex = 0;
             this.dgPlanilla.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dgPlanilla_KeyDown);
             // 
@@ -65,7 +65,7 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Franklin Gothic Book", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.DarkCyan;
-            this.label2.Location = new System.Drawing.Point(10, 36);
+            this.label2.Location = new System.Drawing.Point(8, 41);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(44, 24);
@@ -77,7 +77,7 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Franklin Gothic Book", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.DarkCyan;
-            this.label3.Location = new System.Drawing.Point(254, 37);
+            this.label3.Location = new System.Drawing.Point(245, 41);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(40, 24);
@@ -87,6 +87,7 @@
             // cmbMes
             // 
             this.cmbMes.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbMes.Font = new System.Drawing.Font("Calibri Light", 13.8F);
             this.cmbMes.ForeColor = System.Drawing.SystemColors.InactiveCaptionText;
             this.cmbMes.FormattingEnabled = true;
             this.cmbMes.Items.AddRange(new object[] {
@@ -105,7 +106,7 @@
             this.cmbMes.Location = new System.Drawing.Point(60, 33);
             this.cmbMes.Margin = new System.Windows.Forms.Padding(4);
             this.cmbMes.Name = "cmbMes";
-            this.cmbMes.Size = new System.Drawing.Size(169, 31);
+            this.cmbMes.Size = new System.Drawing.Size(169, 36);
             this.cmbMes.TabIndex = 4;
             // 
             // groupBox1
@@ -113,9 +114,9 @@
             this.groupBox1.Controls.Add(this.cmbMedico);
             this.groupBox1.Font = new System.Drawing.Font("Franklin Gothic Book", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.ForeColor = System.Drawing.Color.DarkCyan;
-            this.groupBox1.Location = new System.Drawing.Point(422, 21);
+            this.groupBox1.Location = new System.Drawing.Point(567, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(412, 83);
+            this.groupBox1.Size = new System.Drawing.Size(549, 83);
             this.groupBox1.TabIndex = 5;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Médico";
@@ -132,7 +133,7 @@
             "3"});
             this.cmbMedico.Location = new System.Drawing.Point(6, 36);
             this.cmbMedico.Name = "cmbMedico";
-            this.cmbMedico.Size = new System.Drawing.Size(389, 36);
+            this.cmbMedico.Size = new System.Drawing.Size(525, 36);
             this.cmbMedico.TabIndex = 0;
             // 
             // groupBox2
@@ -140,9 +141,9 @@
             this.groupBox2.Controls.Add(this.cmbAsociacion);
             this.groupBox2.Font = new System.Drawing.Font("Franklin Gothic Book", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.ForeColor = System.Drawing.Color.DarkCyan;
-            this.groupBox2.Location = new System.Drawing.Point(13, 21);
+            this.groupBox2.Location = new System.Drawing.Point(12, 12);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(403, 83);
+            this.groupBox2.Size = new System.Drawing.Size(549, 83);
             this.groupBox2.TabIndex = 6;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Asociación";
@@ -159,7 +160,7 @@
             "3"});
             this.cmbAsociacion.Location = new System.Drawing.Point(6, 36);
             this.cmbAsociacion.Name = "cmbAsociacion";
-            this.cmbAsociacion.Size = new System.Drawing.Size(382, 36);
+            this.cmbAsociacion.Size = new System.Drawing.Size(525, 36);
             this.cmbAsociacion.TabIndex = 0;
             this.cmbAsociacion.SelectedIndexChanged += new System.EventHandler(this.cmbAsociacion_SelectedIndexChanged);
             // 
@@ -171,7 +172,7 @@
             this.groupBox3.Controls.Add(this.label2);
             this.groupBox3.Font = new System.Drawing.Font("Franklin Gothic Book", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox3.ForeColor = System.Drawing.Color.DarkCyan;
-            this.groupBox3.Location = new System.Drawing.Point(855, 21);
+            this.groupBox3.Location = new System.Drawing.Point(1135, 12);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(392, 83);
             this.groupBox3.TabIndex = 7;
@@ -180,9 +181,10 @@
             // 
             // txtAnio
             // 
-            this.txtAnio.Location = new System.Drawing.Point(292, 34);
+            this.txtAnio.Font = new System.Drawing.Font("Calibri Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtAnio.Location = new System.Drawing.Point(292, 36);
             this.txtAnio.Name = "txtAnio";
-            this.txtAnio.Size = new System.Drawing.Size(94, 28);
+            this.txtAnio.Size = new System.Drawing.Size(94, 32);
             this.txtAnio.TabIndex = 5;
             // 
             // btnLimpiar
@@ -191,7 +193,7 @@
             this.btnLimpiar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.btnLimpiar.Font = new System.Drawing.Font("Franklin Gothic Book", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLimpiar.ForeColor = System.Drawing.Color.DarkSlateGray;
-            this.btnLimpiar.Location = new System.Drawing.Point(13, 691);
+            this.btnLimpiar.Location = new System.Drawing.Point(13, 735);
             this.btnLimpiar.Name = "btnLimpiar";
             this.btnLimpiar.Size = new System.Drawing.Size(161, 37);
             this.btnLimpiar.TabIndex = 8;
@@ -205,7 +207,7 @@
             this.btnValidar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.btnValidar.Font = new System.Drawing.Font("Franklin Gothic Book", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnValidar.ForeColor = System.Drawing.Color.DarkSlateGray;
-            this.btnValidar.Location = new System.Drawing.Point(1087, 110);
+            this.btnValidar.Location = new System.Drawing.Point(1368, 101);
             this.btnValidar.Name = "btnValidar";
             this.btnValidar.Size = new System.Drawing.Size(161, 37);
             this.btnValidar.TabIndex = 9;
@@ -219,7 +221,7 @@
             this.btnImportar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.btnImportar.Font = new System.Drawing.Font("Franklin Gothic Book", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnImportar.ForeColor = System.Drawing.Color.DarkSlateGray;
-            this.btnImportar.Location = new System.Drawing.Point(915, 691);
+            this.btnImportar.Location = new System.Drawing.Point(1195, 735);
             this.btnImportar.Name = "btnImportar";
             this.btnImportar.Size = new System.Drawing.Size(161, 37);
             this.btnImportar.TabIndex = 10;
@@ -234,7 +236,7 @@
             this.btnCerrar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnCerrar.Font = new System.Drawing.Font("Franklin Gothic Book", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCerrar.ForeColor = System.Drawing.Color.DarkSlateGray;
-            this.btnCerrar.Location = new System.Drawing.Point(1086, 691);
+            this.btnCerrar.Location = new System.Drawing.Point(1366, 735);
             this.btnCerrar.Name = "btnCerrar";
             this.btnCerrar.Size = new System.Drawing.Size(161, 37);
             this.btnCerrar.TabIndex = 11;
@@ -246,9 +248,9 @@
             // 
             this.btnBuscar.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.btnBuscar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.btnBuscar.Font = new System.Drawing.Font("Agency FB", 12F);
-            this.btnBuscar.ForeColor = System.Drawing.Color.DarkCyan;
-            this.btnBuscar.Location = new System.Drawing.Point(1086, 110);
+            this.btnBuscar.Font = new System.Drawing.Font("Franklin Gothic Book", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBuscar.ForeColor = System.Drawing.Color.DarkSlateGray;
+            this.btnBuscar.Location = new System.Drawing.Point(1368, 101);
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.Size = new System.Drawing.Size(161, 37);
             this.btnBuscar.TabIndex = 12;
@@ -263,7 +265,7 @@
             this.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.CancelButton = this.btnCerrar;
-            this.ClientSize = new System.Drawing.Size(1273, 736);
+            this.ClientSize = new System.Drawing.Size(1541, 784);
             this.Controls.Add(this.btnCerrar);
             this.Controls.Add(this.btnImportar);
             this.Controls.Add(this.btnValidar);

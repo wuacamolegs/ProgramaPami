@@ -39,28 +39,28 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Calibri Light", 10.8F);
+            this.label1.Font = new System.Drawing.Font("Franklin Gothic Book", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.DarkCyan;
-            this.label1.Location = new System.Drawing.Point(18, 38);
+            this.label1.Location = new System.Drawing.Point(18, 20);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(219, 23);
+            this.label1.Size = new System.Drawing.Size(234, 24);
             this.label1.TabIndex = 0;
             this.label1.Text = "Ya existen los ambulatorios:";
             // 
             // dgAmbulatorios
             // 
             this.dgAmbulatorios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgAmbulatorios.Location = new System.Drawing.Point(22, 75);
+            this.dgAmbulatorios.Location = new System.Drawing.Point(22, 47);
             this.dgAmbulatorios.Name = "dgAmbulatorios";
             this.dgAmbulatorios.RowTemplate.Height = 24;
-            this.dgAmbulatorios.Size = new System.Drawing.Size(654, 192);
+            this.dgAmbulatorios.Size = new System.Drawing.Size(762, 247);
             this.dgAmbulatorios.TabIndex = 1;
             // 
             // button1
             // 
-            this.button1.Font = new System.Drawing.Font("Agency FB", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Font = new System.Drawing.Font("Franklin Gothic Book", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.Color.DarkCyan;
-            this.button1.Location = new System.Drawing.Point(512, 335);
+            this.button1.Location = new System.Drawing.Point(623, 336);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(161, 37);
             this.button1.TabIndex = 2;
@@ -69,9 +69,9 @@
             // 
             // button2
             // 
-            this.button2.Font = new System.Drawing.Font("Agency FB", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.Font = new System.Drawing.Font("Franklin Gothic Book", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.ForeColor = System.Drawing.Color.DarkCyan;
-            this.button2.Location = new System.Drawing.Point(345, 335);
+            this.button2.Location = new System.Drawing.Point(456, 336);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(161, 37);
             this.button2.TabIndex = 3;
@@ -81,11 +81,11 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Calibri Light", 10.8F);
+            this.label2.Font = new System.Drawing.Font("Franklin Gothic Book", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.DarkCyan;
-            this.label2.Location = new System.Drawing.Point(302, 301);
+            this.label2.Location = new System.Drawing.Point(386, 303);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(371, 23);
+            this.label2.Size = new System.Drawing.Size(398, 24);
             this.label2.TabIndex = 4;
             this.label2.Text = "Desea agregarlos a los ambulatorios existentes?";
             // 
@@ -93,7 +93,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(701, 386);
+            this.ClientSize = new System.Drawing.Size(799, 385);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);

@@ -92,7 +92,7 @@ namespace PAMI.PlanillaPami
             dgPlanilla.Columns.Add(clm_Fecha);
 
             DataGridViewTextBoxColumn clm_Nombre = new DataGridViewTextBoxColumn();
-            clm_Nombre.Width = 180;
+            clm_Nombre.Width = 400;
             clm_Nombre.ReadOnly = false;
             clm_Nombre.HeaderText = "Apellido y Nombre";
             dgPlanilla.Columns.Add(clm_Nombre);
@@ -104,7 +104,7 @@ namespace PAMI.PlanillaPami
             dgPlanilla.Columns.Add(clm_Beneficio);
 
             DataGridViewTextBoxColumn clm_Diagnostico = new DataGridViewTextBoxColumn();
-            clm_Diagnostico.Width = 100;
+            clm_Diagnostico.Width = 250;
             clm_Diagnostico.ReadOnly = false;
             clm_Diagnostico.HeaderText = "Diagnóstico";
             dgPlanilla.Columns.Add(clm_Diagnostico);
@@ -134,7 +134,7 @@ namespace PAMI.PlanillaPami
             dgPlanilla.Columns.Add(clm_Validacion);
 
             DataGridViewCellStyle miestilo = new DataGridViewCellStyle();
-            miestilo.Font = new Font("Agency FB", 11);           
+            miestilo.Font = new Font("Franklin Gothic Book", 11);           
 
             dgPlanilla.EnableHeadersVisualStyles = false;
             dgPlanilla.ColumnHeadersDefaultCellStyle = miestilo;
@@ -196,8 +196,6 @@ namespace PAMI.PlanillaPami
             }
             else if (e.KeyCode == Keys.Delete && dgPlanilla.SelectedCells.Count > 0)
             {
-                
-
                 foreach (DataGridViewCell oneCell in dgPlanilla.SelectedCells)
                 {
                     if (oneCell.Selected)
@@ -235,8 +233,6 @@ namespace PAMI.PlanillaPami
 
         private void btnValidar_Click(object sender, EventArgs e)
         {
-
-            //validar que se hayan seleccionado combos. Segun asociacion las practicas!! 
             string strCombos = validarCombosSeleccionados();
 
             if (rellenarCeldas() != 0 && strCombos == "")
@@ -339,6 +335,8 @@ namespace PAMI.PlanillaPami
 
         private string ValidarExistenciaEnTablas(DataGridViewRow oneRow)
         {
+            //VERIFICA QUE SEAN COSAS VALIDAS. QUE LA PRACTICA EXISTA,EL DIAGNOSTICO EXISTE, BENEFICIO, ETC. tambien que no se pisen horas y dias.
+
             string strErrores = "No se encontró: ";
             
             //Verificar beneficio DNI
@@ -366,9 +364,11 @@ namespace PAMI.PlanillaPami
                 strErrores = "";
                 //Verificar que no se haya cargado algo a esa hora!
 
-                if (TablaFechaHora.AsEnumerable().Any(x => (x.Field<string>("Fecha") == oneRow.Cells[0].Value.ToString()) && (x.Field<string>("Hora") == oneRow.Cells[5].Value.ToString())))
+                DateTime diaHora = new DateTime();
+                while (TablaFechaHora.AsEnumerable().Any(x => (x.Field<string>("Fecha") == oneRow.Cells[0].Value.ToString()) && (x.Field<string>("Hora") == oneRow.Cells[5].Value.ToString())))
                 {
-                    strErrores = strErrores + "Ya existe un ambulatorio en ese horario.";
+                    diaHora = Convert.ToDateTime(oneRow.Cells[5].Value.ToString());
+                    oneRow.Cells[5].Value = diaHora.AddMinutes(5).ToString("HH:mm", CultureInfo.InvariantCulture);
                 }
             }
 
@@ -377,7 +377,7 @@ namespace PAMI.PlanillaPami
 
         private int rellenarCeldas()
         {
-            //Completar espacios vacios en fecha, nombre,beneficio y diagnostico.
+            //Completar espacios vacios en fecha, nombre, beneficio, diagnostico y horas.
             int filaActual = 0;
             int columnaActual = 0;
             int cantidadFilas = 0; //contador filas con datos
@@ -391,33 +391,34 @@ namespace PAMI.PlanillaPami
                 {
                     //Arreglo fila 0
                     filaActual = 0;
-                    dgPlanilla.Rows[filaActual].Cells[2].Value = Regex.Match(dgPlanilla.Rows[filaActual].Cells[2].Value.ToString(), @"\d+").Value;
-                    dgPlanilla.Rows[filaActual].Cells[4].Value = Regex.Match(dgPlanilla.Rows[filaActual].Cells[4].Value.ToString(), @"\d+").Value;
+                    dgPlanilla.Rows[filaActual].Cells[2].Value = Regex.Replace(dgPlanilla.Rows[filaActual].Cells[2].Value.ToString(), @"[^\d]", "");
+                    dgPlanilla.Rows[filaActual].Cells[4].Value = Regex.Replace(dgPlanilla.Rows[filaActual].Cells[4].Value.ToString(), @"[^\d]", "");
                     dgPlanilla.Rows[filaActual].Cells[1].Value = Editor.NormalizarCadena(dgPlanilla.Rows[filaActual].Cells[1].Value.ToString());
                     dgPlanilla.Rows[filaActual].Cells[3].Value = Editor.NormalizarCadena(dgPlanilla.Rows[filaActual].Cells[3].Value.ToString());
                     dgPlanilla.Rows[filaActual].Cells[5].Value = Editor.NormalizarHora(dgPlanilla.Rows[filaActual].Cells[5].Value.ToString());
-
-
+                    
                     filaActual = 1;
 
-                    while (filaActual < cantidadFilas)
+                    while (!string.IsNullOrEmpty(dgPlanilla.Rows[filaActual].Cells[4].Value as string))
                     {
                         while (columnaActual < 4)
                         {
-                            if (dgPlanilla.Rows[filaActual].Cells[columnaActual].Value.ToString() == "")
+                            if (string.IsNullOrEmpty(dgPlanilla.Rows[filaActual].Cells[columnaActual].Value as string))
                             {
-                                dgPlanilla.Rows[filaActual].Cells[columnaActual].Value = dgPlanilla.Rows[filaActual - 1].Cells[columnaActual].Value;
+                                dgPlanilla.Rows[filaActual].Cells[columnaActual].Value = dgPlanilla.Rows[filaActual - 1].Cells[columnaActual].Value.ToString();
                             }
                             columnaActual++;
                         }
+                       
                         columnaActual = 0;
-
-                        dgPlanilla.Rows[filaActual].Cells[2].Value = Regex.Match(dgPlanilla.Rows[filaActual].Cells[2].Value.ToString(), @"\d+").Value;
-                        dgPlanilla.Rows[filaActual].Cells[4].Value = Regex.Match(dgPlanilla.Rows[filaActual].Cells[4].Value.ToString(), @"\d+").Value;
+                        
+                    //  dgPlanilla.Rows[filaActual].Cells[2].Value = Regex.Match(dgPlanilla.Rows[filaActual].Cells[2].Value.ToString(), @"\d+").Value;
+                        dgPlanilla.Rows[filaActual].Cells[2].Value = Regex.Replace(dgPlanilla.Rows[filaActual].Cells[2].Value.ToString(), @"[^\d]", "");
+                        dgPlanilla.Rows[filaActual].Cells[4].Value = Regex.Replace(dgPlanilla.Rows[filaActual].Cells[4].Value.ToString(), @"[^\d]", "");
                         dgPlanilla.Rows[filaActual].Cells[1].Value = Editor.NormalizarCadena(dgPlanilla.Rows[filaActual].Cells[1].Value.ToString());
                         dgPlanilla.Rows[filaActual].Cells[3].Value = Editor.NormalizarCadena(dgPlanilla.Rows[filaActual].Cells[3].Value.ToString());
                         dgPlanilla.Rows[filaActual].Cells[5].Value = Editor.NormalizarHora(dgPlanilla.Rows[filaActual].Cells[5].Value.ToString());
-                        filaActual++;                  
+                        filaActual++;   
                     }
                 }
             }
@@ -462,90 +463,103 @@ namespace PAMI.PlanillaPami
 
         private void btnImportar_Click(object sender, EventArgs e)
         {
-
-            //TODO: Validar combobox seleccionados! TODO!! 
-
-
-            //Validar que todos estan correctos.
-            bool estadocheckbox = false;
-            estadocheckbox = (dgPlanilla.Rows[0].Cells[4].Value != null);
-
-            foreach (DataGridViewRow row in dgPlanilla.Rows)
+            try
             {
-                DataGridViewCheckBoxCell chk = (DataGridViewCheckBoxCell)row.Cells[6];
-                if (chk.Value == chk.FalseValue && row.Cells[4].Value != null)
-                {
-                    MessageBox.Show("Existen Datos Inválidos", "Error al Importar");
-                    estadocheckbox = false;
-                    break; 
-                }
-                if (row.Cells[4].Value == null) { break; }
-            }
-            
-            if (estadocheckbox)
-            {
-                unaPlanilla.Mes = cmbMes.SelectedIndex;
-                unaPlanilla.Anio = Convert.ToInt64(txtAnio.Text);
-                unaPlanilla.Medico = Convert.ToInt64(cmbMedico.SelectedValue);
-                unaPlanilla.Asociacion = Convert.ToInt64(cmbAsociacion.SelectedValue);
+                //Validar que todos estan correctos.
+                bool estadocheckbox = false;
+                estadocheckbox = (dgPlanilla.Rows[0].Cells[4].Value != null);
 
-
-                //Verificar que no tiene ambulatorios en ese dia con otro médico. 
-
-                DataSet ds = new DataSet();
+                unaPlanilla.tablaPlanilla.Clear();
 
                 foreach (DataGridViewRow row in dgPlanilla.Rows)
                 {
-                    if (row.Cells[4].Value != null)
+                    DataGridViewCheckBoxCell chk = (DataGridViewCheckBoxCell)row.Cells[6];
+                    if (chk.Value == chk.FalseValue && row.Cells[4].Value != null)
                     {
-                        unaPlanilla.Fecha = row.Cells[0].Value.ToString();
-                        unaPlanilla.Beneficio = row.Cells[2].Value.ToString();
-                        unaPlanilla.Diagnostico = row.Cells[3].Value.ToString();
-                        unaPlanilla.Practica = row.Cells[4].Value.ToString();
-                        unaPlanilla.Hora = row.Cells[5].Value.ToString();
+                        MessageBox.Show("Existen Datos Inválidos", "Error al Importar");
+                        estadocheckbox = false;
+                        break;
+                    }
+                    if (row.Cells[4].Value == null) { break; }
+                }
 
-                        ds = unaPlanilla.ImportarAmbulatorio();
+                if (estadocheckbox)
+                {
+                    unaPlanilla.Mes = cmbMes.SelectedIndex;
+                    unaPlanilla.Anio = Convert.ToInt64(txtAnio.Text);
+                    unaPlanilla.Medico = Convert.ToInt64(cmbMedico.SelectedValue);
+                    unaPlanilla.Asociacion = Convert.ToInt64(cmbAsociacion.SelectedValue);
 
-                        //ERROR DE AMBULATORIO YA EXISTENTE. NO SE IMPORTO
+                   //Verificar que no tiene ambulatorios en ese dia con otro médico. 
+                    DataSet ds = new DataSet();
 
-                        if (ds.Tables.Count != 0)
+                    foreach (DataGridViewRow row in dgPlanilla.Rows)
+                    {
+                        if (row.Cells[4].Value != null)
                         {
-                            DataRow newRow = unaPlanilla.tablaPlanilla.NewRow();
+                            unaPlanilla.Fecha = row.Cells[0].Value.ToString();
+                            unaPlanilla.Beneficio = row.Cells[2].Value.ToString();
+                            unaPlanilla.Diagnostico = row.Cells[3].Value.ToString();
+                            unaPlanilla.Practica = row.Cells[4].Value.ToString();
+                            unaPlanilla.Hora = row.Cells[5].Value.ToString();
+                            unaPlanilla.Asociacion = Convert.ToInt64(cmbAsociacion.SelectedValue);
 
-                            newRow["Planilla_medico_secundario_matricula"] = ds.Tables[0].Rows[0]["MedicoID"].ToString();
-                            newRow["Planilla_medico_secundario_nombre"] = ds.Tables[0].Rows[0]["Medico"].ToString(); ;
-                            newRow["Planilla_beneficio"] = ds.Tables[0].Rows[0]["Beneficio"].ToString();
-                            newRow["Planilla_practica"] = ds.Tables[0].Rows[0]["Practica"].ToString();
-                            newRow["Planilla_fecha"] = ds.Tables[0].Rows[0]["Fecha"].ToString();
-                            newRow["Planilla_hora"] = ds.Tables[0].Rows[0]["Hora"].ToString();
+                            ds = unaPlanilla.ImportarAmbulatorio();
 
-                            row.Cells[7].Value = "Ya posee un ambulatorio existente";
-                            unaPlanilla.tablaPlanilla.Rows.Add(newRow);
-                        }
-                        else
-                        {
-                            row.Cells[7].Value = "Importado Correctamente";
+                            //ERROR DE AMBULATORIO YA EXISTENTE. NO SE IMPORTO
+
+                            if (ds.Tables[0].Rows.Count != 0)
+                            {
+                                if (ds.Tables[0].Rows[0]["Existe"].ToString() == "-1")
+                                {
+                                    row.Cells[7].Value = "Importado Correctamente";
+                                }
+                                if (ds.Tables[0].Rows[0]["Medico"].ToString() == unaPlanilla.Medico.ToString())
+                                {
+                                    row.Cells[7].Value = "Práctica ya cargada en ambulatorio con este Profesional";
+                                }
+                                if (ds.Tables[0].Rows[0]["Medico"].ToString() != unaPlanilla.Medico.ToString() &&
+                                    ds.Tables[0].Rows[0]["Existe"].ToString() != "-1")
+                                {
+                                    DataRow newRow = unaPlanilla.tablaPlanilla.NewRow();
+                                    newRow["Planilla_medico_secundario_matricula"] = ds.Tables[0].Rows[0]["Medico"].ToString();
+                                    newRow["Planilla_medico_secundario_nombre"] = ds.Tables[0].Rows[0]["MedicoNombre"].ToString();
+                                    newRow["Planilla_beneficio"] = unaPlanilla.Beneficio;
+                                    newRow["Planilla_practica"] = unaPlanilla.Practica;
+                                    newRow["Planilla_fecha"] = unaPlanilla.Fecha;
+                                    newRow["Planilla_hora"] = unaPlanilla.Hora;
+                                    newRow["Existe"] = ds.Tables[0].Rows[0]["Existe"].ToString();
+
+                                    row.Cells[7].Value = "Ya posee un ambulatorio existente";
+                                    unaPlanilla.tablaPlanilla.Rows.Add(newRow);
+                                }
+                            }
                         }
                     }
-                }
 
-                //Mostrar ambulatorios no cargados.
+                    //Mostrar ambulatorios no cargados.
 
-                if (unaPlanilla.tablaPlanilla.Rows.Count != 0)
-                {
-                    AmbulatorioExistente ambulatorios = new AmbulatorioExistente();
-                    ambulatorios.abrirCon(unaPlanilla, unaPlanilla.Medico);
-                    ambulatorios.Show();
-                }
-                else
-                {
-                    DialogResult result = MessageBox.Show("Planilla Importada Correctamente", "Importar Planilla", MessageBoxButtons.OKCancel);
-                    if (result == DialogResult.Yes)
+                    if (unaPlanilla.tablaPlanilla.Rows.Count != 0)
                     {
-                        this.Close();
+                        AmbulatorioExistente ambulatorios = new AmbulatorioExistente();
+                        ambulatorios.abrirCon(unaPlanilla, unaPlanilla.Medico);
+                        ambulatorios.Show();
+                    }
+                    else
+                    {
+                        DialogResult result = MessageBox.Show("Planilla Importada Correctamente", "Importar Planilla", MessageBoxButtons.OKCancel);
+                        if (result == DialogResult.Yes)
+                        {
+                            this.Close();
+                        }
                     }
                 }
             }
+            catch (ErrorConsultaException ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
         }
 
         private void cmbAsociacion_SelectedIndexChanged(object sender, EventArgs e)

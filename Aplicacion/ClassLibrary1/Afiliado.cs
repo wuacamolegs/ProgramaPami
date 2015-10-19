@@ -155,9 +155,13 @@ namespace Clases
             parameterList.Add(new SqlParameter("@Parentesco", this.Parentesco));
         }
 
-        private void setearListaParametrosAgregarAsociacionID(Int64 asocID)
+        private void setearListaParametrosConFiltrosYAsoc(Int64 asocID)
         {
+            this.parameterList.Clear();
             parameterList.Add(new SqlParameter("@AsocID", asocID));
+            parameterList.Add(new SqlParameter("@Nombre", this.Nombre));
+            parameterList.Add(new SqlParameter("@Beneficio", this.Beneficio));
+            parameterList.Add(new SqlParameter("@Dni", this.Documento));
         }
        
         #endregion
@@ -212,8 +216,8 @@ namespace Clases
 
         public DataSet TraerAfiliadosConFiltrosPorAsociacionID(Int64 asocID)
         {
-            setearListaParametrosAgregarAsociacionID(asocID);
-            return this.TraerListado(parameterList, "ConFiltrosPorPadronAsoc");
+            setearListaParametrosConFiltrosYAsoc(asocID);
+            return this.TraerListado(parameterList, "ConFiltrosPorPadronAsociacion");
         }
     }
 }

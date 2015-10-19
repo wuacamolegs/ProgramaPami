@@ -42,7 +42,7 @@
             this.cmbAsociacion.Items.AddRange(new object[] {
             "Asociación de Oftalmólogos de Río Negro",
             "Asociación de Hematologia y Hemoterapia Norpatagónica"});
-            this.cmbAsociacion.Location = new System.Drawing.Point(15, 103);
+            this.cmbAsociacion.Location = new System.Drawing.Point(15, 110);
             this.cmbAsociacion.Name = "cmbAsociacion";
             this.cmbAsociacion.Size = new System.Drawing.Size(365, 32);
             this.cmbAsociacion.TabIndex = 35;
@@ -50,19 +50,19 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Agency FB", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Font = new System.Drawing.Font("Franklin Gothic Book", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.DarkCyan;
-            this.label4.Location = new System.Drawing.Point(18, 76);
+            this.label4.Location = new System.Drawing.Point(10, 79);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(72, 24);
+            this.label4.Size = new System.Drawing.Size(95, 24);
             this.label4.TabIndex = 33;
             this.label4.Text = "Asociación";
             // 
             // btnImportar
             // 
-            this.btnImportar.Font = new System.Drawing.Font("Agency FB", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnImportar.ForeColor = System.Drawing.Color.DarkCyan;
+            this.btnImportar.Font = new System.Drawing.Font("Franklin Gothic Book", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnImportar.ForeColor = System.Drawing.Color.DarkSlateGray;
             this.btnImportar.Location = new System.Drawing.Point(219, 159);
             this.btnImportar.Margin = new System.Windows.Forms.Padding(4);
             this.btnImportar.Name = "btnImportar";
@@ -75,11 +75,11 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Agency FB", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Font = new System.Drawing.Font("Franklin Gothic Book", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.DarkCyan;
-            this.label2.Location = new System.Drawing.Point(18, 18);
+            this.label2.Location = new System.Drawing.Point(10, 13);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(36, 24);
+            this.label2.Size = new System.Drawing.Size(48, 24);
             this.label2.TabIndex = 32;
             this.label2.Text = "Ruta";
             // 
@@ -96,7 +96,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(404, 222);
+            this.ClientSize = new System.Drawing.Size(395, 211);
             this.Controls.Add(this.cmbAsociacion);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.btnImportar);

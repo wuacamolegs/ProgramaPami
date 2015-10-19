@@ -43,4 +43,6 @@ GUARDAR EL TXT CON CODIFICACION UNICODE!
 
 NOMENCLADOR
 EXCEL --> CVS (delimitado por comas) --> TXT UNICODE
-GUARDAR EL EXCEL COMO CVS delimitado por comas. Abrir con block de notas y guardar como txt CODIFICACION:UNICODE
+Pegar en una hoja nueva excel los modulos elegidos y guardar como .cvs (delimitado por comas).
+Despues abrir este archivo nuevo .cvs como block de notas y guardarlo con CODIFICACION: unicode.
+

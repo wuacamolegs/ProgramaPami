@@ -99,6 +99,12 @@
     <Compile Include="Exportacion\ExportarDatos.Designer.cs">
       <DependentUpon>ExportarDatos.cs</DependentUpon>
     </Compile>
+    <Compile Include="Importar_Datos\ImportarDiagnosticos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Importar_Datos\ImportarDiagnosticos.Designer.cs">
+      <DependentUpon>ImportarDiagnosticos.cs</DependentUpon>
+    </Compile>
     <Compile Include="Importar_Datos\ImportarNomenclador.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -141,6 +147,12 @@
     <Compile Include="Prestadores\formPrestador.Designer.cs">
       <DependentUpon>formPrestador.cs</DependentUpon>
     </Compile>
+    <Compile Include="Profesionales\ContadorPracticasProfesional.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Profesionales\ContadorPracticasProfesional.Designer.cs">
+      <DependentUpon>ContadorPracticasProfesional.cs</DependentUpon>
+    </Compile>
     <Compile Include="Profesionales\formProfesional.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -173,6 +185,9 @@
     <EmbeddedResource Include="Exportacion\ExportarDatos.resx">
       <DependentUpon>ExportarDatos.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Importar_Datos\ImportarDiagnosticos.resx">
+      <DependentUpon>ImportarDiagnosticos.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Importar_Datos\ImportarNomenclador.resx">
       <DependentUpon>ImportarNomenclador.cs</DependentUpon>
     </EmbeddedResource>
@@ -194,6 +209,9 @@
     <EmbeddedResource Include="Prestadores\formPrestador.resx">
       <DependentUpon>formPrestador.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Profesionales\ContadorPracticasProfesional.resx">
+      <DependentUpon>ContadorPracticasProfesional.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Profesionales\formProfesional.resx">
       <DependentUpon>formProfesional.cs</DependentUpon>
     </EmbeddedResource>
@@ -208,6 +226,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="App.config" />
     <None Include="Properties\Settings.settings">
@@ -269,6 +288,12 @@
       <ProductName>Windows Installer 3.1</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\81 at blue canvas left.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\search.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

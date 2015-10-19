@@ -43,6 +43,7 @@ namespace Clases
             tablaPlanilla.Columns.Add("Planilla_practica", typeof(string));
             tablaPlanilla.Columns.Add("Planilla_fecha", typeof(string));
             tablaPlanilla.Columns.Add("Planilla_hora", typeof(string));
+            tablaPlanilla.Columns.Add("Existe", typeof(int));
         }
 
         #endregion
@@ -137,20 +138,18 @@ namespace Clases
 
         #endregion
 
-        #region setters
+        #region seters
 
-        private void settearListaParametros()
+        private void setearListaParametrosAmbulatorioExistente()
         {
             this.parameterList.Clear();
             parameterList.Add(new SqlParameter("@Fecha", this.Fecha));
-            parameterList.Add(new SqlParameter("@Nombre", this.Nombre));
-            parameterList.Add(new SqlParameter("@Beneficio", this.Beneficio));
-            parameterList.Add(new SqlParameter("@Diagnostico", this.Diagnostico));
-            parameterList.Add(new SqlParameter("@Practica", this.Practica));
-            parameterList.Add(new SqlParameter("@Hora", this.Hora));
+            parameterList.Add(new SqlParameter("@Medico", this.Medico));
+            parameterList.Add(new SqlParameter("@Afiliado", this.Beneficio));
+            parameterList.Add(new SqlParameter("@Asociacion", this.Asociacion));
         }
 
-        private void settearListaParametrosCompleta()
+        private void setearListaParametrosCompleta()
         {
             this.parameterList.Clear();
             parameterList.Add(new SqlParameter("@Asociacion", this.Asociacion));
@@ -167,7 +166,7 @@ namespace Clases
 
         }
 
-        private void settearListaParametrosConPlanilla()
+        private void setearListaParametrosConPlanilla()
         {
             this.parameterList.Clear();
             parameterList.Add(new SqlParameter("@Planilla", this.tablaPlanilla));
@@ -177,50 +176,61 @@ namespace Clases
             parameterList.Add(new SqlParameter("@Anio", this.Anio));
         }
 
-        private void settearListaParametrosConAsociacionMedico()
+        private void setearListaParametrosConAsociacionMedico()
         {
             this.parameterList.Clear();
             parameterList.Add(new SqlParameter("@AsociacionID", this.Asociacion));
             parameterList.Add(new SqlParameter("@MedicoID", this.Medico));
         }
+
+        private void setearListaParametrosConAsociacion()
+        {
+            this.parameterList.Clear();
+            parameterList.Add(new SqlParameter("@AsocID", this.Asociacion));
+        }
        
         #endregion
 
-
-        public string Validar()
-        {
-            settearListaParametros();
-            DataSet ds = SQLHelper.ExecuteDataSet("ValidarPlanillaPorFila", CommandType.StoredProcedure, NombreTabla(), parameterList);
-            return ds.Tables[0].Rows[0]["Estado"].ToString();
-        }
-
         public DataSet ImportarPlanilla()
         {
-            settearListaParametrosConPlanilla();
+            setearListaParametrosConPlanilla();
             DataSet ds = SQLHelper.ExecuteDataSet("ImportarPlanilla", CommandType.StoredProcedure, NombreTabla(), parameterList);
             return ds;
         }
 
-        
+        //Para cargar el combo medico segun asociacion
         public DataSet TraerPlanillasPorMedico(long AsociacionID, long MedicoID)
         {
-            settearListaParametrosConAsociacionMedico();
+            setearListaParametrosConAsociacionMedico();
             return this.TraerListado(parameterList, "ActualPorMedicoAsociacion");
         }
 
+        //Para luego comparar que los datos sean validos. practicas, beneficios etc.
         public DataSet TraerTablasPlanilla(long Asociacion, long MedicoID)
         {
-            settearListaParametrosConAsociacionMedico();
+            setearListaParametrosConAsociacionMedico();
             return this.TraerListado(parameterList, "TablasParaValidar");
         }
 
+        //Importar Practica a Practica y verificar que se importe, que no este repetida, que no exista otro ambulatorio. me trae codigos y ambulatorios.
         public DataSet ImportarAmbulatorio()
         {
-            //IMPORTA AMBULATORIO Y DEVUELVE UNA FILA SI HUBO ERROR.
-            //YA TIENE AMBULATORIO EXISTENTE. Devuelve el medico que ya tiene ambulatorio.
-
-            settearListaParametrosCompleta();
+            setearListaParametrosCompleta();
             return this.GuardarYObtenerID(parameterList);
+        }
+
+        //Para cargar el datagrid con las practicas de la asociacion
+        public DataSet TraerListadoNomencladorPorAsociacion()
+        {
+            setearListaParametrosConAsociacion();
+            return this.TraerListado(parameterList,"NomencladorPorAsociacion");
+        }
+
+        //Para nuevo ambualtorio, ver que no tenga un ambulatorio existente. si lo tiene me trae el ambulatorio.
+        public DataSet ValidarAmbulatorioExistente()
+        {
+            setearListaParametrosAmbulatorioExistente();
+            return SQLHelper.ExecuteDataSet("ValidarAmbulatorioExistenteEnPlanilla", CommandType.StoredProcedure, NombreTabla(), parameterList);
         }
     }
 }

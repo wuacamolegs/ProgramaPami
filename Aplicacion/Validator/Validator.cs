@@ -177,7 +177,7 @@ namespace Utilities
                  
             if (!bValid)
             {
-                str = "Fecha Inválida \n";
+                str = nombreCampo + " Inválida \n";
             }
 
             return str;
@@ -190,7 +190,7 @@ namespace Utilities
 
             if (Val2.IsMatch(hora) || Val.IsMatch(hora))
                 return string.Empty;
-            return "Hora Inválida. " + "\n";
+            return "Hora Inválida. \n";
         }
 
         public static string ValidarSoloLetras(string textoAValidar, string nombreCampo)
@@ -248,6 +248,33 @@ namespace Utilities
            {
                return "Mail con formato inválido\n";
            }
+        }
+
+        public static string ValidarHoraEnDataGrid(DataGridView dtg, int nroCol)
+        {
+            string str = "";
+            foreach (DataGridViewRow oneRow in dtg.Rows)
+            {
+                if (oneRow.Cells[nroCol].Value != null || (oneRow.Cells[nroCol].Value == null && oneRow.Cells[nroCol - 1].Value != null))
+                {
+                    if (oneRow.Cells[nroCol].Value != null)
+                    {
+                        str = str + Validator.ValidarHora(oneRow.Cells[nroCol].Value.ToString(), "Hora");
+                    }
+                    else
+                    {
+                        str = str + "no existe";
+                    }
+                }
+            }
+            if (str == "")
+            {
+                return "";
+            }
+            else
+            {
+                return "Horas Inválidas\n";
+            }
         }
     }
 }
