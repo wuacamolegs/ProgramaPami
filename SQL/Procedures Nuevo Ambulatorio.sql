@@ -5,10 +5,10 @@ BEGIN
 END
 GO
 
-CREATE PROCEDURE PAMI.traerListadoDiagnosticosCompleto
+ALTER PROCEDURE PAMI.traerListadoDiagnosticosCompleto
 AS
 BEGIN
-	SELECT diagnostico_codigo, diagnostico_descripcion FROM PAMI.Diagnostico
+	SELECT diagnostico_id,diagnostico_codigo, diagnostico_descripcion FROM PAMI.Diagnostico
 END
 GO
 
@@ -28,10 +28,9 @@ BEGIN
 END
 GO
 
-
 ALTER PROCEDURE PAMI.traerListadoAfiliadosConFiltrosPorPadronAsociacion
     @Nombre varchar(60) = null, 
-    @Dni numeric(15,0) = null,
+    @Dni varchar(15) = null,
     @Beneficio varchar(14) = null,
     @AsocID numeric(10,0)
 AS 
@@ -39,8 +38,8 @@ BEGIN
     SELECT apellido_nombre, documento_tipo, documento_numero, beneficio, parentesco, fecha_nacimiento 
     FROM PAMI.AfiliadosPami AF, PAMI.Asociacion A
     WHERE	(apellido_nombre LIKE (CASE WHEN @Nombre <> '' THEN '%' + @Nombre + '%' ELSE apellido_nombre END))					
-    AND		(@Dni is null OR @Dni = 0 OR CONVERT(VARCHAR(15), documento_numero) LIKE '%' + CONVERT(VARCHAR(15), @Dni) + '%')
-    AND		(@Beneficio is null OR @Beneficio = 0 OR CONVERT(VARCHAR(12), beneficio + parentesco) LIKE '%' + CONVERT(VARCHAR(15), @Beneficio) + '%')
+    AND		(@Dni is null OR CONVERT(VARCHAR(15), documento_numero) LIKE '%' + CONVERT(VARCHAR(15), @Dni) + '%')
+    AND		(@Beneficio is null OR CONVERT(VARCHAR(14), beneficio + parentesco) LIKE '%' + CONVERT(VARCHAR(14), @Beneficio) + '%')
     AND		(A.asociacion_id = @AsocID)
     AND		(AF.padron_codigo = A.padron)
 END
@@ -59,14 +58,13 @@ ALTER PROCEDURE PAMI.TraerListadoDiagnosticosPorAsocID
 	@AsocID numeric(10,0)
 AS
 BEGIN
-	SELECT diagnostico_codigo, diagnostico_codigo + ' - ' + diagnostico_descripcion as diagnostico_descripcion FROM PAMI.Diagnostico D, PAMI.Asociacion A WHERE A.asociacion_id = @AsocID AND A.asociacion_cuit = D.asociacion_cuit
+	SELECT diagnostico_id, diagnostico_codigo, diagnostico_descripcion as diagnostico_descripcion FROM PAMI.Diagnostico D, PAMI.Asociacion A WHERE A.asociacion_id = @AsocID AND A.asociacion_cuit = D.asociacion_cuit
 END
 GO
 
-
-CREATE PROCEDURE PAMI.ValidarAmbulatorioExistenteEnPlanilla
+--si existe me devuelve el ambulatorio!
+ALTER PROCEDURE PAMI.ValidarAmbulatorioExistenteEnPlanilla
      @Fecha VARCHAR(10),
-     @Medico VARCHAR(6),
      @Afiliado VARCHAR(14),
      @Asociacion numeric(10,0)
 AS

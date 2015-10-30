@@ -113,13 +113,13 @@
             // 
             this.groupBox1.Controls.Add(this.cmbMedico);
             this.groupBox1.Font = new System.Drawing.Font("Franklin Gothic Book", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.ForeColor = System.Drawing.Color.DarkCyan;
+            this.groupBox1.ForeColor = System.Drawing.Color.DarkSlateGray;
             this.groupBox1.Location = new System.Drawing.Point(567, 12);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(549, 83);
             this.groupBox1.TabIndex = 5;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Médico";
+            this.groupBox1.Text = "PROFESIONAL";
             // 
             // cmbMedico
             // 
@@ -140,13 +140,13 @@
             // 
             this.groupBox2.Controls.Add(this.cmbAsociacion);
             this.groupBox2.Font = new System.Drawing.Font("Franklin Gothic Book", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox2.ForeColor = System.Drawing.Color.DarkCyan;
+            this.groupBox2.ForeColor = System.Drawing.Color.DarkSlateGray;
             this.groupBox2.Location = new System.Drawing.Point(12, 12);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(549, 83);
             this.groupBox2.TabIndex = 6;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Asociación";
+            this.groupBox2.Text = "ASOCIACION";
             // 
             // cmbAsociacion
             // 
@@ -171,13 +171,13 @@
             this.groupBox3.Controls.Add(this.label3);
             this.groupBox3.Controls.Add(this.label2);
             this.groupBox3.Font = new System.Drawing.Font("Franklin Gothic Book", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox3.ForeColor = System.Drawing.Color.DarkCyan;
+            this.groupBox3.ForeColor = System.Drawing.Color.DarkSlateGray;
             this.groupBox3.Location = new System.Drawing.Point(1135, 12);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(392, 83);
             this.groupBox3.TabIndex = 7;
             this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Periodo";
+            this.groupBox3.Text = "PERIODO";
             // 
             // txtAnio
             // 

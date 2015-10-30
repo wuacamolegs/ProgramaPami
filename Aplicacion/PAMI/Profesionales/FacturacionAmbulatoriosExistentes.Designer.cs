@@ -1,6 +1,6 @@
-﻿namespace PAMI.Exportacion
+﻿namespace PAMI.Profesionales
 {
-    partial class ExportarDatos
+    partial class FacturacionAmbulatoriosExistentes
     {
         /// <summary>
         /// Required designer variable.
@@ -28,32 +28,23 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.btnExportar = new System.Windows.Forms.Button();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.txtAnio = new System.Windows.Forms.TextBox();
             this.cmbMes = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.cmbAsociacion = new System.Windows.Forms.ComboBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.cmbMedico = new System.Windows.Forms.ComboBox();
+            this.dgPlanilla = new System.Windows.Forms.DataGridView();
+            this.btnBuscar = new System.Windows.Forms.PictureBox();
             this.groupBox3.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgPlanilla)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnBuscar)).BeginInit();
             this.SuspendLayout();
-            // 
-            // btnExportar
-            // 
-            this.btnExportar.Font = new System.Drawing.Font("Franklin Gothic Book", 10.8F);
-            this.btnExportar.ForeColor = System.Drawing.Color.DarkSlateGray;
-            this.btnExportar.Location = new System.Drawing.Point(247, 243);
-            this.btnExportar.Margin = new System.Windows.Forms.Padding(4);
-            this.btnExportar.Name = "btnExportar";
-            this.btnExportar.Size = new System.Drawing.Size(161, 37);
-            this.btnExportar.TabIndex = 3;
-            this.btnExportar.Text = "Exportar";
-            this.btnExportar.UseVisualStyleBackColor = true;
-            this.btnExportar.Click += new System.EventHandler(this.btnExportar_Click);
             // 
             // groupBox3
             // 
@@ -63,10 +54,10 @@
             this.groupBox3.Controls.Add(this.label2);
             this.groupBox3.Font = new System.Drawing.Font("Franklin Gothic Book", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox3.ForeColor = System.Drawing.Color.DarkSlateGray;
-            this.groupBox3.Location = new System.Drawing.Point(16, 120);
+            this.groupBox3.Location = new System.Drawing.Point(11, 221);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(392, 83);
-            this.groupBox3.TabIndex = 38;
+            this.groupBox3.Size = new System.Drawing.Size(412, 83);
+            this.groupBox3.TabIndex = 10;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "PERIODO";
             // 
@@ -127,64 +118,118 @@
             this.label2.TabIndex = 2;
             this.label2.Text = "Mes";
             // 
-            // groupBox1
+            // groupBox2
             // 
-            this.groupBox1.Controls.Add(this.cmbAsociacion);
-            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.groupBox1.ForeColor = System.Drawing.Color.DarkSlateGray;
-            this.groupBox1.Location = new System.Drawing.Point(16, 27);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.groupBox1.Size = new System.Drawing.Size(392, 76);
-            this.groupBox1.TabIndex = 39;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "ASOCIACION";
+            this.groupBox2.Controls.Add(this.cmbAsociacion);
+            this.groupBox2.Font = new System.Drawing.Font("Franklin Gothic Book", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox2.ForeColor = System.Drawing.Color.DarkSlateGray;
+            this.groupBox2.Location = new System.Drawing.Point(11, 30);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(412, 83);
+            this.groupBox2.TabIndex = 9;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "ASOCIACION";
             // 
             // cmbAsociacion
             // 
-            this.cmbAsociacion.BackColor = System.Drawing.SystemColors.Window;
             this.cmbAsociacion.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbAsociacion.Font = new System.Drawing.Font("Calibri Light", 10.8F);
+            this.cmbAsociacion.Font = new System.Drawing.Font("Calibri Light", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbAsociacion.ForeColor = System.Drawing.SystemColors.InactiveCaptionText;
             this.cmbAsociacion.FormattingEnabled = true;
-            this.cmbAsociacion.Location = new System.Drawing.Point(6, 29);
-            this.cmbAsociacion.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.cmbAsociacion.Items.AddRange(new object[] {
+            "1",
+            "2",
+            "3"});
+            this.cmbAsociacion.Location = new System.Drawing.Point(6, 36);
             this.cmbAsociacion.Name = "cmbAsociacion";
-            this.cmbAsociacion.Size = new System.Drawing.Size(380, 30);
+            this.cmbAsociacion.Size = new System.Drawing.Size(391, 36);
             this.cmbAsociacion.TabIndex = 0;
             // 
-            // ExportarDatos
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.cmbMedico);
+            this.groupBox1.Font = new System.Drawing.Font("Franklin Gothic Book", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox1.ForeColor = System.Drawing.Color.DarkSlateGray;
+            this.groupBox1.Location = new System.Drawing.Point(11, 119);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(412, 83);
+            this.groupBox1.TabIndex = 8;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "PROFESIONAL";
+            // 
+            // cmbMedico
+            // 
+            this.cmbMedico.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbMedico.Font = new System.Drawing.Font("Calibri Light", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbMedico.ForeColor = System.Drawing.SystemColors.InactiveCaptionText;
+            this.cmbMedico.FormattingEnabled = true;
+            this.cmbMedico.Items.AddRange(new object[] {
+            "1",
+            "2",
+            "3"});
+            this.cmbMedico.Location = new System.Drawing.Point(6, 36);
+            this.cmbMedico.Name = "cmbMedico";
+            this.cmbMedico.Size = new System.Drawing.Size(391, 36);
+            this.cmbMedico.TabIndex = 0;
+            this.cmbMedico.SelectedIndexChanged += new System.EventHandler(this.cmbMedico_SelectedIndexChanged);
+            // 
+            // dgPlanilla
+            // 
+            this.dgPlanilla.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgPlanilla.Location = new System.Drawing.Point(464, 30);
+            this.dgPlanilla.Margin = new System.Windows.Forms.Padding(4);
+            this.dgPlanilla.Name = "dgPlanilla";
+            this.dgPlanilla.RowTemplate.Height = 30;
+            this.dgPlanilla.Size = new System.Drawing.Size(897, 350);
+            this.dgPlanilla.TabIndex = 11;
+            // 
+            // btnBuscar
+            // 
+            this.btnBuscar.Image = global::PAMI.Properties.Resources.search;
+            this.btnBuscar.Location = new System.Drawing.Point(363, 331);
+            this.btnBuscar.Name = "btnBuscar";
+            this.btnBuscar.Size = new System.Drawing.Size(34, 37);
+            this.btnBuscar.TabIndex = 37;
+            this.btnBuscar.TabStop = false;
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
+            // 
+            // FacturacionAmbulatoriosExistentes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(424, 303);
-            this.Controls.Add(this.groupBox1);
+            this.ClientSize = new System.Drawing.Size(1374, 393);
+            this.Controls.Add(this.btnBuscar);
+            this.Controls.Add(this.dgPlanilla);
             this.Controls.Add(this.groupBox3);
-            this.Controls.Add(this.btnExportar);
+            this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.groupBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
-            this.Margin = new System.Windows.Forms.Padding(4);
-            this.Name = "ExportarDatos";
+            this.Name = "FacturacionAmbulatoriosExistentes";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "ExportarDatos";
-            this.Load += new System.EventHandler(this.ExportarDatos_Load);
+            this.Text = "FacturacionAmbulatoriosExistentes";
+            this.Load += new System.EventHandler(this.FacturacionAmbulatoriosExistentes_Load);
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgPlanilla)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnBuscar)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Button btnExportar;
-        private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.TextBox txtAnio;
         private System.Windows.Forms.ComboBox cmbMes;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.ComboBox cmbAsociacion;
-
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.ComboBox cmbMedico;
+        private System.Windows.Forms.DataGridView dgPlanilla;
+        private System.Windows.Forms.PictureBox btnBuscar;
     }
 }

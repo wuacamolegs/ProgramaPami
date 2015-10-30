@@ -1,123 +1,126 @@
-use [PAMI]
-go
+USE [PAMI]
+GO
 
-CREATE PROCEDURE PAMI.TraerListadoCabecera
+ALTER PROCEDURE PAMI.TraerListadoCabeceraParaExportar
+	@AsocID numeric(10,0),
+	@Anio varchar(4),
+	@Mes varchar(2)
 AS
 	BEGIN
-		SELECT * FROM PAMI.Cabecera
+	SELECT TOP 1 A.asociacion_cuit ,A.nroEmulacion + 1 ,@Mes + '-' + SUBSTRING(@Anio,3,2),'','','',A.asociacion_usuario,'' FROM PAMI.Asociacion A WHERE A.asociacion_id = @AsocID
 	END
 GO
 
-CREATE PROCEDURE PAMI.TraerListadoProfesionales
+ALTER PROCEDURE PAMI.TraerListadoProfesionalesParaExportar
+	@AsocID numeric(10,0),
+	@Anio varchar(4),
+	@Mes varchar(2)
 AS
 	BEGIN
-		SELECT * FROM PAMI.Profesional
+		SELECT * FROM PAMI.Profesional WHERE PAMI.ProfesionalPerteneceAPeriodo(profesional_matricula_nacional,@Mes, @Anio, @AsocID) = 0	
 	END
 GO
 
-CREATE PROCEDURE PAMI.TraerListadoPrestador
+ALTER FUNCTION PAMI.ProfesionalPerteneceAPeriodo(@Profesional VARCHAR(6) ,@Mes VARCHAR(2), @Anio VARCHAR(4), @AsocID numeric(10,0))
+	RETURNS int
+AS
+BEGIN
+	RETURN ISNULL((SELECT TOP 1 0 FROM PAMI.Planilla WHERE planilla_medico = @Profesional AND substring(planilla_fecha,4,2) = @Mes AND substring(planilla_fecha,7,4) = @Anio AND planilla_asociacion = @AsocID) ,1)
+END
+GO
+
+ALTER PROCEDURE PAMI.TraerListadoPrestadorParaExportar
+	@AsocID numeric(10,0)
 AS
 	BEGIN
-		SELECT * FROM PAMI.Prestador
+		SELECT '',A.asociacion_cuit,'','',0,'','',tipo_prestador,'',0,A.mail,A.fecha_alta,'','','',
+		0,0,0,A.asociacion_nombreCorto,A.calle,A.puerta,'','','','',''
+		FROM PAMI.Asociacion A WHERE asociacion_id = @AsocID
 	END
 GO
 
-CREATE PROCEDURE PAMI.TraerListadoBocaAtencion
+ALTER PROCEDURE PAMI.TraerListadoREL_PROFESIONALESXPRESTADORParaExportar
+	@AsocID numeric(10,0),
+	@Anio varchar(4),
+	@Mes varchar(2)
 AS
 	BEGIN
-		SELECT * FROM PAMI.BocaAtencion
+		SELECT '',A.asociacion_cuit, R.profesional_matricula,0,0,'' FROM PAMI.REL_ProfesionalAsociacion R, PAMI.Asociacion A WHERE R.asociacion_id = @AsocID AND A.asociacion_id = R.asociacion_id
+		AND PAMI.ProfesionalPerteneceAPeriodo(R.profesional_matricula,@Mes, @Anio, @AsocID) = 0
 	END
 GO
 
-CREATE PROCEDURE PAMI.TraerListadoREL_MODULOSXPRESTADOR
+ALTER PROCEDURE PAMI.TraerListadoBocaAtencionParaExportar
+	@AsocID numeric(10,0)
 AS
 	BEGIN
-		SELECT * FROM PAMI.REL_ModulosXPrestador
+		SELECT '',A.asociacion_cuit,'',0, A.codigo_boca_atencion,1,A.calle,A.puerta,'','','','' FROM PAMI.Asociacion A WHERE @AsocID = asociacion_id
 	END
 GO
 
-CREATE PROCEDURE PAMI.TraerListadoREL_PROFESIONALESXPRESTADOR
+ALTER PROCEDURE PAMI.TraerListadoREL_MODULOSXPRESTADORParaExportar
+	@AsocID numeric(10,0)
 AS
 	BEGIN
-		SELECT * FROM PAMI.REL_ProfesionalesXPrestador
+		SELECT '',cuit_prestador,'',c_prestador_default,modulonomenclador,'' FROM PAMI.REL_ModulosXPrestador R, PAMI.Asociacion A WHERE
+		asociacion_id = @AsocID AND cuit_prestador = A.asociacion_cuit
 	END
 GO
 
-CREATE PROCEDURE PAMI.TraerListadoBENEFICIO
+ALTER PROCEDURE PAMI.TraerListadoBENEFICIOParaExportar
+	@AsocID numeric(10,0),
+	@Anio varchar(4),
+	@Mes varchar(2)
 AS
 	BEGIN
-		SELECT * FROM PAMI.Beneficio
+		SELECT DISTINCT '','','',SUBSTRING(planilla_afiliado_beneficio,1,12),'','',1, padron_fecha_alta FROM PAMI.Planilla P, PAMI.AfiliadosPami A WHERE P.planilla_asociacion = @AsocID AND (A.beneficio + A.parentesco) = planilla_afiliado_beneficio AND substring(planilla_fecha,4,2) = @Mes AND substring(planilla_fecha,7,4) = @Anio 
 	END
 GO
 
-CREATE PROCEDURE PAMI.TraerListadoAFILIADO
+ALTER FUNCTION PAMI.AfiliadoPerteneceAPeriodo(@NroAfiliado VARCHAR(14),@Mes VARCHAR(2), @Anio VARCHAR(4), @AsocID numeric(10,0))
+	RETURNS int
 AS
-	BEGIN
-		SELECT * FROM PAMI.Afiliados
-	END
+BEGIN
+	RETURN ISNULL((SELECT TOP 1 0 FROM PAMI.Planilla WHERE planilla_afiliado_beneficio = @NroAfiliado AND substring(planilla_fecha,4,2) = @Mes AND substring(planilla_fecha,7,4) = @Anio AND planilla_asociacion = @AsocID) ,1)
+END
 GO
 
-CREATE PROCEDURE PAMI.TraerListadoAMBULATORIOS
+ALTER PROCEDURE PAMI.TraerListadoAFILIADOParaExportar
+	@AsocID numeric(10,0),
+	@Anio varchar(4),
+	@Mes varchar(2)
 AS
 	BEGIN
-		SELECT * FROM PAMI.Ambulatorio
-	END
-GO
-
-CREATE PROCEDURE PAMI.TraerListadoAMBULATORIOS2
-AS
-	BEGIN
-		SELECT ambulatorio_red_cuit, '',ambulatorio_profesional_matricula_nacional,ambulatorio_codigo,0,0,13745,0,
-		(SUBSTRING(ambulatorio_fecha_atencion,9,2)+'/'+SUBSTRING(ambulatorio_fecha_atencion,6,2)+'/'+SUBSTRING(ambulatorio_fecha_atencion,1,4)),
-		'','',1,'','',ambulatorio_beneficio_id, ambulatorio_parentesco_id		
-		FROM RetransmitirNoviembre.dbo.Ambulatorio
-	END
-GO
-
-CREATE PROCEDURE PAMI.TraerListadoDatosAmbulatorio
-	@Ambulatorio int
-AS
-	BEGIN
-		SELECT '','','',0,diagnostico_clasificacion_tipo, diagnostico_codigo, diagnostico_tipo FROM PAMI.REL_DiagnosticosXAmbulatorio WHERE c_ambulatorio_default = @Ambulatorio
-		select null,null,null,c_ambulatorio_default, 1 , practica_codigo ,
-		CONVERT(VARCHAR(10),CONVERT(datetime, practica_fecha),103) + ' ' + CONVERT(VARCHAR(5),CONVERT(datetime, practica_fecha),8),
-		practica_cantidad, 1, null
-		from PAMI.REL_PracticasRealizadasXAmbulatorio 
-		WHERE c_ambulatorio_default = @Ambulatorio
+		SELECT apellido_nombre, documento_tipo, documento_numero, '','','','','','','','','',fecha_nacimiento,sexo,'','',beneficio,parentesco,'','','','','','','',''
+		FROM PAMI.Planilla P , PAMI.AfiliadosPami A WHERE P.planilla_afiliado_beneficio = A.beneficio + A.parentesco AND 
+		P.planilla_asociacion = @AsocID AND substring(planilla_fecha,4,2) = @Mes AND substring(planilla_fecha,7,4) = @Anio 
 	END
 GO
 
 
+/*
+MODALIDAD PRESTACION
+1- AFILIADO PROPIO  --> voy a tener en planilla_modalidad_prestacion = 0
+2- ORDEN DE PRESTACION  --> voy a tener en planilla_modalidad_prestacion = nro de prestacion
+*/
 
-ALTER PROCEDURE PAMI.ArreglarFechasPracticas
+ALTER PROCEDURE PAMI.TraerListadoAMBULATORIOSParaExportar
+	@AsocID numeric(10,0),
+	@Anio varchar(4),
+	@Mes varchar(2)
 AS
 	BEGIN
-	
-	DECLARE @ambulatorio numeric(10,0)
-	DECLARE @practica numeric(10,0)
-	DECLARE @fecha varchar(16) = 'hola'
-	DECLARE @cantidad numeric(5)
-	
-	
-	 DECLARE practicasAmb CURSOR FOR (SELECT pra_ambulatorio_codigo, pra_prestacion_codigo FROM RetransmitirNoviembre.dbo.PracticasRealizadas_ambulatorio2)
-	 
-	 OPEN practicasAmb;
-	 	 
-	 FETCH NEXT FROM practicasAmb INTO @ambulatorio, @practica;
-	 
-	 WHILE @@FETCH_STATUS = 0
-	 BEGIN
-		
-		select top 1 @fecha = pra_practica_fecha from RetransmitirNoviembre.dbo.PracticasRealizadas_Ambulatorio where pra_ambulatorio_codigo = @ambulatorio AND pra_prestacion_codigo = @practica
-		update RetransmitirNoviembre.dbo.PracticasRealizadas_Ambulatorio2 
-		set pra_practica_fecha = @fecha where pra_ambulatorio_codigo = @ambulatorio AND pra_prestacion_codigo = @practica
-		
-		FETCH NEXT FROM practicasAmb INTO @ambulatorio, @practica;		
-	END
-	 	
-	CLOSE practicasAmb;
-	DEALLOCATE practicasAmb;
-	
+		SELECT 
+		--AMBULATORIO  
+		'','',P.planilla_medico,0,0,0,A.codigo_boca_atencion,0,P.planilla_fecha,'','', CASE planilla_modalidad_prestacion WHEN 0 THEN 1 ELSE 2 END, CASE planilla_modalidad_prestacion WHEN 0 THEN '' ELSE planilla_modalidad_prestacion END,'',substring(planilla_afiliado_beneficio,1,12), SUBSTRING(planilla_afiliado_beneficio,13,2),
+		--REL DIAGNOSTICOS X AMBULATORIO
+		'','','',0,1,planilla_diagnostico,1,
+		--REL_PRACTICASREALIZADASXAMBULATORIO
+		'','','',0,1,planilla_practica,planilla_fecha + ' ' + planilla_hora, 1, CASE planilla_modalidad_prestacion WHEN 0 THEN 1 ELSE 2 END, CASE planilla_modalidad_prestacion WHEN 0 THEN '' ELSE planilla_modalidad_prestacion END		
+		 FROM PAMI.Planilla P, PAMI.Asociacion A
+		 WHERE P.planilla_asociacion = A.asociacion_id AND asociacion_id = @AsocID AND substring(planilla_fecha,4,2) = @Mes AND substring(planilla_fecha,7,4) = @Anio 
+		 ORDER BY  planilla_medico, planilla_fecha, planilla_afiliado_beneficio, planilla_practica
 	END
 GO
 
+EXEC PAMI.TraerListadoAMBULATORIOSParaExportar 1, '2015', '10'

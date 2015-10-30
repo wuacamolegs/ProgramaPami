@@ -42,8 +42,9 @@ GO
 
 --///// DIAGNOSTICOS \\\\\--
 
-ALTER PROCEDURE PAMI.ImportarDiagnosticos
-	@ruta varchar(200)
+ALTER PROCEDURE PAMI.ImportarDiagnostico
+	@ruta varchar(200),
+	@Cuit varchar(15)
 AS
 	BEGIN
 	DECLARE @comando nvarchar(400);
@@ -51,17 +52,28 @@ AS
 	TRUNCATE TABLE PAMI.Diagnostico;
 	SET @comando = 'BULK INSERT PAMI.Diagnosticos FROM ''' + @ruta + ''' WITH (FIELDTERMINATOR ='';'', ROWTERMINATOR=''\n'')';
 	EXEC sp_executesql @comando;
-	EXEC PAMI.ActualizarDiagnosticos;
+	
+	IF('0' = @Cuit)
+	BEGIN 
+		SET @Cuit = '30689632447'
+	END
+	IF('1' = @Cuit)
+	BEGIN
+		SET @Cuit = '30708916532'
+	END
+	
+	EXEC PAMI.ActualizarDiagnosticos @Cuit;
 	END
 GO
 
 ALTER PROCEDURE PAMI.ActualizarDiagnosticos
+	@Cuit varchar(15)
 AS
 	BEGIN
 	UPDATE PAMI.Diagnosticos SET CODIGO = UPPER(CODIGO);
 	UPDATE PAMI.Diagnosticos SET DIAGNOSTICO = UPPER(DIAGNOSTICO);
-	INSERT INTO PAMI.Diagnostico (diagnostico_clasificacion_tipo, diagnostico_codigo, diagnostico_tipo, diagnostico_descripcion)
-	SELECT '1',CODIGO,'1',DIAGNOSTICO FROM PAMI.Diagnosticos
+	INSERT INTO PAMI.Diagnostico (diagnostico_clasificacion_tipo, diagnostico_codigo, diagnostico_tipo, diagnostico_descripcion, asociacion_cuit)
+	SELECT '1',CODIGO,'1',DIAGNOSTICO, @Cuit FROM PAMI.Diagnosticos
 	END
 GO
 
@@ -74,7 +86,6 @@ ALTER PROCEDURE PAMI.ImportarNomenclador
 AS
 	DECLARE @comando nvarchar(400);
 	
-
 	TRUNCATE TABLE PAMI.NomencladorImportar;
 	SET @comando = 'BULK INSERT PAMI.NomencladorImportar FROM ''' + @ruta + ''' WITH (FIELDTERMINATOR ='';'', ROWTERMINATOR=''\n'')';
 	EXEC sp_executesql @comando;
@@ -95,6 +106,7 @@ AS
 	
 	INSERT INTO PAMI.Nomenclador(practica_codigo, practica_descripcion,codigo_modulo, cantidad_maxima)
 	SELECT practica_codigo, practica_descripcion, codigo_modulo, 1 FROM PAMI.NomencladorImportar
+	
 	-- AGREGAR LA RELACION EN LA TABLA REL_MODULOXPRESTADOR 
 	INSERT INTO PAMI.REL_ModulosXPrestador (cuit_prestador, modulonomenclador)
 	SELECT DISTINCT @Cuit ,codigo_modulo FROM PAMI.NomencladorImportar
@@ -102,5 +114,3 @@ AS
 GO
 
 
-
-select * from PAMI.Nomenclador order by practica_codigo

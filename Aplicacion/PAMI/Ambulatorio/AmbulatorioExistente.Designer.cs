@@ -30,8 +30,8 @@
         {
             this.label1 = new System.Windows.Forms.Label();
             this.dgAmbulatorios = new System.Windows.Forms.DataGridView();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnNo = new System.Windows.Forms.Button();
+            this.btnSI = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgAmbulatorios)).BeginInit();
             this.SuspendLayout();
@@ -49,41 +49,48 @@
             // 
             // dgAmbulatorios
             // 
+            this.dgAmbulatorios.AllowUserToAddRows = false;
+            this.dgAmbulatorios.AllowUserToDeleteRows = false;
+            this.dgAmbulatorios.AllowUserToResizeRows = false;
             this.dgAmbulatorios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgAmbulatorios.Location = new System.Drawing.Point(22, 47);
             this.dgAmbulatorios.Name = "dgAmbulatorios";
-            this.dgAmbulatorios.RowTemplate.Height = 24;
-            this.dgAmbulatorios.Size = new System.Drawing.Size(762, 247);
+            this.dgAmbulatorios.RowTemplate.Height = 30;
+            this.dgAmbulatorios.RowTemplate.ReadOnly = true;
+            this.dgAmbulatorios.Size = new System.Drawing.Size(796, 247);
             this.dgAmbulatorios.TabIndex = 1;
+            this.dgAmbulatorios.RowPrePaint += new System.Windows.Forms.DataGridViewRowPrePaintEventHandler(this.dgAmbulatorios_RowPrePaint);
             // 
-            // button1
+            // btnNo
             // 
-            this.button1.Font = new System.Drawing.Font("Franklin Gothic Book", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.Color.DarkCyan;
-            this.button1.Location = new System.Drawing.Point(623, 336);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(161, 37);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "NO";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnNo.Font = new System.Drawing.Font("Franklin Gothic Book", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNo.ForeColor = System.Drawing.Color.DarkCyan;
+            this.btnNo.Location = new System.Drawing.Point(657, 336);
+            this.btnNo.Name = "btnNo";
+            this.btnNo.Size = new System.Drawing.Size(161, 37);
+            this.btnNo.TabIndex = 2;
+            this.btnNo.Text = "NO";
+            this.btnNo.UseVisualStyleBackColor = true;
+            this.btnNo.Click += new System.EventHandler(this.btnNo_Click);
             // 
-            // button2
+            // btnSI
             // 
-            this.button2.Font = new System.Drawing.Font("Franklin Gothic Book", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.ForeColor = System.Drawing.Color.DarkCyan;
-            this.button2.Location = new System.Drawing.Point(456, 336);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(161, 37);
-            this.button2.TabIndex = 3;
-            this.button2.Text = "SI";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnSI.Font = new System.Drawing.Font("Franklin Gothic Book", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSI.ForeColor = System.Drawing.Color.DarkCyan;
+            this.btnSI.Location = new System.Drawing.Point(490, 336);
+            this.btnSI.Name = "btnSI";
+            this.btnSI.Size = new System.Drawing.Size(161, 37);
+            this.btnSI.TabIndex = 3;
+            this.btnSI.Text = "SI";
+            this.btnSI.UseVisualStyleBackColor = true;
+            this.btnSI.Click += new System.EventHandler(this.btnSI_Click);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Franklin Gothic Book", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.DarkCyan;
-            this.label2.Location = new System.Drawing.Point(386, 303);
+            this.label2.Location = new System.Drawing.Point(420, 303);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(398, 24);
             this.label2.TabIndex = 4;
@@ -93,10 +100,10 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(799, 385);
+            this.ClientSize = new System.Drawing.Size(830, 385);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnSI);
+            this.Controls.Add(this.btnNo);
             this.Controls.Add(this.dgAmbulatorios);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
@@ -112,8 +119,8 @@
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView dgAmbulatorios;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnNo;
+        private System.Windows.Forms.Button btnSI;
         private System.Windows.Forms.Label label2;
     }
 }

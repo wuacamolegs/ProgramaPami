@@ -50,6 +50,7 @@
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
+    <Reference Include="System.DirectoryServices" />
     <Reference Include="System.Xml.Linq">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
@@ -153,6 +154,12 @@
     <Compile Include="Profesionales\ContadorPracticasProfesional.Designer.cs">
       <DependentUpon>ContadorPracticasProfesional.cs</DependentUpon>
     </Compile>
+    <Compile Include="Profesionales\FacturacionAmbulatoriosExistentes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Profesionales\FacturacionAmbulatoriosExistentes.Designer.cs">
+      <DependentUpon>FacturacionAmbulatoriosExistentes.cs</DependentUpon>
+    </Compile>
     <Compile Include="Profesionales\formProfesional.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -211,6 +218,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Profesionales\ContadorPracticasProfesional.resx">
       <DependentUpon>ContadorPracticasProfesional.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Profesionales\FacturacionAmbulatoriosExistentes.resx">
+      <DependentUpon>FacturacionAmbulatoriosExistentes.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Profesionales\formProfesional.resx">
       <DependentUpon>formProfesional.cs</DependentUpon>

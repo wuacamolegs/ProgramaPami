@@ -77,3 +77,4 @@ A:\Documents\PAMI\ProgramaPami\Aplicacion\PAMI\obj\Debug\PAMI.Importar_Datos.Imp
 A:\Documents\PAMI\ProgramaPami\Aplicacion\PAMI\obj\Debug\PAMI.Importar_Datos.ImportarNomenclador.resources
 A:\Documents\PAMI\ProgramaPami\Aplicacion\PAMI\obj\Debug\PAMI.Importar_Datos.ImportarDiagnosticos.resources
 A:\Documents\PAMI\ProgramaPami\Aplicacion\PAMI\obj\Debug\PAMI.Profesionales.ContadorPracticasProfesional.resources
+A:\Documents\PAMI\ProgramaPami\Aplicacion\PAMI\obj\Debug\PAMI.Profesionales.FacturacionAmbulatoriosExistentes.resources

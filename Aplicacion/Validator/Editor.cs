@@ -24,7 +24,6 @@ namespace Utilities
 
         public static string NormalizarHora(string cadena)
         {
-           // string cadenaAux = Regex.Match(cadena, @"\d+").Value;
             cadena = Regex.Replace(cadena, @"[^\d]", "");
 
             if (cadena.Length == 3)
@@ -34,10 +33,25 @@ namespace Utilities
             {
                 cadena = cadena.Substring(0, 2) + ':' + cadena.Substring(2, 2);
             }
-            
+                        
             return cadena;
         }
-    
+
+        public static string NormalizarFecha(string cadena)
+        {
+            cadena = Regex.Replace(cadena, @"[^\d]", "");
+
+            if (cadena.Length == 8)
+            {
+                cadena = cadena.Substring(0, 2) + '/' + cadena.Substring(2, 2) + '/' + cadena.Substring(4, 4);
+            }
+            else if (cadena.Length == 7)
+            {
+                cadena = '0' + cadena.Substring(0, 1) + '/' + cadena.Substring(1, 2) + '/' + cadena.Substring(3, 4);
+            }
+
+            return cadena;
+        }
     
     }
 }

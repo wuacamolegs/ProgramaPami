@@ -49,6 +49,9 @@ namespace PAMI
 
             btn2BusquedaAfiliado.Visible = true;
             btn2NuevoAfiliado.Visible = true;
+
+            FacturacionAmbulatoriosExistentes fact = new FacturacionAmbulatoriosExistentes();
+            fact.Show();
         }
 
 
@@ -279,6 +282,7 @@ namespace PAMI
             contador.Show();
             botonesACero();
         }
+
 
     }
 }

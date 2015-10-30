@@ -180,7 +180,7 @@ namespace PAMI.Afiliados
                     unAfiliado.Nombre = txtApellidoNombre.Text;
                     unAfiliado.Beneficio = txtBeneficio.Text;
                     unAfiliado.Parentesco = txtParentesco.Text;
-                    unAfiliado.Documento = Convert.ToInt64(txtDocumento.Text);
+                    unAfiliado.Documento = txtDocumento.Text;
                     unAfiliado.FechaNacimiento = txtFechaNacimiento.Text;
                     unAfiliado.Sexo = cmbSexo.SelectedItem.ToString();
                     unAfiliado.TipoDocumento = cmbTipoDocumento.SelectedItem.ToString();

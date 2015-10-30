@@ -23,7 +23,7 @@ namespace Clases
         string _beneficio;
         string _parentesco;
         string _tipoDocumento;
-        Int64 _documento;
+        string _documento;
         string _fechaNacimiento;
         string _sexo;
         Int64 _padron;
@@ -66,7 +66,7 @@ namespace Clases
             set { _tipoDocumento = value; }
         }
 
-        public Int64 Documento
+        public string Documento
         {
             get { return _documento; }
             set { _documento = value; }
@@ -115,7 +115,7 @@ namespace Clases
             this.Beneficio = (dr["beneficio"]).ToString();
             this.Parentesco = (dr["parentesco"]).ToString();
             this.TipoDocumento = (dr["documento_tipo"]).ToString();
-            this.Documento = Convert.ToInt64(dr["documento_numero"]);
+            this.Documento = (dr["documento_numero"]).ToString();
             this.FechaNacimiento = (dr["fecha_nacimiento"]).ToString();
             this.Sexo = (dr["sexo"]).ToString();
             this.Padron = Convert.ToInt64(dr["padron_codigo"]);

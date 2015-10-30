@@ -50,10 +50,11 @@
             this.lbl2NyA = new System.Windows.Forms.Label();
             this.txt2NombreyApellido = new System.Windows.Forms.TextBox();
             this.sas = new System.Windows.Forms.GroupBox();
+            this.cmbDiagnosticoCodigo = new System.Windows.Forms.ComboBox();
+            this.cmbDiagnosticoDescripcion = new System.Windows.Forms.ComboBox();
             this.txtOP = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.chOP = new System.Windows.Forms.CheckBox();
-            this.cmbDiagnostico = new System.Windows.Forms.ComboBox();
             this.label26 = new System.Windows.Forms.Label();
             this.txtFecha = new System.Windows.Forms.MaskedTextBox();
             this.dgPracticas = new System.Windows.Forms.DataGridView();
@@ -88,7 +89,7 @@
             this.label24.AutoSize = true;
             this.label24.Font = new System.Drawing.Font("Franklin Gothic Book", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label24.ForeColor = System.Drawing.Color.DarkCyan;
-            this.label24.Location = new System.Drawing.Point(18, 38);
+            this.label24.Location = new System.Drawing.Point(18, 35);
             this.label24.Name = "label24";
             this.label24.Size = new System.Drawing.Size(59, 24);
             this.label24.TabIndex = 23;
@@ -332,10 +333,11 @@
             // 
             // sas
             // 
+            this.sas.Controls.Add(this.cmbDiagnosticoCodigo);
+            this.sas.Controls.Add(this.cmbDiagnosticoDescripcion);
             this.sas.Controls.Add(this.txtOP);
             this.sas.Controls.Add(this.label1);
             this.sas.Controls.Add(this.chOP);
-            this.sas.Controls.Add(this.cmbDiagnostico);
             this.sas.Controls.Add(this.label26);
             this.sas.Controls.Add(this.txtFecha);
             this.sas.Controls.Add(this.label24);
@@ -350,9 +352,35 @@
             this.sas.TabStop = false;
             this.sas.Text = "AMBULATORIO";
             // 
+            // cmbDiagnosticoCodigo
+            // 
+            this.cmbDiagnosticoCodigo.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.cmbDiagnosticoCodigo.Font = new System.Drawing.Font("Calibri Light", 10.8F);
+            this.cmbDiagnosticoCodigo.FormattingEnabled = true;
+            this.cmbDiagnosticoCodigo.Location = new System.Drawing.Point(22, 121);
+            this.cmbDiagnosticoCodigo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.cmbDiagnosticoCodigo.Name = "cmbDiagnosticoCodigo";
+            this.cmbDiagnosticoCodigo.Size = new System.Drawing.Size(149, 30);
+            this.cmbDiagnosticoCodigo.TabIndex = 32;
+            this.cmbDiagnosticoCodigo.Text = "Código";
+            this.cmbDiagnosticoCodigo.SelectedIndexChanged += new System.EventHandler(this.cmbDiagnosticoCodigo_SelectedIndexChanged);
+            // 
+            // cmbDiagnosticoDescripcion
+            // 
+            this.cmbDiagnosticoDescripcion.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.cmbDiagnosticoDescripcion.Font = new System.Drawing.Font("Calibri Light", 10.8F);
+            this.cmbDiagnosticoDescripcion.FormattingEnabled = true;
+            this.cmbDiagnosticoDescripcion.Location = new System.Drawing.Point(187, 121);
+            this.cmbDiagnosticoDescripcion.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.cmbDiagnosticoDescripcion.Name = "cmbDiagnosticoDescripcion";
+            this.cmbDiagnosticoDescripcion.Size = new System.Drawing.Size(290, 30);
+            this.cmbDiagnosticoDescripcion.TabIndex = 31;
+            this.cmbDiagnosticoDescripcion.Text = "Descripción";
+            this.cmbDiagnosticoDescripcion.SelectedIndexChanged += new System.EventHandler(this.cmbDiagnosticoDescripcion_SelectedIndexChanged);
+            // 
             // txtOP
             // 
-            this.txtOP.Location = new System.Drawing.Point(288, 65);
+            this.txtOP.Location = new System.Drawing.Point(288, 62);
             this.txtOP.Name = "txtOP";
             this.txtOP.Size = new System.Drawing.Size(189, 28);
             this.txtOP.TabIndex = 30;
@@ -361,7 +389,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.ForeColor = System.Drawing.Color.DarkCyan;
-            this.label1.Location = new System.Drawing.Point(210, 64);
+            this.label1.Location = new System.Drawing.Point(210, 61);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(33, 24);
             this.label1.TabIndex = 29;
@@ -370,23 +398,12 @@
             // chOP
             // 
             this.chOP.AutoSize = true;
-            this.chOP.Location = new System.Drawing.Point(247, 69);
+            this.chOP.Location = new System.Drawing.Point(247, 66);
             this.chOP.Name = "chOP";
             this.chOP.Size = new System.Drawing.Size(18, 17);
             this.chOP.TabIndex = 1;
             this.chOP.UseVisualStyleBackColor = true;
             this.chOP.CheckedChanged += new System.EventHandler(this.chOP_CheckedChanged);
-            // 
-            // cmbDiagnostico
-            // 
-            this.cmbDiagnostico.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.cmbDiagnostico.Font = new System.Drawing.Font("Calibri Light", 10.8F);
-            this.cmbDiagnostico.FormattingEnabled = true;
-            this.cmbDiagnostico.Location = new System.Drawing.Point(22, 121);
-            this.cmbDiagnostico.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.cmbDiagnostico.Name = "cmbDiagnostico";
-            this.cmbDiagnostico.Size = new System.Drawing.Size(455, 30);
-            this.cmbDiagnostico.TabIndex = 2;
             // 
             // label26
             // 
@@ -402,7 +419,7 @@
             // txtFecha
             // 
             this.txtFecha.Font = new System.Drawing.Font("Calibri Light", 10.8F);
-            this.txtFecha.Location = new System.Drawing.Point(22, 64);
+            this.txtFecha.Location = new System.Drawing.Point(22, 61);
             this.txtFecha.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtFecha.Mask = "00/00/0000";
             this.txtFecha.Name = "txtFecha";
@@ -514,7 +531,6 @@
         private System.Windows.Forms.TextBox txtNombreApellido;
         private System.Windows.Forms.TextBox txtDocumento;
         private System.Windows.Forms.TextBox txtBeneficio;
-        private System.Windows.Forms.ComboBox cmbDiagnostico;
         private System.Windows.Forms.Label label26;
         private System.Windows.Forms.DataGridView dgPracticas;
         private System.Windows.Forms.GroupBox groupBox3;
@@ -531,5 +547,7 @@
         private System.Windows.Forms.PictureBox btn2Atras;
         private System.Windows.Forms.TextBox txt2NombreyApellido;
         private System.Windows.Forms.PictureBox btnBuscar;
+        private System.Windows.Forms.ComboBox cmbDiagnosticoDescripcion;
+        private System.Windows.Forms.ComboBox cmbDiagnosticoCodigo;
     }
 }

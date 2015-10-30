@@ -12,7 +12,6 @@ namespace PAMI.Ambulatorio
 {
     public partial class AmbulatorioExistente : Form
     {
-
         Planilla unaPlanilla = new Planilla();
         Int64 MedicoPosta;
         
@@ -26,16 +25,6 @@ namespace PAMI.Ambulatorio
             MedicoPosta = Medico;
             unaPlanilla = planilla;
             crearGrilla();
-            if (dgAmbulatorios.Rows.Count > 0)
-            {
-                foreach (DataGridViewRow row in dgAmbulatorios.Rows)
-                {
-                    if (Convert.ToBoolean(row.Cells[0].Value) == false)
-                    {
-                        row.DefaultCellStyle.BackColor = Color.Red;
-                    }
-                }
-            }
         }
 
         public void crearGrilla()
@@ -87,7 +76,7 @@ namespace PAMI.Ambulatorio
             dgAmbulatorios.Columns.Add(clm_Hora);
             
             dgAmbulatorios.DataSource = unaPlanilla.tablaPlanilla;
-
+            dgAmbulatorios.AllowUserToAddRows = false;
 
             DataGridViewCellStyle miestilo = new DataGridViewCellStyle();
             miestilo.Font = new Font("Franklin Gothic Book", 11);
@@ -98,9 +87,46 @@ namespace PAMI.Ambulatorio
             dgAmbulatorios.ColumnHeadersDefaultCellStyle.BackColor = Color.Gainsboro; 
         }
 
+        private void dgAmbulatorios_RowPrePaint(object sender, DataGridViewRowPrePaintEventArgs e)
+        {
+            if (Convert.ToInt64(dgAmbulatorios.Rows[e.RowIndex].Cells[0].Value).ToString() == "0")
+            {
+                dgAmbulatorios.Rows[e.RowIndex].ReadOnly = true;
+                dgAmbulatorios.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.LightGray;
+            }
+        }
 
+        private void btnSI_Click(object sender, EventArgs e)
+        {
+            int indice = 0;
+            foreach (DataGridViewRow row in dgAmbulatorios.Rows)
+            {
+                if (Convert.ToInt64(row.Cells[0].Value).ToString() == "1")
+                {
+                    unaPlanilla.Medico = Convert.ToInt64(unaPlanilla.tablaPlanilla.Rows[indice]["Planilla_medico_secundario_matricula"]);
+                    unaPlanilla.Beneficio = row.Cells[2].Value.ToString();
+                    unaPlanilla.Diagnostico = unaPlanilla.tablaPlanilla.Rows[indice]["Planilla_diagnostico"].ToString();
+                    unaPlanilla.Practica = row.Cells[3].Value.ToString();
+                    unaPlanilla.Fecha = row.Cells[4].Value.ToString();
+                    unaPlanilla.Hora = row.Cells[5].Value.ToString();                   
+                    
+                    DataSet dsImportar = unaPlanilla.ImportarAmbulatorioExistente(MedicoPosta);
 
+                    if (dsImportar.Tables[0].Rows[0][0].ToString() != unaPlanilla.Hora)
+                    {
+                        row.Cells[5].Value = dsImportar.Tables[0].Rows[0][0].ToString();
+                        row.Cells[5].Style.BackColor = Color.LightBlue;  //SIGNIFICA QUE LE CAMBIE LA HORA!!
+                    }
+                }
+            }
+            MessageBox.Show("Importado Correctamente");
+            this.Close();
+        }
 
+        private void btnNo_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
 
     }
 }

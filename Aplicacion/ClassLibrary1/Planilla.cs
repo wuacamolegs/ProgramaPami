@@ -43,6 +43,7 @@ namespace Clases
             tablaPlanilla.Columns.Add("Planilla_practica", typeof(string));
             tablaPlanilla.Columns.Add("Planilla_fecha", typeof(string));
             tablaPlanilla.Columns.Add("Planilla_hora", typeof(string));
+            tablaPlanilla.Columns.Add("Planilla_diagnostico", typeof(string));
             tablaPlanilla.Columns.Add("Existe", typeof(int));
         }
 
@@ -144,7 +145,6 @@ namespace Clases
         {
             this.parameterList.Clear();
             parameterList.Add(new SqlParameter("@Fecha", this.Fecha));
-            parameterList.Add(new SqlParameter("@Medico", this.Medico));
             parameterList.Add(new SqlParameter("@Afiliado", this.Beneficio));
             parameterList.Add(new SqlParameter("@Asociacion", this.Asociacion));
         }
@@ -176,6 +176,15 @@ namespace Clases
             parameterList.Add(new SqlParameter("@Anio", this.Anio));
         }
 
+        private void setearListaParametrosTablas()
+        {
+            this.parameterList.Clear();
+            parameterList.Add(new SqlParameter("@AsociacionID", this.Asociacion));
+            parameterList.Add(new SqlParameter("@MedicoID", this.Medico));
+            parameterList.Add(new SqlParameter("@Mes", this.Mes));
+            parameterList.Add(new SqlParameter("@Anio", this.Anio));
+        }
+
         private void setearListaParametrosConAsociacionMedico()
         {
             this.parameterList.Clear();
@@ -188,6 +197,11 @@ namespace Clases
             this.parameterList.Clear();
             parameterList.Add(new SqlParameter("@AsocID", this.Asociacion));
         }
+
+        private void setearListaParametrosAgregarMedicoPosta(Int64 MedicoPosta)
+        {
+            parameterList.Add(new SqlParameter("@MedicoPosta", MedicoPosta));
+        }
        
         #endregion
 
@@ -199,16 +213,16 @@ namespace Clases
         }
 
         //Para cargar el combo medico segun asociacion
-        public DataSet TraerPlanillasPorMedico(long AsociacionID, long MedicoID)
+        public DataSet TraerPlanillasPorMedico()
         {
             setearListaParametrosConAsociacionMedico();
             return this.TraerListado(parameterList, "ActualPorMedicoAsociacion");
         }
 
         //Para luego comparar que los datos sean validos. practicas, beneficios etc.
-        public DataSet TraerTablasPlanilla(long Asociacion, long MedicoID)
+        public DataSet TraerTablasPlanilla()
         {
-            setearListaParametrosConAsociacionMedico();
+            setearListaParametrosTablas();
             return this.TraerListado(parameterList, "TablasParaValidar");
         }
 
@@ -232,5 +246,22 @@ namespace Clases
             setearListaParametrosAmbulatorioExistente();
             return SQLHelper.ExecuteDataSet("ValidarAmbulatorioExistenteEnPlanilla", CommandType.StoredProcedure, NombreTabla(), parameterList);
         }
+
+        public DataSet ImportarAmbulatorioExistente(Int64 MedicoPosta)
+        {
+            setearListaParametrosCompleta();
+            setearListaParametrosAgregarMedicoPosta(MedicoPosta);
+            return this.GuardarYObtenerID(parameterList,"AmbulatorioExistente");
+        }
+
+        public void TraerAmbulatoriosCargadosAOtroMedicoPorFiltros()
+        {
+            setearListaParametrosTablas();
+            this.TraerListado(parameterList, "AmbulatoriosCargadosAOtroMedico");
+        }
+
+
+
+
     }
 }

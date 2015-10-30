@@ -20,11 +20,15 @@ namespace PAMI.Ambulatorio
         DataTable TablaNomenclador = new DataTable();
         DataView AfiliadosView = new DataView();
 
+        DataTable TablaFechaHoras = new DataTable();
+
         Asociacion unaAsociacion = new Asociacion();
         Planilla unaPlanilla = new Planilla();
 
         Afiliado unAfiliado = new Afiliado();
         AutoCompleteStringCollection scAutoComplete = new AutoCompleteStringCollection();
+
+        bool diagnosticosCargados = false;
 
         #endregion
         
@@ -36,6 +40,10 @@ namespace PAMI.Ambulatorio
             TablaNomenclador.Columns.Add("Codigo", typeof(string));
             TablaNomenclador.Columns.Add("Descripcion", typeof(string));
             TablaNomenclador.Columns.Add("CantidadMax", typeof(Int64));
+
+            //TABLA HORARIOS
+            TablaFechaHoras.Columns.Add("Fecha", typeof(string));
+            TablaFechaHoras.Columns.Add("Hora", typeof(string));
 
             txtOP.Visible = false;
             
@@ -57,7 +65,10 @@ namespace PAMI.Ambulatorio
 
             cmbMedico.SelectedIndex = -1;
             cmbAsociacion.SelectedIndex = -1;
-            cmbDiagnostico.SelectedIndex = -1;
+            cmbDiagnosticoCodigo.SelectedIndex = -1;
+            cmbDiagnosticoDescripcion.SelectedIndex = -1;
+
+            cmbAsociacion.Focus();
         }
 
         #region keypress
@@ -116,7 +127,7 @@ namespace PAMI.Ambulatorio
             }
             if (txtDocumento.Text != "")
             {
-                unAfiliado.Documento = Convert.ToInt64(txtDocumento.Text);
+                unAfiliado.Documento = txtDocumento.Text;
             }
             if (txtNombreApellido.Text != "")
             {
@@ -193,7 +204,7 @@ namespace PAMI.Ambulatorio
 
         }
 
-        public void cargarGrillaPracticasCon(DataSet ds)
+        private void cargarGrillaPracticasCon(DataSet ds)
         {
             foreach (DataRow dr in ds.Tables[0].Rows)
             {
@@ -249,17 +260,20 @@ namespace PAMI.Ambulatorio
         private void dgPracticas_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
             try
-            {
-                if (e.ColumnIndex == 0 && e.RowIndex != 0)
-                {
-                    int rowIndex = dgPracticas.CurrentRow.Index;
-                    DateTime diaHora = new DateTime();
-                    if (dgPracticas.Rows[rowIndex - 1].Cells[1].Value != null)
+           {
+                DateTime diaHora = new DateTime();
+                int rowIndex = dgPracticas.CurrentRow.Index;
+
+                if (e.ColumnIndex == 0 )
+                {                 
+                    if (e.RowIndex != 0 && dgPracticas.Rows[rowIndex - 1].Cells[1].Value != null)
                     {
                         diaHora = Convert.ToDateTime(dgPracticas.Rows[rowIndex - 1].Cells[1].Value.ToString());
                         dgPracticas.CurrentRow.Cells[1].Value = diaHora.AddMinutes(5).ToString("HH:mm", CultureInfo.InvariantCulture);
                     }
+                    
                 }
+
             }
             catch (Exception ex)
             {
@@ -278,6 +292,7 @@ namespace PAMI.Ambulatorio
                 cargarGrillaPracticasCon(dsPracticas);
                 unaPlanilla.Dispose();
 
+                TablaNomenclador = null;
                 TablaNomenclador = dsPracticas.Tables[0];
 
                 //Cargar Combo Medicos
@@ -297,10 +312,21 @@ namespace PAMI.Ambulatorio
                 DataSet dsDiagnostico = unDiagnostico.TraerListadoDiagnosticoPorAsociacion(Convert.ToInt64(cmbAsociacion.SelectedValue));
                 unDiagnostico.Dispose();
 
-                Utilities.DropDownListManager.CargarCombo(cmbDiagnostico, dsDiagnostico.Tables[0], "diagnostico_codigo", "diagnostico_descripcion", false, "");
-                cmbDiagnostico.AutoCompleteCustomSource = Utilities.AutocompleteComboBox.LoadAutoComplete(dsDiagnostico, "diagnostico_descripcion");
-                cmbDiagnostico.AutoCompleteMode = AutoCompleteMode.Suggest;
-                cmbDiagnostico.AutoCompleteSource = AutoCompleteSource.CustomSource;
+                //CARGAR COMBO DESCRIPCION
+                Utilities.DropDownListManager.CargarCombo(cmbDiagnosticoDescripcion, dsDiagnostico.Tables[0], "diagnostico_id", "diagnostico_descripcion", false, "");
+                cmbDiagnosticoDescripcion.AutoCompleteCustomSource = Utilities.AutocompleteComboBox.LoadAutoComplete(dsDiagnostico, "diagnostico_descripcion");
+                cmbDiagnosticoDescripcion.AutoCompleteMode = AutoCompleteMode.Suggest;
+                cmbDiagnosticoDescripcion.AutoCompleteSource = AutoCompleteSource.CustomSource;
+                cmbDiagnosticoDescripcion.SelectedIndex = -1;
+
+                //CARGAR COMBO CODIGO
+                Utilities.DropDownListManager.CargarCombo(cmbDiagnosticoCodigo , dsDiagnostico.Tables[0], "diagnostico_id", "diagnostico_codigo", false, "");
+                cmbDiagnosticoCodigo.AutoCompleteCustomSource = Utilities.AutocompleteComboBox.LoadAutoComplete(dsDiagnostico, "diagnostico_codigo");
+                cmbDiagnosticoCodigo.AutoCompleteMode = AutoCompleteMode.Suggest;
+                cmbDiagnosticoCodigo.AutoCompleteSource = AutoCompleteSource.CustomSource;
+                cmbDiagnosticoCodigo.SelectedIndex = -1;
+
+                diagnosticosCargados = true;
 
                 //TABLA AFILIADOS
                 DataSet dsAfiliados = unAfiliado.TraerAfiliadosConFiltrosPorAsociacionID(Convert.ToInt64(cmbAsociacion.SelectedValue));
@@ -310,7 +336,8 @@ namespace PAMI.Ambulatorio
             if (cmbAsociacion.SelectedIndex == -1)
             {
                 cmbMedico.DataSource = null;
-                cmbDiagnostico.DataSource = null;
+                cmbDiagnosticoCodigo.DataSource = null;
+                cmbDiagnosticoDescripcion.DataSource = null;
                 dgPracticas.DataSource = null;                
             }
         }
@@ -333,7 +360,7 @@ namespace PAMI.Ambulatorio
                     strErrores = strErrores + "Debe seleccionar un Afiliado\n";
                 }
                 strErrores = strErrores + Validator.ValidarFecha(txtFecha.Text, "Fecha Ambulatorio");
-                strErrores = strErrores + Validator.validarNuloEnComboBox(cmbDiagnostico.SelectedIndex, "Diagnóstico");
+                strErrores = strErrores + Validator.validarNuloEnComboBox(cmbDiagnosticoCodigo.SelectedIndex, "Diagnóstico");
                 strErrores = strErrores + Validator.ValidarHoraEnDataGrid(dgPracticas, 1);
                 if (strErrores != "")
                 {
@@ -358,7 +385,7 @@ namespace PAMI.Ambulatorio
                 unaPlanilla.Medico = Convert.ToInt64(cmbMedico.SelectedValue);
                 unaPlanilla.Beneficio = txt2NroAfiliado.Text.ToString();
                 unaPlanilla.Fecha = txtFecha.Text.ToString();
-                unaPlanilla.Diagnostico = cmbDiagnostico.SelectedValue.ToString();
+                unaPlanilla.Diagnostico = cmbDiagnosticoCodigo.SelectedValue.ToString();
                 unaPlanilla.tablaPlanilla.Clear();
 
                 string importarAmbulatorio = "Nuevo Ambulatorio.\n\nProfesional: " + cmbMedico.Text +
@@ -375,6 +402,12 @@ namespace PAMI.Ambulatorio
 
                         if (ds.Tables[0].Rows[0]["Existe"].ToString() == "-1")
                         {
+                            if (ds.Tables[0].Rows[0][3].ToString() != unaPlanilla.Hora)
+                            {
+                                row.Cells[1].Value = ds.Tables[0].Rows[0][3].ToString();
+                                row.Cells[1].Style.BackColor = Color.LightBlue;
+                            }
+
                             importarAmbulatorio = importarAmbulatorio + row.Cells[1].Value.ToString() + " - " + extraerPractica(row.Cells[0].Value.ToString()) + " - Importado Correctamente\n";
                         }
                         if (ds.Tables[0].Rows[0]["Medico"].ToString() == unaPlanilla.Medico.ToString())
@@ -402,6 +435,10 @@ namespace PAMI.Ambulatorio
                 {
                     MessageBox.Show(importarAmbulatorio);
                 }
+                dgPracticas.Rows.Clear();
+                cmbDiagnosticoCodigo.SelectedIndex = -1;
+                btn2Atras_Click(sender, e);
+                dgAfiliados.DataSource = null;
             }
         }
 
@@ -528,6 +565,9 @@ namespace PAMI.Ambulatorio
                 unaPlanilla.Medico = Convert.ToInt64(cmbMedico.SelectedValue);
                 unaPlanilla.Beneficio = txt2NroAfiliado.Text.ToString();
                 unaPlanilla.Fecha = txtFecha.Text.ToString();
+                unaPlanilla.Asociacion = Convert.ToInt64(cmbAsociacion.SelectedValue);
+                unaPlanilla.Mes = Convert.ToInt64(txtFecha.Text.ToString().Substring(3,2));
+                unaPlanilla.Anio = Convert.ToInt64(txtFecha.Text.ToString().Substring(6,4));
 
                 DataSet ds = unaPlanilla.ValidarAmbulatorioExistente();
                 DialogResult result;
@@ -543,8 +583,14 @@ namespace PAMI.Ambulatorio
                         result = MessageBox.Show("El afiliado ya posee un ambulatorio en esta fecha. \n\n¿Desea editarlo?", "", MessageBoxButtons.YesNo);
                     }
 
-                    if (result == DialogResult.Yes)
+                    if (result == DialogResult.No)
                     {
+                        this.Close();
+                    }
+
+                    if (result == DialogResult.Yes || result == DialogResult.Ignore)
+                    {                    
+                        unaPlanilla.Medico = Convert.ToInt64(ds.Tables[0].Rows[0][0]);
                         cmbMedico.SelectedValue = ds.Tables[0].Rows[0][0].ToString();
                         MessageBox.Show(ds.Tables[0].Rows[0][3].ToString());
                         int index = 0;
@@ -557,14 +603,24 @@ namespace PAMI.Ambulatorio
                         }
                     }
                 }
-                else
-                {
-
-                }
+                TablaFechaHoras = unaPlanilla.TraerTablasPlanilla().Tables[3];
             }
-
-
         }
-    
+
+        private void cmbDiagnosticoCodigo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbDiagnosticoCodigo.SelectedValue != null && diagnosticosCargados == true)
+            {
+                cmbDiagnosticoDescripcion.SelectedValue = cmbDiagnosticoCodigo.SelectedValue;
+            }
+        }
+
+        private void cmbDiagnosticoDescripcion_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbDiagnosticoDescripcion.SelectedValue != null && diagnosticosCargados == true)
+            {
+                cmbDiagnosticoCodigo.SelectedValue = cmbDiagnosticoDescripcion.SelectedValue;
+            }
+        }
     }
 }

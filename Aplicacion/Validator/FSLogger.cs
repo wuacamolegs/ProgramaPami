@@ -13,13 +13,16 @@ namespace Utilities
     public class FSLogger
     {
         private string fileName;
-        private string path = "A:\\Documents\\PAMI\\Retransmitir\\Migracion\\SQL ARCHIVOS";
+        private string path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\PAMI\\Archivos Para Emulacion";
         private string rutaCompleta;
         
         // si pasamos la ruta de un archivo, se utilizará ese para hacer el log
         public FSLogger(string file)
         {   
             fileName = file;
+
+            Directory.CreateDirectory(path);
+
             if (!File.Exists(path + "\\" + fileName + ".txt"))
             {
                 // Create a file to write to.

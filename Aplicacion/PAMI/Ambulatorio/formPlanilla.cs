@@ -84,6 +84,7 @@ namespace PAMI.PlanillaPami
             dgPlanilla.Columns.Clear();
             dgPlanilla.AutoGenerateColumns = false;
             dgPlanilla.RowHeadersVisible = false;
+            dgPlanilla.AllowUserToResizeRows = false;
 
             DataGridViewTextBoxColumn clm_Fecha = new DataGridViewTextBoxColumn();
             clm_Fecha.Width = 100;
@@ -140,8 +141,6 @@ namespace PAMI.PlanillaPami
             dgPlanilla.ColumnHeadersDefaultCellStyle = miestilo;
             dgPlanilla.ColumnHeadersDefaultCellStyle.ForeColor = Color.DarkCyan;
             dgPlanilla.ColumnHeadersDefaultCellStyle.BackColor = Color.Gainsboro; 
-
-
         }
 
         private void rellenarGrillaCeldasBlancas()
@@ -176,7 +175,7 @@ namespace PAMI.PlanillaPami
                         string[] cells = line.Split('\t');
                         for (int i = 0; i < cells.GetLength(0); ++i)
                         {
-                            if (col + i < this.dgPlanilla.ColumnCount)
+                            if (col + i < this.dgPlanilla.ColumnCount && (col + i) != 6 && (col + i) != 7)
                             {
                                 dgPlanilla[col + i, row].Value = Convert.ChangeType(cells[i], dgPlanilla[col + i, row].ValueType);
                             }
@@ -202,7 +201,7 @@ namespace PAMI.PlanillaPami
                     {
                         int row = oneCell.RowIndex;
                         int column = oneCell.ColumnIndex;
-                        dgPlanilla.Rows[row].Cells[column].Value = " ";
+                        dgPlanilla.Rows[row].Cells[column].Value = "";
                         if (oneCell.ColumnIndex == 6) { dgPlanilla.Rows[row].Cells[column].Value = false; }
                     }
                 }
@@ -246,7 +245,7 @@ namespace PAMI.PlanillaPami
                     unaPlanilla.Asociacion = Convert.ToInt64(cmbAsociacion.SelectedValue);
 
 
-                    DataSet ds = unaPlanilla.TraerTablasPlanilla(unaPlanilla.Asociacion,unaPlanilla.Medico);  
+                    DataSet ds = unaPlanilla.TraerTablasPlanilla();  
                     /*el ds va a tener en TABLE
                      * 0  beneficios afiliados
                      * 1  Diagnosticos
@@ -267,6 +266,10 @@ namespace PAMI.PlanillaPami
                         }
                         string strErrores = "";
                         strErrores = strErrores + Validator.ValidarFecha(oneRow.Cells[0].Value.ToString(), "Fecha");
+                        if (oneRow.Cells[0].Value.ToString().Substring(3, 2) == cmbMes.SelectedValue.ToString() && oneRow.Cells[0].Value.ToString().Substring(6, 4) == txtAnio.Text)
+                        {
+                            strErrores = strErrores + "La fecha no se corresponde al periodo seleccionado\n";
+                        }
                         strErrores = strErrores + Validator.ValidarSoloLetras(oneRow.Cells[1].Value.ToString(), "Afiliado");
                         strErrores = strErrores + Validator.SoloNumeros(oneRow.Cells[4].Value.ToString(), "Práctica");
                         strErrores = strErrores + Validator.ValidarHora(oneRow.Cells[5].Value.ToString(), "Hora");
@@ -277,24 +280,18 @@ namespace PAMI.PlanillaPami
                             strErrores = ValidarExistenciaEnTablas(oneRow);
                             if (strErrores == "")
                             {
-                                DataRow newRow = TablaFechaHora.NewRow();
-                                newRow["Fecha"] = oneRow.Cells[0].Value.ToString();
-                                newRow["Hora"] = oneRow.Cells[5].Value.ToString();
-
-                                TablaFechaHora.Rows.Add(newRow);
                                 oneRow.Cells[6].Value = true;
                                 oneRow.Cells[7].Value = "Listo Para Importar";
-
                             }
                             else
                             {
                                 estado = -1;
+                                oneRow.Cells[6].Value = false;
                                 oneRow.Cells[7].Value = strErrores;
                             }
                         }
                         else
                         {
-                            oneRow.DefaultCellStyle.BackColor = Color.LightBlue;
                             oneRow.Cells[6].Value = false;
                             estado = -1;
                             oneRow.Cells[7].Value = strErrores;
@@ -342,7 +339,7 @@ namespace PAMI.PlanillaPami
             //Verificar beneficio DNI
             bool beneficio = TablaAfiliados.AsEnumerable().Any(x => x.Field<string>("Beneficio") == oneRow.Cells[2].Value.ToString());
             bool dni = TablaAfiliados.AsEnumerable().Any(x => x.Field<string>("Documento") == oneRow.Cells[2].Value.ToString());
-            if (dni || beneficio)  //TODO CAMBIAR A beneficio || dni
+            if (dni || beneficio)  
             { }else {strErrores = strErrores + "Afiliado, ";}
 
             //Verificar Diagnostico
@@ -362,14 +359,6 @@ namespace PAMI.PlanillaPami
             if (strErrores == "No se encontró: ")
             {
                 strErrores = "";
-                //Verificar que no se haya cargado algo a esa hora!
-
-                DateTime diaHora = new DateTime();
-                while (TablaFechaHora.AsEnumerable().Any(x => (x.Field<string>("Fecha") == oneRow.Cells[0].Value.ToString()) && (x.Field<string>("Hora") == oneRow.Cells[5].Value.ToString())))
-                {
-                    diaHora = Convert.ToDateTime(oneRow.Cells[5].Value.ToString());
-                    oneRow.Cells[5].Value = diaHora.AddMinutes(5).ToString("HH:mm", CultureInfo.InvariantCulture);
-                }
             }
 
             return strErrores;    
@@ -391,10 +380,12 @@ namespace PAMI.PlanillaPami
                 {
                     //Arreglo fila 0
                     filaActual = 0;
-                    dgPlanilla.Rows[filaActual].Cells[2].Value = Regex.Replace(dgPlanilla.Rows[filaActual].Cells[2].Value.ToString(), @"[^\d]", "");
-                    dgPlanilla.Rows[filaActual].Cells[4].Value = Regex.Replace(dgPlanilla.Rows[filaActual].Cells[4].Value.ToString(), @"[^\d]", "");
+
+                    dgPlanilla.Rows[filaActual].Cells[0].Value = Editor.NormalizarFecha(dgPlanilla.Rows[filaActual].Cells[0].Value.ToString());
                     dgPlanilla.Rows[filaActual].Cells[1].Value = Editor.NormalizarCadena(dgPlanilla.Rows[filaActual].Cells[1].Value.ToString());
+                    dgPlanilla.Rows[filaActual].Cells[2].Value = Regex.Replace(dgPlanilla.Rows[filaActual].Cells[2].Value.ToString(), @"[^\d]", "");
                     dgPlanilla.Rows[filaActual].Cells[3].Value = Editor.NormalizarCadena(dgPlanilla.Rows[filaActual].Cells[3].Value.ToString());
+                    dgPlanilla.Rows[filaActual].Cells[4].Value = Regex.Replace(dgPlanilla.Rows[filaActual].Cells[4].Value.ToString(), @"[^\d]", "");
                     dgPlanilla.Rows[filaActual].Cells[5].Value = Editor.NormalizarHora(dgPlanilla.Rows[filaActual].Cells[5].Value.ToString());
                     
                     filaActual = 1;
@@ -411,12 +402,12 @@ namespace PAMI.PlanillaPami
                         }
                        
                         columnaActual = 0;
-                        
-                    //  dgPlanilla.Rows[filaActual].Cells[2].Value = Regex.Match(dgPlanilla.Rows[filaActual].Cells[2].Value.ToString(), @"\d+").Value;
-                        dgPlanilla.Rows[filaActual].Cells[2].Value = Regex.Replace(dgPlanilla.Rows[filaActual].Cells[2].Value.ToString(), @"[^\d]", "");
-                        dgPlanilla.Rows[filaActual].Cells[4].Value = Regex.Replace(dgPlanilla.Rows[filaActual].Cells[4].Value.ToString(), @"[^\d]", "");
+
+                        dgPlanilla.Rows[filaActual].Cells[0].Value = Editor.NormalizarFecha(dgPlanilla.Rows[filaActual].Cells[0].Value.ToString());
                         dgPlanilla.Rows[filaActual].Cells[1].Value = Editor.NormalizarCadena(dgPlanilla.Rows[filaActual].Cells[1].Value.ToString());
+                        dgPlanilla.Rows[filaActual].Cells[2].Value = Regex.Replace(dgPlanilla.Rows[filaActual].Cells[2].Value.ToString(), @"[^\d]", "");
                         dgPlanilla.Rows[filaActual].Cells[3].Value = Editor.NormalizarCadena(dgPlanilla.Rows[filaActual].Cells[3].Value.ToString());
+                        dgPlanilla.Rows[filaActual].Cells[4].Value = Regex.Replace(dgPlanilla.Rows[filaActual].Cells[4].Value.ToString(), @"[^\d]", "");
                         dgPlanilla.Rows[filaActual].Cells[5].Value = Editor.NormalizarHora(dgPlanilla.Rows[filaActual].Cells[5].Value.ToString());
                         filaActual++;   
                     }
@@ -439,7 +430,9 @@ namespace PAMI.PlanillaPami
         {
             if (validarCombosSeleccionados() == "")
             {
-                DataSet ds = unaPlanilla.TraerPlanillasPorMedico(Convert.ToInt64(cmbAsociacion.SelectedValue), Convert.ToInt64(cmbMedico.SelectedValue));
+                unaPlanilla.Asociacion = Convert.ToInt64(cmbAsociacion.SelectedValue);
+                unaPlanilla.Medico = Convert.ToInt64(cmbMedico.SelectedValue);
+                DataSet ds = unaPlanilla.TraerPlanillasPorMedico();
                 cargarGrilla(ds);
             }
             else
@@ -485,7 +478,7 @@ namespace PAMI.PlanillaPami
 
                 if (estadocheckbox)
                 {
-                    unaPlanilla.Mes = cmbMes.SelectedIndex;
+                    unaPlanilla.Mes = Convert.ToInt64(cmbMes.SelectedValue);
                     unaPlanilla.Anio = Convert.ToInt64(txtAnio.Text);
                     unaPlanilla.Medico = Convert.ToInt64(cmbMedico.SelectedValue);
                     unaPlanilla.Asociacion = Convert.ToInt64(cmbAsociacion.SelectedValue);
@@ -512,10 +505,17 @@ namespace PAMI.PlanillaPami
                             {
                                 if (ds.Tables[0].Rows[0]["Existe"].ToString() == "-1")
                                 {
+                                    if (ds.Tables[0].Rows[0][3].ToString() != unaPlanilla.Hora)
+                                    {
+                                        row.Cells[5].Value = ds.Tables[0].Rows[0][3].ToString();
+                                        row.Cells[5].Style.BackColor = Color.LightBlue;
+                                    }
+                                    row.Cells[6].Value = true;
                                     row.Cells[7].Value = "Importado Correctamente";
                                 }
                                 if (ds.Tables[0].Rows[0]["Medico"].ToString() == unaPlanilla.Medico.ToString())
                                 {
+                                    row.Cells[6].Value = true;
                                     row.Cells[7].Value = "Práctica ya cargada en ambulatorio con este Profesional";
                                 }
                                 if (ds.Tables[0].Rows[0]["Medico"].ToString() != unaPlanilla.Medico.ToString() &&
@@ -528,8 +528,10 @@ namespace PAMI.PlanillaPami
                                     newRow["Planilla_practica"] = unaPlanilla.Practica;
                                     newRow["Planilla_fecha"] = unaPlanilla.Fecha;
                                     newRow["Planilla_hora"] = unaPlanilla.Hora;
+                                    newRow["Planilla_diagnostico"] = unaPlanilla.Diagnostico;
                                     newRow["Existe"] = ds.Tables[0].Rows[0]["Existe"].ToString();
 
+                                    row.Cells[6].Value = false;
                                     row.Cells[7].Value = "Ya posee un ambulatorio existente";
                                     unaPlanilla.tablaPlanilla.Rows.Add(newRow);
                                 }

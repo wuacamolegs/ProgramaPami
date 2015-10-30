@@ -56,9 +56,20 @@ namespace Clases
             SQLHelper.ExecuteDataSet(_strInsertar + NombreEntidad(), CommandType.StoredProcedure, NombreTabla(), parameterList);
         }
 
+        public void Guardar(List<SqlParameter> parameterList, string Condiciones)
+        {
+            SQLHelper.ExecuteDataSet(_strInsertar + NombreEntidad() + Condiciones, CommandType.StoredProcedure, NombreTabla(), parameterList);
+        }
+
         public DataSet GuardarYObtenerID(List<SqlParameter> parameterList)
         {
             DataSet ds = SQLHelper.ExecuteDataSet(_strInsertar + NombreEntidad() + _strRetornoID, CommandType.StoredProcedure, NombreTabla(), parameterList);
+            return ds;
+        }
+
+        public DataSet GuardarYObtenerID(List<SqlParameter> parameterList, string Condiciones)
+        {
+            DataSet ds = SQLHelper.ExecuteDataSet(_strInsertar + NombreEntidad() + _strRetornoID + Condiciones, CommandType.StoredProcedure, NombreTabla(), parameterList);
             return ds;
         }
 

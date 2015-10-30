@@ -75,3 +75,5 @@ A:\Documents\PAMI\ProgramaPami\Aplicacion\PAMI\obj\Release\PAMI.csproj.GenerateR
 A:\Documents\PAMI\ProgramaPami\Aplicacion\PAMI\obj\Release\PAMI.exe
 A:\Documents\PAMI\ProgramaPami\Aplicacion\PAMI\obj\Release\PAMI.pdb
 A:\Documents\PAMI\ProgramaPami\Aplicacion\PAMI\obj\Release\PAMI.Importar_Datos.ImportarDiagnosticos.resources
+A:\Documents\PAMI\ProgramaPami\Aplicacion\PAMI\obj\Release\PAMI.Profesionales.ContadorPracticasProfesional.resources
+A:\Documents\PAMI\ProgramaPami\Aplicacion\PAMI\obj\Release\PAMI.Profesionales.FacturacionAmbulatoriosExistentes.resources

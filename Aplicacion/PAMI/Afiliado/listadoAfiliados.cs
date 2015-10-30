@@ -197,7 +197,7 @@ namespace PAMI.Afiliados
             }
             if (txtDocumento.Text != "")
             {
-                unAfiliado.Documento = Convert.ToInt64(txtDocumento.Text);
+                unAfiliado.Documento = txtDocumento.Text;
             }
             if (txtNombreApellido.Text != "")
             {
