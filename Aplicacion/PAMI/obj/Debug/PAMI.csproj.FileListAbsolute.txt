@@ -48,7 +48,6 @@ C:\Users\MARTIN\Documents\GitHub\ProgramaPami\Aplicacion\PAMI\obj\Debug\PAMI.pdb
 C:\Users\MARTIN\Documents\GitHub\ProgramaPami\Aplicacion\PAMI\obj\Debug\ResolveAssemblyReference.cache
 C:\Users\MARTIN\Documents\GitHub\ProgramaPami\Aplicacion\PAMI\obj\Debug\PAMI.Afiliados.listadoAfiliados.resources
 C:\Users\MARTIN\Documents\GitHub\ProgramaPami\Aplicacion\PAMI\obj\Debug\PAMI.Afiliados.formAfiliado.resources
-C:\Users\MARTIN\Documents\GitHub\ProgramaPami\Aplicacion\PAMI\obj\Debug\PAMI.Ambulatorio.NuevoAmbulatorio.resources
 C:\Users\MARTIN\Documents\GitHub\ProgramaPami\Aplicacion\PAMI\obj\Debug\PAMI.Exportacion.ExportarDatos.resources
 C:\Users\MARTIN\Documents\GitHub\ProgramaPami\Aplicacion\PAMI\obj\Debug\PAMI.MenuInicial.resources
 C:\Users\MARTIN\Documents\GitHub\ProgramaPami\Aplicacion\PAMI\obj\Debug\PAMI.Nomenclador.formPracticas.resources
@@ -78,3 +77,14 @@ A:\Documents\PAMI\ProgramaPami\Aplicacion\PAMI\obj\Debug\PAMI.Importar_Datos.Imp
 A:\Documents\PAMI\ProgramaPami\Aplicacion\PAMI\obj\Debug\PAMI.Importar_Datos.ImportarDiagnosticos.resources
 A:\Documents\PAMI\ProgramaPami\Aplicacion\PAMI\obj\Debug\PAMI.Profesionales.ContadorPracticasProfesional.resources
 A:\Documents\PAMI\ProgramaPami\Aplicacion\PAMI\obj\Debug\PAMI.Profesionales.FacturacionAmbulatoriosExistentes.resources
+C:\Users\MARTIN\Documents\GitHub\ProgramaPami\Aplicacion\PAMI\obj\Debug\PAMI.Ambulatorio.AmbulatorioExistente.resources
+C:\Users\MARTIN\Documents\GitHub\ProgramaPami\Aplicacion\PAMI\obj\Debug\PAMI.Ambulatorio.NuevoEditarAmbulatorio.resources
+C:\Users\MARTIN\Documents\GitHub\ProgramaPami\Aplicacion\PAMI\obj\Debug\PAMI.Asociaciones.formAsociacionMedicos.resources
+C:\Users\MARTIN\Documents\GitHub\ProgramaPami\Aplicacion\PAMI\obj\Debug\PAMI.Importar_Datos.ImportarDiagnosticos.resources
+C:\Users\MARTIN\Documents\GitHub\ProgramaPami\Aplicacion\PAMI\obj\Debug\PAMI.Importar_Datos.ImportarNomenclador.resources
+C:\Users\MARTIN\Documents\GitHub\ProgramaPami\Aplicacion\PAMI\obj\Debug\PAMI.Importar_Datos.ImportarPadron.resources
+C:\Users\MARTIN\Documents\GitHub\ProgramaPami\Aplicacion\PAMI\obj\Debug\PAMI.Prestadores.formPrestador.resources
+C:\Users\MARTIN\Documents\GitHub\ProgramaPami\Aplicacion\PAMI\obj\Debug\PAMI.Profesionales.ContadorPracticasProfesional.resources
+C:\Users\MARTIN\Documents\GitHub\ProgramaPami\Aplicacion\PAMI\obj\Debug\PAMI.Profesionales.FacturacionAmbulatoriosExistentes.resources
+C:\Users\MARTIN\Documents\GitHub\ProgramaPami\Aplicacion\PAMI\obj\Debug\PAMI.Profesionales.formProfesional.resources
+C:\Users\MARTIN\Documents\GitHub\ProgramaPami\Aplicacion\PAMI\obj\Debug\PAMI.Profesionales.ListadoProfesional.resources

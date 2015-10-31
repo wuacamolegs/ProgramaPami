@@ -68,7 +68,7 @@
             this.label2.Location = new System.Drawing.Point(8, 41);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(44, 24);
+            this.label2.Size = new System.Drawing.Size(36, 20);
             this.label2.TabIndex = 2;
             this.label2.Text = "Mes";
             // 
@@ -80,7 +80,7 @@
             this.label3.Location = new System.Drawing.Point(245, 41);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(40, 24);
+            this.label3.Size = new System.Drawing.Size(33, 20);
             this.label3.TabIndex = 3;
             this.label3.Text = "Año";
             // 
@@ -106,7 +106,7 @@
             this.cmbMes.Location = new System.Drawing.Point(60, 33);
             this.cmbMes.Margin = new System.Windows.Forms.Padding(4);
             this.cmbMes.Name = "cmbMes";
-            this.cmbMes.Size = new System.Drawing.Size(169, 36);
+            this.cmbMes.Size = new System.Drawing.Size(169, 30);
             this.cmbMes.TabIndex = 4;
             // 
             // groupBox1
@@ -133,7 +133,7 @@
             "3"});
             this.cmbMedico.Location = new System.Drawing.Point(6, 36);
             this.cmbMedico.Name = "cmbMedico";
-            this.cmbMedico.Size = new System.Drawing.Size(525, 36);
+            this.cmbMedico.Size = new System.Drawing.Size(525, 30);
             this.cmbMedico.TabIndex = 0;
             // 
             // groupBox2
@@ -160,7 +160,7 @@
             "3"});
             this.cmbAsociacion.Location = new System.Drawing.Point(6, 36);
             this.cmbAsociacion.Name = "cmbAsociacion";
-            this.cmbAsociacion.Size = new System.Drawing.Size(525, 36);
+            this.cmbAsociacion.Size = new System.Drawing.Size(525, 30);
             this.cmbAsociacion.TabIndex = 0;
             this.cmbAsociacion.SelectedIndexChanged += new System.EventHandler(this.cmbAsociacion_SelectedIndexChanged);
             // 
@@ -184,7 +184,7 @@
             this.txtAnio.Font = new System.Drawing.Font("Calibri Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtAnio.Location = new System.Drawing.Point(292, 36);
             this.txtAnio.Name = "txtAnio";
-            this.txtAnio.Size = new System.Drawing.Size(94, 32);
+            this.txtAnio.Size = new System.Drawing.Size(94, 27);
             this.txtAnio.TabIndex = 5;
             // 
             // btnLimpiar
@@ -221,7 +221,7 @@
             this.btnImportar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.btnImportar.Font = new System.Drawing.Font("Franklin Gothic Book", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnImportar.ForeColor = System.Drawing.Color.DarkSlateGray;
-            this.btnImportar.Location = new System.Drawing.Point(1195, 735);
+            this.btnImportar.Location = new System.Drawing.Point(1195, 774);
             this.btnImportar.Name = "btnImportar";
             this.btnImportar.Size = new System.Drawing.Size(161, 37);
             this.btnImportar.TabIndex = 10;
@@ -236,7 +236,7 @@
             this.btnCerrar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnCerrar.Font = new System.Drawing.Font("Franklin Gothic Book", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCerrar.ForeColor = System.Drawing.Color.DarkSlateGray;
-            this.btnCerrar.Location = new System.Drawing.Point(1366, 735);
+            this.btnCerrar.Location = new System.Drawing.Point(1366, 813);
             this.btnCerrar.Name = "btnCerrar";
             this.btnCerrar.Size = new System.Drawing.Size(161, 37);
             this.btnCerrar.TabIndex = 11;
@@ -260,12 +260,12 @@
             // 
             // formPlanilla
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.CancelButton = this.btnCerrar;
-            this.ClientSize = new System.Drawing.Size(1541, 784);
+            this.ClientSize = new System.Drawing.Size(1366, 746);
             this.Controls.Add(this.btnCerrar);
             this.Controls.Add(this.btnImportar);
             this.Controls.Add(this.btnValidar);

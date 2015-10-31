@@ -22,7 +22,6 @@ A:\Documents\Visual Studio 2008\Projects\PAMI\PAMI\obj\Release\PAMI.Afiliados.fo
 C:\Users\MARTIN\Documents\GitHub\ProgramaPami\Aplicacion\PAMI\obj\Release\ResolveAssemblyReference.cache
 C:\Users\MARTIN\Documents\GitHub\ProgramaPami\Aplicacion\PAMI\obj\Release\PAMI.Afiliados.listadoAfiliados.resources
 C:\Users\MARTIN\Documents\GitHub\ProgramaPami\Aplicacion\PAMI\obj\Release\PAMI.Afiliados.formAfiliado.resources
-C:\Users\MARTIN\Documents\GitHub\ProgramaPami\Aplicacion\PAMI\obj\Release\PAMI.Ambulatorio.NuevoAmbulatorio.resources
 C:\Users\MARTIN\Documents\GitHub\ProgramaPami\Aplicacion\PAMI\obj\Release\PAMI.Exportacion.ExportarDatos.resources
 C:\Users\MARTIN\Documents\GitHub\ProgramaPami\Aplicacion\PAMI\obj\Release\PAMI.MenuInicial.resources
 C:\Users\MARTIN\Documents\GitHub\ProgramaPami\Aplicacion\PAMI\obj\Release\PAMI.Nomenclador.formPracticas.resources
@@ -77,3 +76,14 @@ A:\Documents\PAMI\ProgramaPami\Aplicacion\PAMI\obj\Release\PAMI.pdb
 A:\Documents\PAMI\ProgramaPami\Aplicacion\PAMI\obj\Release\PAMI.Importar_Datos.ImportarDiagnosticos.resources
 A:\Documents\PAMI\ProgramaPami\Aplicacion\PAMI\obj\Release\PAMI.Profesionales.ContadorPracticasProfesional.resources
 A:\Documents\PAMI\ProgramaPami\Aplicacion\PAMI\obj\Release\PAMI.Profesionales.FacturacionAmbulatoriosExistentes.resources
+C:\Users\MARTIN\Documents\GitHub\ProgramaPami\Aplicacion\PAMI\obj\Release\PAMI.Ambulatorio.AmbulatorioExistente.resources
+C:\Users\MARTIN\Documents\GitHub\ProgramaPami\Aplicacion\PAMI\obj\Release\PAMI.Ambulatorio.NuevoEditarAmbulatorio.resources
+C:\Users\MARTIN\Documents\GitHub\ProgramaPami\Aplicacion\PAMI\obj\Release\PAMI.Asociaciones.formAsociacionMedicos.resources
+C:\Users\MARTIN\Documents\GitHub\ProgramaPami\Aplicacion\PAMI\obj\Release\PAMI.Importar_Datos.ImportarDiagnosticos.resources
+C:\Users\MARTIN\Documents\GitHub\ProgramaPami\Aplicacion\PAMI\obj\Release\PAMI.Importar_Datos.ImportarNomenclador.resources
+C:\Users\MARTIN\Documents\GitHub\ProgramaPami\Aplicacion\PAMI\obj\Release\PAMI.Importar_Datos.ImportarPadron.resources
+C:\Users\MARTIN\Documents\GitHub\ProgramaPami\Aplicacion\PAMI\obj\Release\PAMI.Prestadores.formPrestador.resources
+C:\Users\MARTIN\Documents\GitHub\ProgramaPami\Aplicacion\PAMI\obj\Release\PAMI.Profesionales.ContadorPracticasProfesional.resources
+C:\Users\MARTIN\Documents\GitHub\ProgramaPami\Aplicacion\PAMI\obj\Release\PAMI.Profesionales.FacturacionAmbulatoriosExistentes.resources
+C:\Users\MARTIN\Documents\GitHub\ProgramaPami\Aplicacion\PAMI\obj\Release\PAMI.Profesionales.formProfesional.resources
+C:\Users\MARTIN\Documents\GitHub\ProgramaPami\Aplicacion\PAMI\obj\Release\PAMI.Profesionales.ListadoProfesional.resources

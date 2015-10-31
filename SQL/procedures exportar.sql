@@ -91,7 +91,7 @@ ALTER PROCEDURE PAMI.TraerListadoAFILIADOParaExportar
 	@Mes varchar(2)
 AS
 	BEGIN
-		SELECT apellido_nombre, documento_tipo, documento_numero, '','','','','','','','','',fecha_nacimiento,sexo,'','',beneficio,parentesco,'','','','','','','',''
+		SELECT DISTINCT	RTRIM(apellido_nombre), documento_tipo, documento_numero, '','','','','','','','','',fecha_nacimiento,sexo,'','',beneficio,parentesco,'','','','','','','',''
 		FROM PAMI.Planilla P , PAMI.AfiliadosPami A WHERE P.planilla_afiliado_beneficio = A.beneficio + A.parentesco AND 
 		P.planilla_asociacion = @AsocID AND substring(planilla_fecha,4,2) = @Mes AND substring(planilla_fecha,7,4) = @Anio 
 	END
