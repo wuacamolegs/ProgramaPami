@@ -12,6 +12,8 @@ AS
 	EXEC sp_executesql @comando;
 	EXEC PAMI.ActualizarPadronAfiliados @Padron;
 	EXEC PAMI.ArreglarParentescos;
+	TRUNCATE TABLE PAMI.Padron;
+	SELECT COUNT(beneficio) FROM PAMI.AfiliadosPami WHERE padron_codigo = @Padron
 	END
 GO				
 
@@ -23,7 +25,7 @@ AS
 		(SELECT 
 			CONVERT(varchar(12),substring(padron,5,12)),
 			CONVERT(varchar(2),substring(padron,17,2)),
-			substring(padron,32,40),
+			RTRIM(substring(padron,32,40)),
 			substring(padron,78,2) + '/' + substring(padron,76,2) + '/' + substring(padron,72,4),
 			substring(padron,80,3),
 			CONVERT(numeric(15,0),substring(padron,83,8)),
@@ -102,8 +104,7 @@ AS
 
 	DELETE PAMI.Nomenclador WHERE codigo_modulo IN(SELECT codigo_modulo FROM PAMI.REL_ModulosXPrestador WHERE cuit_prestador = @Cuit);
 	DELETE PAMI.REL_ModulosXPrestador WHERE cuit_prestador = @Cuit;
-	
-	
+		
 	INSERT INTO PAMI.Nomenclador(practica_codigo, practica_descripcion,codigo_modulo, cantidad_maxima)
 	SELECT practica_codigo, practica_descripcion, codigo_modulo, 1 FROM PAMI.NomencladorImportar
 	

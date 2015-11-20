@@ -23,13 +23,15 @@ namespace Utilities
 
             Directory.CreateDirectory(path);
 
-            if (!File.Exists(path + "\\" + fileName + ".txt"))
+            if (File.Exists(path + "\\" + fileName + ".txt"))
             {
-                // Create a file to write to.
-                using (StreamWriter sw = File.CreateText(path + "\\" + fileName + ".txt"))
-                {
+                File.Delete(path + "\\" + fileName + ".txt");
+            }
 
-                }
+            // Create a file to write to.
+            using (StreamWriter sw = File.CreateText(path + "\\" + fileName + ".txt"))
+            {
+
             }
         }
             

@@ -17,6 +17,8 @@ using PAMI.Asociaciones;
 using PAMI.Prestadores;
 using PAMI.Importar_Datos;
 using PAMI.Profesionales;
+using PAMI.Diagnosticos;
+using PAMI.Configuracion;
 using Utilities;
 
 
@@ -50,8 +52,6 @@ namespace PAMI
             btn2BusquedaAfiliado.Visible = true;
             btn2NuevoAfiliado.Visible = true;
 
-            FacturacionAmbulatoriosExistentes fact = new FacturacionAmbulatoriosExistentes();
-            fact.Show();
         }
 
 
@@ -72,6 +72,9 @@ namespace PAMI
             botonesACero();
             btnDiagnostico.BackColor = Color.DarkCyan;
             btnDiagnostico.ForeColor = Color.White;
+
+            btn4NuevoDiagnostico.Visible = true;
+            btn4ListadoDiagnostico.Visible = true;
         }
 
         private void btnProfesionales_Click(object sender, EventArgs e)
@@ -83,6 +86,7 @@ namespace PAMI
             btn5BusquedaProfesional.Visible = true;
             btn5NuevoProfesional.Visible = true;
             btn5Contador.Visible = true;
+            btn5AmbulatoriosTransferidos.Visible = true;
         }
 
         private void btnPrestadores_Click(object sender, EventArgs e)
@@ -143,10 +147,14 @@ namespace PAMI
             btn3NuevoAmbulatorio.Visible = false;
             btn3NuevaPlanilla.Visible = false;
             btn3Busqueda.Visible = false;
+
+            btn4NuevoDiagnostico.Visible = false;
+            btn4ListadoDiagnostico.Visible = false;
             
             btn5BusquedaProfesional.Visible = false;
             btn5NuevoProfesional.Visible = false;
             btn5Contador.Visible = false;
+            btn5AmbulatoriosTransferidos.Visible = false;   
 
             btn6BusquedaPrestador.Visible = false;
             btn6NuevoPrestador.Visible = false;
@@ -185,6 +193,7 @@ namespace PAMI
 
         private void btn3NuevaPlanilla_Click(object sender, EventArgs e)
         {
+
             formPlanilla planilla = new formPlanilla();
             planilla.AbrirParaNuevaPlanilla();
             planilla.Show();
@@ -199,6 +208,28 @@ namespace PAMI
             botonesACero();
         }
 
+        private void btn4NuevoDiagnostico_Click(object sender, EventArgs e)
+        {
+            formDiagnostico Diag = new formDiagnostico();
+            Diag.abrirParaNuevo();
+            Diag.Show();
+            botonesACero();
+        }
+
+        private void btn4ListadoDiagnostico_Click(object sender, EventArgs e)
+        {
+            ListadoDiagnostico listDiag = new ListadoDiagnostico();
+            listDiag.Show();
+            botonesACero();
+        }
+
+        private void btn5Contador_Click(object sender, EventArgs e)
+        {
+            ContadorPracticasProfesional contador = new ContadorPracticasProfesional();
+            contador.Show();
+            botonesACero();
+        }
+
         private void btn5NuevoProfesional_Click(object sender, EventArgs e)
         {
             formProfesional prof = new formProfesional();
@@ -210,6 +241,13 @@ namespace PAMI
         {
             ListadoProfesional prof = new ListadoProfesional();
             prof.Show();
+            botonesACero();
+        }
+
+        private void btn5AmbulatoriosTransferidos_Click(object sender, EventArgs e)
+        {
+            FacturacionAmbulatoriosExistentes fact = new FacturacionAmbulatoriosExistentes();
+            fact.Show();
             botonesACero();
         }
 
@@ -276,12 +314,16 @@ namespace PAMI
             botonesACero();
         }
 
-        private void btn5Contador_Click(object sender, EventArgs e)
+        private void pictureBox1_Click(object sender, EventArgs e)
         {
-            ContadorPracticasProfesional contador = new ContadorPracticasProfesional();
-            contador.Show();
+            formConfiguracion config = new formConfiguracion();
+            config.Show();
             botonesACero();
         }
+
+
+
+
 
 
     }

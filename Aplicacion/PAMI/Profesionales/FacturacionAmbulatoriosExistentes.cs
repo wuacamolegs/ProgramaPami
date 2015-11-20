@@ -39,7 +39,7 @@ namespace PAMI.Profesionales
             cmbAsociacion.SelectedIndex = -1;
         }
 
-        private void CargarGrillaCon()
+        private void CargarGrillaCon(DataSet ds)
         {
             dgPlanilla.Columns.Clear();
             dgPlanilla.AutoGenerateColumns = false;
@@ -102,39 +102,34 @@ namespace PAMI.Profesionales
             clm_Hora.HeaderText = "Hora";
             dgPlanilla.Columns.Add(clm_Hora);
 
+            dgPlanilla.DataSource = ds.Tables[0];
+
             DataGridViewCellStyle miestilo = new DataGridViewCellStyle();
             miestilo.Font = new Font("Franklin Gothic Book", 11);
 
             dgPlanilla.EnableHeadersVisualStyles = false;
             dgPlanilla.ColumnHeadersDefaultCellStyle = miestilo;
             dgPlanilla.ColumnHeadersDefaultCellStyle.ForeColor = Color.DarkCyan;
-            dgPlanilla.ColumnHeadersDefaultCellStyle.BackColor = Color.Gainsboro; 
-        }
-
-        private void cmbMedico_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            Asociacion unaAsociacion = new Asociacion();
-            unaAsociacion.ID = Convert.ToInt64(cmbAsociacion.SelectedValue);
-            unaAsociacion.Nombre = cmbAsociacion.Text;
-            DataSet ds = unaAsociacion.TraerMedicosPorAsociacion();
-            unaAsociacion.Dispose();
-
-            Utilities.DropDownListManager.CargarCombo(cmbMedico, ds.Tables[0], "profesional_matricula", "profesional_nombre", false, "");
+            dgPlanilla.ColumnHeadersDefaultCellStyle.BackColor = Color.Gainsboro;           
         }
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
-            if (txtAnio.Text != "")
+            try
             {
-                unaPlanilla.Anio = Convert.ToInt64(txtAnio.Text);
+                if (txtAnio.Text != "")
+                {
+                    unaPlanilla.Anio = Convert.ToInt64(txtAnio.Text);
+                }
+
+                unaPlanilla.Mes = Convert.ToInt64(cmbMes.SelectedValue);
+                unaPlanilla.Asociacion = Convert.ToInt64(cmbAsociacion.SelectedValue);
+                CargarGrillaCon(unaPlanilla.TraerAmbulatoriosCargadosAOtroMedicoPorFiltros());
             }
-
-            unaPlanilla.Mes = Convert.ToInt64(cmbMes.SelectedIndex);
-            unaPlanilla.Asociacion = Convert.ToInt64(cmbAsociacion.SelectedIndex);
-            unaPlanilla.Medico = Convert.ToInt64(cmbMedico.SelectedIndex);
-
-            unaPlanilla.TraerAmbulatoriosCargadosAOtroMedicoPorFiltros();
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
-
     }
 }

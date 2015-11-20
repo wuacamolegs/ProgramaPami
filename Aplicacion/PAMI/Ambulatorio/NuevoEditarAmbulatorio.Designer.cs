@@ -34,13 +34,6 @@
             this.cmbMedico = new System.Windows.Forms.ComboBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.gbAfiliado = new System.Windows.Forms.GroupBox();
-            this.btnBuscar = new System.Windows.Forms.PictureBox();
-            this.txtDocumento = new System.Windows.Forms.TextBox();
-            this.txtBeneficio = new System.Windows.Forms.TextBox();
-            this.txtNombreApellido = new System.Windows.Forms.TextBox();
-            this.dgAfiliados = new System.Windows.Forms.DataGridView();
-            this.lbl1Documento = new System.Windows.Forms.Label();
-            this.lbl1NroAfiliado = new System.Windows.Forms.Label();
             this.gbAfiliadoSeleccionado = new System.Windows.Forms.GroupBox();
             this.btn2Atras = new System.Windows.Forms.PictureBox();
             this.txt2Documento = new System.Windows.Forms.TextBox();
@@ -49,6 +42,13 @@
             this.lbl2Afiliado = new System.Windows.Forms.Label();
             this.lbl2NyA = new System.Windows.Forms.Label();
             this.txt2NombreyApellido = new System.Windows.Forms.TextBox();
+            this.btnBuscar = new System.Windows.Forms.PictureBox();
+            this.txtDocumento = new System.Windows.Forms.TextBox();
+            this.txtBeneficio = new System.Windows.Forms.TextBox();
+            this.txtNombreApellido = new System.Windows.Forms.TextBox();
+            this.dgAfiliados = new System.Windows.Forms.DataGridView();
+            this.lbl1Documento = new System.Windows.Forms.Label();
+            this.lbl1NroAfiliado = new System.Windows.Forms.Label();
             this.sas = new System.Windows.Forms.GroupBox();
             this.cmbDiagnosticoCodigo = new System.Windows.Forms.ComboBox();
             this.cmbDiagnosticoDescripcion = new System.Windows.Forms.ComboBox();
@@ -61,12 +61,14 @@
             this.btnNuevo = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.btnEditar = new System.Windows.Forms.Button();
+            this.btnEliminar = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.gbAfiliado.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.btnBuscar)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgAfiliados)).BeginInit();
             this.gbAfiliadoSeleccionado.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btn2Atras)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnBuscar)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgAfiliados)).BeginInit();
             this.sas.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgPracticas)).BeginInit();
             this.groupBox3.SuspendLayout();
@@ -135,6 +137,7 @@
             // 
             // gbAfiliado
             // 
+            this.gbAfiliado.Controls.Add(this.gbAfiliadoSeleccionado);
             this.gbAfiliado.Controls.Add(this.btnBuscar);
             this.gbAfiliado.Controls.Add(this.txtDocumento);
             this.gbAfiliado.Controls.Add(this.txtBeneficio);
@@ -143,7 +146,6 @@
             this.gbAfiliado.Controls.Add(this.lbl1Documento);
             this.gbAfiliado.Controls.Add(this.lbl1NroAfiliado);
             this.gbAfiliado.Controls.Add(this.lbl1Nombreapellido);
-            this.gbAfiliado.Controls.Add(this.gbAfiliadoSeleccionado);
             this.gbAfiliado.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.gbAfiliado.Font = new System.Drawing.Font("Franklin Gothic Book", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbAfiliado.ForeColor = System.Drawing.Color.DarkSlateGray;
@@ -155,88 +157,6 @@
             this.gbAfiliado.TabIndex = 3;
             this.gbAfiliado.TabStop = false;
             this.gbAfiliado.Text = "AFILIADO";
-            // 
-            // btnBuscar
-            // 
-            this.btnBuscar.Image = global::PAMI.Properties.Resources.search;
-            this.btnBuscar.Location = new System.Drawing.Point(482, 131);
-            this.btnBuscar.Name = "btnBuscar";
-            this.btnBuscar.Size = new System.Drawing.Size(34, 37);
-            this.btnBuscar.TabIndex = 36;
-            this.btnBuscar.TabStop = false;
-            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
-            // 
-            // txtDocumento
-            // 
-            this.txtDocumento.Font = new System.Drawing.Font("Calibri Light", 10.8F);
-            this.txtDocumento.Location = new System.Drawing.Point(251, 139);
-            this.txtDocumento.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtDocumento.MaxLength = 15;
-            this.txtDocumento.Name = "txtDocumento";
-            this.txtDocumento.Size = new System.Drawing.Size(220, 29);
-            this.txtDocumento.TabIndex = 2;
-            this.txtDocumento.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtDocumento_KeyDown);
-            this.txtDocumento.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDocumento_KeyPress);
-            // 
-            // txtBeneficio
-            // 
-            this.txtBeneficio.Font = new System.Drawing.Font("Calibri Light", 10.8F);
-            this.txtBeneficio.Location = new System.Drawing.Point(13, 139);
-            this.txtBeneficio.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtBeneficio.MaxLength = 14;
-            this.txtBeneficio.Name = "txtBeneficio";
-            this.txtBeneficio.Size = new System.Drawing.Size(217, 29);
-            this.txtBeneficio.TabIndex = 1;
-            this.txtBeneficio.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtBeneficio_KeyDown);
-            this.txtBeneficio.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBeneficio_KeyPress);
-            // 
-            // txtNombreApellido
-            // 
-            this.txtNombreApellido.Font = new System.Drawing.Font("Calibri Light", 10.8F);
-            this.txtNombreApellido.Location = new System.Drawing.Point(13, 75);
-            this.txtNombreApellido.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtNombreApellido.MaxLength = 60;
-            this.txtNombreApellido.Name = "txtNombreApellido";
-            this.txtNombreApellido.Size = new System.Drawing.Size(457, 29);
-            this.txtNombreApellido.TabIndex = 0;
-            this.txtNombreApellido.TextChanged += new System.EventHandler(this.txtNombreApellido_TextChanged);
-            this.txtNombreApellido.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtNombreApellido_KeyDown);
-            this.txtNombreApellido.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNombreApellido_KeyPress);
-            // 
-            // dgAfiliados
-            // 
-            this.dgAfiliados.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgAfiliados.Location = new System.Drawing.Point(15, 192);
-            this.dgAfiliados.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.dgAfiliados.Name = "dgAfiliados";
-            this.dgAfiliados.RowTemplate.Height = 30;
-            this.dgAfiliados.RowTemplate.ReadOnly = true;
-            this.dgAfiliados.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgAfiliados.Size = new System.Drawing.Size(501, 216);
-            this.dgAfiliados.TabIndex = 4;
-            this.dgAfiliados.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.dgAfiliados_KeyPress);
-            // 
-            // lbl1Documento
-            // 
-            this.lbl1Documento.AutoSize = true;
-            this.lbl1Documento.Font = new System.Drawing.Font("Franklin Gothic Book", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl1Documento.ForeColor = System.Drawing.Color.DarkCyan;
-            this.lbl1Documento.Location = new System.Drawing.Point(246, 116);
-            this.lbl1Documento.Name = "lbl1Documento";
-            this.lbl1Documento.Size = new System.Drawing.Size(102, 24);
-            this.lbl1Documento.TabIndex = 32;
-            this.lbl1Documento.Text = "Documento";
-            // 
-            // lbl1NroAfiliado
-            // 
-            this.lbl1NroAfiliado.AutoSize = true;
-            this.lbl1NroAfiliado.Font = new System.Drawing.Font("Franklin Gothic Book", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl1NroAfiliado.ForeColor = System.Drawing.Color.DarkCyan;
-            this.lbl1NroAfiliado.Location = new System.Drawing.Point(11, 116);
-            this.lbl1NroAfiliado.Name = "lbl1NroAfiliado";
-            this.lbl1NroAfiliado.Size = new System.Drawing.Size(84, 24);
-            this.lbl1NroAfiliado.TabIndex = 30;
-            this.lbl1NroAfiliado.Text = "Beneficio";
             // 
             // gbAfiliadoSeleccionado
             // 
@@ -331,6 +251,87 @@
             this.txt2NombreyApellido.Size = new System.Drawing.Size(456, 28);
             this.txt2NombreyApellido.TabIndex = 37;
             // 
+            // btnBuscar
+            // 
+            this.btnBuscar.Image = global::PAMI.Properties.Resources.search;
+            this.btnBuscar.Location = new System.Drawing.Point(482, 131);
+            this.btnBuscar.Name = "btnBuscar";
+            this.btnBuscar.Size = new System.Drawing.Size(34, 37);
+            this.btnBuscar.TabIndex = 36;
+            this.btnBuscar.TabStop = false;
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
+            // 
+            // txtDocumento
+            // 
+            this.txtDocumento.Font = new System.Drawing.Font("Calibri Light", 10.8F);
+            this.txtDocumento.Location = new System.Drawing.Point(251, 139);
+            this.txtDocumento.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtDocumento.MaxLength = 15;
+            this.txtDocumento.Name = "txtDocumento";
+            this.txtDocumento.Size = new System.Drawing.Size(220, 29);
+            this.txtDocumento.TabIndex = 2;
+            this.txtDocumento.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtDocumento_KeyDown);
+            this.txtDocumento.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDocumento_KeyPress);
+            // 
+            // txtBeneficio
+            // 
+            this.txtBeneficio.Font = new System.Drawing.Font("Calibri Light", 10.8F);
+            this.txtBeneficio.Location = new System.Drawing.Point(13, 139);
+            this.txtBeneficio.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtBeneficio.MaxLength = 14;
+            this.txtBeneficio.Name = "txtBeneficio";
+            this.txtBeneficio.Size = new System.Drawing.Size(217, 29);
+            this.txtBeneficio.TabIndex = 1;
+            this.txtBeneficio.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtBeneficio_KeyDown);
+            this.txtBeneficio.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBeneficio_KeyPress);
+            // 
+            // txtNombreApellido
+            // 
+            this.txtNombreApellido.Font = new System.Drawing.Font("Calibri Light", 10.8F);
+            this.txtNombreApellido.Location = new System.Drawing.Point(13, 75);
+            this.txtNombreApellido.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtNombreApellido.MaxLength = 60;
+            this.txtNombreApellido.Name = "txtNombreApellido";
+            this.txtNombreApellido.Size = new System.Drawing.Size(457, 29);
+            this.txtNombreApellido.TabIndex = 0;
+            this.txtNombreApellido.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtNombreApellido_KeyDown);
+            this.txtNombreApellido.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNombreApellido_KeyPress);
+            // 
+            // dgAfiliados
+            // 
+            this.dgAfiliados.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgAfiliados.Location = new System.Drawing.Point(15, 192);
+            this.dgAfiliados.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.dgAfiliados.Name = "dgAfiliados";
+            this.dgAfiliados.RowTemplate.Height = 30;
+            this.dgAfiliados.RowTemplate.ReadOnly = true;
+            this.dgAfiliados.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgAfiliados.Size = new System.Drawing.Size(501, 216);
+            this.dgAfiliados.TabIndex = 4;
+            this.dgAfiliados.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dgAfiliados_KeyDown);
+            // 
+            // lbl1Documento
+            // 
+            this.lbl1Documento.AutoSize = true;
+            this.lbl1Documento.Font = new System.Drawing.Font("Franklin Gothic Book", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl1Documento.ForeColor = System.Drawing.Color.DarkCyan;
+            this.lbl1Documento.Location = new System.Drawing.Point(246, 116);
+            this.lbl1Documento.Name = "lbl1Documento";
+            this.lbl1Documento.Size = new System.Drawing.Size(102, 24);
+            this.lbl1Documento.TabIndex = 32;
+            this.lbl1Documento.Text = "Documento";
+            // 
+            // lbl1NroAfiliado
+            // 
+            this.lbl1NroAfiliado.AutoSize = true;
+            this.lbl1NroAfiliado.Font = new System.Drawing.Font("Franklin Gothic Book", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl1NroAfiliado.ForeColor = System.Drawing.Color.DarkCyan;
+            this.lbl1NroAfiliado.Location = new System.Drawing.Point(11, 116);
+            this.lbl1NroAfiliado.Name = "lbl1NroAfiliado";
+            this.lbl1NroAfiliado.Size = new System.Drawing.Size(84, 24);
+            this.lbl1NroAfiliado.TabIndex = 30;
+            this.lbl1NroAfiliado.Text = "Beneficio";
+            // 
             // sas
             // 
             this.sas.Controls.Add(this.cmbDiagnosticoCodigo);
@@ -361,7 +362,7 @@
             this.cmbDiagnosticoCodigo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cmbDiagnosticoCodigo.Name = "cmbDiagnosticoCodigo";
             this.cmbDiagnosticoCodigo.Size = new System.Drawing.Size(149, 30);
-            this.cmbDiagnosticoCodigo.TabIndex = 32;
+            this.cmbDiagnosticoCodigo.TabIndex = 3;
             this.cmbDiagnosticoCodigo.Text = "Código";
             this.cmbDiagnosticoCodigo.SelectedIndexChanged += new System.EventHandler(this.cmbDiagnosticoCodigo_SelectedIndexChanged);
             // 
@@ -374,16 +375,17 @@
             this.cmbDiagnosticoDescripcion.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cmbDiagnosticoDescripcion.Name = "cmbDiagnosticoDescripcion";
             this.cmbDiagnosticoDescripcion.Size = new System.Drawing.Size(290, 30);
-            this.cmbDiagnosticoDescripcion.TabIndex = 31;
+            this.cmbDiagnosticoDescripcion.TabIndex = 4;
             this.cmbDiagnosticoDescripcion.Text = "Descripción";
             this.cmbDiagnosticoDescripcion.SelectedIndexChanged += new System.EventHandler(this.cmbDiagnosticoDescripcion_SelectedIndexChanged);
             // 
             // txtOP
             // 
+            this.txtOP.Font = new System.Drawing.Font("Calibri Light", 10.8F);
             this.txtOP.Location = new System.Drawing.Point(288, 62);
             this.txtOP.Name = "txtOP";
-            this.txtOP.Size = new System.Drawing.Size(189, 28);
-            this.txtOP.TabIndex = 30;
+            this.txtOP.Size = new System.Drawing.Size(189, 29);
+            this.txtOP.TabIndex = 2;
             // 
             // label1
             // 
@@ -440,12 +442,13 @@
             this.dgPracticas.TabIndex = 0;
             this.dgPracticas.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgPracticas_CellValueChanged);
             this.dgPracticas.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.dgPracticas_EditingControlShowing);
+            this.dgPracticas.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dgPracticas_KeyDown);
             // 
             // btnNuevo
             // 
             this.btnNuevo.Font = new System.Drawing.Font("Franklin Gothic Book", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnNuevo.ForeColor = System.Drawing.Color.DarkSlateGray;
-            this.btnNuevo.Location = new System.Drawing.Point(894, 630);
+            this.btnNuevo.Location = new System.Drawing.Point(884, 630);
             this.btnNuevo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnNuevo.Name = "btnNuevo";
             this.btnNuevo.Size = new System.Drawing.Size(161, 37);
@@ -480,17 +483,46 @@
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "PRACTICAS";
             // 
+            // btnEditar
+            // 
+            this.btnEditar.Font = new System.Drawing.Font("Franklin Gothic Book", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEditar.ForeColor = System.Drawing.Color.DarkSlateGray;
+            this.btnEditar.Location = new System.Drawing.Point(884, 630);
+            this.btnEditar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnEditar.Name = "btnEditar";
+            this.btnEditar.Size = new System.Drawing.Size(161, 37);
+            this.btnEditar.TabIndex = 6;
+            this.btnEditar.Text = "Editar";
+            this.btnEditar.UseVisualStyleBackColor = true;
+            this.btnEditar.VisibleChanged += new System.EventHandler(this.btnEditar_VisibleChanged);
+            this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click);
+            // 
+            // btnEliminar
+            // 
+            this.btnEliminar.Font = new System.Drawing.Font("Franklin Gothic Book", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEliminar.ForeColor = System.Drawing.Color.DarkSlateGray;
+            this.btnEliminar.Location = new System.Drawing.Point(27, 630);
+            this.btnEliminar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnEliminar.Name = "btnEliminar";
+            this.btnEliminar.Size = new System.Drawing.Size(218, 37);
+            this.btnEliminar.TabIndex = 7;
+            this.btnEliminar.Text = "Eliminar Ambulatorio";
+            this.btnEliminar.UseVisualStyleBackColor = true;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
+            // 
             // NuevoEditarAmbulatorio
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1065, 676);
+            this.Controls.Add(this.btnEliminar);
             this.Controls.Add(this.gbAfiliado);
             this.Controls.Add(this.groupBox3);
-            this.Controls.Add(this.btnNuevo);
             this.Controls.Add(this.sas);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.groupBox4);
+            this.Controls.Add(this.btnNuevo);
+            this.Controls.Add(this.btnEditar);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "NuevoEditarAmbulatorio";
@@ -500,11 +532,11 @@
             this.groupBox1.ResumeLayout(false);
             this.gbAfiliado.ResumeLayout(false);
             this.gbAfiliado.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.btnBuscar)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgAfiliados)).EndInit();
             this.gbAfiliadoSeleccionado.ResumeLayout(false);
             this.gbAfiliadoSeleccionado.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btn2Atras)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnBuscar)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgAfiliados)).EndInit();
             this.sas.ResumeLayout(false);
             this.sas.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgPracticas)).EndInit();
@@ -549,5 +581,7 @@
         private System.Windows.Forms.PictureBox btnBuscar;
         private System.Windows.Forms.ComboBox cmbDiagnosticoDescripcion;
         private System.Windows.Forms.ComboBox cmbDiagnosticoCodigo;
+        private System.Windows.Forms.Button btnEditar;
+        private System.Windows.Forms.Button btnEliminar;
     }
 }

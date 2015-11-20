@@ -69,6 +69,8 @@
             // 
             // cmbEspecialidad
             // 
+            this.cmbEspecialidad.DisplayMember = "\"Value\"";
+            this.cmbEspecialidad.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbEspecialidad.Font = new System.Drawing.Font("Calibri Light", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbEspecialidad.FormattingEnabled = true;
             this.cmbEspecialidad.Location = new System.Drawing.Point(373, 40);
@@ -235,6 +237,10 @@
             // 
             // dgProfesionales
             // 
+            this.dgProfesionales.AllowUserToAddRows = false;
+            this.dgProfesionales.AllowUserToDeleteRows = false;
+            this.dgProfesionales.AllowUserToOrderColumns = true;
+            this.dgProfesionales.AllowUserToResizeRows = false;
             this.dgProfesionales.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgProfesionales.Location = new System.Drawing.Point(12, 156);
             this.dgProfesionales.Name = "dgProfesionales";

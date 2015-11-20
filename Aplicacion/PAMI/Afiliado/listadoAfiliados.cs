@@ -68,7 +68,6 @@ namespace PAMI.Afiliados
             dgAfiliados.Columns.Clear();
             btnEliminar.Enabled = false;
             btnEditar.Enabled = false;
-
         }
 
         private void btnEditar_Click(object sender, EventArgs e)
@@ -152,7 +151,6 @@ namespace PAMI.Afiliados
 
             //le inserto a la grilla el dataset obtenido
             dgAfiliados.DataSource = dsAfiliados.Tables[0];
-
 
             DataGridViewCellStyle miestilo = new DataGridViewCellStyle();
             miestilo.Font = new Font("Franklin Gothic Book", 9);

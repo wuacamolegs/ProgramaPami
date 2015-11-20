@@ -88,3 +88,6 @@ C:\Users\MARTIN\Documents\GitHub\ProgramaPami\Aplicacion\PAMI\obj\Debug\PAMI.Pro
 C:\Users\MARTIN\Documents\GitHub\ProgramaPami\Aplicacion\PAMI\obj\Debug\PAMI.Profesionales.FacturacionAmbulatoriosExistentes.resources
 C:\Users\MARTIN\Documents\GitHub\ProgramaPami\Aplicacion\PAMI\obj\Debug\PAMI.Profesionales.formProfesional.resources
 C:\Users\MARTIN\Documents\GitHub\ProgramaPami\Aplicacion\PAMI\obj\Debug\PAMI.Profesionales.ListadoProfesional.resources
+A:\Documents\PAMI\ProgramaPami\Aplicacion\PAMI\obj\Debug\PAMI.Diagnosticos.ListadoDiagnostico.resources
+A:\Documents\PAMI\ProgramaPami\Aplicacion\PAMI\obj\Debug\PAMI.Diagnosticos.formDiagnostico.resources
+A:\Documents\PAMI\ProgramaPami\Aplicacion\PAMI\obj\Debug\PAMI.Configuracion.formConfiguracion.resources

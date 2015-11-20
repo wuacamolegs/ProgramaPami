@@ -2,20 +2,20 @@ USE [PAMI]
 GO
 
 ALTER PROCEDURE PAMI.TraerListadoAfiliadosConFiltros 
-    @Nombre nvarchar(60) = null, 
-    @Tipo_Dni varchar(3) = null,
-    @Dni numeric(15,0) = null,
-    @Beneficio varchar(12) = null,
-    @Parentesco varchar(2) = null
+    @Nombre varchar(60) = '', 
+    @Tipo_Dni varchar(3) = '',
+    @Dni varchar(15) = '',
+    @Beneficio varchar(12) = '',
+    @Parentesco varchar(2) = ''
 AS 
 BEGIN
     SELECT apellido_nombre, documento_tipo, documento_numero, beneficio, parentesco, fecha_nacimiento 
     FROM PAMI.AfiliadosPami
     WHERE	(apellido_nombre LIKE (CASE WHEN @Nombre <> '' THEN '%' + @Nombre + '%' ELSE apellido_nombre END))					
-    AND		(documento_tipo LIKE (CASE WHEN @Tipo_Dni <> '' THEN '%' + @Tipo_Dni + '%' ELSE documento_tipo END))      
-    AND		(@Dni is null OR @Dni = 0 OR CONVERT(VARCHAR(15), documento_numero) LIKE '%' + CONVERT(VARCHAR(15), @Dni) + '%')
+    AND		(documento_tipo LIKE (CASE WHEN @Tipo_Dni <> '' THEN '%' + @Tipo_Dni + '%' ELSE documento_tipo END))     
+    AND	    (CONVERT(VARCHAR(15), documento_numero) LIKE (CASE WHEN @Dni <> '' THEN '%' + @Dni + '%' ELSE documento_numero END))
     AND		(beneficio LIKE (CASE WHEN @Beneficio <> '' THEN '%' + @Beneficio + '%' ELSE beneficio END))
-    AND		(@Parentesco is null OR @Parentesco = 0 OR CONVERT(VARCHAR(2), parentesco) LIKE '%' + CONVERT(VARCHAR(2), @Parentesco) + '%')
+    AND		(CONVERT(VARCHAR(2), parentesco) LIKE (CASE WHEN @Parentesco <> '' THEN '%' + @Parentesco + '%' ELSE parentesco END))
     END
 GO
 
@@ -74,3 +74,4 @@ AS
 BEGIN
 	DELETE PAMI.AfiliadosPami WHERE beneficio = @Beneficio AND parentesco = @Parentesco
 END
+

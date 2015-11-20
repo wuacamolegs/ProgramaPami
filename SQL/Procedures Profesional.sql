@@ -1,5 +1,3 @@
-
-
 ALTER PROCEDURE PAMI.TraerListadoProfesionalPorFiltros 
     @Nombre nvarchar(60) = null, 
     @TipoDoc varchar(3) = null,
@@ -34,3 +32,34 @@ BEGIN
 	DELETE PAMI.Profesional WHERE profesional_matricula_nacional = @Matricula
 END
 GO
+
+CREATE PROCEDURE PAMI.InsertProfesional
+	@Nombre nvarchar(60), 
+    @TipoDoc varchar(3),
+    @Documento varchar(15),
+	@Especialidad varchar(4),
+	@Matricula varchar(6)
+AS
+BEGIN
+	INSERT INTO PAMI.Profesional(profesional_nombreCompleto,profesional_especialidad_id,profesional_matricula_nacional,profesional_tipo_documento_id,profesional_numero_documento)
+	VALUES(@Nombre,@Especialidad,@Matricula,@TipoDoc,@Documento)
+END
+GO
+
+CREATE PROCEDURE PAMI.UpdateProfesional
+	@Nombre nvarchar(60) = null, 
+    @TipoDoc varchar(3) = null,
+    @Documento varchar(15) = null,
+	@Especialidad varchar(4) = null,
+	@Matricula varchar(6)= null
+AS
+BEGIN
+	UPDATE PAMI.Profesional SET profesional_nombreCompleto = @Nombre, profesional_tipo_documento_id = @TipoDoc, profesional_numero_documento = @Documento, profesional_especialidad_id = @Especialidad WHERE profesional_matricula_nacional = @Matricula
+END
+GO
+
+
+
+
+
+select* from PAMI.Profesional

@@ -20,7 +20,7 @@ namespace PAMI.Exportacion
     {
 
         public FSLogger fs;
-        private int cantidadColumnas = 0;
+        private int columnaNro = 0;
         private int cantidadFilas = 0;
         private string cadena = "";
         private List<SqlParameter> parameterList = new List<SqlParameter>();
@@ -31,13 +31,23 @@ namespace PAMI.Exportacion
             InitializeComponent();
         }
 
+        private bool ValidarExistenAmbulatoriosAsociacion()
+        {
+            parameterList.Clear();
+            parameterList.Add(new SqlParameter("@AsocID", Convert.ToInt64(cmbAsociacion.SelectedValue)));
+            parameterList.Add(new SqlParameter("@Mes", cmbMes.SelectedValue.ToString()));
+            parameterList.Add(new SqlParameter("@Anio", txtAnio.Text));
+
+            DataSet ds = Conexion.SQLHelper.ExecuteDataSet("ValidarExistenAmbulatoriosAsociacion", CommandType.StoredProcedure, parameterList);
+            return Convert.ToInt64(ds.Tables[0].Rows[0][0]) != 0;
+        }
 
         private void btnExportar_Click(object sender, EventArgs e)
         {
 
             try
             {
-                if (ValidarCampos())
+                if (ValidarCampos() && ValidarExistenAmbulatoriosAsociacion())
                 {
 
                     //Traer DATOS ASOCIACION para armar archivo .TXT
@@ -95,7 +105,12 @@ namespace PAMI.Exportacion
                     ds = traerListadosBD("AMBULATORIOS",2);
                     ExportarAmbulatorios(ds);
 
-                    MessageBox.Show("LISTOOO", " ");
+                    parameterList.Clear();
+                    parameterList.Add(new SqlParameter("@AsocID", cmbAsociacion.SelectedValue));
+                    Conexion.SQLHelper.ExecuteDataSet("AumentarContadorEmulaciones", CommandType.StoredProcedure, parameterList);
+                    MessageBox.Show("Se ha generado el archivo: " + nombreArchivo + "\nAsociacion: " + cmbAsociacion.Text + "\nCantidad ambulatorios: " + ds.Tables[0].Rows.Count, " ");
+                    
+
                 }
             }
             catch (ErrorConsultaException ex)
@@ -112,7 +127,7 @@ namespace PAMI.Exportacion
         //ENCABEZADOS EMULADOR. CABECERA, BOCA ATENCION, AFILIADOS, BENEFICIOS, RED ETC.
         private void ExportarEncabezado(string encabezado, DataSet ds)
         {
-            cantidadColumnas = ds.Tables[0].Columns.Count;
+            columnaNro = ds.Tables[0].Columns.Count;
             cantidadFilas = ds.Tables[0].Rows.Count;
 
             fs.EscribirEncabezado(encabezado);
@@ -135,12 +150,12 @@ namespace PAMI.Exportacion
             {
                 //TABLA AMBULATORIOS
                 fs.EscribirEncabezado("AMBULATORIO");
-                cantidadColumnas = 16;
-                for (int i = 0; i < cantidadColumnas; i++)
+                columnaNro = 16;
+                for (int i = 0; i < columnaNro; i++)
                 {
                     cadena = cadena + ds.Tables[0].Rows[j][i].ToString();
 
-                    if (i != cantidadColumnas - 1)
+                    if (i != columnaNro - 1)
                     {
                         cadena = cadena + ";";
                     }
@@ -151,12 +166,12 @@ namespace PAMI.Exportacion
 
                 //TABLA REL_DIAGNOSTICOS X AMBULATORIOS
                 fs.EscribirEncabezado("REL_DIAGNOSTICOSXAMBULATORIO");
-                cantidadColumnas = 7;
-                for (int i = 16; i < cantidadColumnas; i++)
+                columnaNro = 23;
+                for (int i = 16; i < columnaNro; i++)
                 {
                     cadena = cadena + ds.Tables[0].Rows[j][i].ToString();
 
-                    if (i != cantidadColumnas - 1)
+                    if (i != columnaNro - 1)
                     {
                         cadena = cadena + ";";
                     }
@@ -166,12 +181,12 @@ namespace PAMI.Exportacion
 
                 //TABLA REL_PRACTICASREALIZADASXAMBULATORIO
                 fs.EscribirEncabezado("REL_PRACTICASREALIZADASXAMBULATORIO");
-                cantidadColumnas = 10;
-                for (int i = 23; i < cantidadColumnas; i++)
+                columnaNro = 33;
+                for (int i = 23; i < columnaNro; i++)
                 {
                     cadena = cadena + ds.Tables[0].Rows[j][i].ToString();
 
-                    if (i != cantidadColumnas - 1)
+                    if (i != columnaNro - 1)
                     {
                         cadena = cadena + ";";
                     }
@@ -203,7 +218,7 @@ namespace PAMI.Exportacion
                 for (int i = 0; i < columnas; i++)
                 {
                     cadena = cadena + dsAmbulatorio.Tables[0].Rows[j][i].ToString();
-                    if (i != cantidadColumnas - 2)
+                    if (i != columnaNro - 2)
                     {
                         cadena = cadena + ";";
                     }
@@ -221,7 +236,7 @@ namespace PAMI.Exportacion
                 for (int i = 0; i < columnas; i++)
                 {
                     cadena = cadena + dsAmbulatorio.Tables[1].Rows[j][i].ToString();
-                    if (i != cantidadColumnas - 3)
+                    if (i != columnaNro - 3)
                     {
                         cadena = cadena + ";";
                     }
@@ -233,10 +248,11 @@ namespace PAMI.Exportacion
 
         private void escribirLinea(int j, DataSet ds)
         {
-            for (int i = 0; i < cantidadColumnas; i++)
+
+            for (int i = 0; i < columnaNro; i++)
             {
                 cadena = cadena + ds.Tables[0].Rows[j][i].ToString();
-                if (i != cantidadColumnas - 2)
+                if (i != columnaNro - 1)  //POR QUE MENOS DOS????????
                 {
                     cadena = cadena + ";";
                 }
@@ -256,7 +272,7 @@ namespace PAMI.Exportacion
             {
                 parameterList.Clear();
                 parameterList.Add(new SqlParameter("@AsocID", Convert.ToInt64(cmbAsociacion.SelectedValue)));
-                parameterList.Add(new SqlParameter("@Mes", cmbMes.SelectedValue));
+                parameterList.Add(new SqlParameter("@Mes", cmbMes.SelectedValue.ToString()));
                 parameterList.Add(new SqlParameter("@Anio", txtAnio.Text));
             }
             return SQLHelper.ExecuteDataSet("TraerListado" + Tabla + "ParaExportar", CommandType.StoredProcedure, Tabla,parameterList);

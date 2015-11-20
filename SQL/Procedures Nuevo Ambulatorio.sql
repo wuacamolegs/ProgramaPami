@@ -69,6 +69,17 @@ ALTER PROCEDURE PAMI.ValidarAmbulatorioExistenteEnPlanilla
      @Asociacion numeric(10,0)
 AS
 BEGIN
-	SELECT planilla_medico, planilla_practica, planilla_hora, planilla_diagnostico FROM PAMI.Planilla WHERE planilla_afiliado_beneficio = @Afiliado AND planilla_fecha = @Fecha AND planilla_asociacion = @Asociacion
+	SELECT planilla_medico, planilla_practica, planilla_hora, planilla_diagnostico, planilla_modalidad_prestacion FROM PAMI.Planilla WHERE planilla_afiliado_beneficio = @Afiliado AND planilla_fecha = @Fecha AND planilla_asociacion = @Asociacion
+END
+GO
+
+CREATE PROCEDURE PAMI.DeletePlanilla
+	@Asociacion numeric(10,0),
+	@Medico varchar(6),
+	@Fecha varchar(10),
+	@Beneficio varchar(15)
+AS
+BEGIN
+	DELETE PAMI.Planilla WHERE planilla_asociacion = @Asociacion AND planilla_medico = @Medico AND planilla_afiliado_beneficio = @Beneficio AND planilla_fecha = @Fecha
 END
 GO

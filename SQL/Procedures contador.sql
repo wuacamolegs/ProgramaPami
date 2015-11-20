@@ -1,7 +1,7 @@
 
 ALTER PROCEDURE PAMI.TraerListadoProfesionalContadorPracticas
-	@Matricula VARCHAR(6),
-	@Asociacion numeric(10,0),
+	@MedicoID VARCHAR(6),
+	@AsociacionID numeric(10,0),
 	@Mes VARCHAR(2),
 	@Anio VARCHAR(4)
 AS
@@ -12,8 +12,10 @@ BEGIN
 	END
 	
 	SELECT planilla_practica, COUNT(planilla_practica) as Cantidad FROM PAMI.Planilla WHERE SUBSTRING(planilla_fecha,4,2) = @Mes AND SUBSTRING(planilla_fecha,7,4) = @Anio 
-	AND planilla_asociacion = @Asociacion AND planilla_medico = @Matricula
+	AND planilla_asociacion = @AsociacionID AND planilla_medico = @MedicoID
 	GROUP BY planilla_practica
+	UNION
+	SELECT 'TOTAL' as planilla_practica, COUNT(planilla_practica) as Cantidad FROM PAMI.Planilla WHERE SUBSTRING(planilla_fecha,4,2) = @Mes AND SUBSTRING(planilla_fecha,7,4) = @Anio 
+	AND planilla_asociacion = @AsociacionID AND planilla_medico = @MedicoID 
 END
 GO
-

@@ -217,7 +217,7 @@ namespace Clases
             }
         }
 
-        public bool TraerPrestadorPorCuitYUsuario()  //TODO TRY CATCH
+        public bool TraerPrestadorPorCuitYUsuario()  
         {
             setearListaParametrosConCuitYUsuario();
             DataSet ds = TraerListado(parameterList, "PorCuitYUsuario");

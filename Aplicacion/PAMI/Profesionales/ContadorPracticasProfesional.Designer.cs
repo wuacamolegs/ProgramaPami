@@ -51,11 +51,11 @@
             this.groupBox3.Controls.Add(this.cmbMedico);
             this.groupBox3.Font = new System.Drawing.Font("Franklin Gothic Book", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox3.ForeColor = System.Drawing.Color.DarkSlateGray;
-            this.groupBox3.Location = new System.Drawing.Point(10, 119);
+            this.groupBox3.Location = new System.Drawing.Point(10, 166);
             this.groupBox3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.groupBox3.Size = new System.Drawing.Size(514, 76);
+            this.groupBox3.Size = new System.Drawing.Size(458, 76);
             this.groupBox3.TabIndex = 4;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "PROFESIONAL";
@@ -68,7 +68,7 @@
             this.cmbMedico.Location = new System.Drawing.Point(6, 29);
             this.cmbMedico.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cmbMedico.Name = "cmbMedico";
-            this.cmbMedico.Size = new System.Drawing.Size(497, 30);
+            this.cmbMedico.Size = new System.Drawing.Size(436, 30);
             this.cmbMedico.TabIndex = 0;
             this.cmbMedico.SelectedIndexChanged += new System.EventHandler(this.cmbMedico_SelectedIndexChanged);
             // 
@@ -77,11 +77,11 @@
             this.groupBox1.Controls.Add(this.cmbAsociacion);
             this.groupBox1.Font = new System.Drawing.Font("Franklin Gothic Book", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.ForeColor = System.Drawing.Color.DarkSlateGray;
-            this.groupBox1.Location = new System.Drawing.Point(10, 11);
+            this.groupBox1.Location = new System.Drawing.Point(10, 58);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.groupBox1.Size = new System.Drawing.Size(514, 76);
+            this.groupBox1.Size = new System.Drawing.Size(458, 76);
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "ASOCIACION";
@@ -95,18 +95,21 @@
             this.cmbAsociacion.Location = new System.Drawing.Point(6, 29);
             this.cmbAsociacion.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cmbAsociacion.Name = "cmbAsociacion";
-            this.cmbAsociacion.Size = new System.Drawing.Size(497, 30);
+            this.cmbAsociacion.Size = new System.Drawing.Size(436, 30);
             this.cmbAsociacion.TabIndex = 0;
             this.cmbAsociacion.SelectedIndexChanged += new System.EventHandler(this.cmbAsociacion_SelectedIndexChanged);
             // 
             // dgContador
             // 
+            this.dgContador.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.dgContador.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgContador.Location = new System.Drawing.Point(554, 11);
+            this.dgContador.Location = new System.Drawing.Point(492, 11);
             this.dgContador.Name = "dgContador";
             this.dgContador.RowTemplate.Height = 30;
             this.dgContador.RowTemplate.ReadOnly = true;
-            this.dgContador.Size = new System.Drawing.Size(239, 326);
+            this.dgContador.Size = new System.Drawing.Size(280, 413);
             this.dgContador.TabIndex = 5;
             // 
             // groupBox2
@@ -117,7 +120,7 @@
             this.groupBox2.Controls.Add(this.label2);
             this.groupBox2.Font = new System.Drawing.Font("Franklin Gothic Book", 10F);
             this.groupBox2.ForeColor = System.Drawing.Color.DarkSlateGray;
-            this.groupBox2.Location = new System.Drawing.Point(10, 241);
+            this.groupBox2.Location = new System.Drawing.Point(10, 277);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(414, 83);
             this.groupBox2.TabIndex = 8;
@@ -184,7 +187,7 @@
             // btnBuscar
             // 
             this.btnBuscar.Image = global::PAMI.Properties.Resources.search;
-            this.btnBuscar.Location = new System.Drawing.Point(479, 269);
+            this.btnBuscar.Location = new System.Drawing.Point(434, 305);
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.Size = new System.Drawing.Size(34, 37);
             this.btnBuscar.TabIndex = 37;
@@ -195,7 +198,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(808, 352);
+            this.ClientSize = new System.Drawing.Size(784, 439);
             this.Controls.Add(this.btnBuscar);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.dgContador);

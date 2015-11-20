@@ -230,8 +230,8 @@
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.txtBeneficio);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.btnGuardar);
             this.groupBox1.Controls.Add(this.btnNuevo);
+            this.groupBox1.Controls.Add(this.btnGuardar);
             this.groupBox1.Font = new System.Drawing.Font("Franklin Gothic Book", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(12, 15);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
@@ -278,7 +278,7 @@
             // btnNuevo
             // 
             this.btnNuevo.Font = new System.Drawing.Font("Franklin Gothic Book", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnNuevo.ForeColor = System.Drawing.Color.DarkCyan;
+            this.btnNuevo.ForeColor = System.Drawing.Color.DarkSlateGray;
             this.btnNuevo.Location = new System.Drawing.Point(509, 176);
             this.btnNuevo.Margin = new System.Windows.Forms.Padding(4);
             this.btnNuevo.Name = "btnNuevo";

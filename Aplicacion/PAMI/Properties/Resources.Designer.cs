@@ -67,9 +67,44 @@ namespace PAMI.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap ajustes_engranajes_318_76225 {
+            get {
+                object obj = ResourceManager.GetObject("ajustes-engranajes_318-76225", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap config {
+            get {
+                object obj = ResourceManager.GetObject("config", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap search {
             get {
                 object obj = ResourceManager.GetObject("search", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap two185 {
+            get {
+                object obj = ResourceManager.GetObject("two185", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap two185__1_ {
+            get {
+                object obj = ResourceManager.GetObject("two185 (1)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap two185__2_ {
+            get {
+                object obj = ResourceManager.GetObject("two185 (2)", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

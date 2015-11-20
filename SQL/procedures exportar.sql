@@ -97,7 +97,6 @@ AS
 	END
 GO
 
-
 /*
 MODALIDAD PRESTACION
 1- AFILIADO PROPIO  --> voy a tener en planilla_modalidad_prestacion = 0
@@ -114,13 +113,29 @@ AS
 		--AMBULATORIO  
 		'','',P.planilla_medico,0,0,0,A.codigo_boca_atencion,0,P.planilla_fecha,'','', CASE planilla_modalidad_prestacion WHEN 0 THEN 1 ELSE 2 END, CASE planilla_modalidad_prestacion WHEN 0 THEN '' ELSE planilla_modalidad_prestacion END,'',substring(planilla_afiliado_beneficio,1,12), SUBSTRING(planilla_afiliado_beneficio,13,2),
 		--REL DIAGNOSTICOS X AMBULATORIO
-		'','','',0,1,planilla_diagnostico,1,
+		'','','',0,1,diagnostico_codigo,1,
 		--REL_PRACTICASREALIZADASXAMBULATORIO
 		'','','',0,1,planilla_practica,planilla_fecha + ' ' + planilla_hora, 1, CASE planilla_modalidad_prestacion WHEN 0 THEN 1 ELSE 2 END, CASE planilla_modalidad_prestacion WHEN 0 THEN '' ELSE planilla_modalidad_prestacion END		
-		 FROM PAMI.Planilla P, PAMI.Asociacion A
-		 WHERE P.planilla_asociacion = A.asociacion_id AND asociacion_id = @AsocID AND substring(planilla_fecha,4,2) = @Mes AND substring(planilla_fecha,7,4) = @Anio 
+		 FROM PAMI.Planilla P, PAMI.Asociacion A, PAMI.Diagnostico D
+		 WHERE P.planilla_asociacion = A.asociacion_id AND asociacion_id = @AsocID AND CONVERT(numeric(18,0),planilla_diagnostico) = D.diagnostico_id AND substring(planilla_fecha,4,2) = @Mes AND substring(planilla_fecha,7,4) = @Anio 
 		 ORDER BY  planilla_medico, planilla_fecha, planilla_afiliado_beneficio, planilla_practica
 	END
 GO
 
-EXEC PAMI.TraerListadoAMBULATORIOSParaExportar 1, '2015', '10'
+CREATE PROCEDURE PAMI.ValidarExistenAmbulatoriosAsociacion
+	@AsocID numeric(10,0),
+	@Anio varchar(4),
+	@Mes varchar(2)
+AS
+	BEGIN
+		SELECT COUNT(*) FROM PAMI.Planilla WHERE  planilla_asociacion = @AsocID AND substring(planilla_fecha,4,2) = @Mes AND substring(planilla_fecha,7,4) = @Anio  	
+	END
+GO
+
+CREATE PROCEDURE PAMI.AumentarContadorEmulaciones
+	@AsocID numeric(10,0)
+AS
+	BEGIN
+		UPDATE PAMI.Asociacion SET nroEmulacion = nroEmulacion + 1 WHERE asociacion_id = @AsocID
+	END
+GO

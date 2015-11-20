@@ -167,13 +167,13 @@ namespace Clases
         #endregion
 
 
-        public DataSet BuscarAfiliadoPorFiltros() //TODO AGREGAR TRY
+        public DataSet BuscarAfiliadoPorFiltros() 
         {
             setearListaParametrosConFiltros();
             return this.TraerListado(parameterList, "ConFiltros");
         }
 
-        public bool TraerAfiliadoPorBeneficio()  //TODO TRY CATCH
+        public bool TraerAfiliadoPorBeneficio() 
         {
             setearListaParametrosConBeneficioParentesco();
             DataSet ds = TraerListado(parameterList, "PorBeneficio");
@@ -188,7 +188,7 @@ namespace Clases
             }
         }
 
-        public bool NuevoAfiliado()  //TODO TRY CATCH
+        public bool NuevoAfiliado() 
         {
             if (this.TraerAfiliadoPorBeneficio())
             { //el afiliado ya existe
@@ -202,13 +202,13 @@ namespace Clases
             }
         }
 
-        public void UpdateAfiliado() //TODO TRY CATCH
+        public void UpdateAfiliado() 
         {
             setearListaParametrosCompleta();
             this.Modificar(parameterList);
         }
 
-        public void EliminarAfiliado()  //TODO TRY CATCH
+        public void EliminarAfiliado() 
         {
             setearListaParametrosConBeneficioParentesco();
             this.Eliminar(parameterList);

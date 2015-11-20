@@ -105,15 +105,16 @@ namespace PAMI.Nomenclador
 
             //le inserto a la grilla el dataset obtenido
             dgNomenclador.DataSource = dsNomenclador.Tables[0];
-            dgNomenclador.AllowUserToAddRows = false;
 
             DataGridViewCellStyle miestilo = new DataGridViewCellStyle();
-            miestilo.Font = new Font("Agency FB", 11);
+            miestilo.Font = new Font("Franklin Gothic Book", 9);
 
             dgNomenclador.EnableHeadersVisualStyles = false;
             dgNomenclador.ColumnHeadersDefaultCellStyle = miestilo;
-            dgNomenclador.ColumnHeadersDefaultCellStyle.ForeColor = Color.DarkCyan;
+            dgNomenclador.ColumnHeadersDefaultCellStyle.ForeColor = Color.DarkSlateGray;
             dgNomenclador.ColumnHeadersDefaultCellStyle.BackColor = Color.Gainsboro;
+
+            dgNomenclador.AllowUserToAddRows = false;
         }
 
         private void cargarDatosFiltros()

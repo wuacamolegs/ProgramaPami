@@ -19,6 +19,11 @@ namespace PAMI.Profesionales
         public ListadoProfesional()
         {
             InitializeComponent();
+            btnEditar.Enabled = false;
+            btnEditar.Enabled = false;
+
+            Utilities.DropDownListManager.CargarCombo(cmbEspecialidad, unProfesional.ObtenerListadoEspecialidad(), "EspecialidadID", "Especialidad", false, "");
+            cmbEspecialidad.SelectedIndex = -1;
         }
 
         private void btnLimpiar_Click(object sender, EventArgs e)
@@ -47,6 +52,8 @@ namespace PAMI.Profesionales
                 cargarDatosFiltros();
                 DataSet dsProfesionales = unProfesional.BuscarProfesionalPorFiltros();
                 cargarGrillaCon(dsProfesionales);
+                btnEditar.Enabled = true;
+                btnEditar.Enabled = true;
             }
             catch (ErrorConsultaException ex)
             {
@@ -87,7 +94,7 @@ namespace PAMI.Profesionales
             dgProfesionales.Columns.Add(clm_tipoDoc);
 
             DataGridViewTextBoxColumn clm_numero_documento = new DataGridViewTextBoxColumn();
-            clm_numero_documento.Width = 150;
+            clm_numero_documento.Width = 160;
             clm_numero_documento.ReadOnly = true;
             clm_numero_documento.DataPropertyName = "documento_numero";
             clm_numero_documento.HeaderText = "Documento";
@@ -126,11 +133,11 @@ namespace PAMI.Profesionales
             }
             if (cmbTipoDoc.SelectedValue != null)
             {
-                unProfesional.TipoDocumento = cmbTipoDoc.SelectedItem.ToString();
+                unProfesional.TipoDocumento = cmbTipoDoc.SelectedValue.ToString();
             }
             if (cmbEspecialidad.SelectedValue != null)
             {
-                unProfesional.Especialidad = cmbEspecialidad.SelectedItem.ToString();
+                unProfesional.Especialidad = cmbEspecialidad.SelectedValue.ToString();
             }
         }
 
@@ -170,13 +177,13 @@ namespace PAMI.Profesionales
         {
             try
             {
-          /*  if (cargarDatosGridProfesional())
-            {
-                formProfesional formProf = new formProfesional();
-                formProf.abrirParaEditar(unProfesional);
-                formProf.Show();
-                btnLimpiar_Click(sender, e);
-            }*/
+                if (cargarDatosGridProfesional())
+                {
+                    formProfesional formProf = new formProfesional();
+                    formProf.abrirParaEditar(unProfesional);
+                    formProf.Show();
+                    btnLimpiar_Click(sender, e);
+                }
             }
             catch (Exception emes)
             {

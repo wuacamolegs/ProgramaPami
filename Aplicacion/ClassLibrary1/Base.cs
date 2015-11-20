@@ -83,20 +83,19 @@ namespace Clases
             return false;
         }
 
-        public bool Modificar(List<SqlParameter> parameterList, string Condiciones)
+        public DataSet Modificar(List<SqlParameter> parameterList, string Condiciones)
         {
-            Int64 result = SQLHelper.ExecuteNonQuery(_strModificar + NombreEntidad() + Condiciones, CommandType.StoredProcedure, parameterList);
-            if (result > 0)
-            {
-                return true;
-            }
-            return false;
+            return SQLHelper.ExecuteDataSet(_strModificar + NombreEntidad() + Condiciones, CommandType.StoredProcedure, parameterList);
         }
-
 
         public void Eliminar(List<SqlParameter> parameterList)
         {
             SQLHelper.ExecuteNonQuery(_strEliminar + NombreEntidad(), CommandType.StoredProcedure, parameterList);
+        }
+
+        public void Eliminar(List<SqlParameter> parameterList, string Condiciones)
+        {
+            SQLHelper.ExecuteNonQuery(_strEliminar + NombreEntidad() + Condiciones, CommandType.StoredProcedure, parameterList);
         }
 
         public void Deshabilitar(List<SqlParameter> parameterList)

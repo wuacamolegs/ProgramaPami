@@ -30,6 +30,7 @@ namespace Clases
         Int64 _anio;
         Int64 _mes;
         Int64 _asociacion;
+        string _op;
 
         #endregion
 
@@ -117,6 +118,11 @@ namespace Clases
             set { _anio = value; }
         }
 
+        public string OrdenPrestacion
+        {
+            get { return _op; }
+            set { _op = value; }
+        }
 
 
         #endregion
@@ -163,7 +169,9 @@ namespace Clases
             parameterList.Add(new SqlParameter("@Diagnostico", this.Diagnostico));
             parameterList.Add(new SqlParameter("@Practica", this.Practica));
             parameterList.Add(new SqlParameter("@Hora", this.Hora));
+            parameterList.Add(new SqlParameter("@OP", this.OrdenPrestacion));
 
+            parameterList.Add(new SqlParameter("@Consulta", Convert.ToInt64(Convert.ToBoolean(ConfigurationManager.AppSettings["ConsultaMensual"]))));
         }
 
         private void setearListaParametrosConPlanilla()
@@ -185,11 +193,36 @@ namespace Clases
             parameterList.Add(new SqlParameter("@Anio", this.Anio));
         }
 
-        private void setearListaParametrosConAsociacionMedico()
+        private void setearListaParametrosAsociacionPeriodo()
         {
             this.parameterList.Clear();
-            parameterList.Add(new SqlParameter("@AsociacionID", this.Asociacion));
-            parameterList.Add(new SqlParameter("@MedicoID", this.Medico));
+            parameterList.Add(new SqlParameter("@Asociacion", this.Asociacion));
+            parameterList.Add(new SqlParameter("@Mes", this.Mes.ToString()));
+            parameterList.Add(new SqlParameter("@Anio", this.Anio.ToString()));
+        }
+
+        private void setearListaParametrosParaBusqueda()
+        {
+            this.parameterList.Clear();
+            parameterList.Add(new SqlParameter("@Asociacion", this.Asociacion));
+            parameterList.Add(new SqlParameter("@Medico", this.Medico));
+            parameterList.Add(new SqlParameter("@Mes", this.Mes));
+            parameterList.Add(new SqlParameter("@Anio", this.Anio));
+            parameterList.Add(new SqlParameter("@Beneficio", this.Beneficio));
+        }
+
+        private void setearListaParametrosAsocMedicoFechaBeneficio()
+        {
+            this.parameterList.Clear();
+            parameterList.Add(new SqlParameter("@Asociacion", this.Asociacion));
+            parameterList.Add(new SqlParameter("@Medico", this.Medico));
+            parameterList.Add(new SqlParameter("@Fecha", this.Fecha));
+            parameterList.Add(new SqlParameter("@Beneficio", this.Beneficio));
+        }
+
+        private void setearListaParametrosAgregarPractica()
+        {
+            parameterList.Add(new SqlParameter("@Practica", this.Practica));
         }
 
         private void setearListaParametrosConAsociacion()
@@ -202,6 +235,11 @@ namespace Clases
         {
             parameterList.Add(new SqlParameter("@MedicoPosta", MedicoPosta));
         }
+
+        private void setearListaParmetrosRegistrarAmbulatorioExistente(Int64 MedicoPosta)
+        {
+
+        }
        
         #endregion
 
@@ -212,10 +250,10 @@ namespace Clases
             return ds;
         }
 
-        //Para cargar el combo medico segun asociacion
+        //Para busqueda ambulatorios medico
         public DataSet TraerPlanillasPorMedico()
         {
-            setearListaParametrosConAsociacionMedico();
+            setearListaParametrosParaBusqueda(); 
             return this.TraerListado(parameterList, "ActualPorMedicoAsociacion");
         }
 
@@ -254,14 +292,31 @@ namespace Clases
             return this.GuardarYObtenerID(parameterList,"AmbulatorioExistente");
         }
 
-        public void TraerAmbulatoriosCargadosAOtroMedicoPorFiltros()
+        public DataSet TraerAmbulatoriosCargadosAOtroMedicoPorFiltros()
         {
-            setearListaParametrosTablas();
-            this.TraerListado(parameterList, "AmbulatoriosCargadosAOtroMedico");
+            setearListaParametrosAsociacionPeriodo();
+            return this.TraerListado(parameterList, "AmbulatoriosCargadosAOtroMedico");
         }
 
+        public void BorrarAmbulatorio()
+        {
+            setearListaParametrosAsocMedicoFechaBeneficio();
+            this.Eliminar(parameterList);
+        }
 
+        public void BorrarPracticas()
+        {
+            setearListaParametrosAsocMedicoFechaBeneficio();
+            setearListaParametrosAgregarPractica();
+            this.Eliminar(parameterList, "PracticaAPractica");
+        }
 
-
+        public void RegistrarAmbulatorioExistente(long medicoPosta)
+        {
+            setearListaParametrosAsocMedicoFechaBeneficio(); 
+            setearListaParametrosAgregarMedicoPosta(medicoPosta);
+            setearListaParametrosAgregarPractica();
+            SQLHelper.ExecuteDataSet("RegistrarAmbulatorioExistente", CommandType.StoredProcedure, NombreTabla(), parameterList);            
+        }
     }
 }

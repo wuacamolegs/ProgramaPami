@@ -16,7 +16,7 @@ namespace Utilities
 
             if (strError.Length == 0 && !EsNumero(textoAValidar))
             {
-                strError += "El campo " + nombreCampo + " tiene caracteres inválidos\n";
+                strError += nombreCampo + " tiene caracteres inválidos\n";
             }
             return strError;
         }
@@ -27,7 +27,7 @@ namespace Utilities
 
             if (strError.Length == 0 && !EsDecimal(textoAValidar))
             {
-                strError += "El campo " + nombreCampo + " tiene caracteres inválidos\n";
+                strError += nombreCampo + " tiene caracteres inválidos\n";
             }
             return strError;
         }
@@ -62,7 +62,7 @@ namespace Utilities
         {
             if (string.IsNullOrEmpty(textoAValidar))
             {
-                return "Tiene que ingresar un valor para el campo " + nombreCampo + "\n";
+                return "Tiene que ingresar un valor para " + nombreCampo + "\n";
             }
             return string.Empty;
         }
@@ -71,7 +71,7 @@ namespace Utilities
         {
             int unAño = Convert.ToInt32(año);
             if (unAño < 1900 || unAño > DateTime.Now.Year)
-                return "Tiene que ingresar un año válido, entre 1900 y" + DateTime.Now.Year + ", para el campo " + nombreCampo + "\n";
+                return "Tiene que ingresar un año válido, entre 1900 y " + DateTime.Now.Year + ", para " + nombreCampo + "\n";
 
             return string.Empty;
 
@@ -93,7 +93,7 @@ namespace Utilities
                 return strError;
             if (!EsNumero(textoAValidar))
             {
-                strError += "El campo " + nombreCampo + " tiene caracteres inválidos\n";
+                strError += nombreCampo + " tiene caracteres inválidos\n";
             }
             return strError;
         }
@@ -104,7 +104,7 @@ namespace Utilities
             string strError = "";
             if (Convert.ToInt32(textoAValidar) <= 0)
             {
-                strError += "El campo " + nombreCampo + " debe ser mayor que cero\n";
+                strError += nombreCampo + " debe ser mayor que cero\n";
             }
             return strError;
 
@@ -115,7 +115,7 @@ namespace Utilities
             string strError = "";
             if (selectedIndex == -1)
             {
-                strError += "Debe seleccionar algún item del combo " + nombreCombo + "\n";
+                strError += "Seleccionar " + nombreCombo + "\n";
             }
             return strError;
         }
@@ -137,6 +137,30 @@ namespace Utilities
                 pE.Handled = false;
             }
             else if (Char.IsControl(pE.KeyChar))
+            {
+                pE.Handled = false;
+            }
+            else if (Char.IsSeparator(pE.KeyChar))
+            {
+                pE.Handled = false;
+            }
+            else
+            {
+                pE.Handled = true;
+            }
+        }
+
+        public static void SoloLetrasYPuntuacion(KeyPressEventArgs pE)
+        {
+            if (Char.IsLetter(pE.KeyChar))
+            {
+                pE.Handled = false;
+            }
+            else if (Char.IsControl(pE.KeyChar))
+            {
+                pE.Handled = false;
+            }
+            else if (Char.IsPunctuation(pE.KeyChar))
             {
                 pE.Handled = false;
             }
@@ -241,12 +265,12 @@ namespace Utilities
               }
               else
               {
-                  return "Mail con formato inválido\n";
+                  return "Mail inválido\n";
               }
            }
            else
            {
-               return "Mail con formato inválido\n";
+               return "Mail inválido\n";
            }
         }
 

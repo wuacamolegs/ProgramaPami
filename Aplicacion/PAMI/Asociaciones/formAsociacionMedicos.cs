@@ -82,7 +82,6 @@ namespace PAMI.Asociaciones
                 crearGrilla();
                 unaAsociacion.ID = Convert.ToInt64(cmbAsociacion.SelectedValue);
                 DataSet dsAsociacion = unaAsociacion.TraerMedicosPorAsociacionParaSeleccion();
-                //TODO VALIDAR QUE HAYAN LLEGADO DATOS.
                 dgMedicosAsociacion.DataSource = dsAsociacion.Tables[0];
             }           
         }

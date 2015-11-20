@@ -32,7 +32,9 @@ namespace PAMI.Profesionales
             unaAsociacion.Dispose();
 
             Utilities.DropDownListManager.CargarCombo(cmbMes, Base.TablaMeses(), "numeroMes", "nombreMes", false, "");
-            cmbMes.SelectedIndex = DateTime.Today.AddMonths(-2).Month; 
+            cmbMes.SelectedIndex = DateTime.Today.AddMonths(-2).Month;
+
+            txtAnio.Text = DateTime.Today.Year.ToString();
             
             cmbMedico.SelectedIndex = -1;
         }
@@ -79,7 +81,7 @@ namespace PAMI.Profesionales
                 }
                 else
                 {
-                    MessageBox.Show("No posee ambulatorios para ese periodo5");
+                    MessageBox.Show("No posee ambulatorios para ese periodo");
                 }
             }
         }
@@ -91,14 +93,14 @@ namespace PAMI.Profesionales
             dgContador.RowHeadersVisible = false;
 
             DataGridViewTextBoxColumn clm_Practica = new DataGridViewTextBoxColumn();
-            clm_Practica.Width = 400;
+            clm_Practica.Width = 150;
             clm_Practica.ReadOnly = true;
             clm_Practica.DataPropertyName = "planilla_practica";
             clm_Practica.HeaderText = "Practica";
             dgContador.Columns.Add(clm_Practica);
 
             DataGridViewTextBoxColumn clm_cantidad = new DataGridViewTextBoxColumn();
-            clm_Practica.Width = 108;
+            clm_cantidad.Width = 108;
             clm_cantidad.ReadOnly = true;
             clm_cantidad.DataPropertyName = "Cantidad";
             clm_cantidad.HeaderText = "Cantidad";

@@ -47,6 +47,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
@@ -93,6 +94,24 @@
     </Compile>
     <Compile Include="Asociaciones\formAsociacionMedicos.Designer.cs">
       <DependentUpon>formAsociacionMedicos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Configuracion\formConfiguracion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Configuracion\formConfiguracion.Designer.cs">
+      <DependentUpon>formConfiguracion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Diagnosticos\formDiagnostico.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Diagnosticos\formDiagnostico.Designer.cs">
+      <DependentUpon>formDiagnostico.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Diagnosticos\ListadoDiagnostico.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Diagnosticos\ListadoDiagnostico.Designer.cs">
+      <DependentUpon>ListadoDiagnostico.cs</DependentUpon>
     </Compile>
     <Compile Include="Exportacion\ExportarDatos.cs">
       <SubType>Form</SubType>
@@ -188,6 +207,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Asociaciones\formAsociacionMedicos.resx">
       <DependentUpon>formAsociacionMedicos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Configuracion\formConfiguracion.resx">
+      <DependentUpon>formConfiguracion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Diagnosticos\formDiagnostico.resx">
+      <DependentUpon>formDiagnostico.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Diagnosticos\ListadoDiagnostico.resx">
+      <DependentUpon>ListadoDiagnostico.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Exportacion\ExportarDatos.resx">
       <DependentUpon>ExportarDatos.cs</DependentUpon>
@@ -304,6 +332,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\search.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\config.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ajustes-engranajes_318-76225.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\two185.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\two185 %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\two185 %282%29.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

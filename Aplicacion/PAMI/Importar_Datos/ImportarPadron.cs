@@ -42,8 +42,8 @@ namespace PAMI.Importar_Datos
                     List<SqlParameter> parameterList = new List<SqlParameter>();
                     parameterList.Add(new SqlParameter("@Ruta", txtRuta.Text));
                     parameterList.Add(new SqlParameter("@Padron", cmbPadron.SelectedIndex));
-                    Conexion.SQLHelper.ExecuteNonQuery("ImportarPadron", CommandType.StoredProcedure, parameterList);
-                    MessageBox.Show("Padrón Importado Correctamente", "");
+                    Int64 cantAfiliados = Conexion.SQLHelper.ExecuteNonQuery("ImportarPadron", CommandType.StoredProcedure, parameterList);
+                    MessageBox.Show("Se han importado exitosamente " + cantAfiliados + " Afiliados", "Padrón Importado Correctamente");
                 }
                 catch (ErrorConsultaException ex)
                 {

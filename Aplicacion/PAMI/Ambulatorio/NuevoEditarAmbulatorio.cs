@@ -9,6 +9,7 @@ using System.Text;
 using System.Windows.Forms;
 using Clases;
 using Utilities;
+using System.Configuration;
 using Excepciones;
 
 namespace PAMI.Ambulatorio
@@ -29,6 +30,9 @@ namespace PAMI.Ambulatorio
         AutoCompleteStringCollection scAutoComplete = new AutoCompleteStringCollection();
 
         bool diagnosticosCargados = false;
+        bool abrirAmbulatorio = false;
+        string fechaEditar = "";
+        Int64 medicoPosta = 0;
 
         #endregion
         
@@ -53,6 +57,16 @@ namespace PAMI.Ambulatorio
             txt2NroAfiliado.Visible = false;
             txt2NombreyApellido.Visible = false;
             btn2Atras.Visible = false;
+            btnEditar.Visible = false;
+            btnEliminar.Visible = false;
+        }
+
+        public void abrirCon(Planilla planilla)
+        {
+            unaPlanilla.Dispose();
+            unaPlanilla = planilla;
+            abrirAmbulatorio = true;
+            dgPracticas.Focus();
         }
 
         private void NuevoAmbulatorio_Load(object sender, EventArgs e)
@@ -69,6 +83,69 @@ namespace PAMI.Ambulatorio
             cmbDiagnosticoDescripcion.SelectedIndex = -1;
 
             cmbAsociacion.Focus();
+
+            if (abrirAmbulatorio)
+            {
+                DataSet ds = unaPlanilla.ValidarAmbulatorioExistente();
+                if (ds.Tables[0].Rows.Count > 0)
+                {
+                    cmbAsociacion.SelectedValue = unaPlanilla.Asociacion;
+                    cmbMedico.SelectedValue = unaPlanilla.Medico;
+                    cmbDiagnosticoCodigo.SelectedValue = Convert.ToInt64(ds.Tables[0].Rows[0]["planilla_diagnostico"]);
+                    unAfiliado.Beneficio = unaPlanilla.Beneficio;
+                    unAfiliado.TraerAfiliadoPorBeneficio();
+                    fechaEditar = unaPlanilla.Fecha;  //si vengo desde editar ambulatorio que lo elegi de la busqueda guardo aca la fecha editar
+
+                    if (unaPlanilla.OrdenPrestacion != "0")
+                    {
+                        chOP.Checked = true;
+                        txtOP.Text = unaPlanilla.OrdenPrestacion;
+                    }
+                    
+
+                    int index = 0;
+                    foreach (DataRow row in ds.Tables[0].Rows)
+                    {
+                        dgPracticas.Rows.Add(ds.Tables[0].Rows[index][1], ds.Tables[0].Rows[index][2]);
+                        index++;
+                    }
+
+                    //OCULTAR BUSCADOR
+                    dgAfiliados.Visible = false;
+                    txtBeneficio.Visible = false;
+                    txtDocumento.Visible = false;
+                    txtNombreApellido.Visible = false;
+                    lbl1Documento.Visible = false;
+                    lbl1Nombreapellido.Visible = false;
+                    lbl1NroAfiliado.Visible = false;
+                    btnBuscar.Visible = false;
+
+                    //MOSTRAR AFILIADO SELECCIONADO
+                    gbAfiliadoSeleccionado.Visible = true;
+                    txt2Documento.Visible = true;
+                    txt2NroAfiliado.Visible = true;
+                    txt2NombreyApellido.Visible = true;
+                    btn2Atras.Visible = false;
+                    btnEditar.Visible = true;
+                    btnEliminar.Visible = true;
+                    btnNuevo.Visible = false;
+
+                    txt2Documento.Enabled = false;
+                    txt2NroAfiliado.Enabled = false;
+                    txt2NombreyApellido.Enabled = false;
+
+                    txt2NombreyApellido.Text = unAfiliado.Nombre;
+                    txt2NroAfiliado.Text = unAfiliado.Beneficio + unAfiliado.Parentesco;
+                    txt2Documento.Text = unAfiliado.TipoDocumento + unAfiliado.Documento;
+                    txtFecha.Text = unaPlanilla.Fecha;
+
+                    cmbAsociacion.Enabled = false;
+                    cmbMedico.Enabled = false;                    
+
+                    cmbDiagnosticoCodigo.Focus();
+                }
+                else { MessageBox.Show("No existen ambulatorios"); }
+            }
         }
 
         #region keypress
@@ -349,6 +426,7 @@ namespace PAMI.Ambulatorio
             //validar combos != -1 ;)
             //validar afiliado seleccionado
             //validar filas en tabla practicas, que no me guarde las vacias, ni las que no sean practicas. 
+            //validar si ord prestacion true --> txtOP <> ""
             
             string strErrores = "";
             try
@@ -362,6 +440,12 @@ namespace PAMI.Ambulatorio
                 strErrores = strErrores + Validator.ValidarFecha(txtFecha.Text, "Fecha Ambulatorio");
                 strErrores = strErrores + Validator.validarNuloEnComboBox(cmbDiagnosticoCodigo.SelectedIndex, "Diagnóstico");
                 strErrores = strErrores + Validator.ValidarHoraEnDataGrid(dgPracticas, 1);
+
+                if (chOP.Checked == true && txtOP.Text == "0")
+                {
+                    strErrores = strErrores + "Debe ingresar la Orden de Prestación";
+                }
+
                 if (strErrores != "")
                 {
                     MessageBox.Show(strErrores);
@@ -377,69 +461,71 @@ namespace PAMI.Ambulatorio
 
         private void btnNuevo_Click(object sender, EventArgs e)
         {
-            if (ValidarCampos() == "")
+            try
             {
-                unaPlanilla.Anio = Convert.ToInt64(txtFecha.Text.Substring(6, 4));
-                unaPlanilla.Mes = Convert.ToInt64(txtFecha.Text.Substring(3, 2));
-                unaPlanilla.Asociacion = Convert.ToInt64(cmbAsociacion.SelectedValue);
-                unaPlanilla.Medico = Convert.ToInt64(cmbMedico.SelectedValue);
-                unaPlanilla.Beneficio = txt2NroAfiliado.Text.ToString();
-                unaPlanilla.Fecha = txtFecha.Text.ToString();
-                unaPlanilla.Diagnostico = cmbDiagnosticoCodigo.SelectedValue.ToString();
-                unaPlanilla.tablaPlanilla.Clear();
-
-                string importarAmbulatorio = "Nuevo Ambulatorio.\n\nProfesional: " + cmbMedico.Text +
-                    "\nAfiliado: " + unaPlanilla.Beneficio.ToString() + "\n\nPRACTICAS:\n";
-
-                foreach (DataGridViewRow row in dgPracticas.Rows)
+                fechaEditar = "";
+                if (ValidarCampos() == "")
                 {
-                    if (row.Cells[0].Value != null && row.ReadOnly == false)
+                    unaPlanilla.Anio = Convert.ToInt64(txtFecha.Text.Substring(6, 4));
+                    unaPlanilla.Mes = Convert.ToInt64(txtFecha.Text.Substring(3, 2));
+                    unaPlanilla.Asociacion = Convert.ToInt64(cmbAsociacion.SelectedValue);
+                    unaPlanilla.Medico = Convert.ToInt64(cmbMedico.SelectedValue);
+                    unaPlanilla.Beneficio = txt2NroAfiliado.Text.ToString();
+                    unaPlanilla.Fecha = txtFecha.Text.ToString();
+                    unaPlanilla.Diagnostico = cmbDiagnosticoCodigo.SelectedValue.ToString();
+                    unaPlanilla.tablaPlanilla.Clear();
+                    unaPlanilla.OrdenPrestacion = txtOP.Text;
+
+                    string importarAmbulatorio = "Nuevo Ambulatorio.\n\nProfesional: " + cmbMedico.Text +
+                        "\nAfiliado: " + unaPlanilla.Beneficio.ToString() + "\n\nPRACTICAS:\n";
+
+                    foreach (DataGridViewRow row in dgPracticas.Rows)
                     {
-                        unaPlanilla.Practica = extraerPractica(row.Cells[0].Value.ToString());
-                        unaPlanilla.Hora = row.Cells[1].Value.ToString();
-
-                        DataSet ds = unaPlanilla.ImportarAmbulatorio();
-
-                        if (ds.Tables[0].Rows[0]["Existe"].ToString() == "-1")
+                        if (row.Cells[0].Value != null && row.ReadOnly == false)
                         {
-                            if (ds.Tables[0].Rows[0][3].ToString() != unaPlanilla.Hora)
+                            unaPlanilla.Practica = extraerPractica(row.Cells[0].Value.ToString());
+                            unaPlanilla.Hora = row.Cells[1].Value.ToString();
+
+                            DataSet ds = unaPlanilla.ImportarAmbulatorio();
+
+                            if (ds.Tables[0].Rows[0]["Existe"].ToString() == "-1")
                             {
-                                row.Cells[1].Value = ds.Tables[0].Rows[0][3].ToString();
-                                row.Cells[1].Style.BackColor = Color.LightBlue;
+                                if (ds.Tables[0].Rows[0][3].ToString() != unaPlanilla.Hora)
+                                {
+                                    row.Cells[1].Value = ds.Tables[0].Rows[0][3].ToString();
+                                    row.Cells[1].Style.BackColor = Color.LightBlue;
+                                }
+
+                                importarAmbulatorio = importarAmbulatorio + row.Cells[1].Value.ToString() + " - " + extraerPractica(row.Cells[0].Value.ToString()) + " - Importado Correctamente\n";
                             }
-
-                            importarAmbulatorio = importarAmbulatorio + row.Cells[1].Value.ToString() + " - " + extraerPractica(row.Cells[0].Value.ToString()) + " - Importado Correctamente\n";
-                        }
-                        if (ds.Tables[0].Rows[0]["Medico"].ToString() == unaPlanilla.Medico.ToString())
-                        {
-                            importarAmbulatorio = importarAmbulatorio + row.Cells[1].Value.ToString() + " - " + extraerPractica(row.Cells[0].Value.ToString()) + " - Ya existe en ambulatorio\n";
-                            dgPracticas.Rows[row.Index].DefaultCellStyle.BackColor = Color.AliceBlue;
-                        }
-                        if (ds.Tables[0].Rows[0]["Medico"].ToString() != unaPlanilla.Medico.ToString() &&
-                            ds.Tables[0].Rows[0]["Existe"].ToString() != "-1")
-                        {
-                            DataRow newRow = unaPlanilla.tablaPlanilla.NewRow();
-                            newRow["Planilla_medico_secundario_matricula"] = ds.Tables[0].Rows[0]["Medico"].ToString();
-                            newRow["Planilla_medico_secundario_nombre"] = ds.Tables[0].Rows[0]["MedicoNombre"].ToString();
-                            newRow["Planilla_beneficio"] = unaPlanilla.Beneficio;
-                            newRow["Planilla_practica"] = unaPlanilla.Practica;
-                            newRow["Planilla_fecha"] = unaPlanilla.Fecha;
-                            newRow["Planilla_hora"] = unaPlanilla.Hora;
-                            newRow["Existe"] = ds.Tables[0].Rows[0]["Existe"].ToString();
-
-                            unaPlanilla.tablaPlanilla.Rows.Add(newRow);
+                            if (ds.Tables[0].Rows[0]["Medico"].ToString() == unaPlanilla.Medico.ToString() && ds.Tables[0].Rows[0]["Existe"].ToString() != "2")
+                            {
+                                importarAmbulatorio = importarAmbulatorio + row.Cells[1].Value.ToString() + " - " + extraerPractica(row.Cells[0].Value.ToString()) + " - Ya existe en ambulatorio\n";
+                                dgPracticas.Rows[row.Index].DefaultCellStyle.BackColor = Color.AliceBlue;
+                            }
+                            if (ds.Tables[0].Rows[0]["Existe"].ToString() == "2")
+                            {
+                                importarAmbulatorio = importarAmbulatorio + row.Cells[1].Value.ToString() + " - " + extraerPractica(row.Cells[0].Value.ToString()) + " - Ya posee una Consulta en este mes\n";
+                                dgPracticas.Rows[row.Index].DefaultCellStyle.BackColor = Color.AliceBlue;
+                            }
                         }
                     }
+                    if (importarAmbulatorio != "")
+                    {
+                        MessageBox.Show(importarAmbulatorio);
+                    }
+                    dgPracticas.Rows.Clear();
+                    cmbDiagnosticoCodigo.SelectedIndex = -1;
+                    btn2Atras_Click(sender, e);
+                    dgAfiliados.DataSource = null;
+                    chOP.Checked = false;
                 }
-                if (importarAmbulatorio != "")
-                {
-                    MessageBox.Show(importarAmbulatorio);
-                }
-                dgPracticas.Rows.Clear();
-                cmbDiagnosticoCodigo.SelectedIndex = -1;
-                btn2Atras_Click(sender, e);
-                dgAfiliados.DataSource = null;
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
         }
 
         private string extraerPractica(string practica)
@@ -472,24 +558,17 @@ namespace PAMI.Ambulatorio
             }
         }
 
-        private void txtNombreApellido_TextChanged(object sender, EventArgs e)
-        {
-            if (txtNombreApellido.Text != "")
-            {
-                AfiliadosView.RowFilter = "[apellido_nombre] like '%" + txtNombreApellido.Text + "%'";
-                dgAfiliados.DataSource = AfiliadosView;
-            }
-        }
-
         private void chOP_CheckedChanged(object sender, EventArgs e)
         {
             if (chOP.Checked)
             {
                 txtOP.Visible = true;
+                txtOP.Text = "";
             }
             else
             {
                 txtOP.Visible = false;
+                txtOP.Text = "0";
             }
         }
 
@@ -505,6 +584,7 @@ namespace PAMI.Ambulatorio
             lbl1NroAfiliado.Visible = true;
             btnBuscar.Visible = true;
             dgAfiliados.Visible = true;
+            dgAfiliados.DataSource = null;
 
             //OCULTAR AFILIADO SELECCIONADO
             gbAfiliadoSeleccionado.Visible = false;
@@ -520,9 +600,272 @@ namespace PAMI.Ambulatorio
             txt2Documento.Text = "";
         }
 
-        private void dgAfiliados_KeyPress(object sender, KeyPressEventArgs e)
+        private void txtFecha_Leave(object sender, EventArgs e)
         {
-            if (e.KeyChar == Convert.ToChar(Keys.Enter) && dgAfiliados.Rows.Count > 0)
+            try
+            {
+                if (Validator.ValidarFecha(txtFecha.Text, "Fecha Ambulatorio") != "" && txtFecha.Text != "")
+                {
+                    MessageBox.Show("Fecha Inválida");
+                }
+                else
+                {
+                    unaPlanilla.Medico = Convert.ToInt64(cmbMedico.SelectedValue);
+                    unaPlanilla.Beneficio = txt2NroAfiliado.Text.ToString();
+                    unaPlanilla.Fecha = txtFecha.Text.ToString();
+                    unaPlanilla.Asociacion = Convert.ToInt64(cmbAsociacion.SelectedValue);
+
+                    DataSet ds = unaPlanilla.ValidarAmbulatorioExistente();
+
+                    DialogResult result;
+
+                    if (ds.Tables[0].Rows.Count > 0)
+                    {
+                        if (Convert.ToInt64(ds.Tables[0].Rows[0][0]) == unaPlanilla.Medico)
+                        {
+                            result = MessageBox.Show("El afiliado ya posee un ambulatorio en esta fecha con este Profesional. \n\n¿Desea editarlo?", "", MessageBoxButtons.YesNo);
+                        }
+                        else
+                        {
+                            result = MessageBox.Show("El afiliado ya posee un ambulatorio en esta fecha. \n\n¿Desea editarlo?", "", MessageBoxButtons.YesNo);
+                        }
+
+                        if (result == DialogResult.Yes || result == DialogResult.Ignore)
+                        {
+                            fechaEditar = txtFecha.Text;  //ACA GUARDO LA FECHA A EDITAR, SI ME DIJO QUE SI ES PORQUE YA EXISTE AMBULATORIO. GUARDO LA ANTERIOR POR SI QUIERO EDITAR LA FECHA!
+                            medicoPosta = Convert.ToInt64(cmbMedico.SelectedValue); //ACA GUARDO EL MEDICO POSTA POR SI EL AMBULATORIO EXISTENTE ERA DE OTRO MEDICO
+                            unaPlanilla.Medico = Convert.ToInt64(ds.Tables[0].Rows[0][0]);
+                            cmbMedico.SelectedValue = unaPlanilla.Medico;
+                            cmbDiagnosticoCodigo.SelectedValue = Convert.ToInt64(ds.Tables[0].Rows[0]["planilla_diagnostico"]);
+                            unaPlanilla.OrdenPrestacion = ds.Tables[0].Rows[0]["planilla_modalidad_prestacion"].ToString();
+
+                            if (unaPlanilla.OrdenPrestacion != "0")
+                            {
+                                chOP.Checked = true;
+                                txtOP.Text = unaPlanilla.OrdenPrestacion;
+                            }
+                            dgPracticas.Rows.Clear();
+
+                            btnNuevo.Visible = false;
+                            btnEditar.Visible = true;
+
+                            int index = 0;
+                            foreach (DataRow row in ds.Tables[0].Rows)
+                            {
+                                dgPracticas.Rows.Add(ds.Tables[0].Rows[index][1], ds.Tables[0].Rows[index][2]);
+                                dgPracticas.Rows[index].ReadOnly = true;
+                                dgPracticas.Rows[index].DefaultCellStyle.BackColor = Color.LightGray;
+                                index++;
+                            }
+                        }
+                    }
+                    TablaFechaHoras = unaPlanilla.TraerTablasPlanilla().Tables[3];
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void cmbDiagnosticoCodigo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbDiagnosticoCodigo.SelectedValue != null && diagnosticosCargados == true)
+            {
+                cmbDiagnosticoDescripcion.SelectedValue = cmbDiagnosticoCodigo.SelectedValue;
+            }
+            else
+            {
+                cmbDiagnosticoDescripcion.SelectedIndex = -1;
+            }
+        }
+
+        private void cmbDiagnosticoDescripcion_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbDiagnosticoDescripcion.SelectedValue != null && diagnosticosCargados == true)
+            {
+                cmbDiagnosticoCodigo.SelectedValue = cmbDiagnosticoDescripcion.SelectedValue;
+            }
+            else
+            {
+                cmbDiagnosticoCodigo.SelectedIndex = -1;
+            }
+        }
+
+        private void btnEditar_Click(object sender, EventArgs e)
+        {
+            if (ValidarCampos() == "")
+            {
+                unaPlanilla.Fecha = fechaEditar; //ESTA LA CARGUE CUANDO ME FUI DEL TXTFECHA Y PUSE QUE QUERIA EDITAR AMBULATORIO
+                                                 // Y TAMBIEN CUANDO ABRI EL FORM PARA EDITAR AMBULATORIO DESDE LA BUSQUEDA.
+
+                //Hice este fechaEditar porque ya cuando sale del textbox fecha me lo guarda en la planilla fecha para buscar ambulatorios existentes!
+                //Elimina el ambulatorio que se eligio para editar. borro todo y lo vuelvo a cargar.
+                //Borro los que estan en esa fecha, asi puedo cambiar la fecha tmb!
+                unaPlanilla.Anio = Convert.ToInt64(txtFecha.Text.Substring(6, 4));
+                unaPlanilla.Mes = Convert.ToInt64(txtFecha.Text.Substring(3, 2));
+                unaPlanilla.Asociacion = Convert.ToInt64(cmbAsociacion.SelectedValue);
+                unaPlanilla.Medico = Convert.ToInt64(cmbMedico.SelectedValue);
+                unaPlanilla.Beneficio = txt2NroAfiliado.Text.ToString();
+                unaPlanilla.OrdenPrestacion = txtOP.Text;
+
+                unaPlanilla.BorrarAmbulatorio();
+                
+                unaPlanilla.Fecha = txtFecha.Text.ToString();
+                unaPlanilla.Diagnostico = cmbDiagnosticoCodigo.SelectedValue.ToString();
+                unaPlanilla.tablaPlanilla.Clear();
+
+                string importarAmbulatorio = "Editar Ambulatorio.\n\nProfesional: " + cmbMedico.Text +
+                    "\nAfiliado: " + unaPlanilla.Beneficio.ToString() + "\n\nPRACTICAS:\n";
+
+                foreach (DataGridViewRow row in dgPracticas.Rows)
+                {
+                    if (row.Cells[0].Value != null)
+                    {
+                        unaPlanilla.Practica = extraerPractica(row.Cells[0].Value.ToString());
+                        unaPlanilla.Hora = row.Cells[1].Value.ToString();
+
+                        DataSet ds = unaPlanilla.ImportarAmbulatorio();
+
+                        if (ds.Tables[0].Rows[0]["Existe"].ToString() == "-1")
+                        {
+                            if (ds.Tables[0].Rows[0][3].ToString() != unaPlanilla.Hora)
+                            {
+                                row.Cells[1].Value = ds.Tables[0].Rows[0][3].ToString();
+                                row.Cells[1].Style.BackColor = Color.LightBlue;
+                            }
+
+                            importarAmbulatorio = importarAmbulatorio + row.Cells[1].Value.ToString() + " - " + extraerPractica(row.Cells[0].Value.ToString()) + "\n";
+                            if(Convert.ToInt64(cmbMedico.SelectedValue) != medicoPosta && row.ReadOnly == false)
+                            {
+                               unaPlanilla.RegistrarAmbulatorioExistente(medicoPosta);
+                            }
+                        }
+                        if (ds.Tables[0].Rows[0]["Medico"].ToString() == unaPlanilla.Medico.ToString() && ds.Tables[0].Rows[0]["Existe"].ToString() != "2")
+                        {
+                            importarAmbulatorio = importarAmbulatorio + row.Cells[1].Value.ToString() + " - " + extraerPractica(row.Cells[0].Value.ToString()) + " - Ya existe en ambulatorio\n";
+                            dgPracticas.Rows[row.Index].DefaultCellStyle.BackColor = Color.AliceBlue;                            
+                        }
+                        if (ds.Tables[0].Rows[0]["Existe"].ToString() == "2")
+                        {
+                            importarAmbulatorio = importarAmbulatorio + row.Cells[1].Value.ToString() + " - " + extraerPractica(row.Cells[0].Value.ToString()) + " - Ya posee una Consulta en este mes\n";
+                            dgPracticas.Rows[row.Index].DefaultCellStyle.BackColor = Color.AliceBlue;
+                        }
+                    }
+                }
+
+                if (importarAmbulatorio != "")
+                {
+                    MessageBox.Show(importarAmbulatorio);
+                    dgPracticas.Rows.Clear();
+                    cmbDiagnosticoCodigo.SelectedIndex = -1;
+                    btn2Atras_Click(sender, e);
+                    dgAfiliados.DataSource = null;
+                    btnEditar.Visible = false;
+                    btnNuevo.Visible = true;
+                    cmbMedico.SelectedValue = medicoPosta;
+                    chOP.Checked = false;
+                }
+            }
+        }
+
+        private void dgPracticas_KeyDown(object sender, KeyEventArgs e)
+        {
+            try
+            {
+                if (e.Control && e.KeyCode == Keys.C)
+                {
+                    DataObject d = dgPracticas.GetClipboardContent();
+                    Clipboard.SetDataObject(d);
+                    e.Handled = true;
+                }
+                else if (e.Control && e.KeyCode == Keys.V)
+                {
+
+                    string s = Clipboard.GetText();
+                    string[] lines = s.Split('\n');
+                    int row = dgPracticas.CurrentCell.RowIndex;
+                    int col = dgPracticas.CurrentCell.ColumnIndex;
+                    foreach (string line in lines)
+                    {
+                        if (row < dgPracticas.RowCount && line.Length > 0)
+                        {
+                            string[] cells = line.Split('\t');
+                            for (int i = 0; i < cells.GetLength(0); ++i)
+                            {
+                                if (col + i < this.dgPracticas.ColumnCount && (col + i) != 6 && (col + i) != 7)
+                                {
+                                    dgPracticas[col + i, row].Value = Convert.ChangeType(cells[i], dgPracticas[col + i, row].ValueType);
+                                }
+                                else
+                                {
+                                    break;
+                                }
+                            }
+                            row++;
+                        }
+                        else
+                        {
+                            break;
+                        }
+                    }
+
+                }
+                else if (e.KeyCode == Keys.Delete && dgPracticas.SelectedCells.Count > 0)
+                {
+                    foreach (DataGridViewCell oneCell in dgPracticas.SelectedCells)
+                    {
+                        if (oneCell.Selected)
+                        {
+                            int row = oneCell.RowIndex;
+                            int column = oneCell.ColumnIndex;
+                            dgPracticas.Rows[row].Cells[column].Value = "";
+                        }
+                    }
+                }
+            }
+
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+        }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            if (fechaEditar == txtFecha.Text) //Porque si le cambie la fecha ya es otro ambulatorio. Tendria que eliminarlo antes de cambiarle la fecha.
+            {
+                DialogResult result = MessageBox.Show("¿Está seguro?\nSe eliminarán todas las practicas que posee \nel Afiliado en esa fecha con este Profesional", "Eliminar Ambulatorio", MessageBoxButtons.YesNo);
+
+                if (result == DialogResult.Yes)
+                {
+                    unaPlanilla.Asociacion = Convert.ToInt64(cmbAsociacion.SelectedValue);
+                    unaPlanilla.Medico = Convert.ToInt64(cmbMedico.SelectedValue);
+                    unaPlanilla.Beneficio = txt2NroAfiliado.Text.ToString();
+                    unaPlanilla.Fecha = txtFecha.Text.ToString();
+                    unaPlanilla.BorrarAmbulatorio();
+
+                    dgPracticas.Rows.Clear();
+                    cmbDiagnosticoCodigo.SelectedIndex = -1;
+                    cmbDiagnosticoDescripcion.SelectedIndex = -1;
+                    btn2Atras_Click(sender, e);
+                    dgAfiliados.DataSource = null;
+
+                    btnEditar.Visible = false;
+                    btnNuevo.Visible = true;
+                }
+            }
+        }
+
+        private void btnEditar_VisibleChanged(object sender, EventArgs e)
+        {
+            btnEliminar.Visible = btnEditar.Visible;
+        }
+
+        private void dgAfiliados_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyValue == Convert.ToChar(Keys.Enter) && dgAfiliados.Rows.Count > 0)
             {
                 //OCULTAR BUSCADOR
                 dgAfiliados.Visible = false;
@@ -553,74 +896,5 @@ namespace PAMI.Ambulatorio
             }
         }
 
-        private void txtFecha_Leave(object sender, EventArgs e)
-        {
-            if (Validator.ValidarFecha(txtFecha.Text, "Fecha Ambulatorio") != "")
-            {
-                MessageBox.Show("Fecha Inválida");
-                txtFecha.Focus();
-            }
-            else
-            {
-                unaPlanilla.Medico = Convert.ToInt64(cmbMedico.SelectedValue);
-                unaPlanilla.Beneficio = txt2NroAfiliado.Text.ToString();
-                unaPlanilla.Fecha = txtFecha.Text.ToString();
-                unaPlanilla.Asociacion = Convert.ToInt64(cmbAsociacion.SelectedValue);
-                unaPlanilla.Mes = Convert.ToInt64(txtFecha.Text.ToString().Substring(3,2));
-                unaPlanilla.Anio = Convert.ToInt64(txtFecha.Text.ToString().Substring(6,4));
-
-                DataSet ds = unaPlanilla.ValidarAmbulatorioExistente();
-                DialogResult result;
-
-                if (ds.Tables[0].Rows.Count > 0)
-                {
-                    if (Convert.ToInt64(ds.Tables[0].Rows[0][0]) == unaPlanilla.Medico)
-                    {
-                        result = MessageBox.Show("El afiliado ya posee un ambulatorio en esta fecha con este Profesional. \n\n¿Desea editarlo?", "", MessageBoxButtons.YesNo);
-                    }
-                    else
-                    {
-                        result = MessageBox.Show("El afiliado ya posee un ambulatorio en esta fecha. \n\n¿Desea editarlo?", "", MessageBoxButtons.YesNo);
-                    }
-
-                    if (result == DialogResult.No)
-                    {
-                        this.Close();
-                    }
-
-                    if (result == DialogResult.Yes || result == DialogResult.Ignore)
-                    {                    
-                        unaPlanilla.Medico = Convert.ToInt64(ds.Tables[0].Rows[0][0]);
-                        cmbMedico.SelectedValue = ds.Tables[0].Rows[0][0].ToString();
-                        MessageBox.Show(ds.Tables[0].Rows[0][3].ToString());
-                        int index = 0;
-                        foreach (DataRow row in ds.Tables[0].Rows)
-                        {
-                            dgPracticas.Rows.Add(ds.Tables[0].Rows[index][1], ds.Tables[0].Rows[index][2]);
-                            dgPracticas.Rows[index].ReadOnly = true;
-                            dgPracticas.Rows[index].DefaultCellStyle.BackColor = Color.LightGray;
-                            index++;
-                        }
-                    }
-                }
-                TablaFechaHoras = unaPlanilla.TraerTablasPlanilla().Tables[3];
-            }
-        }
-
-        private void cmbDiagnosticoCodigo_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (cmbDiagnosticoCodigo.SelectedValue != null && diagnosticosCargados == true)
-            {
-                cmbDiagnosticoDescripcion.SelectedValue = cmbDiagnosticoCodigo.SelectedValue;
-            }
-        }
-
-        private void cmbDiagnosticoDescripcion_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (cmbDiagnosticoDescripcion.SelectedValue != null && diagnosticosCargados == true)
-            {
-                cmbDiagnosticoCodigo.SelectedValue = cmbDiagnosticoDescripcion.SelectedValue;
-            }
-        }
     }
 }
