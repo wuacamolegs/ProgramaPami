@@ -108,7 +108,7 @@ namespace PAMI.Afiliados
             dgAfiliados.RowHeadersVisible = false;
 
             DataGridViewTextBoxColumn clm_ApellidoNombre = new DataGridViewTextBoxColumn();
-            clm_ApellidoNombre.Width = 355;
+            clm_ApellidoNombre.Width = Convert.ToInt32(Convert.ToDouble(dgAfiliados.Size.Width * 0.30));
             clm_ApellidoNombre.ReadOnly = true;
             clm_ApellidoNombre.DataPropertyName = "apellido_nombre";
             clm_ApellidoNombre.HeaderText = "Apellido y Nombre";
@@ -122,17 +122,15 @@ namespace PAMI.Afiliados
             dgAfiliados.Columns.Add(clm_beneficio);
 
             DataGridViewTextBoxColumn clm_parentesco = new DataGridViewTextBoxColumn();
-            clm_parentesco.Width = 90;
+            clm_parentesco.Width = 40;
             clm_parentesco.ReadOnly = true;
             clm_parentesco.DataPropertyName = "parentesco";
-            clm_parentesco.HeaderText = "Parentesco";
             dgAfiliados.Columns.Add(clm_parentesco);
 
             DataGridViewTextBoxColumn clm_tipoDni = new DataGridViewTextBoxColumn();
-            clm_tipoDni.Width = 80;
+            clm_tipoDni.Width = 40;
             clm_tipoDni.ReadOnly = true;
             clm_tipoDni.DataPropertyName = "documento_tipo";
-            clm_tipoDni.HeaderText = "Tipo Doc";
             dgAfiliados.Columns.Add(clm_tipoDni);
 
             DataGridViewTextBoxColumn clm_numero_documento = new DataGridViewTextBoxColumn();
@@ -143,7 +141,7 @@ namespace PAMI.Afiliados
             dgAfiliados.Columns.Add(clm_numero_documento);
 
             DataGridViewTextBoxColumn clm_fechaNacimiento = new DataGridViewTextBoxColumn();
-            clm_fechaNacimiento.Width = 130;
+            clm_fechaNacimiento.Width = 90;
             clm_fechaNacimiento.ReadOnly = true;
             clm_fechaNacimiento.DataPropertyName = "fecha_nacimiento";
             clm_fechaNacimiento.HeaderText = "Fecha Nacimiento";

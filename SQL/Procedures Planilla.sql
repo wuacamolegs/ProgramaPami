@@ -1,7 +1,7 @@
 USE [PAMI]
 GO
 
-ALTER PROCEDURE PAMI.TraerListadoPlanillaTablasParaValidar
+CREATE PROCEDURE PAMI.TraerListadoPlanillaTablasParaValidar
 	@AsociacionID numeric(10,0),
 	@MedicoID varchar(6),
 	@Mes varchar(2),
@@ -15,7 +15,7 @@ BEGIN
 END 
 GO
 
-ALTER PROCEDURE PAMI.InsertPlanilla_RetornarID
+CREATE PROCEDURE PAMI.InsertPlanilla_RetornarID
 	@Asociacion numeric(10,0),
 	@Medico varchar(6),
 	@Mes varchar(2),
@@ -62,7 +62,7 @@ END
 GO
 
 
-ALTER FUNCTION PAMI.ValidarAmbulatorioExistente(@Beneficio VARCHAR(14), @Fecha VARCHAR(10), @Asociacion numeric(10,0))
+CREATE FUNCTION PAMI.ValidarAmbulatorioExistente(@Beneficio VARCHAR(14), @Fecha VARCHAR(10), @Asociacion numeric(10,0))
 RETURNS VARCHAR(6)
 AS  --SI YA EXISTE DEVUELVE EL MEDICO QUE TIENE EL AMBULATORIO
 BEGIN 
@@ -70,7 +70,7 @@ BEGIN
 END
 GO
 
-ALTER FUNCTION PAMI.ValidarPracticaYaExisteEnAmbulatorio(@Beneficio VARCHAR(14), @Fecha VARCHAR(10), @Practica VARCHAR(10), @Asociacion numeric(10,0),@Consulta numeric(1,0))
+CREATE FUNCTION PAMI.ValidarPracticaYaExisteEnAmbulatorio(@Beneficio VARCHAR(14), @Fecha VARCHAR(10), @Practica VARCHAR(10), @Asociacion numeric(10,0),@Consulta numeric(1,0))
 RETURNS int  -- 0 ya existe practica, NO SE PUEDE INSERTAR OTRA. 1 no existe practica SE PUEDE INSERTAR OTRA PRACTICA
 AS           -- 2 ya existe la consulta ese mes! NO SE PUEDE INSERTAR OTRA.
 BEGIN
@@ -91,7 +91,7 @@ BEGIN
 END
 GO
 
-ALTER PROCEDURE PAMI.InsertPlanilla_RetornarIDAmbulatorioExistente  --ESTE LO USO UNA VEZ QUE YA VALIDE QUE LAS PRACTICAS SE PUEDEN AGREGAR. EN PLANILLA CUANDO APARECE AMBULATORIOS EXISTENTES.
+CREATE PROCEDURE PAMI.InsertPlanilla_RetornarIDAmbulatorioExistente  --ESTE LO USO UNA VEZ QUE YA VALIDE QUE LAS PRACTICAS SE PUEDEN AGREGAR. EN PLANILLA CUANDO APARECE AMBULATORIOS EXISTENTES.
 	@Asociacion numeric(10,0),
 	@Medico varchar(6),
 	@Mes varchar(2),
@@ -121,7 +121,7 @@ BEGIN
 END
 GO
 
-ALTER FUNCTION PAMI.ObtenerHoraAmbulatorio(@Asociacion numeric(10,0), @Medico VARCHAR(6),@Fecha VARCHAR(10), @Hora VARCHAR(5))
+CREATE FUNCTION PAMI.ObtenerHoraAmbulatorio(@Asociacion numeric(10,0), @Medico VARCHAR(6),@Fecha VARCHAR(10), @Hora VARCHAR(5))
 RETURNS VARCHAR(5) --si la hora no esta ocupada, devuelve a ella misma, caso contrario va sumando 5 min hasta encontrar hora libre.
 AS
 BEGIN
@@ -134,7 +134,7 @@ BEGIN
 END
 GO
 
-ALTER PROCEDURE PAMI.TraerListadoPlanillaAmbulatoriosCargadosAOtroMedico
+CREATE PROCEDURE PAMI.TraerListadoPlanillaAmbulatoriosCargadosAOtroMedico
 	@Asociacion numeric(10,0),
 	@Mes varchar(2),
 	@Anio varchar(4)
@@ -148,7 +148,7 @@ BEGIN
 END
 GO
  
-ALTER PROCEDURE PAMI.TraerListadoPlanillaActualPorMedicoAsociacion
+CREATE PROCEDURE PAMI.TraerListadoPlanillaActualPorMedicoAsociacion
 	@Asociacion numeric(10,0),
 	@Medico varchar(6),
 	@Mes varchar(2),
@@ -178,7 +178,7 @@ BEGIN
 END
 GO
 
-ALTER PROCEDURE PAMI.RegistrarAmbulatorioExistente
+CREATE PROCEDURE PAMI.RegistrarAmbulatorioExistente
 	@Asociacion numeric(10,0),
 	@Medico varchar(6),
 	@Fecha varchar(10),

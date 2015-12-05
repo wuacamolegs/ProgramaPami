@@ -91,3 +91,4 @@ C:\Users\MARTIN\Documents\GitHub\ProgramaPami\Aplicacion\PAMI\obj\Debug\PAMI.Pro
 A:\Documents\PAMI\ProgramaPami\Aplicacion\PAMI\obj\Debug\PAMI.Diagnosticos.ListadoDiagnostico.resources
 A:\Documents\PAMI\ProgramaPami\Aplicacion\PAMI\obj\Debug\PAMI.Diagnosticos.formDiagnostico.resources
 A:\Documents\PAMI\ProgramaPami\Aplicacion\PAMI\obj\Debug\PAMI.Configuracion.formConfiguracion.resources
+A:\Documents\PAMI\ProgramaPami\Aplicacion\PAMI\obj\Debug\PAMI.Importar_Datos.ImportarProfesionales.resources

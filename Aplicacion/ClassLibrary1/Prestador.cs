@@ -29,11 +29,12 @@ namespace Clases
         string _usuario;
         string _calle;
         Int64 _numero;
-        Int64 _piso;
+        string _piso;
         string _depto;
         string _mail;
         Int64 _asoc;
         Int64 _padron;
+        string _nroInstalacion;
 
         #endregion
       
@@ -103,7 +104,7 @@ namespace Clases
             set { _numero = value; }
         }
 
-        public Int64 DireccionPiso
+        public string DireccionPiso
         {
             get { return _piso; }
             set { _piso = value; }
@@ -132,7 +133,14 @@ namespace Clases
             get { return _padron; }
             set { _padron = value; }
         }
-        
+
+
+        public string NroInstalacion
+        {
+            get { return _nroInstalacion; }
+            set { _nroInstalacion = value; }
+        }
+
         #endregion
 
         #region metodos publicos
@@ -157,9 +165,10 @@ namespace Clases
             this.FechaAlta = dataRow["f_fecha_alta"].ToString();
             this.NombreCortoPrestador = dataRow["prestador_nombre_corto"].ToString();
             this.Usuario = dataRow["usuario_nombre"].ToString();
+            this.NroInstalacion = dataRow["NroInstalacion"].ToString();
             this.DireccionCalle = dataRow["d_calle"].ToString();
             this.DireccionNumero = Convert.ToInt64(dataRow["d_puerta"]);
-            this.DireccionPiso = Convert.ToInt64(dataRow["d_piso"]);
+            this.DireccionPiso = dataRow["d_piso"].ToString();
             this.DireccionDepto = dataRow["d_departamento"].ToString();
             this.TipoPrestador = Convert.ToInt64(dataRow["tipo_prestador"]);
             this.Mail = (dataRow["d_mail"]).ToString();
@@ -183,6 +192,7 @@ namespace Clases
             parameterList.Add(new SqlParameter("@FechaAlta",this.FechaAlta));
             parameterList.Add(new SqlParameter("@NombreCorto",this.NombreCortoPrestador));
             parameterList.Add(new SqlParameter("@Usuario", this.Usuario));
+            parameterList.Add(new SqlParameter("@NroInstalacion", this.NroInstalacion));
             parameterList.Add(new SqlParameter("@Calle",this.DireccionCalle));
             parameterList.Add(new SqlParameter("@Numero",this.DireccionNumero));
             parameterList.Add(new SqlParameter("@Piso", this.DireccionPiso));
@@ -199,8 +209,6 @@ namespace Clases
             parameterList.Clear();
             parameterList.Add(new SqlParameter("@AsocID", AsocID));
         }
-
-
 
         public bool NuevoPrestador()
         {

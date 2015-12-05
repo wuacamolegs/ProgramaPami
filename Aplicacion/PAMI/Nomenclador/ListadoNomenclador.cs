@@ -83,7 +83,7 @@ namespace PAMI.Nomenclador
             dgNomenclador.Columns.Add(clm_codigo);
 
             DataGridViewTextBoxColumn clm_Descripcion = new DataGridViewTextBoxColumn();
-            clm_Descripcion.Width = 348;
+            clm_Descripcion.Width = Convert.ToInt32(Convert.ToDouble(dgNomenclador.Size.Width * 0.40));
             clm_Descripcion.ReadOnly = true;
             clm_Descripcion.DataPropertyName = "practica_descripcion";
             clm_Descripcion.HeaderText = "Práctica";
@@ -151,7 +151,6 @@ namespace PAMI.Nomenclador
         {
             formPracticas practicas = new formPracticas();
             practicas.Show();
-            this.Close();
         }
 
         private void btnEditar_Click(object sender, EventArgs e)

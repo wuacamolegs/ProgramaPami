@@ -1,4 +1,4 @@
-ALTER PROCEDURE PAMI.TraerListadoProfesionalPorFiltros 
+CREATE PROCEDURE PAMI.TraerListadoProfesionalPorFiltros 
     @Nombre nvarchar(60) = null, 
     @TipoDoc varchar(3) = null,
     @Documento varchar(15) = null,
@@ -16,7 +16,7 @@ BEGIN
     END
 GO
 
-ALTER PROCEDURE PAMI.TraerListadoProfesionalPorMatricula
+CREATE PROCEDURE PAMI.TraerListadoProfesionalPorMatricula
 	@Matricula varchar(6)
 AS
 BEGIN
@@ -57,9 +57,3 @@ BEGIN
 	UPDATE PAMI.Profesional SET profesional_nombreCompleto = @Nombre, profesional_tipo_documento_id = @TipoDoc, profesional_numero_documento = @Documento, profesional_especialidad_id = @Especialidad WHERE profesional_matricula_nacional = @Matricula
 END
 GO
-
-
-
-
-
-select* from PAMI.Profesional

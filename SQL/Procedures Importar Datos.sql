@@ -1,6 +1,42 @@
 -- IMPORTAR DATOS --
 
-ALTER PROCEDURE PAMI.ImportarPadron
+CREATE FUNCTION PAMI.DevolverCuitAsoc(@IndexAsoc VARCHAR(15))
+RETURNS VARCHAR(15)
+AS  
+BEGIN 
+	DECLARE @RETURN VARCHAR(15) = '0';
+	IF('0' = @IndexAsoc)
+	BEGIN 
+		SET @RETURN = '30689632447'
+	END
+	IF('1' = @IndexAsoc)
+	BEGIN
+		SET @RETURN = '30708916532'
+	END
+	RETURN @RETURN
+END
+GO
+
+CREATE FUNCTION PAMI.DevolverIDAsoc(@CuitAsoc VARCHAR(15))
+RETURNS VARCHAR(15)
+AS  
+BEGIN 
+	DECLARE @RETURN varchar(15) = '0';
+	IF('30689632447' = @CuitAsoc)
+	BEGIN 
+		SET @RETURN = '0'
+	END
+	IF('30708916532' = @CuitAsoc)
+	BEGIN
+		SET @RETURN = '1'
+	END
+	RETURN @RETURN
+END
+GO
+
+--///// PADRON \\\\\--
+
+CREATE PROCEDURE PAMI.ImportarPadron
 	@ruta nvarchar(200),
 	@Padron numeric(2,0)
 AS
@@ -17,7 +53,7 @@ AS
 	END
 GO				
 
-ALTER PROCEDURE PAMI.ActualizarPadronAfiliados
+CREATE PROCEDURE PAMI.ActualizarPadronAfiliados
 	@Padron numeric(2,0)
 AS
 	BEGIN TRANSACTION
@@ -42,9 +78,31 @@ BEGIN
 END
 GO
 
+--///// PROFESIONALES \\\\\--
+
+ALTER PROCEDURE PAMI.ImportarProfesionales
+	@ruta varchar(200),
+	@Cuit varchar(15)
+AS
+	BEGIN
+	DECLARE @comando nvarchar(400);
+	
+	TRUNCATE TABLE PAMI.ProfesionalImportar;
+	SET @Cuit = (SELECT PAMI.DevolverCuitAsoc(@Cuit))
+	DELETE PAMI.Profesional WHERE profesional_matricula_nacional NOT IN(SELECT R.profesional_matricula FROM PAMI.Asociacion A, PAMI.REL_ProfesionalAsociacion R WHERE A.asociacion_id = R.asociacion_id AND A.asociacion_cuit != @Cuit);
+	DELETE PAMI.REL_ProfesionalAsociacion WHERE asociacion_id IN(SELECT A.asociacion_id FROM PAMI.Asociacion A WHERE A.asociacion_cuit = @Cuit);
+	
+	SET @comando = 'BULK INSERT PAMI.ProfesionalImportar FROM ''' + @ruta + ''' WITH (FIELDTERMINATOR ='';'', ROWTERMINATOR=''\n'')';
+	EXEC sp_executesql @comando;
+		
+	INSERT INTO PAMI.Profesional SELECT '','','',0,profesional_nombreCompleto, profesional_especialidad_id, profesional_matricula_nacional, '', profesional_tipo_documento_id, profesional_numero_documento,'','','','','','','' FROM PAMI.ProfesionalImportar
+		
+	END
+GO
+
 --///// DIAGNOSTICOS \\\\\--
 
-ALTER PROCEDURE PAMI.ImportarDiagnostico
+CREATE PROCEDURE PAMI.ImportarDiagnostico
 	@ruta varchar(200),
 	@Cuit varchar(15)
 AS
@@ -55,20 +113,13 @@ AS
 	SET @comando = 'BULK INSERT PAMI.Diagnosticos FROM ''' + @ruta + ''' WITH (FIELDTERMINATOR ='';'', ROWTERMINATOR=''\n'')';
 	EXEC sp_executesql @comando;
 	
-	IF('0' = @Cuit)
-	BEGIN 
-		SET @Cuit = '30689632447'
-	END
-	IF('1' = @Cuit)
-	BEGIN
-		SET @Cuit = '30708916532'
-	END
+	SET @Cuit = (SELECT PAMI.DevolverCuitAsoc(@Cuit))
 	
 	EXEC PAMI.ActualizarDiagnosticos @Cuit;
 	END
 GO
 
-ALTER PROCEDURE PAMI.ActualizarDiagnosticos
+CREATE PROCEDURE PAMI.ActualizarDiagnosticos
 	@Cuit varchar(15)
 AS
 	BEGIN
@@ -80,38 +131,29 @@ AS
 GO
 
 
+
 --///// NOMENCLADOR \\\\\--
 
-ALTER PROCEDURE PAMI.ImportarNomenclador
+CREATE PROCEDURE PAMI.ImportarNomenclador
 	@ruta nvarchar(200),
-	@Cuit varchar(15)
+	@Cuit VARCHAR(15)
 AS
 	DECLARE @comando nvarchar(400);
-	
 	TRUNCATE TABLE PAMI.NomencladorImportar;
 	SET @comando = 'BULK INSERT PAMI.NomencladorImportar FROM ''' + @ruta + ''' WITH (FIELDTERMINATOR ='';'', ROWTERMINATOR=''\n'')';
 	EXEC sp_executesql @comando;
 	
 	BEGIN
-	IF('0' = @Cuit)
-	BEGIN 
-		SET @Cuit = '30689632447'
-	END
-	IF('1' = @Cuit)
-	BEGIN
-		SET @Cuit = '30708916532'
-	END
+	SET @Cuit = (SELECT PAMI.DevolverCuitAsoc(@Cuit))
 
 	DELETE PAMI.Nomenclador WHERE codigo_modulo IN(SELECT codigo_modulo FROM PAMI.REL_ModulosXPrestador WHERE cuit_prestador = @Cuit);
 	DELETE PAMI.REL_ModulosXPrestador WHERE cuit_prestador = @Cuit;
 		
 	INSERT INTO PAMI.Nomenclador(practica_codigo, practica_descripcion,codigo_modulo, cantidad_maxima)
-	SELECT practica_codigo, practica_descripcion, codigo_modulo, 1 FROM PAMI.NomencladorImportar
+	SELECT practica_codigo, practica_descripcion,codigo_modulo, 1 FROM PAMI.NomencladorImportar
 	
 	-- AGREGAR LA RELACION EN LA TABLA REL_MODULOXPRESTADOR 
 	INSERT INTO PAMI.REL_ModulosXPrestador (cuit_prestador, modulonomenclador)
 	SELECT DISTINCT @Cuit ,codigo_modulo FROM PAMI.NomencladorImportar
 	END
 GO
-
-

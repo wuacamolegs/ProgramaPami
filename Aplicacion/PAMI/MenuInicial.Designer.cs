@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MenuInicial));
             this.btnAfiliado = new System.Windows.Forms.Button();
             this.btnAmbulatorio = new System.Windows.Forms.Button();
             this.btnDiagnostico = new System.Windows.Forms.Button();
@@ -38,25 +39,26 @@
             this.btn2NuevoAfiliado = new System.Windows.Forms.Button();
             this.btn2BusquedaAfiliado = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.btn4ListadoDiagnostico = new System.Windows.Forms.Button();
-            this.btn7Busqueda = new System.Windows.Forms.Button();
-            this.btn4NuevoDiagnostico = new System.Windows.Forms.Button();
-            this.btn7Nuevo = new System.Windows.Forms.Button();
-            this.btn5Contador = new System.Windows.Forms.Button();
-            this.btn5NuevoProfesional = new System.Windows.Forms.Button();
-            this.btn5BusquedaProfesional = new System.Windows.Forms.Button();
-            this.btn3NuevaPlanilla = new System.Windows.Forms.Button();
-            this.btn3Busqueda = new System.Windows.Forms.Button();
-            this.btn6BusquedaPrestador = new System.Windows.Forms.Button();
-            this.btn6ProfesionalesxAsociacion = new System.Windows.Forms.Button();
+            this.btn8Profesionales = new System.Windows.Forms.Button();
             this.btn8Exportar = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btn8Padron = new System.Windows.Forms.Button();
             this.btn8Diagnosticos = new System.Windows.Forms.Button();
             this.btn8Nomenclador = new System.Windows.Forms.Button();
             this.btn3NuevoAmbulatorio = new System.Windows.Forms.Button();
             this.btn6NuevoPrestador = new System.Windows.Forms.Button();
+            this.btn4ListadoDiagnostico = new System.Windows.Forms.Button();
+            this.btn4NuevoDiagnostico = new System.Windows.Forms.Button();
+            this.btn7Nuevo = new System.Windows.Forms.Button();
+            this.btn7Busqueda = new System.Windows.Forms.Button();
+            this.btn3Busqueda = new System.Windows.Forms.Button();
+            this.btn6ProfesionalesxAsociacion = new System.Windows.Forms.Button();
             this.btn5AmbulatoriosTransferidos = new System.Windows.Forms.Button();
+            this.btn5Contador = new System.Windows.Forms.Button();
+            this.btn5BusquedaProfesional = new System.Windows.Forms.Button();
+            this.btn5NuevoProfesional = new System.Windows.Forms.Button();
+            this.btn3NuevaPlanilla = new System.Windows.Forms.Button();
+            this.btn6BusquedaPrestador = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -182,16 +184,10 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.btn5AmbulatoriosTransferidos);
+            this.groupBox1.Controls.Add(this.btn8Profesionales);
             this.groupBox1.Controls.Add(this.btn8Exportar);
-            this.groupBox1.Controls.Add(this.btn5Contador);
-            this.groupBox1.Controls.Add(this.btn5BusquedaProfesional);
             this.groupBox1.Controls.Add(this.pictureBox1);
-            this.groupBox1.Controls.Add(this.btn5NuevoProfesional);
-            this.groupBox1.Controls.Add(this.btn3NuevaPlanilla);
-            this.groupBox1.Controls.Add(this.btn6BusquedaPrestador);
             this.groupBox1.Controls.Add(this.btn8Padron);
-            this.groupBox1.Controls.Add(this.btn2NuevoAfiliado);
             this.groupBox1.Controls.Add(this.btn8Diagnosticos);
             this.groupBox1.Controls.Add(this.btn8Nomenclador);
             this.groupBox1.Controls.Add(this.btn3NuevoAmbulatorio);
@@ -203,182 +199,39 @@
             this.groupBox1.Controls.Add(this.btn3Busqueda);
             this.groupBox1.Controls.Add(this.btn6ProfesionalesxAsociacion);
             this.groupBox1.Controls.Add(this.btn2BusquedaAfiliado);
+            this.groupBox1.Controls.Add(this.btn5AmbulatoriosTransferidos);
+            this.groupBox1.Controls.Add(this.btn5Contador);
+            this.groupBox1.Controls.Add(this.btn5BusquedaProfesional);
+            this.groupBox1.Controls.Add(this.btn5NuevoProfesional);
+            this.groupBox1.Controls.Add(this.btn3NuevaPlanilla);
+            this.groupBox1.Controls.Add(this.btn2NuevoAfiliado);
+            this.groupBox1.Controls.Add(this.btn6BusquedaPrestador);
             this.groupBox1.Location = new System.Drawing.Point(414, 4);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(451, 734);
             this.groupBox1.TabIndex = 4;
             this.groupBox1.TabStop = false;
             // 
-            // pictureBox1
+            // btn8Profesionales
             // 
-            this.pictureBox1.Image = global::PAMI.Properties.Resources.two185__1_;
-            this.pictureBox1.Location = new System.Drawing.Point(411, 688);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(34, 40);
-            this.pictureBox1.TabIndex = 23;
-            this.pictureBox1.TabStop = false;
-            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
-            // 
-            // btn4ListadoDiagnostico
-            // 
-            this.btn4ListadoDiagnostico.BackColor = System.Drawing.SystemColors.Control;
-            this.btn4ListadoDiagnostico.Font = new System.Drawing.Font("Franklin Gothic Book", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn4ListadoDiagnostico.ForeColor = System.Drawing.Color.DarkSlateGray;
-            this.btn4ListadoDiagnostico.Location = new System.Drawing.Point(28, 368);
-            this.btn4ListadoDiagnostico.Name = "btn4ListadoDiagnostico";
-            this.btn4ListadoDiagnostico.Size = new System.Drawing.Size(393, 99);
-            this.btn4ListadoDiagnostico.TabIndex = 21;
-            this.btn4ListadoDiagnostico.Text = "LISTADO DIAGNOSTICOS";
-            this.btn4ListadoDiagnostico.UseVisualStyleBackColor = false;
-            this.btn4ListadoDiagnostico.Visible = false;
-            this.btn4ListadoDiagnostico.Click += new System.EventHandler(this.btn4ListadoDiagnostico_Click);
-            // 
-            // btn7Busqueda
-            // 
-            this.btn7Busqueda.BackColor = System.Drawing.SystemColors.Control;
-            this.btn7Busqueda.Font = new System.Drawing.Font("Franklin Gothic Book", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn7Busqueda.ForeColor = System.Drawing.Color.DarkSlateGray;
-            this.btn7Busqueda.Location = new System.Drawing.Point(28, 368);
-            this.btn7Busqueda.Name = "btn7Busqueda";
-            this.btn7Busqueda.Size = new System.Drawing.Size(393, 99);
-            this.btn7Busqueda.TabIndex = 19;
-            this.btn7Busqueda.Text = "BUSQUEDA NOMENCLADOR";
-            this.btn7Busqueda.UseVisualStyleBackColor = false;
-            this.btn7Busqueda.Visible = false;
-            this.btn7Busqueda.Click += new System.EventHandler(this.btn7Busqueda_Click);
-            // 
-            // btn4NuevoDiagnostico
-            // 
-            this.btn4NuevoDiagnostico.BackColor = System.Drawing.SystemColors.Control;
-            this.btn4NuevoDiagnostico.Font = new System.Drawing.Font("Franklin Gothic Book", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn4NuevoDiagnostico.ForeColor = System.Drawing.Color.DarkSlateGray;
-            this.btn4NuevoDiagnostico.Location = new System.Drawing.Point(28, 263);
-            this.btn4NuevoDiagnostico.Name = "btn4NuevoDiagnostico";
-            this.btn4NuevoDiagnostico.Size = new System.Drawing.Size(393, 99);
-            this.btn4NuevoDiagnostico.TabIndex = 22;
-            this.btn4NuevoDiagnostico.Text = "NUEVO DIAGNOSTICO";
-            this.btn4NuevoDiagnostico.UseVisualStyleBackColor = false;
-            this.btn4NuevoDiagnostico.Visible = false;
-            this.btn4NuevoDiagnostico.Click += new System.EventHandler(this.btn4NuevoDiagnostico_Click);
-            // 
-            // btn7Nuevo
-            // 
-            this.btn7Nuevo.BackColor = System.Drawing.SystemColors.Control;
-            this.btn7Nuevo.Font = new System.Drawing.Font("Franklin Gothic Book", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn7Nuevo.ForeColor = System.Drawing.Color.DarkSlateGray;
-            this.btn7Nuevo.Location = new System.Drawing.Point(28, 263);
-            this.btn7Nuevo.Name = "btn7Nuevo";
-            this.btn7Nuevo.Size = new System.Drawing.Size(393, 99);
-            this.btn7Nuevo.TabIndex = 20;
-            this.btn7Nuevo.Text = "NUEVA PRACTICA";
-            this.btn7Nuevo.UseVisualStyleBackColor = false;
-            this.btn7Nuevo.Visible = false;
-            this.btn7Nuevo.Click += new System.EventHandler(this.btn7NuevaPractica_Click);
-            // 
-            // btn5Contador
-            // 
-            this.btn5Contador.BackColor = System.Drawing.SystemColors.Control;
-            this.btn5Contador.Font = new System.Drawing.Font("Franklin Gothic Book", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn5Contador.ForeColor = System.Drawing.Color.DarkSlateGray;
-            this.btn5Contador.Location = new System.Drawing.Point(28, 368);
-            this.btn5Contador.Name = "btn5Contador";
-            this.btn5Contador.Size = new System.Drawing.Size(393, 99);
-            this.btn5Contador.TabIndex = 21;
-            this.btn5Contador.Text = "CONTADOR PRACTICAS";
-            this.btn5Contador.UseVisualStyleBackColor = false;
-            this.btn5Contador.Visible = false;
-            this.btn5Contador.Click += new System.EventHandler(this.btn5Contador_Click);
-            // 
-            // btn5NuevoProfesional
-            // 
-            this.btn5NuevoProfesional.BackColor = System.Drawing.SystemColors.Control;
-            this.btn5NuevoProfesional.Font = new System.Drawing.Font("Franklin Gothic Book", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn5NuevoProfesional.ForeColor = System.Drawing.Color.DarkSlateGray;
-            this.btn5NuevoProfesional.Location = new System.Drawing.Point(28, 158);
-            this.btn5NuevoProfesional.Name = "btn5NuevoProfesional";
-            this.btn5NuevoProfesional.Size = new System.Drawing.Size(393, 99);
-            this.btn5NuevoProfesional.TabIndex = 10;
-            this.btn5NuevoProfesional.Text = "NUEVO PROFESIONAL";
-            this.btn5NuevoProfesional.UseVisualStyleBackColor = false;
-            this.btn5NuevoProfesional.Visible = false;
-            this.btn5NuevoProfesional.Click += new System.EventHandler(this.btn5NuevoProfesional_Click);
-            // 
-            // btn5BusquedaProfesional
-            // 
-            this.btn5BusquedaProfesional.BackColor = System.Drawing.SystemColors.Control;
-            this.btn5BusquedaProfesional.Font = new System.Drawing.Font("Franklin Gothic Book", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn5BusquedaProfesional.ForeColor = System.Drawing.Color.DarkSlateGray;
-            this.btn5BusquedaProfesional.Location = new System.Drawing.Point(28, 263);
-            this.btn5BusquedaProfesional.Name = "btn5BusquedaProfesional";
-            this.btn5BusquedaProfesional.Size = new System.Drawing.Size(393, 99);
-            this.btn5BusquedaProfesional.TabIndex = 11;
-            this.btn5BusquedaProfesional.Text = "BUSQUEDA PROFESIONAL";
-            this.btn5BusquedaProfesional.UseVisualStyleBackColor = false;
-            this.btn5BusquedaProfesional.Visible = false;
-            this.btn5BusquedaProfesional.Click += new System.EventHandler(this.btn5BusquedaProfesional_Click);
-            // 
-            // btn3NuevaPlanilla
-            // 
-            this.btn3NuevaPlanilla.BackColor = System.Drawing.SystemColors.Control;
-            this.btn3NuevaPlanilla.Font = new System.Drawing.Font("Franklin Gothic Book", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn3NuevaPlanilla.ForeColor = System.Drawing.Color.DarkSlateGray;
-            this.btn3NuevaPlanilla.Location = new System.Drawing.Point(28, 320);
-            this.btn3NuevaPlanilla.Name = "btn3NuevaPlanilla";
-            this.btn3NuevaPlanilla.Size = new System.Drawing.Size(393, 99);
-            this.btn3NuevaPlanilla.TabIndex = 8;
-            this.btn3NuevaPlanilla.Text = "NUEVA PLANILLA";
-            this.btn3NuevaPlanilla.UseVisualStyleBackColor = false;
-            this.btn3NuevaPlanilla.Visible = false;
-            this.btn3NuevaPlanilla.Click += new System.EventHandler(this.btn3NuevaPlanilla_Click);
-            // 
-            // btn3Busqueda
-            // 
-            this.btn3Busqueda.BackColor = System.Drawing.SystemColors.Control;
-            this.btn3Busqueda.Font = new System.Drawing.Font("Franklin Gothic Book", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn3Busqueda.ForeColor = System.Drawing.Color.DarkSlateGray;
-            this.btn3Busqueda.Location = new System.Drawing.Point(28, 425);
-            this.btn3Busqueda.Name = "btn3Busqueda";
-            this.btn3Busqueda.Size = new System.Drawing.Size(393, 99);
-            this.btn3Busqueda.TabIndex = 9;
-            this.btn3Busqueda.Text = "BUSQUEDA AMBULATORIOS";
-            this.btn3Busqueda.UseVisualStyleBackColor = false;
-            this.btn3Busqueda.Visible = false;
-            this.btn3Busqueda.Click += new System.EventHandler(this.btn3Busqueda_Click);
-            // 
-            // btn6BusquedaPrestador
-            // 
-            this.btn6BusquedaPrestador.BackColor = System.Drawing.SystemColors.Control;
-            this.btn6BusquedaPrestador.Font = new System.Drawing.Font("Franklin Gothic Book", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn6BusquedaPrestador.ForeColor = System.Drawing.Color.DarkSlateGray;
-            this.btn6BusquedaPrestador.Location = new System.Drawing.Point(28, 320);
-            this.btn6BusquedaPrestador.Name = "btn6BusquedaPrestador";
-            this.btn6BusquedaPrestador.Size = new System.Drawing.Size(393, 99);
-            this.btn6BusquedaPrestador.TabIndex = 13;
-            this.btn6BusquedaPrestador.Text = "BUSCAR/EDITAR PRESTADOR";
-            this.btn6BusquedaPrestador.UseVisualStyleBackColor = false;
-            this.btn6BusquedaPrestador.Visible = false;
-            this.btn6BusquedaPrestador.Click += new System.EventHandler(this.btn6BusquedaPrestador_Click);
-            // 
-            // btn6ProfesionalesxAsociacion
-            // 
-            this.btn6ProfesionalesxAsociacion.BackColor = System.Drawing.SystemColors.Control;
-            this.btn6ProfesionalesxAsociacion.Font = new System.Drawing.Font("Franklin Gothic Book", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn6ProfesionalesxAsociacion.ForeColor = System.Drawing.Color.DarkSlateGray;
-            this.btn6ProfesionalesxAsociacion.Location = new System.Drawing.Point(28, 425);
-            this.btn6ProfesionalesxAsociacion.Name = "btn6ProfesionalesxAsociacion";
-            this.btn6ProfesionalesxAsociacion.Size = new System.Drawing.Size(393, 99);
-            this.btn6ProfesionalesxAsociacion.TabIndex = 14;
-            this.btn6ProfesionalesxAsociacion.Text = "PROFESIONALES POR ASOCIACION";
-            this.btn6ProfesionalesxAsociacion.UseVisualStyleBackColor = false;
-            this.btn6ProfesionalesxAsociacion.Visible = false;
-            this.btn6ProfesionalesxAsociacion.Click += new System.EventHandler(this.btn6ProfesionalesxAsociacion_Click);
+            this.btn8Profesionales.BackColor = System.Drawing.SystemColors.Control;
+            this.btn8Profesionales.Font = new System.Drawing.Font("Franklin Gothic Book", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn8Profesionales.ForeColor = System.Drawing.Color.DarkSlateGray;
+            this.btn8Profesionales.Location = new System.Drawing.Point(28, 425);
+            this.btn8Profesionales.Name = "btn8Profesionales";
+            this.btn8Profesionales.Size = new System.Drawing.Size(393, 99);
+            this.btn8Profesionales.TabIndex = 25;
+            this.btn8Profesionales.Text = "IMPORTAR PROFESIONALES";
+            this.btn8Profesionales.UseVisualStyleBackColor = false;
+            this.btn8Profesionales.Visible = false;
+            this.btn8Profesionales.Click += new System.EventHandler(this.btn8Profesionales_Click);
             // 
             // btn8Exportar
             // 
             this.btn8Exportar.BackColor = System.Drawing.SystemColors.Control;
             this.btn8Exportar.Font = new System.Drawing.Font("Franklin Gothic Book", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn8Exportar.ForeColor = System.Drawing.Color.DarkSlateGray;
-            this.btn8Exportar.Location = new System.Drawing.Point(28, 473);
+            this.btn8Exportar.Location = new System.Drawing.Point(28, 530);
             this.btn8Exportar.Name = "btn8Exportar";
             this.btn8Exportar.Size = new System.Drawing.Size(393, 99);
             this.btn8Exportar.TabIndex = 18;
@@ -387,12 +240,22 @@
             this.btn8Exportar.Visible = false;
             this.btn8Exportar.Click += new System.EventHandler(this.btn8Exportar_Click);
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::PAMI.Properties.Resources.two185__1_;
+            this.pictureBox1.Location = new System.Drawing.Point(379, 659);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(42, 46);
+            this.pictureBox1.TabIndex = 23;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
+            // 
             // btn8Padron
             // 
             this.btn8Padron.BackColor = System.Drawing.SystemColors.Control;
             this.btn8Padron.Font = new System.Drawing.Font("Franklin Gothic Book", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn8Padron.ForeColor = System.Drawing.Color.DarkSlateGray;
-            this.btn8Padron.Location = new System.Drawing.Point(28, 158);
+            this.btn8Padron.Location = new System.Drawing.Point(28, 110);
             this.btn8Padron.Name = "btn8Padron";
             this.btn8Padron.Size = new System.Drawing.Size(393, 99);
             this.btn8Padron.TabIndex = 17;
@@ -406,7 +269,7 @@
             this.btn8Diagnosticos.BackColor = System.Drawing.SystemColors.Control;
             this.btn8Diagnosticos.Font = new System.Drawing.Font("Franklin Gothic Book", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn8Diagnosticos.ForeColor = System.Drawing.Color.DarkSlateGray;
-            this.btn8Diagnosticos.Location = new System.Drawing.Point(28, 368);
+            this.btn8Diagnosticos.Location = new System.Drawing.Point(28, 320);
             this.btn8Diagnosticos.Name = "btn8Diagnosticos";
             this.btn8Diagnosticos.Size = new System.Drawing.Size(393, 99);
             this.btn8Diagnosticos.TabIndex = 16;
@@ -420,7 +283,7 @@
             this.btn8Nomenclador.BackColor = System.Drawing.SystemColors.Control;
             this.btn8Nomenclador.Font = new System.Drawing.Font("Franklin Gothic Book", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn8Nomenclador.ForeColor = System.Drawing.Color.DarkSlateGray;
-            this.btn8Nomenclador.Location = new System.Drawing.Point(28, 263);
+            this.btn8Nomenclador.Location = new System.Drawing.Point(28, 215);
             this.btn8Nomenclador.Name = "btn8Nomenclador";
             this.btn8Nomenclador.Size = new System.Drawing.Size(393, 99);
             this.btn8Nomenclador.TabIndex = 15;
@@ -457,6 +320,90 @@
             this.btn6NuevoPrestador.Visible = false;
             this.btn6NuevoPrestador.Click += new System.EventHandler(this.btn6NuevoPrestador_Click);
             // 
+            // btn4ListadoDiagnostico
+            // 
+            this.btn4ListadoDiagnostico.BackColor = System.Drawing.SystemColors.Control;
+            this.btn4ListadoDiagnostico.Font = new System.Drawing.Font("Franklin Gothic Book", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn4ListadoDiagnostico.ForeColor = System.Drawing.Color.DarkSlateGray;
+            this.btn4ListadoDiagnostico.Location = new System.Drawing.Point(28, 368);
+            this.btn4ListadoDiagnostico.Name = "btn4ListadoDiagnostico";
+            this.btn4ListadoDiagnostico.Size = new System.Drawing.Size(393, 99);
+            this.btn4ListadoDiagnostico.TabIndex = 21;
+            this.btn4ListadoDiagnostico.Text = "LISTADO DIAGNOSTICOS";
+            this.btn4ListadoDiagnostico.UseVisualStyleBackColor = false;
+            this.btn4ListadoDiagnostico.Visible = false;
+            this.btn4ListadoDiagnostico.Click += new System.EventHandler(this.btn4ListadoDiagnostico_Click);
+            // 
+            // btn4NuevoDiagnostico
+            // 
+            this.btn4NuevoDiagnostico.BackColor = System.Drawing.SystemColors.Control;
+            this.btn4NuevoDiagnostico.Font = new System.Drawing.Font("Franklin Gothic Book", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn4NuevoDiagnostico.ForeColor = System.Drawing.Color.DarkSlateGray;
+            this.btn4NuevoDiagnostico.Location = new System.Drawing.Point(28, 263);
+            this.btn4NuevoDiagnostico.Name = "btn4NuevoDiagnostico";
+            this.btn4NuevoDiagnostico.Size = new System.Drawing.Size(393, 99);
+            this.btn4NuevoDiagnostico.TabIndex = 22;
+            this.btn4NuevoDiagnostico.Text = "NUEVO DIAGNOSTICO";
+            this.btn4NuevoDiagnostico.UseVisualStyleBackColor = false;
+            this.btn4NuevoDiagnostico.Visible = false;
+            this.btn4NuevoDiagnostico.Click += new System.EventHandler(this.btn4NuevoDiagnostico_Click);
+            // 
+            // btn7Nuevo
+            // 
+            this.btn7Nuevo.BackColor = System.Drawing.SystemColors.Control;
+            this.btn7Nuevo.Font = new System.Drawing.Font("Franklin Gothic Book", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn7Nuevo.ForeColor = System.Drawing.Color.DarkSlateGray;
+            this.btn7Nuevo.Location = new System.Drawing.Point(28, 263);
+            this.btn7Nuevo.Name = "btn7Nuevo";
+            this.btn7Nuevo.Size = new System.Drawing.Size(393, 99);
+            this.btn7Nuevo.TabIndex = 20;
+            this.btn7Nuevo.Text = "NUEVA PRACTICA";
+            this.btn7Nuevo.UseVisualStyleBackColor = false;
+            this.btn7Nuevo.Visible = false;
+            this.btn7Nuevo.Click += new System.EventHandler(this.btn7NuevaPractica_Click);
+            // 
+            // btn7Busqueda
+            // 
+            this.btn7Busqueda.BackColor = System.Drawing.SystemColors.Control;
+            this.btn7Busqueda.Font = new System.Drawing.Font("Franklin Gothic Book", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn7Busqueda.ForeColor = System.Drawing.Color.DarkSlateGray;
+            this.btn7Busqueda.Location = new System.Drawing.Point(28, 368);
+            this.btn7Busqueda.Name = "btn7Busqueda";
+            this.btn7Busqueda.Size = new System.Drawing.Size(393, 99);
+            this.btn7Busqueda.TabIndex = 19;
+            this.btn7Busqueda.Text = "BUSQUEDA NOMENCLADOR";
+            this.btn7Busqueda.UseVisualStyleBackColor = false;
+            this.btn7Busqueda.Visible = false;
+            this.btn7Busqueda.Click += new System.EventHandler(this.btn7Busqueda_Click);
+            // 
+            // btn3Busqueda
+            // 
+            this.btn3Busqueda.BackColor = System.Drawing.SystemColors.Control;
+            this.btn3Busqueda.Font = new System.Drawing.Font("Franklin Gothic Book", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn3Busqueda.ForeColor = System.Drawing.Color.DarkSlateGray;
+            this.btn3Busqueda.Location = new System.Drawing.Point(28, 425);
+            this.btn3Busqueda.Name = "btn3Busqueda";
+            this.btn3Busqueda.Size = new System.Drawing.Size(393, 99);
+            this.btn3Busqueda.TabIndex = 9;
+            this.btn3Busqueda.Text = "BUSQUEDA AMBULATORIOS";
+            this.btn3Busqueda.UseVisualStyleBackColor = false;
+            this.btn3Busqueda.Visible = false;
+            this.btn3Busqueda.Click += new System.EventHandler(this.btn3Busqueda_Click);
+            // 
+            // btn6ProfesionalesxAsociacion
+            // 
+            this.btn6ProfesionalesxAsociacion.BackColor = System.Drawing.SystemColors.Control;
+            this.btn6ProfesionalesxAsociacion.Font = new System.Drawing.Font("Franklin Gothic Book", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn6ProfesionalesxAsociacion.ForeColor = System.Drawing.Color.DarkSlateGray;
+            this.btn6ProfesionalesxAsociacion.Location = new System.Drawing.Point(28, 425);
+            this.btn6ProfesionalesxAsociacion.Name = "btn6ProfesionalesxAsociacion";
+            this.btn6ProfesionalesxAsociacion.Size = new System.Drawing.Size(393, 99);
+            this.btn6ProfesionalesxAsociacion.TabIndex = 14;
+            this.btn6ProfesionalesxAsociacion.Text = "PROFESIONALES POR ASOCIACION";
+            this.btn6ProfesionalesxAsociacion.UseVisualStyleBackColor = false;
+            this.btn6ProfesionalesxAsociacion.Visible = false;
+            this.btn6ProfesionalesxAsociacion.Click += new System.EventHandler(this.btn6ProfesionalesxAsociacion_Click);
+            // 
             // btn5AmbulatoriosTransferidos
             // 
             this.btn5AmbulatoriosTransferidos.BackColor = System.Drawing.SystemColors.Control;
@@ -471,6 +418,76 @@
             this.btn5AmbulatoriosTransferidos.Visible = false;
             this.btn5AmbulatoriosTransferidos.Click += new System.EventHandler(this.btn5AmbulatoriosTransferidos_Click);
             // 
+            // btn5Contador
+            // 
+            this.btn5Contador.BackColor = System.Drawing.SystemColors.Control;
+            this.btn5Contador.Font = new System.Drawing.Font("Franklin Gothic Book", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn5Contador.ForeColor = System.Drawing.Color.DarkSlateGray;
+            this.btn5Contador.Location = new System.Drawing.Point(28, 368);
+            this.btn5Contador.Name = "btn5Contador";
+            this.btn5Contador.Size = new System.Drawing.Size(393, 99);
+            this.btn5Contador.TabIndex = 21;
+            this.btn5Contador.Text = "CONTADOR PRACTICAS";
+            this.btn5Contador.UseVisualStyleBackColor = false;
+            this.btn5Contador.Visible = false;
+            this.btn5Contador.Click += new System.EventHandler(this.btn5Contador_Click);
+            // 
+            // btn5BusquedaProfesional
+            // 
+            this.btn5BusquedaProfesional.BackColor = System.Drawing.SystemColors.Control;
+            this.btn5BusquedaProfesional.Font = new System.Drawing.Font("Franklin Gothic Book", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn5BusquedaProfesional.ForeColor = System.Drawing.Color.DarkSlateGray;
+            this.btn5BusquedaProfesional.Location = new System.Drawing.Point(28, 263);
+            this.btn5BusquedaProfesional.Name = "btn5BusquedaProfesional";
+            this.btn5BusquedaProfesional.Size = new System.Drawing.Size(393, 99);
+            this.btn5BusquedaProfesional.TabIndex = 11;
+            this.btn5BusquedaProfesional.Text = "BUSQUEDA PROFESIONAL";
+            this.btn5BusquedaProfesional.UseVisualStyleBackColor = false;
+            this.btn5BusquedaProfesional.Visible = false;
+            this.btn5BusquedaProfesional.Click += new System.EventHandler(this.btn5BusquedaProfesional_Click);
+            // 
+            // btn5NuevoProfesional
+            // 
+            this.btn5NuevoProfesional.BackColor = System.Drawing.SystemColors.Control;
+            this.btn5NuevoProfesional.Font = new System.Drawing.Font("Franklin Gothic Book", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn5NuevoProfesional.ForeColor = System.Drawing.Color.DarkSlateGray;
+            this.btn5NuevoProfesional.Location = new System.Drawing.Point(28, 158);
+            this.btn5NuevoProfesional.Name = "btn5NuevoProfesional";
+            this.btn5NuevoProfesional.Size = new System.Drawing.Size(393, 99);
+            this.btn5NuevoProfesional.TabIndex = 10;
+            this.btn5NuevoProfesional.Text = "NUEVO PROFESIONAL";
+            this.btn5NuevoProfesional.UseVisualStyleBackColor = false;
+            this.btn5NuevoProfesional.Visible = false;
+            this.btn5NuevoProfesional.Click += new System.EventHandler(this.btn5NuevoProfesional_Click);
+            // 
+            // btn3NuevaPlanilla
+            // 
+            this.btn3NuevaPlanilla.BackColor = System.Drawing.SystemColors.Control;
+            this.btn3NuevaPlanilla.Font = new System.Drawing.Font("Franklin Gothic Book", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn3NuevaPlanilla.ForeColor = System.Drawing.Color.DarkSlateGray;
+            this.btn3NuevaPlanilla.Location = new System.Drawing.Point(28, 320);
+            this.btn3NuevaPlanilla.Name = "btn3NuevaPlanilla";
+            this.btn3NuevaPlanilla.Size = new System.Drawing.Size(393, 99);
+            this.btn3NuevaPlanilla.TabIndex = 8;
+            this.btn3NuevaPlanilla.Text = "NUEVA PLANILLA";
+            this.btn3NuevaPlanilla.UseVisualStyleBackColor = false;
+            this.btn3NuevaPlanilla.Visible = false;
+            this.btn3NuevaPlanilla.Click += new System.EventHandler(this.btn3NuevaPlanilla_Click);
+            // 
+            // btn6BusquedaPrestador
+            // 
+            this.btn6BusquedaPrestador.BackColor = System.Drawing.SystemColors.Control;
+            this.btn6BusquedaPrestador.Font = new System.Drawing.Font("Franklin Gothic Book", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn6BusquedaPrestador.ForeColor = System.Drawing.Color.DarkSlateGray;
+            this.btn6BusquedaPrestador.Location = new System.Drawing.Point(28, 320);
+            this.btn6BusquedaPrestador.Name = "btn6BusquedaPrestador";
+            this.btn6BusquedaPrestador.Size = new System.Drawing.Size(393, 99);
+            this.btn6BusquedaPrestador.TabIndex = 13;
+            this.btn6BusquedaPrestador.Text = "BUSCAR/EDITAR PRESTADOR";
+            this.btn6BusquedaPrestador.UseVisualStyleBackColor = false;
+            this.btn6BusquedaPrestador.Visible = false;
+            this.btn6BusquedaPrestador.Click += new System.EventHandler(this.btn6BusquedaPrestador_Click);
+            // 
             // MenuInicial
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -484,7 +501,8 @@
             this.Controls.Add(this.btnDiagnostico);
             this.Controls.Add(this.btnAmbulatorio);
             this.Controls.Add(this.btnAfiliado);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MenuInicial";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Menú Inicial";
@@ -526,5 +544,6 @@
         private System.Windows.Forms.Button btn4NuevoDiagnostico;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button btn5AmbulatoriosTransferidos;
+        private System.Windows.Forms.Button btn8Profesionales;
     }
 }

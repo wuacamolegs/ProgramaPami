@@ -20,10 +20,12 @@ namespace PAMI.Exportacion
     {
 
         public FSLogger fs;
+        public ExcelEdit excel;
         private int columnaNro = 0;
         private int cantidadFilas = 0;
         private string cadena = "";
         private List<SqlParameter> parameterList = new List<SqlParameter>();
+        private string nombreArchivo = "";
 
 
         public ExportarDatos()
@@ -45,7 +47,7 @@ namespace PAMI.Exportacion
         private void btnExportar_Click(object sender, EventArgs e)
         {
 
-            try
+           try
             {
                 if (ValidarCampos() && ValidarExistenAmbulatoriosAsociacion())
                 {
@@ -56,7 +58,7 @@ namespace PAMI.Exportacion
                     DataSet dsAmbulatorio = new DataSet();
                     dsAmbulatorio = Conexion.SQLHelper.ExecuteDataSet("TraerListadoPrestadorPorAsociacionID", CommandType.StoredProcedure, parameterList);
 
-                    string nombreArchivo = "";
+
                     nombreArchivo = dsAmbulatorio.Tables[0].Rows[0]["prestador_nombre_corto"].ToString() + '_' +
                                     dsAmbulatorio.Tables[0].Rows[0]["usuario_nombre"].ToString() + '_' + cmbMes.SelectedValue.ToString() + '-' + txtAnio.Text;
 
@@ -67,50 +69,56 @@ namespace PAMI.Exportacion
                     //Traigo los datos y los voy copiando al txt
 
                     //CABECERA
-                    ds = traerListadosBD("Cabecera",2);
+                    ds = traerListadosBD("Cabecera", 2);
                     ExportarEncabezado("CABECERA", ds);
 
                     //PROFESIONALES                  
-                    ds = traerListadosBD("Profesionales",2);
+                    ds = traerListadosBD("Profesionales", 2);
                     ExportarEncabezado("PROFESIONAL", ds);
 
                     //PRESTADOR
-                    ds = traerListadosBD("Prestador",1);
+                    ds = traerListadosBD("Prestador", 1);
                     ExportarEncabezado("PRESTADOR", ds);
 
                     //REL_PROFESIONALESXPRESTADOR
-                    ds = traerListadosBD("REL_PROFESIONALESXPRESTADOR",2);
+                    ds = traerListadosBD("REL_PROFESIONALESXPRESTADOR", 2);
                     ExportarEncabezado("REL_PROFESIONALESXPRESTADOR", ds);
 
                     //BOCA ATENCION
-                    ds = traerListadosBD("BocaAtencion",1);
+                    ds = traerListadosBD("BocaAtencion", 1);
                     ExportarEncabezado("BOCA_ATENCION", ds);
 
                     //REL_MODULOSXPRESTADOR
-                    ds = traerListadosBD("REL_MODULOSXPRESTADOR",1);
+                    ds = traerListadosBD("REL_MODULOSXPRESTADOR", 1);
                     ExportarEncabezado("REL_MODULOSXPRESTADOR", ds);
 
                     //BENEFICIO
-                    ds = traerListadosBD("BENEFICIO",2);
+                    ds = traerListadosBD("BENEFICIO", 2);
                     ExportarEncabezado("BENEFICIO", ds);
 
                     //AFILIADO
-                    ds = traerListadosBD("AFILIADO",2);
+                    ds = traerListadosBD("AFILIADO", 2);
                     ExportarEncabezado("AFILIADO", ds);
 
                     //PRESTACIONES
                     fs.EscribirEncabezado("PRESTACIONES");
 
                     //AMBULATORIOS
-                    ds = traerListadosBD("AMBULATORIOS",2);
+                    ds = traerListadosBD("AMBULATORIOS", 2);
                     ExportarAmbulatorios(ds);
+
+
+                    generarLog();
 
                     parameterList.Clear();
                     parameterList.Add(new SqlParameter("@AsocID", cmbAsociacion.SelectedValue));
                     Conexion.SQLHelper.ExecuteDataSet("AumentarContadorEmulaciones", CommandType.StoredProcedure, parameterList);
                     MessageBox.Show("Se ha generado el archivo: " + nombreArchivo + "\nAsociacion: " + cmbAsociacion.Text + "\nCantidad ambulatorios: " + ds.Tables[0].Rows.Count, " ");
-                    
 
+                }
+                else
+                {
+                    MessageBox.Show("No existen ambulatorios para esa fecha");
                 }
             }
             catch (ErrorConsultaException ex)
@@ -122,6 +130,8 @@ namespace PAMI.Exportacion
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+
 
 
         //ENCABEZADOS EMULADOR. CABECERA, BOCA ATENCION, AFILIADOS, BENEFICIOS, RED ETC.
@@ -145,8 +155,9 @@ namespace PAMI.Exportacion
             //COLUMNAS AMBULATORIO = 16
 
             cadena = "";
-
-            for (int j = 0; j < cantidadFilas; j++)
+            int j = 0;
+           // for (int j = 0; j < cantidadFilas; j++)
+            while (j < cantidadFilas)
             {
                 //TABLA AMBULATORIOS
                 fs.EscribirEncabezado("AMBULATORIO");
@@ -182,18 +193,37 @@ namespace PAMI.Exportacion
                 //TABLA REL_PRACTICASREALIZADASXAMBULATORIO
                 fs.EscribirEncabezado("REL_PRACTICASREALIZADASXAMBULATORIO");
                 columnaNro = 33;
-                for (int i = 23; i < columnaNro; i++)
-                {
-                    cadena = cadena + ds.Tables[0].Rows[j][i].ToString();
 
-                    if (i != columnaNro - 1)
+                string Afiliado = "";
+                string fecha = "";
+
+                Afiliado = ds.Tables[0].Rows[j][14].ToString() + ds.Tables[0].Rows[j][15].ToString();
+                fecha = ds.Tables[0].Rows[j][8].ToString();
+
+
+                string practica = "";
+
+                while (j < cantidadFilas && fecha == ds.Tables[0].Rows[j][8].ToString() && Afiliado == ds.Tables[0].Rows[j][14].ToString() + ds.Tables[0].Rows[j][15].ToString())
+                {        
+                    if (fecha == ds.Tables[0].Rows[j][8].ToString() && Afiliado == ds.Tables[0].Rows[j][14].ToString() + ds.Tables[0].Rows[j][15].ToString()
+                        && practica != ds.Tables[0].Rows[j]["planilla_practica"].ToString())
                     {
-                        cadena = cadena + ";";
-                    }
-                }
-                fs.EscribirEncabezado(cadena);
-                cadena = "";               
+                        practica = ds.Tables[0].Rows[j]["planilla_practica"].ToString();
+                        for (int i = 23; i < columnaNro; i++)
+                        {
+                            cadena = cadena + ds.Tables[0].Rows[j][i].ToString();
 
+                            if (i != columnaNro - 1)
+                            {
+                                cadena = cadena + ";";
+                            }
+                        }
+                        fs.EscribirEncabezado(cadena);
+                        cadena = "";
+                    }
+                    j++;
+                }
+                
                 fs.EscribirEncabezado("FIN AMBULATORIO");
             }
         }
@@ -248,7 +278,6 @@ namespace PAMI.Exportacion
 
         private void escribirLinea(int j, DataSet ds)
         {
-
             for (int i = 0; i < columnaNro; i++)
             {
                 cadena = cadena + ds.Tables[0].Rows[j][i].ToString();
@@ -307,6 +336,68 @@ namespace PAMI.Exportacion
             {
                 return true;
             }
-        }        
+        }
+
+
+        private void generarLog()
+        {
+            excel = new ExcelEdit(nombreArchivo + "(LOG)");
+            DataSet ds = traerListadosBD("Logueo", 2);
+            excel.EscribirEncabezado("CONTADOR");
+            excel.EscribirEncabezado(" ");
+            string cadena = "";
+            int col = 3;
+            int i = 0;
+
+            foreach (DataRow row in ds.Tables[0].Rows)
+            {
+                for(i = 0; i < col; i++)
+                {
+                    cadena = cadena + row[i].ToString() + ";";
+                }
+                excel.EscribirEncabezado(cadena);
+                cadena = "";
+            }
+
+            col = 8;
+            i = 0;
+            excel.EscribirEncabezado(" ");
+            excel.EscribirEncabezado(" ");
+            excel.EscribirEncabezado("AMBULATORIOS FACTURADOS A OTRO MEDICO");
+            excel.EscribirEncabezado("PROFESIONAL FACTURADO;PROFESIONAL VERDADERO;FECHA;AFILIADO;BENEFICIO;DIAGNOSTICO;PRACTICA;HORA");
+            excel.EscribirEncabezado(" ");
+
+
+            foreach (DataRow row in ds.Tables[1].Rows)
+            {
+                for (i = 0; i < col; i++)
+                {
+                    cadena = cadena + row[i].ToString() + ";";
+                }
+                excel.EscribirEncabezado(cadena);
+                cadena = "";
+            }
+            
+            excel.EscribirEncabezado(" ");
+            excel.EscribirEncabezado(" ");
+            excel.EscribirEncabezado(" ");
+
+            ds = traerListadosBD("Planilla", 2);
+            excel.EscribirEncabezado("PLANILLA");
+            excel.EscribirEncabezado("PROFESIONAL;FECHA;AFILIADO;BENEFICIO;DIAGNOSTICO;PRACTICA;HORA;MODALIDAD PRESTACION");
+            excel.EscribirEncabezado(" ");
+            cadena = "";
+
+            col = 8;
+            foreach (DataRow row in ds.Tables[0].Rows)
+            {
+               for (i = 0; i < col; i++)
+                {
+                    cadena = cadena + row[i].ToString() + ";";
+                }
+                excel.EscribirEncabezado(cadena);
+                cadena = "";
+            }        
+        }
     }
 }

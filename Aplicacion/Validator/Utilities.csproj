@@ -12,6 +12,7 @@
     <AssemblyName>Validator</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <ApplicationIcon>favicon.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -64,10 +65,14 @@
     <Compile Include="DataGridViewFilter.cs" />
     <Compile Include="DropDownListManager.cs" />
     <Compile Include="Editor.cs" />
+    <Compile Include="ExcelEdit.cs" />
     <Compile Include="FSLogger.cs" />
     <Compile Include="MessageBoxPersonalizado.cs" />
     <Compile Include="Validator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="favicon.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

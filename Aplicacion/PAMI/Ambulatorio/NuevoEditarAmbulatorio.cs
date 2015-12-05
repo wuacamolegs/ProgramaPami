@@ -229,7 +229,7 @@ namespace PAMI.Ambulatorio
             //dgAfiliados.ColumnHeadersVisible = false;
 
             DataGridViewTextBoxColumn clm_ApellidoNombre = new DataGridViewTextBoxColumn();
-            clm_ApellidoNombre.Width = 240;
+            clm_ApellidoNombre.Width = Convert.ToInt32(Convert.ToDouble(dgAfiliados.Size.Width * 0.5));
             clm_ApellidoNombre.ReadOnly = true;
             clm_ApellidoNombre.DataPropertyName = "apellido_nombre";
             clm_ApellidoNombre.HeaderText = "Afiliado";
@@ -293,13 +293,13 @@ namespace PAMI.Ambulatorio
             dgPracticas.AutoGenerateColumns = false;
 
             DataGridViewTextBoxColumn clm_CodigoPractica = new DataGridViewTextBoxColumn();
-            clm_CodigoPractica.Width = 373;
+            clm_CodigoPractica.Width = Convert.ToInt32(Convert.ToDouble(dgPracticas.Size.Width) * 0.8);
             clm_CodigoPractica.ReadOnly = false;
             clm_CodigoPractica.HeaderText = "Práctica";
             dgPracticas.Columns.Add(clm_CodigoPractica);
             
             DataGridViewTextBoxColumn clm_Hora = new DataGridViewTextBoxColumn();
-            clm_Hora.Width = 95;
+            clm_Hora.Width = Convert.ToInt32(Convert.ToDouble(dgPracticas.Size.Width) * 0.2);
             clm_Hora.ReadOnly = false;
             clm_Hora.HeaderText = "Hora";
             dgPracticas.Columns.Add(clm_Hora);
@@ -474,7 +474,11 @@ namespace PAMI.Ambulatorio
                     unaPlanilla.Fecha = txtFecha.Text.ToString();
                     unaPlanilla.Diagnostico = cmbDiagnosticoCodigo.SelectedValue.ToString();
                     unaPlanilla.tablaPlanilla.Clear();
-                    unaPlanilla.OrdenPrestacion = txtOP.Text;
+                    if (txtOP.Text == "")
+                    {
+                        unaPlanilla.OrdenPrestacion = "0";
+                    }
+                    else { unaPlanilla.OrdenPrestacion = txtOP.Text; }
 
                     string importarAmbulatorio = "Nuevo Ambulatorio.\n\nProfesional: " + cmbMedico.Text +
                         "\nAfiliado: " + unaPlanilla.Beneficio.ToString() + "\n\nPRACTICAS:\n";
@@ -644,6 +648,7 @@ namespace PAMI.Ambulatorio
                                 chOP.Checked = true;
                                 txtOP.Text = unaPlanilla.OrdenPrestacion;
                             }
+                            else { chOP.Checked = false; }
                             dgPracticas.Rows.Clear();
 
                             btnNuevo.Visible = false;

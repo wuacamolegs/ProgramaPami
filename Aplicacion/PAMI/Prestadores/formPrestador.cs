@@ -33,9 +33,12 @@ namespace PAMI.Prestadores
                 //Combo Asociacion
                 Asociacion unaAsociacion = new Asociacion();
                 DataSet dsAsociacion = unaAsociacion.TraerListado("Completo");
+                cmbNombre.Enabled = false;
                 Utilities.DropDownListManager.CargarCombo(cmbNombre, dsAsociacion.Tables[0], "asociacion_id", "asociacion_nombre", false, "");
                 unaAsociacion.Dispose();
                 cmbNombre.SelectedIndex = -1;
+                cmbNombre.Enabled = true;
+                
             }
 
             if (objetivo == "Nuevo")
@@ -102,7 +105,7 @@ namespace PAMI.Prestadores
                         MessageBox.Show("Nuevo Prestador: \n\nNombre: " + unPrestador.NombrePrestador +
                         "\nCuit: " + unPrestador.Cuit + "\nCódigo SAP: " + unPrestador.CodigoSap +
                         "\nUsuario: " + unPrestador.Usuario, "Nuevo Prestador");
-                        this.Close();
+                        limpiar();
                     }
                     else
                     {
@@ -159,6 +162,7 @@ namespace PAMI.Prestadores
                 txtFechaAlta.Enabled = true;
                 txtNombreCorto.Enabled = true;
                 txtUsuario.Enabled = true;
+                txtNroInstalacion.Enabled = true;
                 txtCalle.Enabled = true;
                 txtNumero.Enabled = true;
                 txtPiso.Enabled = true;
@@ -174,12 +178,13 @@ namespace PAMI.Prestadores
                 txtFechaAlta.Text = unPrestador.FechaAlta;
                 txtNombreCorto.Text = unPrestador.NombreCortoPrestador;
                 txtUsuario.Text = unPrestador.Usuario;
+                txtNroInstalacion.Text = unPrestador.NroInstalacion;
                 txtCalle.Text = unPrestador.DireccionCalle;
                 txtNumero.Text = unPrestador.DireccionNumero.ToString();
                 txtPiso.Text = unPrestador.DireccionPiso.ToString();
                 txtDepto.Text = unPrestador.DireccionDepto;
                 txtMail.Text = unPrestador.Mail;
-                cmbTipoPrestador.SelectedIndex = Convert.ToInt32(unPrestador.TipoPrestador);
+                cmbTipoPrestador.SelectedIndex = Convert.ToInt32(unPrestador.TipoPrestador) - 1;
                 cmbPadron.SelectedIndex = Convert.ToInt32(unPrestador.Padron);
 
             }
@@ -204,12 +209,13 @@ namespace PAMI.Prestadores
                     unPrestador.FechaAlta = txtFechaAlta.Text;
                     unPrestador.NombreCortoPrestador = txtNombreCorto.Text;
                     unPrestador.Usuario = txtUsuario.Text;
+                    unPrestador.NroInstalacion = txtNroInstalacion.Text; 
                     unPrestador.DireccionCalle = txtCalle.Text;
                     unPrestador.DireccionNumero = Convert.ToInt64(txtNumero.Text);
-                    if (txtPiso.Text == "") { unPrestador.DireccionPiso = 0; } else { unPrestador.DireccionPiso = Convert.ToInt64(txtPiso.Text); }          
+                    unPrestador.DireccionPiso = txtPiso.Text;        
                     unPrestador.DireccionDepto = txtDepto.Text;
                     unPrestador.Mail = txtMail.Text;
-                    unPrestador.TipoPrestador = cmbTipoPrestador.SelectedIndex; 
+                    unPrestador.TipoPrestador = cmbTipoPrestador.SelectedIndex + 1; 
                     unPrestador.Padron = cmbPadron.SelectedIndex;
                     if (cmbNombre.Enabled.ToString() == "True")
                     { unPrestador.NombrePrestador = cmbNombre.Text;
@@ -243,6 +249,7 @@ namespace PAMI.Prestadores
                 strErrores = strErrores + Validator.ValidarNulo(txtFechaAlta.Text, "Fecha Alta");
                 strErrores = strErrores + Validator.ValidarNulo(txtNombreCorto.Text, "Nombre Corto");
                 strErrores = strErrores + Validator.ValidarNulo(txtUsuario.Text, "Nombre Usuario");
+                strErrores = strErrores + Validator.ValidarNulo(txtNroInstalacion.Text, "Nro Instalación");
                 strErrores = strErrores + Validator.ValidarNulo(txtMail.Text, "Mail");
                 if (txtMail.Text != "")
                 {
@@ -281,7 +288,6 @@ namespace PAMI.Prestadores
       
         private void cmbNombre_SelectedIndexChanged(object sender, EventArgs e)
         {
- 
             if (cmbNombre.SelectedIndex != -1 && cmbNombre.Text != "" && cmbNombre.Enabled.ToString() == "True")
             {
                 if (unPrestador.TraerListadoPorAsociacionID(Convert.ToInt64(cmbNombre.SelectedValue)))
@@ -297,7 +303,7 @@ namespace PAMI.Prestadores
             }
         }
 
-        private void limpiarFormulario()
+        private void limpiar()
         {
             txtNombre.Text = "";
             txtCuit.Text = "";
@@ -306,6 +312,7 @@ namespace PAMI.Prestadores
             txtFechaAlta.Text = "";
             txtNombreCorto.Text = "";
             txtUsuario.Text = "";
+            txtNroInstalacion.Text = "";
             txtCalle.Text = "";
             txtNumero.Text = "";
             txtPiso.Text = "";
@@ -313,6 +320,11 @@ namespace PAMI.Prestadores
             txtMail.Text = "";
             cmbTipoPrestador.SelectedIndex = -1;
             cmbPadron.SelectedIndex = -1;
+        }
+
+        private void limpiarFormulario()
+        {
+            limpiar();
 
             txtNombre.Visible = false;
             txtCuit.Enabled = false;
@@ -321,6 +333,7 @@ namespace PAMI.Prestadores
             txtFechaAlta.Enabled = false;
             txtNombreCorto.Enabled = false;
             txtUsuario.Enabled = false;
+            txtNroInstalacion.Enabled = false;
             txtCalle.Enabled = false;
             txtNumero.Enabled = false;
             txtPiso.Enabled = false;
@@ -328,7 +341,6 @@ namespace PAMI.Prestadores
             txtMail.Enabled = false;
             cmbTipoPrestador.Enabled = false;
             cmbPadron.Enabled = false;
-
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)

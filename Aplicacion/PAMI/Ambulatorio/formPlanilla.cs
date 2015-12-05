@@ -557,32 +557,37 @@ namespace PAMI.PlanillaPami
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
-            if (validarComboAsociacionSeleccionado() == "")
+            try
             {
-                unaPlanilla.Asociacion = Convert.ToInt64(cmbAsociacion.SelectedValue);
-                unaPlanilla.Medico = Convert.ToInt64(cmbMedico.SelectedValue);
-                unaPlanilla.Mes = Convert.ToInt64(cmbMes.SelectedValue);
-                if (txtAnio.Text != "")
+                string str = validarFiltros();
+                if (str == "")
                 {
+                    unaPlanilla.Asociacion = Convert.ToInt64(cmbAsociacion.SelectedValue);
+                    unaPlanilla.Medico = Convert.ToInt64(cmbMedico.SelectedValue);
+                    unaPlanilla.Mes = Convert.ToInt64(cmbMes.SelectedValue);
                     unaPlanilla.Anio = Convert.ToInt64(txtAnio.Text);
-                }
-                unaPlanilla.Beneficio = txtBeneficio.Text;
+                    unaPlanilla.Beneficio = txtBeneficio.Text;
 
-                DataSet ds = unaPlanilla.TraerPlanillasPorMedico();
+                    DataSet ds = unaPlanilla.TraerPlanillasPorMedico();
 
-                if (ds.Tables[0].Rows.Count > 0)
-                {
-                    CrearGrillaBusqueda();
-                    cargarGrilla(ds);
+                    if (ds.Tables[0].Rows.Count > 0)
+                    {
+                        CrearGrillaBusqueda();
+                        cargarGrilla(ds);
+                    }
+                    else
+                    {
+                        MessageBox.Show("No existen ambulatorios con esos criterios de Búsqueda");
+                    }
                 }
                 else
                 {
-                    MessageBox.Show("No existen ambulatorios con esos criterios de Búsqueda");
-                }               
+                    MessageBox.Show(str, "Faltan Datos");
+                }
             }
-            else
+            catch (ErrorConsultaException ex)
             {
-                MessageBox.Show("Seleccionar Asociación", "Faltan Datos");
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -599,10 +604,13 @@ namespace PAMI.PlanillaPami
             return strErrores;
         }
 
-        private string validarComboAsociacionSeleccionado()
+        private string validarFiltros()
         {
             string strErrores = "";
             strErrores = strErrores + Validator.validarNuloEnComboBox(cmbAsociacion.SelectedIndex, "Asociación");
+            strErrores = strErrores + Validator.validarNuloEnComboBox(cmbMedico.SelectedIndex, "Médico");
+            strErrores = strErrores + Validator.validarNuloEnComboBox(cmbMes.SelectedIndex, "Mes");
+            strErrores = strErrores + Validator.ValidarNulo(txtAnio.Text, "Año");            
             return strErrores;
         }
 
@@ -664,7 +672,7 @@ namespace PAMI.PlanillaPami
                                 row.Cells[7].Value = "Ya posee una Consulta en este mes con este Profesional";
                             }
                             if (ds.Tables[0].Rows[0]["Medico"].ToString() != unaPlanilla.Medico.ToString() &&
-                                ds.Tables[0].Rows[0]["Existe"].ToString() != "-1")
+                                ds.Tables[0].Rows[0]["Existe"].ToString() != "-1" && ds.Tables[0].Rows[0]["Existe"].ToString() != "2")
                             {
                                 DataRow newRow = unaPlanilla.tablaPlanilla.NewRow();
                                 newRow["Planilla_medico_secundario_matricula"] = ds.Tables[0].Rows[0]["Medico"].ToString();

@@ -1,7 +1,7 @@
 USE [PAMI]
 GO
 
-ALTER PROCEDURE PAMI.TraerListadoAfiliadosConFiltros 
+CREATE PROCEDURE PAMI.TraerListadoAfiliadosConFiltros 
     @Nombre varchar(60) = '', 
     @Tipo_Dni varchar(3) = '',
     @Dni varchar(15) = '',
@@ -19,7 +19,7 @@ BEGIN
     END
 GO
 
-ALTER PROCEDURE PAMI.TraerListadoAfiliadosPorBeneficio
+CREATE PROCEDURE PAMI.TraerListadoAfiliadosPorBeneficio
 	@Beneficio varchar(12),
 	@Parentesco varchar(2)
 AS
@@ -29,7 +29,7 @@ BEGIN
 END
 GO
 
-ALTER PROCEDURE PAMI.InsertAfiliado
+CREATE PROCEDURE PAMI.InsertAfiliado
 	@Nombre nvarchar(60),
 	@Beneficio varchar(12),
 	@Parentesco varchar(2),
@@ -45,7 +45,7 @@ BEGIN
 END
 GO
 
-ALTER PROCEDURE PAMI.UpdateAfiliado
+CREATE PROCEDURE PAMI.UpdateAfiliado
 	@Nombre nvarchar(60),
 	@Beneficio varchar(12),
 	@Parentesco varchar(2),
@@ -67,11 +67,11 @@ BEGIN
 END
 GO
 
-ALTER PROCEDURE PAMI.DeleteAfiliado
+CREATE PROCEDURE PAMI.DeleteAfiliado
 	@Beneficio varchar(12),
 	@Parentesco varchar(2)
 AS
 BEGIN
 	DELETE PAMI.AfiliadosPami WHERE beneficio = @Beneficio AND parentesco = @Parentesco
 END
-
+GO

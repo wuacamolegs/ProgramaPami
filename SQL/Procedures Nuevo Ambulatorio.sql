@@ -5,14 +5,14 @@ BEGIN
 END
 GO
 
-ALTER PROCEDURE PAMI.traerListadoDiagnosticosCompleto
+CREATE PROCEDURE PAMI.traerListadoDiagnosticosCompleto
 AS
 BEGIN
 	SELECT diagnostico_id,diagnostico_codigo, diagnostico_descripcion FROM PAMI.Diagnostico
 END
 GO
 
-ALTER PROCEDURE PAMI.TraerListadoAfiliadosConBeneficioNombreDocumento
+CREATE PROCEDURE PAMI.TraerListadoAfiliadosConBeneficioNombreDocumento
 	@AsocID numeric(10,0)
 AS
 BEGIN
@@ -20,7 +20,7 @@ BEGIN
 END
 GO
 
-ALTER PROCEDURE PAMI.TraerListadoAsociacionProfesionales
+CREATE PROCEDURE PAMI.TraerListadoAsociacionProfesionales
 	@AsociacionID numeric(10,0)
 AS
 BEGIN
@@ -28,7 +28,7 @@ BEGIN
 END
 GO
 
-ALTER PROCEDURE PAMI.traerListadoAfiliadosConFiltrosPorPadronAsociacion
+CREATE PROCEDURE PAMI.traerListadoAfiliadosConFiltrosPorPadronAsociacion
     @Nombre varchar(60) = null, 
     @Dni varchar(15) = null,
     @Beneficio varchar(14) = null,
@@ -45,7 +45,7 @@ BEGIN
 END
 GO
 
-ALTER PROCEDURE PAMI.TraerListadoPlanillaNomencladorPorAsociacion
+CREATE PROCEDURE PAMI.TraerListadoPlanillaNomencladorPorAsociacion
     @AsocID numeric(10,0)
 AS
 BEGIN
@@ -54,7 +54,7 @@ END
 GO
 
 
-ALTER PROCEDURE PAMI.TraerListadoDiagnosticosPorAsocID
+CREATE PROCEDURE PAMI.TraerListadoDiagnosticosPorAsocID
 	@AsocID numeric(10,0)
 AS
 BEGIN
@@ -63,7 +63,7 @@ END
 GO
 
 --si existe me devuelve el ambulatorio!
-ALTER PROCEDURE PAMI.ValidarAmbulatorioExistenteEnPlanilla
+CREATE PROCEDURE PAMI.ValidarAmbulatorioExistenteEnPlanilla
      @Fecha VARCHAR(10),
      @Afiliado VARCHAR(14),
      @Asociacion numeric(10,0)

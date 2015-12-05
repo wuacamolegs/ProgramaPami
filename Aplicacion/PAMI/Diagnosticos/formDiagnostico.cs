@@ -24,6 +24,7 @@ namespace PAMI.Diagnosticos
         {
             txtCodigo.Text = diag.Codigo;
             txtDescripcion.Text = diag.Descripcion;
+            cmbAsociacion.SelectedIndex = Convert.ToInt32(diag.Asociacion);
             txtCodigo.Enabled = false;
             btnEditar.Visible = true;
             btnNuevo.Visible = false;
@@ -36,15 +37,26 @@ namespace PAMI.Diagnosticos
             txtCodigo.Enabled = true;
         }
 
+        private void limpiar()
+        {
+            txtCodigo.Text = "";
+            txtDescripcion.Text = "";
+            cmbAsociacion.SelectedIndex = -1;
+        }
+
         private void btnEditar_Click(object sender, EventArgs e)
         {
             try
             {
-                unDiagnostico.Codigo = txtCodigo.Text;
-                unDiagnostico.Descripcion = txtDescripcion.Text;
-                unDiagnostico.Editar();
-                MessageBox.Show("Editado Correctamente", "Editar Diagnóstico");
-                this.Close();
+                if (validarCampos())
+                {
+                    unDiagnostico.Codigo = txtCodigo.Text;
+                    unDiagnostico.Descripcion = txtDescripcion.Text;
+                    unDiagnostico.Asociacion = cmbAsociacion.SelectedIndex;
+                    unDiagnostico.Editar();
+                    MessageBox.Show("Editado Correctamente", "Editar Diagnóstico");
+                }
+
             }
             catch (ErrorConsultaException ex)
             {
@@ -60,11 +72,15 @@ namespace PAMI.Diagnosticos
         {
             try
             {
-                unDiagnostico.Codigo = txtCodigo.Text;
-                unDiagnostico.Descripcion = txtDescripcion.Text;
-                unDiagnostico.Nuevo();  //TODO AGREGAR ASOCIACION!!!!
-                MessageBox.Show("Nuevo Diagnostico", "Nuevo Diagnóstico");
-                this.Close();
+                if (validarCampos())
+                {
+                    unDiagnostico.Codigo = txtCodigo.Text;
+                    unDiagnostico.Descripcion = txtDescripcion.Text;
+                    unDiagnostico.Asociacion = cmbAsociacion.SelectedIndex;
+                    unDiagnostico.Nuevo();
+                    MessageBox.Show("Nuevo Diagnostico", "Nuevo Diagnóstico");
+                    limpiar();
+                }
             }
             catch (ErrorConsultaException ex)
             {
@@ -73,6 +89,33 @@ namespace PAMI.Diagnosticos
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private bool validarCampos()
+        {
+            string strErrores = "";
+            strErrores = strErrores + Utilities.Validator.validarNuloEnComboBox(cmbAsociacion.SelectedIndex, "Asociación");
+            strErrores = strErrores + Utilities.Validator.ValidarNulo(txtCodigo.Text,"Código");
+            strErrores = strErrores + Utilities.Validator.ValidarNulo(txtDescripcion.Text, "Descripcion");
+            if (strErrores != "") { MessageBox.Show(strErrores); }
+            return strErrores == "";
+        }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                DialogResult result = MessageBox.Show("Está seguro?", "Eliminar Diagnóstico", MessageBoxButtons.YesNo);
+                if (result == DialogResult.Yes)
+                {
+                    unDiagnostico.Codigo = txtCodigo.Text;
+                    unDiagnostico.EliminarDiagnostico();
+                }
+            }
+            catch (Exception es)
+            {
+                MessageBox.Show(es.Message, "Error");
             }
         }
     }

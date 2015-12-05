@@ -1,5 +1,5 @@
 
-ALTER PROCEDURE PAMI.TraerListadoProfesionalContadorPracticas
+CREATE PROCEDURE PAMI.TraerListadoProfesionalContadorPracticas
 	@MedicoID VARCHAR(6),
 	@AsociacionID numeric(10,0),
 	@Mes VARCHAR(2),

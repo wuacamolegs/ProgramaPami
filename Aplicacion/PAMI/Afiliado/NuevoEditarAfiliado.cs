@@ -33,8 +33,10 @@ namespace PAMI.Afiliados
             try
             {
                 this.Text = "Editar Afiliado";
-                btnNuevo.Visible = false;
                 btnGuardar.Visible = true;
+                btnNuevo.Visible = false;
+                btnEliminar.Visible = true;
+
                 txtApellidoNombre.Text = afiliado.Nombre;
                 txtBeneficio.Text = afiliado.Beneficio.ToString();
                 txtParentesco.Text = afiliado.Parentesco.ToString();
@@ -43,9 +45,9 @@ namespace PAMI.Afiliados
                 cmbSexo.SelectedItem = afiliado.Sexo;
                 cmbTipoDocumento.SelectedItem = afiliado.TipoDocumento;
                 cmbPadron.SelectedIndex = Convert.ToInt32(afiliado.Padron);
-
                 txtBeneficio.Enabled = false;
                 txtParentesco.Enabled = false;
+             
             }
             catch (Exception e)
             {
@@ -57,7 +59,9 @@ namespace PAMI.Afiliados
         {
             btnGuardar.Visible = false;
             btnNuevo.Visible = true;
-            cmbSexo.BackColor = Color.White;
+            btnEliminar.Visible = false;
+            txtBeneficio.Enabled = true;
+            txtParentesco.Enabled = true;
         }
 
         #endregion
@@ -76,7 +80,7 @@ namespace PAMI.Afiliados
                        "\nBeneficio: " + unAfiliado.Beneficio + " " + unAfiliado.Parentesco +
                        "\nDocumento: " + unAfiliado.TipoDocumento + " " + unAfiliado.Documento +
                        "\nFecha Nacimiento: " + unAfiliado.FechaNacimiento, "Nuevo Afiliado");
-                       this.Close();
+                       limpiar();
                    }
                    else
                    {
@@ -120,6 +124,7 @@ namespace PAMI.Afiliados
             }
         }
 
+ 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
             try
@@ -131,7 +136,7 @@ namespace PAMI.Afiliados
                         "\nBeneficio: " + unAfiliado.Beneficio + " " + unAfiliado.Parentesco +
                         "\nDocumento: " + unAfiliado.TipoDocumento + " " + unAfiliado.Documento +
                         "\nFecha Nacimiento: " + unAfiliado.FechaNacimiento, "Editar Afiliado");
-                    this.Close();
+                    limpiar();
                 }
             }
             catch (ErrorConsultaException ex)
@@ -257,9 +262,28 @@ namespace PAMI.Afiliados
 
         #endregion
 
-        private void formAfiliado_Load(object sender, EventArgs e)
+        private void limpiar()
         {
-            cmbSexo.ForeColor = SystemColors.WindowText;
+            txtApellidoNombre.Text = "";
+            txtBeneficio.Text = "";
+            txtParentesco.Text = "";
+            txtDocumento.Text = "";
+            txtFechaNacimiento.Text = "";
+            cmbSexo.SelectedIndex = -1;
+            cmbTipoDocumento.SelectedIndex = -1;
+            cmbPadron.SelectedIndex = -1;
+        }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Está seguro?", "Eliminar Afiliado", MessageBoxButtons.YesNo);
+            if (result == DialogResult.Yes)
+            {
+                cargarDatosAunAfiliado();
+                unAfiliado.EliminarAfiliado();
+                abrirNuevo();
+                limpiar();
+            }
         }
 
 

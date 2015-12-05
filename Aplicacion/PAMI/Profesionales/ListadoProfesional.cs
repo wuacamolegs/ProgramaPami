@@ -145,7 +145,6 @@ namespace PAMI.Profesionales
         {
             formProfesional prof = new formProfesional();
             prof.Show();
-            this.Hide();
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)

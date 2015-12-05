@@ -74,7 +74,7 @@ namespace PAMI.Nomenclador
                                         "\nDescripción: " + unaPractica.Descripcion +
                                         "\nCantidad Máxima: " + unaPractica.CantMaxima
                                         ,"Nueva Práctica");
-                        this.Close();
+                        limpiar();
                     }
                     else
                     {
@@ -90,7 +90,7 @@ namespace PAMI.Nomenclador
                         }
                         if (result == DialogResult.No)
                         {
-                            this.Close();
+                            limpiar();
                         }
                     }
                 }
@@ -115,6 +115,14 @@ namespace PAMI.Nomenclador
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void limpiar()
+        {
+            txtCodigo.Text = "";
+            txtDescripcion.Text = "";
+            txtCantMax.Text = "";
+            txtModulo.Text = "";
         }
 
         private bool cargarDatosAunaPractica()
@@ -158,9 +166,7 @@ namespace PAMI.Nomenclador
                 if (cargarDatosAunaPractica())
                 {
                     unaPractica.Update();
-                    MessageBox.Show("Se ha editado la práctica: " + unaPractica.Codigo + "\n" + unaPractica.Descripcion + "\nCantidad Maxima: " + unaPractica.CantMaxima.ToString());
-                    this.Close();
-                    
+                    MessageBox.Show("Se ha editado la práctica: " + unaPractica.Codigo + "\n" + unaPractica.Descripcion + "\nCantidad Maxima: " + unaPractica.CantMaxima.ToString());              
                 }
             }
             catch (ErrorConsultaException ex)

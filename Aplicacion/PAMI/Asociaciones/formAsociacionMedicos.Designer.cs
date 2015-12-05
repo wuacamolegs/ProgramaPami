@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(formAsociacionMedicos));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.cmbAsociacion = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -81,6 +82,9 @@
             // 
             // dgMedicosAsociacion
             // 
+            this.dgMedicosAsociacion.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.dgMedicosAsociacion.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgMedicosAsociacion.Location = new System.Drawing.Point(12, 137);
             this.dgMedicosAsociacion.Name = "dgMedicosAsociacion";
@@ -90,6 +94,7 @@
             // 
             // btnGuardar
             // 
+            this.btnGuardar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnGuardar.Font = new System.Drawing.Font("Franklin Gothic Book", 10.8F);
             this.btnGuardar.ForeColor = System.Drawing.Color.DarkSlateGray;
             this.btnGuardar.Location = new System.Drawing.Point(286, 540);
@@ -108,7 +113,7 @@
             this.Controls.Add(this.btnGuardar);
             this.Controls.Add(this.dgMedicosAsociacion);
             this.Controls.Add(this.groupBox1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "formAsociacionMedicos";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Asociacion";

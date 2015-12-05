@@ -1,6 +1,6 @@
 --TRIGGERS PLANILLA--
 
-ALTER TRIGGER PAMI.TR_arreglar_fechas
+CREATE TRIGGER PAMI.TR_arreglar_fechas
 ON PAMI.Planilla
 AFTER INSERT, UPDATE
 AS
@@ -10,13 +10,23 @@ SET NOCOUNT ON
 END
 GO
 
-CREATE TRIGGER PAMI.TR_EliminarAmbulatoriosAfterDeletePlanilla
+CREATE TRIGGER PAMI.TR_DeleteAmbulatorioExistenteAfterDeleteAmbulatorio
 ON PAMI.Planilla
 AFTER DELETE
 AS
 BEGIN
 SET NOCOUNT ON
 	DELETE PAMI.AmbulatoriosExistentes WHERE ambulatorio_id IN(SELECT planilla_ambulatorio_codigo FROM DELETED)
+END
+GO
+
+CREATE TRIGGER PAMI.TR_DeleteProfesionalAsociacionAfterDeleteProfesional
+ON PAMI.Profesional
+AFTER DELETE
+AS
+BEGIN
+SET NOCOUNT ON
+	DELETE PAMI.REL_ProfesionalAsociacion WHERE profesional_matricula IN(SELECT profesional_matricula_nacional FROM DELETED)
 END
 GO
 

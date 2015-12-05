@@ -1,5 +1,5 @@
       
-ALTER PROCEDURE PAMI.TraerListadoNomencladorConFiltros
+CREATE PROCEDURE PAMI.TraerListadoNomencladorConFiltros
    @AsociacionID numeric(10,0),
    @Codigo varchar(10),
    @Descripcion varchar(255),
@@ -55,3 +55,5 @@ BEGIN
 	DELETE PAMI.Nomenclador WHERE practica_codigo = @Codigo
 END
 GO
+
+

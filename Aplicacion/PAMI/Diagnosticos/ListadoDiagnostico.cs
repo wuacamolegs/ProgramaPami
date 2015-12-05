@@ -25,18 +25,39 @@ namespace PAMI.Diagnosticos
 
         private void Diagnostico_Load(object sender, EventArgs e)
         {
-            btnEliminar.Enabled = false;
-            btnEditar.Enabled = false;
+            try
+            {
+                btnEliminar.Enabled = false;
+                btnEditar.Enabled = false;
+            }
+            catch (Exception em)
+            {
+                MessageBox.Show(em.Message, "Error");
+            }
         }
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
-            unDiagnostico.Codigo = txtCodigo.Text;
-            DataSet ds = unDiagnostico.TraerDiagnosticosPorFiltros();
-            cargarGrilla(ds);
+            try
+            {
+                if (Convert.ToInt64(cmbAsociacion.SelectedIndex) != -1)
+                {
+                    unDiagnostico.Codigo = txtCodigo.Text;
+                    DataSet ds = unDiagnostico.TraerDiagnosticosPorFiltros(Convert.ToInt64(cmbAsociacion.SelectedIndex));//AORN ES 0 HYHNP ES 1
+                    cargarGrilla(ds);
 
-            btnEliminar.Enabled = true;
-            btnEditar.Enabled = true;
+                    btnEliminar.Enabled = true;
+                    btnEditar.Enabled = true;
+                }
+                else
+                {
+                    MessageBox.Show("Debe seleccionar una Asociación");
+                }
+            }
+            catch (Exception em)
+            {
+                MessageBox.Show(em.Message, "Error");
+            }
         }
 
         private void cargarGrilla(DataSet ds)
@@ -84,26 +105,25 @@ namespace PAMI.Diagnosticos
 
         private void btnEditar_Click(object sender, EventArgs e)
         {
-            formDiagnostico formDiagn = new formDiagnostico();
-            cargarDatosGridDiagnostico();
-
-            formDiagn.abrirParaEditar(unDiagnostico);
-            formDiagn.Show();
-            btnLimpiar_Click(sender, e);
-            unDiagnostico.Dispose();
+            try
+            {
+                cargarDatosGridDiagnostico();
+                formDiagnostico formDiagn = new formDiagnostico();
+                formDiagn.abrirParaEditar(unDiagnostico);
+                formDiagn.Show();
+                btnLimpiar_Click(sender, e);
+                unDiagnostico.Dispose();
+            }
+            catch (Exception em)
+            {
+                MessageBox.Show(em.Message, "Error");
+            }
         }
 
         private void cargarDatosGridDiagnostico()
         {
-            try
-            {
-                unDiagnostico.Codigo = dgDiagnosticos.CurrentRow.Cells[0].Value.ToString();
-                unDiagnostico.TraerDiagnosticoPorCodigo();
-            }
-            catch (Exception e)
-            {
-                MessageBox.Show(e.Message, "Error");
-            }
+            unDiagnostico.Codigo = dgDiagnosticos.CurrentRow.Cells[0].Value.ToString();
+            unDiagnostico.TraerDiagnosticoPorCodigo();
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
@@ -126,9 +146,17 @@ namespace PAMI.Diagnosticos
 
         private void btnNuevo_Click(object sender, EventArgs e)
         {
-            formDiagnostico form = new formDiagnostico();
-            form.abrirParaNuevo();
-            form.Show();
+            try
+            {
+                formDiagnostico form = new formDiagnostico();
+                form.abrirParaNuevo();
+                form.Show();
+            }
+            catch (Exception es)
+            {
+                MessageBox.Show(es.Message, "Error");
+            }
+
         }
     }
 }

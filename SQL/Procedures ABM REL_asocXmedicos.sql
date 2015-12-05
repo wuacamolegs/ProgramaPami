@@ -1,4 +1,4 @@
-ALTER PROCEDURE PAMI.TraerListadoAsociacionProfesionalesSeleccion
+CREATE PROCEDURE PAMI.TraerListadoAsociacionProfesionalesSeleccion
 @AsociacionID numeric(10,0)
 AS
 BEGIN
@@ -10,7 +10,7 @@ BEGIN
 END
 GO
 
-ALTER PROCEDURE PAMI.TraerListadoAsociacionProfesionalesSeleccion
+CREATE PROCEDURE PAMI.TraerListadoAsociacionProfesionalesSeleccion
 @AsociacionID numeric(10,0)
 AS
 BEGIN
@@ -38,7 +38,7 @@ BEGIN
 END
 GO
 
-ALTER PROCEDURE PAMI.TraerListadoAsociacionProfesionalesSeleccion
+CREATE PROCEDURE PAMI.TraerListadoAsociacionProfesionalesSeleccion
 @AsociacionID numeric(10,0)
 AS
 BEGIN
@@ -47,7 +47,7 @@ END
 GO
 
 
-ALTER PROCEDURE PAMI.UpdateAsociacion_REL_Profesionales
+CREATE PROCEDURE PAMI.UpdateAsociacion_REL_Profesionales
 	@AsociacionID numeric(10,0),
 	@Medicos TVP_Profesionales READONLY
 AS

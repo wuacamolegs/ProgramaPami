@@ -170,7 +170,6 @@ namespace Clases
             parameterList.Add(new SqlParameter("@Practica", this.Practica));
             parameterList.Add(new SqlParameter("@Hora", this.Hora));
             parameterList.Add(new SqlParameter("@OP", this.OrdenPrestacion));
-
             parameterList.Add(new SqlParameter("@Consulta", Convert.ToInt64(Convert.ToBoolean(ConfigurationManager.AppSettings["ConsultaMensual"]))));
         }
 
@@ -236,11 +235,6 @@ namespace Clases
             parameterList.Add(new SqlParameter("@MedicoPosta", MedicoPosta));
         }
 
-        private void setearListaParmetrosRegistrarAmbulatorioExistente(Int64 MedicoPosta)
-        {
-
-        }
-       
         #endregion
 
         public DataSet ImportarPlanilla()

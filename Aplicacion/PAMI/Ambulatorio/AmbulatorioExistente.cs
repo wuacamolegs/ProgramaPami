@@ -120,7 +120,6 @@ namespace PAMI.Ambulatorio
                 }
             }
             MessageBox.Show("Importado Correctamente");
-            this.Close();
         }
 
         private void btnNo_Click(object sender, EventArgs e)

@@ -1,4 +1,4 @@
-ALTER PROCEDURE PAMI.TraerListadoPrestadorPorCuitYUsuario
+CREATE PROCEDURE PAMI.TraerListadoPrestadorPorCuitYUsuario
 	@Cuit varchar(15),
 	@Usuario varchar(16)
 AS
@@ -11,7 +11,7 @@ BEGIN
 END
 GO
 
-ALTER PROCEDURE PAMI.InsertPrestador
+CREATE PROCEDURE PAMI.InsertPrestador
       @Cuit varchar(15),
       @Nombre varchar(50),
       @BocaAtencion varchar(5),
@@ -21,7 +21,7 @@ ALTER PROCEDURE PAMI.InsertPrestador
       @Usuario varchar(16),
       @Calle varchar(30),
       @Numero numeric(5,0),
-      @Piso numeric(2,0),
+      @Piso varchar(2),
       @Depto varchar(5),
       @TipoPrestador varchar(1),
       @Mail varchar(50), 
@@ -36,7 +36,7 @@ BEGIN
 END
 GO
 
-ALTER PROCEDURE PAMI.UpdatePrestador
+CREATE PROCEDURE PAMI.UpdatePrestador
 	@Cuit varchar(15),
 	@Nombre varchar(50),
 	@BocaAtencion varchar(5),
@@ -46,7 +46,7 @@ ALTER PROCEDURE PAMI.UpdatePrestador
 	@Usuario varchar(16),
 	@Calle varchar(30),
 	@Numero numeric(5,0),
-	@Piso numeric(2,0),
+	@Piso varchar(2),
 	@Depto varchar(5),
 	@TipoPrestador varchar(1),
 	@AsocID varchar(10),
@@ -62,7 +62,7 @@ BEGIN
 END
 GO
 
-ALTER PROCEDURE PAMI.TraerListadoPrestadorPorAsociacionID
+CREATE PROCEDURE PAMI.TraerListadoPrestadorPorAsociacionID
 	@AsocID numeric(10,0)
 AS
 BEGIN
@@ -73,9 +73,11 @@ BEGIN
 END
 GO	
 
-ALTER PROCEDURE PAMI.DeletePrestador
+CREATE PROCEDURE PAMI.DeletePrestador
 	@AsocID numeric(10,0)
 AS
 BEGIN
 	DELETE PAMI.Asociacion WHERE asociacion_id = @AsocID
 END
+
+select * from PAMI.Asociacion

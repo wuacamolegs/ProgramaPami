@@ -120,6 +120,7 @@ namespace PAMI
             btn8Exportar.Visible = true;
             btn8Nomenclador.Visible = true;
             btn8Padron.Visible = true;
+            btn8Profesionales.Visible = true;
         }
 
 
@@ -167,6 +168,7 @@ namespace PAMI
             btn8Exportar.Visible = false;
             btn8Nomenclador.Visible = false;
             btn8Padron.Visible = false;
+            btn8Profesionales.Visible = false;
         }
 
         private void btn2NuevoAfiliado_Click(object sender, EventArgs e)
@@ -314,16 +316,19 @@ namespace PAMI
             botonesACero();
         }
 
+        private void btn8Profesionales_Click(object sender, EventArgs e)
+        {
+            ImportarProfesionales prof = new ImportarProfesionales();
+            prof.Show();
+            botonesACero();
+        }
+
         private void pictureBox1_Click(object sender, EventArgs e)
         {
             formConfiguracion config = new formConfiguracion();
             config.Show();
-            botonesACero();
+            botonesACero();            
         }
-
-
-
-
 
 
     }

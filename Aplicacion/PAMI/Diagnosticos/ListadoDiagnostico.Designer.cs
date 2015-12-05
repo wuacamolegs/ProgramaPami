@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ListadoDiagnostico));
             this.btnNuevo = new System.Windows.Forms.Button();
             this.btnEliminar = new System.Windows.Forms.Button();
             this.btnEditar = new System.Windows.Forms.Button();
@@ -36,12 +37,16 @@
             this.btnLimpiar = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.txtCodigo = new System.Windows.Forms.TextBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.cmbAsociacion = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgDiagnosticos)).BeginInit();
             this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnNuevo
             // 
+            this.btnNuevo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnNuevo.Font = new System.Drawing.Font("Franklin Gothic Book", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnNuevo.ForeColor = System.Drawing.Color.DarkSlateGray;
             this.btnNuevo.Location = new System.Drawing.Point(13, 541);
@@ -54,6 +59,7 @@
             // 
             // btnEliminar
             // 
+            this.btnEliminar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnEliminar.Font = new System.Drawing.Font("Franklin Gothic Book", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEliminar.ForeColor = System.Drawing.Color.DarkSlateGray;
             this.btnEliminar.Location = new System.Drawing.Point(286, 541);
@@ -66,6 +72,7 @@
             // 
             // btnEditar
             // 
+            this.btnEditar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnEditar.Font = new System.Drawing.Font("Franklin Gothic Book", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEditar.ForeColor = System.Drawing.Color.DarkSlateGray;
             this.btnEditar.Location = new System.Drawing.Point(453, 541);
@@ -78,13 +85,16 @@
             // 
             // dgDiagnosticos
             // 
+            this.dgDiagnosticos.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.dgDiagnosticos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgDiagnosticos.Location = new System.Drawing.Point(13, 135);
+            this.dgDiagnosticos.Location = new System.Drawing.Point(13, 196);
             this.dgDiagnosticos.Margin = new System.Windows.Forms.Padding(4);
             this.dgDiagnosticos.Name = "dgDiagnosticos";
             this.dgDiagnosticos.RowTemplate.Height = 30;
             this.dgDiagnosticos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgDiagnosticos.Size = new System.Drawing.Size(600, 399);
+            this.dgDiagnosticos.Size = new System.Drawing.Size(600, 338);
             this.dgDiagnosticos.TabIndex = 13;
             // 
             // btnBuscar
@@ -118,7 +128,7 @@
             this.groupBox1.Controls.Add(this.txtCodigo);
             this.groupBox1.Font = new System.Drawing.Font("Franklin Gothic Book", 10.2F);
             this.groupBox1.ForeColor = System.Drawing.Color.DarkCyan;
-            this.groupBox1.Location = new System.Drawing.Point(13, 20);
+            this.groupBox1.Location = new System.Drawing.Point(13, 100);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
@@ -135,11 +145,40 @@
             this.txtCodigo.Size = new System.Drawing.Size(410, 29);
             this.txtCodigo.TabIndex = 0;
             // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.cmbAsociacion);
+            this.groupBox2.Font = new System.Drawing.Font("Franklin Gothic Book", 10.2F);
+            this.groupBox2.ForeColor = System.Drawing.Color.DarkCyan;
+            this.groupBox2.Location = new System.Drawing.Point(13, 6);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(4);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(4);
+            this.groupBox2.Size = new System.Drawing.Size(424, 86);
+            this.groupBox2.TabIndex = 11;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "ASOCIACION";
+            // 
+            // cmbAsociacion
+            // 
+            this.cmbAsociacion.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbAsociacion.Font = new System.Drawing.Font("Calibri Light", 11F);
+            this.cmbAsociacion.ForeColor = System.Drawing.SystemColors.InactiveCaptionText;
+            this.cmbAsociacion.FormattingEnabled = true;
+            this.cmbAsociacion.Items.AddRange(new object[] {
+            "Asociación de Oftalmólogos de Río Negro",
+            "Asociación de Hematologia y Hemoterapia Norpatagónica"});
+            this.cmbAsociacion.Location = new System.Drawing.Point(7, 32);
+            this.cmbAsociacion.Name = "cmbAsociacion";
+            this.cmbAsociacion.Size = new System.Drawing.Size(410, 30);
+            this.cmbAsociacion.TabIndex = 1;
+            // 
             // ListadoDiagnostico
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(632, 595);
+            this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.btnNuevo);
             this.Controls.Add(this.btnEliminar);
             this.Controls.Add(this.btnEditar);
@@ -147,7 +186,7 @@
             this.Controls.Add(this.btnBuscar);
             this.Controls.Add(this.btnLimpiar);
             this.Controls.Add(this.groupBox1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "ListadoDiagnostico";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Diagnótico";
@@ -155,6 +194,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgDiagnosticos)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -169,6 +209,8 @@
         private System.Windows.Forms.Button btnLimpiar;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.TextBox txtCodigo;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.ComboBox cmbAsociacion;
 
     }
 }

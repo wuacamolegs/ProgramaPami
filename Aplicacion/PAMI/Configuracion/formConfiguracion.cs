@@ -24,7 +24,7 @@ namespace PAMI.Configuracion
             if (chChico.Checked && cargado)
             {
                 chMediano.Checked = !chChico.Checked;
-                chGrande.Checked = !chGrande.Checked;
+                chGrande.Checked = !chChico.Checked;
             }
         }
 
@@ -54,7 +54,6 @@ namespace PAMI.Configuracion
 
                 config.AppSettings.Settings["ConsultaMensual"].Value = chConsultaMensual.Checked.ToString();
 
-
                 if (chChico.Checked)
                 {
                     config.AppSettings.Settings["TamanioPlanilla"].Value = "Chico";
@@ -69,11 +68,12 @@ namespace PAMI.Configuracion
                 }
 
                 config.Save(ConfigurationSaveMode.Modified);
+               
                 this.Close();
             }
             catch
             {
-                MessageBox.Show("No se Pudo Cambiar la Configuracion del Sistema, \npor favor reinicie la aplicacion y vuelva a inetentarlo.","Error Al Actualizar.",MessageBoxButtons.OK,MessageBoxIcon.Information);
+                MessageBox.Show("No se Pudo Cambiar la Configuracion del Sistema, \npor favor reinicie la aplicacion y vuelva a intentarlo.","Error Al Actualizar.",MessageBoxButtons.OK,MessageBoxIcon.Information);
             }
         }
 
@@ -81,6 +81,9 @@ namespace PAMI.Configuracion
         {
             bool Consulta = Convert.ToBoolean(ConfigurationManager.AppSettings["ConsultaMensual"]);
             chConsultaMensual.Checked = Consulta;
+            chChico.Checked = false;
+            chMediano.Checked = false;
+            chGrande.Checked = false;
 
             string Resolucion = ConfigurationManager.AppSettings["TamanioPlanilla"].ToString();
 

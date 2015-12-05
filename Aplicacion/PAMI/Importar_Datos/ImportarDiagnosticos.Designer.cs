@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ImportarDiagnosticos));
             this.cmbAsociacion = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.btnImportar = new System.Windows.Forms.Button();
@@ -102,7 +103,7 @@
             this.Controls.Add(this.btnImportar);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtRuta);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "ImportarDiagnosticos";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ImportarDiagnosticos";

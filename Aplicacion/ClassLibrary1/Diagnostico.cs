@@ -21,6 +21,7 @@ namespace Clases
 
         string _nombre;
         string _codigo;
+        Int64 _asoc;
 
         #endregion
       
@@ -42,6 +43,12 @@ namespace Clases
             get { return _nombre; }
             set { _nombre = value; }
         }
+
+        public Int64 Asociacion
+        {
+            get { return _asoc; }
+            set { _asoc = value; }
+        }
         
         #endregion
 
@@ -60,10 +67,17 @@ namespace Clases
 
         #region seters
 
-        private void setearListaParametrosConAsociacionID(Int64 AsocID)
+        private void setearListaParametrosConFiltros(Int64 AsocID)
         {
             parameterList.Clear();
-            parameterList.Add(new SqlParameter("@AsocID", AsocID));
+            parameterList.Add(new SqlParameter("@AsocID", AsocID.ToString()));
+            parameterList.Add(new SqlParameter("@Codigo", this.Codigo));
+        }
+
+        private void setearListaParametrosConAsociacion(Int64 AsocID)
+        {
+            parameterList.Clear();
+            parameterList.Add(new SqlParameter("@AsocID", AsocID)); //TIENE QUE SER CON INT64!! NO STRING se usa en nuevo ambulatorio
         }
 
         private void setearListaParametrosConCodigoDiagnostico()
@@ -77,6 +91,7 @@ namespace Clases
             parameterList.Clear();
             parameterList.Add(new SqlParameter("@Codigo", this.Codigo));
             parameterList.Add(new SqlParameter("@Descripcion", this.Descripcion));
+            parameterList.Add(new SqlParameter("@AsocID", this.Asociacion.ToString()));
 
         }
 
@@ -84,14 +99,14 @@ namespace Clases
 
         public DataSet TraerListadoDiagnosticoPorAsociacion(Int64 AsocID)
         {
-            setearListaParametrosConAsociacionID(AsocID);
+            setearListaParametrosConAsociacion(AsocID);
             return this.TraerListado(parameterList, "PorAsocID");
         }
 
 
-        public DataSet TraerDiagnosticosPorFiltros()
+        public DataSet TraerDiagnosticosPorFiltros(Int64 asocid)
         {
-            setearListaParametrosConCodigoDiagnostico();
+            setearListaParametrosConFiltros(asocid);
             return this.TraerListado(parameterList, "ConFiltros");
         }
 
@@ -104,6 +119,7 @@ namespace Clases
             {
                 this.Codigo = ds.Tables[0].Rows[0][0].ToString();
                 this.Descripcion = ds.Tables[0].Rows[0][1].ToString();
+                this.Asociacion = Convert.ToInt64(ds.Tables[0].Rows[0][2]);
             }
         }
 

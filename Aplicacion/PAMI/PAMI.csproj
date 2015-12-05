@@ -12,6 +12,7 @@
     <AssemblyName>PAMI</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -24,9 +25,9 @@
     <MapFileExtensions>true</MapFileExtensions>
     <ApplicationRevision>0</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
+    <ApplicationIcon>favicon.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -137,6 +138,12 @@
     <Compile Include="Importar_Datos\ImportarPadron.Designer.cs">
       <DependentUpon>ImportarPadron.cs</DependentUpon>
     </Compile>
+    <Compile Include="Importar_Datos\ImportarProfesionales.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Importar_Datos\ImportarProfesionales.Designer.cs">
+      <DependentUpon>ImportarProfesionales.cs</DependentUpon>
+    </Compile>
     <Compile Include="MenuInicial.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -228,6 +235,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Importar_Datos\ImportarPadron.resx">
       <DependentUpon>ImportarPadron.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Importar_Datos\ImportarProfesionales.resx">
+      <DependentUpon>ImportarProfesionales.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MenuInicial.resx">
       <DependentUpon>MenuInicial.cs</DependentUpon>
@@ -347,6 +357,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\two185 %282%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="favicon.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

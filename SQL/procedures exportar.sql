@@ -1,7 +1,7 @@
 USE [PAMI]
 GO
 
-ALTER PROCEDURE PAMI.TraerListadoCabeceraParaExportar
+CREATE PROCEDURE PAMI.TraerListadoCabeceraParaExportar
 	@AsocID numeric(10,0),
 	@Anio varchar(4),
 	@Mes varchar(2)
@@ -11,7 +11,7 @@ AS
 	END
 GO
 
-ALTER PROCEDURE PAMI.TraerListadoProfesionalesParaExportar
+CREATE PROCEDURE PAMI.TraerListadoProfesionalesParaExportar
 	@AsocID numeric(10,0),
 	@Anio varchar(4),
 	@Mes varchar(2)
@@ -21,7 +21,7 @@ AS
 	END
 GO
 
-ALTER FUNCTION PAMI.ProfesionalPerteneceAPeriodo(@Profesional VARCHAR(6) ,@Mes VARCHAR(2), @Anio VARCHAR(4), @AsocID numeric(10,0))
+CREATE FUNCTION PAMI.ProfesionalPerteneceAPeriodo(@Profesional VARCHAR(6) ,@Mes VARCHAR(2), @Anio VARCHAR(4), @AsocID numeric(10,0))
 	RETURNS int
 AS
 BEGIN
@@ -29,7 +29,7 @@ BEGIN
 END
 GO
 
-ALTER PROCEDURE PAMI.TraerListadoPrestadorParaExportar
+CREATE PROCEDURE PAMI.TraerListadoPrestadorParaExportar
 	@AsocID numeric(10,0)
 AS
 	BEGIN
@@ -39,7 +39,7 @@ AS
 	END
 GO
 
-ALTER PROCEDURE PAMI.TraerListadoREL_PROFESIONALESXPRESTADORParaExportar
+CREATE PROCEDURE PAMI.TraerListadoREL_PROFESIONALESXPRESTADORParaExportar
 	@AsocID numeric(10,0),
 	@Anio varchar(4),
 	@Mes varchar(2)
@@ -50,7 +50,7 @@ AS
 	END
 GO
 
-ALTER PROCEDURE PAMI.TraerListadoBocaAtencionParaExportar
+CREATE PROCEDURE PAMI.TraerListadoBocaAtencionParaExportar
 	@AsocID numeric(10,0)
 AS
 	BEGIN
@@ -58,7 +58,7 @@ AS
 	END
 GO
 
-ALTER PROCEDURE PAMI.TraerListadoREL_MODULOSXPRESTADORParaExportar
+CREATE PROCEDURE PAMI.TraerListadoREL_MODULOSXPRESTADORParaExportar
 	@AsocID numeric(10,0)
 AS
 	BEGIN
@@ -67,7 +67,7 @@ AS
 	END
 GO
 
-ALTER PROCEDURE PAMI.TraerListadoBENEFICIOParaExportar
+CREATE PROCEDURE PAMI.TraerListadoBENEFICIOParaExportar
 	@AsocID numeric(10,0),
 	@Anio varchar(4),
 	@Mes varchar(2)
@@ -77,7 +77,7 @@ AS
 	END
 GO
 
-ALTER FUNCTION PAMI.AfiliadoPerteneceAPeriodo(@NroAfiliado VARCHAR(14),@Mes VARCHAR(2), @Anio VARCHAR(4), @AsocID numeric(10,0))
+CREATE FUNCTION PAMI.AfiliadoPerteneceAPeriodo(@NroAfiliado VARCHAR(14),@Mes VARCHAR(2), @Anio VARCHAR(4), @AsocID numeric(10,0))
 	RETURNS int
 AS
 BEGIN
@@ -85,7 +85,7 @@ BEGIN
 END
 GO
 
-ALTER PROCEDURE PAMI.TraerListadoAFILIADOParaExportar
+CREATE PROCEDURE PAMI.TraerListadoAFILIADOParaExportar
 	@AsocID numeric(10,0),
 	@Anio varchar(4),
 	@Mes varchar(2)
@@ -103,7 +103,7 @@ MODALIDAD PRESTACION
 2- ORDEN DE PRESTACION  --> voy a tener en planilla_modalidad_prestacion = nro de prestacion
 */
 
-ALTER PROCEDURE PAMI.TraerListadoAMBULATORIOSParaExportar
+CREATE PROCEDURE PAMI.TraerListadoAMBULATORIOSParaExportar
 	@AsocID numeric(10,0),
 	@Anio varchar(4),
 	@Mes varchar(2)
@@ -137,5 +137,41 @@ CREATE PROCEDURE PAMI.AumentarContadorEmulaciones
 AS
 	BEGIN
 		UPDATE PAMI.Asociacion SET nroEmulacion = nroEmulacion + 1 WHERE asociacion_id = @AsocID
+	END
+GO
+
+
+----------------
+---LOGEO--------
+----------------
+
+CREATE PROCEDURE PAMI.TraerListadoLogueoParaExportar
+	@AsocID numeric(10,0),
+	@Anio varchar(4),
+	@Mes varchar(2)
+AS
+	BEGIN
+		IF(LEN(@Mes) = 1)
+		BEGIN
+		 SET @Mes = '0' + @Mes
+		END
+		
+		SELECT PRO.profesional_nombreCompleto ,planilla_practica, COUNT(planilla_practica) as Cantidad FROM PAMI.Planilla, PAMI.Profesional PRO WHERE SUBSTRING(planilla_fecha,4,2) = @Mes AND SUBSTRING(planilla_fecha,7,4) = @Anio 
+		AND planilla_asociacion = @AsocID AND planilla_medico = PRO.profesional_matricula_nacional
+		GROUP BY planilla_practica, PRO.profesional_nombreCompleto
+
+		EXEC PAMI.TraerListadoPlanillaAmbulatoriosCargadosAOtroMedico @AsocID,@Mes, @Anio
+	END
+GO
+
+CREATE PROCEDURE PAMI.TraerListadoPlanillaParaExportar
+	@AsocID numeric(10,0),
+	@Anio varchar(4),
+	@Mes varchar(2)
+AS
+	BEGIN
+		SELECT PRO.profesional_nombreCompleto, PLA.planilla_fecha, AF.apellido_nombre, PLA.planilla_afiliado_beneficio, PLA.planilla_diagnostico, PLA.planilla_practica, PLA.planilla_hora, PLA.planilla_modalidad_prestacion FROM PAMI.Planilla PLA, PAMI.Profesional PRO, PAMI.AfiliadosPami AF WHERE SUBSTRING(planilla_fecha,4,2) = @Mes AND SUBSTRING(planilla_fecha,7,4) = @Anio 
+		AND planilla_asociacion = @AsocID AND planilla_medico = PRO.profesional_matricula_nacional AND AF.beneficio + AF.parentesco = PLA.planilla_afiliado_beneficio
+		ORDER BY PRO.profesional_nombreCompleto, PLA.planilla_fecha
 	END
 GO

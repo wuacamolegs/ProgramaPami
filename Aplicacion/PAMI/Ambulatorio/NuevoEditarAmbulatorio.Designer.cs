@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(NuevoEditarAmbulatorio));
             this.lbl1Nombreapellido = new System.Windows.Forms.Label();
             this.label24 = new System.Windows.Forms.Label();
             this.cmbAsociacion = new System.Windows.Forms.ComboBox();
@@ -137,7 +138,8 @@
             // 
             // gbAfiliado
             // 
-            this.gbAfiliado.Controls.Add(this.gbAfiliadoSeleccionado);
+            this.gbAfiliado.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)));
             this.gbAfiliado.Controls.Add(this.btnBuscar);
             this.gbAfiliado.Controls.Add(this.txtDocumento);
             this.gbAfiliado.Controls.Add(this.txtBeneficio);
@@ -146,6 +148,7 @@
             this.gbAfiliado.Controls.Add(this.lbl1Documento);
             this.gbAfiliado.Controls.Add(this.lbl1NroAfiliado);
             this.gbAfiliado.Controls.Add(this.lbl1Nombreapellido);
+            this.gbAfiliado.Controls.Add(this.gbAfiliadoSeleccionado);
             this.gbAfiliado.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.gbAfiliado.Font = new System.Drawing.Font("Franklin Gothic Book", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbAfiliado.ForeColor = System.Drawing.Color.DarkSlateGray;
@@ -170,7 +173,7 @@
             this.gbAfiliadoSeleccionado.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.gbAfiliadoSeleccionado.Font = new System.Drawing.Font("Franklin Gothic Book", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbAfiliadoSeleccionado.ForeColor = System.Drawing.Color.DarkSlateGray;
-            this.gbAfiliadoSeleccionado.Location = new System.Drawing.Point(0, 0);
+            this.gbAfiliadoSeleccionado.Location = new System.Drawing.Point(0, 1);
             this.gbAfiliadoSeleccionado.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.gbAfiliadoSeleccionado.Name = "gbAfiliadoSeleccionado";
             this.gbAfiliadoSeleccionado.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -299,6 +302,8 @@
             // 
             // dgAfiliados
             // 
+            this.dgAfiliados.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)));
             this.dgAfiliados.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgAfiliados.Location = new System.Drawing.Point(15, 192);
             this.dgAfiliados.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -433,6 +438,9 @@
             // 
             // dgPracticas
             // 
+            this.dgPracticas.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.dgPracticas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgPracticas.Location = new System.Drawing.Point(22, 37);
             this.dgPracticas.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -446,6 +454,7 @@
             // 
             // btnNuevo
             // 
+            this.btnNuevo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnNuevo.Font = new System.Drawing.Font("Franklin Gothic Book", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnNuevo.ForeColor = System.Drawing.Color.DarkSlateGray;
             this.btnNuevo.Location = new System.Drawing.Point(884, 630);
@@ -473,6 +482,9 @@
             // 
             // groupBox4
             // 
+            this.groupBox4.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox4.Controls.Add(this.dgPracticas);
             this.groupBox4.Font = new System.Drawing.Font("Franklin Gothic Book", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox4.ForeColor = System.Drawing.Color.DarkSlateGray;
@@ -499,6 +511,7 @@
             // 
             // btnEliminar
             // 
+            this.btnEliminar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnEliminar.Font = new System.Drawing.Font("Franklin Gothic Book", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEliminar.ForeColor = System.Drawing.Color.DarkSlateGray;
             this.btnEliminar.Location = new System.Drawing.Point(27, 630);
@@ -523,7 +536,7 @@
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.btnNuevo);
             this.Controls.Add(this.btnEditar);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "NuevoEditarAmbulatorio";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

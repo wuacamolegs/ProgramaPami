@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(formPlanilla));
             this.dgPlanilla = new System.Windows.Forms.DataGridView();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -362,13 +363,13 @@
             this.Controls.Add(this.gbAsociacion);
             this.Controls.Add(this.gbProfesional);
             this.Controls.Add(this.dgPlanilla);
-            this.Controls.Add(this.btnValidar);
             this.Controls.Add(this.btnEliminar);
             this.Controls.Add(this.btnLimpiar);
             this.Controls.Add(this.btnBuscar);
+            this.Controls.Add(this.btnValidar);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.ForeColor = System.Drawing.Color.Black;
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "formPlanilla";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

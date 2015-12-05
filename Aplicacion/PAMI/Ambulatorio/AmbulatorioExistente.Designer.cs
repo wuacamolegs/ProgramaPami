@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AmbulatorioExistente));
             this.label1 = new System.Windows.Forms.Label();
             this.dgAmbulatorios = new System.Windows.Forms.DataGridView();
             this.btnNo = new System.Windows.Forms.Button();
@@ -106,7 +107,7 @@
             this.Controls.Add(this.btnNo);
             this.Controls.Add(this.dgAmbulatorios);
             this.Controls.Add(this.label1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "AmbulatorioExistente";
             this.Text = "Ambulatorios Existentes";
             ((System.ComponentModel.ISupportInitialize)(this.dgAmbulatorios)).EndInit();
