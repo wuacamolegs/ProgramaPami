@@ -67,17 +67,17 @@ namespace PAMI.Diagnosticos
             dgDiagnosticos.RowHeadersVisible = false;
 
             DataGridViewTextBoxColumn clm_codigo = new DataGridViewTextBoxColumn();
-            clm_codigo.Width = 100;
+            clm_codigo.Width = Convert.ToInt32(Convert.ToDouble(dgDiagnosticos.Size.Width * 0.2));
             clm_codigo.ReadOnly = true;
             clm_codigo.DataPropertyName = "diagnostico_codigo";
             clm_codigo.HeaderText = "Código";
             dgDiagnosticos.Columns.Add(clm_codigo);
 
             DataGridViewTextBoxColumn clm_Descripcion = new DataGridViewTextBoxColumn();
-            clm_Descripcion.Width = 476;
+            clm_Descripcion.Width = Convert.ToInt32(Convert.ToDouble(dgDiagnosticos.Size.Width * 0.8));
             clm_Descripcion.ReadOnly = true;
             clm_Descripcion.DataPropertyName = "diagnostico_descripcion";
-            clm_Descripcion.HeaderText = "Práctica";
+            clm_Descripcion.HeaderText = "Diagnostico";
             dgDiagnosticos.Columns.Add(clm_Descripcion);
 
             //le inserto a la grilla el dataset obtenido

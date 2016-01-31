@@ -38,21 +38,21 @@ namespace PAMI.Asociaciones
             dgMedicosAsociacion.RowHeadersVisible = false;
 
             DataGridViewCheckBoxColumn clm_checkbox = new DataGridViewCheckBoxColumn();
-            clm_checkbox.Width = 50;
+            clm_checkbox.Width = Convert.ToInt32(Convert.ToDouble(dgMedicosAsociacion.Size.Width * 0.2));
             clm_checkbox.ReadOnly = false;
             clm_checkbox.DataPropertyName = "Estado";
             clm_checkbox.HeaderText = "";
             dgMedicosAsociacion.Columns.Add(clm_checkbox);
 
             DataGridViewTextBoxColumn clm_matricula = new DataGridViewTextBoxColumn();
-            clm_matricula.Width = 80;
+            clm_matricula.Width = Convert.ToInt32(Convert.ToDouble(dgMedicosAsociacion.Size.Width * 0.2));
             clm_matricula.ReadOnly = false;
             clm_matricula.DataPropertyName = "matricula";
             clm_matricula.HeaderText = "Matricula";
             dgMedicosAsociacion.Columns.Add(clm_matricula);
 
             DataGridViewTextBoxColumn clm_medico = new DataGridViewTextBoxColumn();
-            clm_medico.Width = 280;
+            clm_medico.Width = Convert.ToInt32(Convert.ToDouble(dgMedicosAsociacion.Size.Width * 0.6));
             clm_medico.ReadOnly = false;
             clm_medico.DataPropertyName = "medico";
             clm_medico.HeaderText = "Médico";

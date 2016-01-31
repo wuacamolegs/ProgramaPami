@@ -19,6 +19,7 @@ namespace Clases
 
         #region atributos
 
+        Int64 _codigo = -1;
         string _fecha;
         string _nombre;
         string _beneficio;
@@ -51,6 +52,12 @@ namespace Clases
         #endregion
 
         #region properties
+
+        public Int64 CodigoAmbulatorio
+        {
+            get { return _codigo; }
+            set { _codigo = value; }
+        }
 
         public DataTable tablaPlanilla
         {
@@ -158,6 +165,7 @@ namespace Clases
         private void setearListaParametrosCompleta()
         {
             this.parameterList.Clear();
+            parameterList.Add(new SqlParameter("@CodigoAmbulatorio", this.CodigoAmbulatorio));
             parameterList.Add(new SqlParameter("@Asociacion", this.Asociacion));
             parameterList.Add(new SqlParameter("@Medico", this.Medico));
             parameterList.Add(new SqlParameter("@Mes", this.Mes));

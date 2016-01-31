@@ -164,7 +164,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FacturacionAmbulatoriosExistentes";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "FacturacionAmbulatoriosExistentes";
+            this.Text = "Facturacion Ambulatorios Transferidos";
             this.Load += new System.EventHandler(this.FacturacionAmbulatoriosExistentes_Load);
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();

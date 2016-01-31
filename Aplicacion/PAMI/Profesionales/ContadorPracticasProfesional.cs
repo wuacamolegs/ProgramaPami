@@ -93,14 +93,14 @@ namespace PAMI.Profesionales
             dgContador.RowHeadersVisible = false;
 
             DataGridViewTextBoxColumn clm_Practica = new DataGridViewTextBoxColumn();
-            clm_Practica.Width = 150;
+            clm_Practica.Width = Convert.ToInt32(Convert.ToDouble(dgContador.Size.Width * 0.70));
             clm_Practica.ReadOnly = true;
             clm_Practica.DataPropertyName = "planilla_practica";
             clm_Practica.HeaderText = "Practica";
             dgContador.Columns.Add(clm_Practica);
 
             DataGridViewTextBoxColumn clm_cantidad = new DataGridViewTextBoxColumn();
-            clm_cantidad.Width = 108;
+            clm_cantidad.Width = Convert.ToInt32(Convert.ToDouble(dgContador.Size.Width * 0.30));
             clm_cantidad.ReadOnly = true;
             clm_cantidad.DataPropertyName = "Cantidad";
             clm_cantidad.HeaderText = "Cantidad";

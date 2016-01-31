@@ -35,13 +35,14 @@ namespace PAMI.Importar_Datos
 
         private void btnImportar_Click(object sender, EventArgs e)
         {
-            if (txtRuta.Text != "" && Convert.ToInt64(cmbPadron.SelectedIndex) != -1)
+            if (txtRuta.Text != "" && Convert.ToInt64(cmbPadron.SelectedIndex) != -1 && txtFecha.Text != "")
             {
                 try
                 {
                     List<SqlParameter> parameterList = new List<SqlParameter>();
                     parameterList.Add(new SqlParameter("@Ruta", txtRuta.Text));
                     parameterList.Add(new SqlParameter("@Padron", cmbPadron.SelectedIndex));
+                    parameterList.Add(new SqlParameter("@Fecha", txtFecha.Text));
                     Int64 cantAfiliados = Conexion.SQLHelper.ExecuteNonQuery("ImportarPadron", CommandType.StoredProcedure, parameterList);
                     MessageBox.Show("Se han importado exitosamente " + cantAfiliados + " Afiliados", "Padrón Importado Correctamente");
                 }

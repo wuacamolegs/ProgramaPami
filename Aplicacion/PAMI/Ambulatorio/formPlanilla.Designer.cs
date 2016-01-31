@@ -49,6 +49,7 @@
             this.gbAfiliado = new System.Windows.Forms.GroupBox();
             this.txtBeneficio = new System.Windows.Forms.TextBox();
             this.lblCantAmbulatorios = new System.Windows.Forms.Label();
+            this.btnLimpiarFiltros = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgPlanilla)).BeginInit();
             this.gbProfesional.SuspendLayout();
             this.gbAsociacion.SuspendLayout();
@@ -69,6 +70,7 @@
             this.dgPlanilla.Size = new System.Drawing.Size(1515, 539);
             this.dgPlanilla.TabIndex = 0;
             this.dgPlanilla.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgPlanilla_CellContentDoubleClick);
+            this.dgPlanilla.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.dgPlanilla_EditingControlShowing);
             this.dgPlanilla.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dgPlanilla_KeyDown);
             // 
             // label2
@@ -323,7 +325,7 @@
             this.gbAfiliado.Size = new System.Drawing.Size(549, 83);
             this.gbAfiliado.TabIndex = 7;
             this.gbAfiliado.TabStop = false;
-            this.gbAfiliado.Text = "NRO BENEFICIO";
+            this.gbAfiliado.Text = "AFILIADO";
             this.gbAfiliado.SizeChanged += new System.EventHandler(this.gbAfiliado_SizeChanged);
             // 
             // txtBeneficio
@@ -347,6 +349,21 @@
             this.lblCantAmbulatorios.TabIndex = 15;
             this.lblCantAmbulatorios.Text = "Cantidad Ambulatorios Importados: ";
             // 
+            // btnLimpiarFiltros
+            // 
+            this.btnLimpiarFiltros.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnLimpiarFiltros.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.btnLimpiarFiltros.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnLimpiarFiltros.Font = new System.Drawing.Font("Franklin Gothic Book", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLimpiarFiltros.ForeColor = System.Drawing.Color.DarkSlateGray;
+            this.btnLimpiarFiltros.Location = new System.Drawing.Point(1195, 127);
+            this.btnLimpiarFiltros.Name = "btnLimpiarFiltros";
+            this.btnLimpiarFiltros.Size = new System.Drawing.Size(161, 37);
+            this.btnLimpiarFiltros.TabIndex = 16;
+            this.btnLimpiarFiltros.Text = "Limpiar ";
+            this.btnLimpiarFiltros.UseVisualStyleBackColor = false;
+            this.btnLimpiarFiltros.Click += new System.EventHandler(this.btnLimpiarFiltros_Click);
+            // 
             // formPlanilla
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 20F);
@@ -354,6 +371,7 @@
             this.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.CancelButton = this.btnCerrar;
             this.ClientSize = new System.Drawing.Size(1534, 784);
+            this.Controls.Add(this.btnLimpiarFiltros);
             this.Controls.Add(this.lblCantAmbulatorios);
             this.Controls.Add(this.gbAfiliado);
             this.Controls.Add(this.btnSeleccionar);
@@ -410,5 +428,6 @@
         private System.Windows.Forms.GroupBox gbAfiliado;
         private System.Windows.Forms.TextBox txtBeneficio;
         private System.Windows.Forms.Label lblCantAmbulatorios;
+        private System.Windows.Forms.Button btnLimpiarFiltros;
     }
 }

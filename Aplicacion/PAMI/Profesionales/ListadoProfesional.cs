@@ -20,7 +20,7 @@ namespace PAMI.Profesionales
         {
             InitializeComponent();
             btnEditar.Enabled = false;
-            btnEditar.Enabled = false;
+            btnEliminar.Enabled = false;
 
             Utilities.DropDownListManager.CargarCombo(cmbEspecialidad, unProfesional.ObtenerListadoEspecialidad(), "EspecialidadID", "Especialidad", false, "");
             cmbEspecialidad.SelectedIndex = -1;
@@ -53,7 +53,7 @@ namespace PAMI.Profesionales
                 DataSet dsProfesionales = unProfesional.BuscarProfesionalPorFiltros();
                 cargarGrillaCon(dsProfesionales);
                 btnEditar.Enabled = true;
-                btnEditar.Enabled = true;
+                btnEliminar.Enabled = true;
             }
             catch (ErrorConsultaException ex)
             {
@@ -73,28 +73,28 @@ namespace PAMI.Profesionales
             dgProfesionales.RowHeadersVisible = false;
 
             DataGridViewTextBoxColumn clm_matricula = new DataGridViewTextBoxColumn();
-            clm_matricula.Width = 160;
+            clm_matricula.Width = Convert.ToInt32(Convert.ToDouble(dgProfesionales.Size.Width * 0.10));
             clm_matricula.ReadOnly = true;
             clm_matricula.DataPropertyName = "profesional_matricula_nacional";
             clm_matricula.HeaderText = "Matrícula";
             dgProfesionales.Columns.Add(clm_matricula);
 
             DataGridViewTextBoxColumn clm_ApellidoNombre = new DataGridViewTextBoxColumn();
-            clm_ApellidoNombre.Width = 410;
+            clm_ApellidoNombre.Width = Convert.ToInt32(Convert.ToDouble(dgProfesionales.Size.Width * 0.60));
             clm_ApellidoNombre.ReadOnly = true;
             clm_ApellidoNombre.DataPropertyName = "profesional_nombre";
             clm_ApellidoNombre.HeaderText = "Nombre y Apellido";
             dgProfesionales.Columns.Add(clm_ApellidoNombre);
 
             DataGridViewTextBoxColumn clm_tipoDoc = new DataGridViewTextBoxColumn();
-            clm_tipoDoc.Width = 100;
+            clm_tipoDoc.Width = Convert.ToInt32(Convert.ToDouble(dgProfesionales.Size.Width * 0.10));
             clm_tipoDoc.ReadOnly = true;
             clm_tipoDoc.DataPropertyName = "documento_tipo";
             clm_tipoDoc.HeaderText = "Tipo Doc";
             dgProfesionales.Columns.Add(clm_tipoDoc);
 
             DataGridViewTextBoxColumn clm_numero_documento = new DataGridViewTextBoxColumn();
-            clm_numero_documento.Width = 160;
+            clm_numero_documento.Width = Convert.ToInt32(Convert.ToDouble(dgProfesionales.Size.Width * 0.20));
             clm_numero_documento.ReadOnly = true;
             clm_numero_documento.DataPropertyName = "documento_numero";
             clm_numero_documento.HeaderText = "Documento";

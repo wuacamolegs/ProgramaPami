@@ -24,6 +24,9 @@ namespace PAMI.PlanillaPami
         DataTable TablaAfiliados = new DataTable();
         DataTable TablaNomenclador = new DataTable();
         DataTable TablaFechaHora = new DataTable();
+        AutoCompleteStringCollection scAutoCompleteAfiliados = new AutoCompleteStringCollection();
+        AutoCompleteStringCollection scAutoCompleteDiagnosticos = new AutoCompleteStringCollection();
+        AutoCompleteStringCollection scAutoCompleteNomenclador = new AutoCompleteStringCollection();
         bool busqueda = false;
 
         public formPlanilla()
@@ -73,6 +76,7 @@ namespace PAMI.PlanillaPami
         public void AbrirParaNuevaPlanilla()
         {
             btnBuscar.Visible = false;
+            btnLimpiarFiltros.Visible = false;
             btnValidar.Visible = true;
             btnEliminar.Visible = false;
             btnSeleccionar.Visible = false;
@@ -84,6 +88,7 @@ namespace PAMI.PlanillaPami
         {
             btnValidar.Visible = false;
             btnBuscar.Visible = true;
+            btnLimpiarFiltros.Visible = true;
             btnImportar.Visible = false;
             btnLimpiar.Visible = false;
             btnEliminar.Visible = true;
@@ -143,55 +148,55 @@ namespace PAMI.PlanillaPami
             dgPlanilla.AllowUserToResizeRows = false;
 
             DataGridViewTextBoxColumn clm_Fecha = new DataGridViewTextBoxColumn();
-            clm_Fecha.Width = 100;
+            clm_Fecha.Width = Convert.ToInt32(Convert.ToDouble(dgPlanilla.Size.Width * 0.06));
             clm_Fecha.ReadOnly = false;
             clm_Fecha.DataPropertyName = "planilla_fecha";
             clm_Fecha.HeaderText = "Fecha";
             dgPlanilla.Columns.Add(clm_Fecha);
 
             DataGridViewTextBoxColumn clm_Nombre = new DataGridViewTextBoxColumn();
-            clm_Nombre.Width = 400;
+            clm_Nombre.Width = Convert.ToInt32(Convert.ToDouble(dgPlanilla.Size.Width * 0.26));
             clm_Nombre.ReadOnly = false;
             clm_Nombre.DataPropertyName = "planilla_afiliado_nombre";
             clm_Nombre.HeaderText = "Apellido y Nombre";
             dgPlanilla.Columns.Add(clm_Nombre);
 
             DataGridViewTextBoxColumn clm_Beneficio = new DataGridViewTextBoxColumn();
-            clm_Beneficio.Width = 160;
+            clm_Beneficio.Width = Convert.ToInt32(Convert.ToDouble(dgPlanilla.Size.Width * 0.10));
             clm_Beneficio.ReadOnly = false;
             clm_Beneficio.DataPropertyName = "planilla_afiliado_beneficio";
             clm_Beneficio.HeaderText = "Nro Afiliado";
             dgPlanilla.Columns.Add(clm_Beneficio);
 
             DataGridViewTextBoxColumn clm_Diagnostico = new DataGridViewTextBoxColumn();
-            clm_Diagnostico.Width = 250;
+            clm_Diagnostico.Width = Convert.ToInt32(Convert.ToDouble(dgPlanilla.Size.Width * 0.16));
             clm_Diagnostico.ReadOnly = false;
             clm_Diagnostico.DataPropertyName = "planilla_diagnostico";
             clm_Diagnostico.HeaderText = "Diagnóstico";
             dgPlanilla.Columns.Add(clm_Diagnostico);
 
             DataGridViewTextBoxColumn clm_Practica = new DataGridViewTextBoxColumn();
-            clm_Practica.Width = 100;
+            clm_Practica.Width = Convert.ToInt32(Convert.ToDouble(dgPlanilla.Size.Width * 0.06));
             clm_Practica.ReadOnly = false;
             clm_Practica.DataPropertyName = "planilla_practica";
             clm_Practica.HeaderText = "Práctica";
             dgPlanilla.Columns.Add(clm_Practica);
 
             DataGridViewTextBoxColumn clm_Hora = new DataGridViewTextBoxColumn();
-            clm_Hora.Width = 100;
+            clm_Hora.Width = Convert.ToInt32(Convert.ToDouble(dgPlanilla.Size.Width * 0.06));
             clm_Hora.ReadOnly = false;
             clm_Hora.DataPropertyName = "planilla_hora";
             clm_Hora.HeaderText = "Hora";
             dgPlanilla.Columns.Add(clm_Hora);
 
             DataGridViewCheckBoxColumn clm_Estado = new DataGridViewCheckBoxColumn();
-            clm_Estado.Width = 63;
+            clm_Estado.Width = Convert.ToInt32(Convert.ToDouble(dgPlanilla.Size.Width * 0.04));
             clm_Estado.ReadOnly = true;
             clm_Estado.HeaderText = "Estado";
             dgPlanilla.Columns.Add(clm_Estado);
 
             DataGridViewTextBoxColumn clm_Validacion = new DataGridViewTextBoxColumn();
-            clm_Validacion.Width = 700;
+            clm_Validacion.Width = Convert.ToInt32(Convert.ToDouble(dgPlanilla.Size.Width * 0.46));
             clm_Validacion.ReadOnly = true;
             clm_Validacion.HeaderText = "Validación";
             dgPlanilla.Columns.Add(clm_Validacion);
@@ -213,55 +218,55 @@ namespace PAMI.PlanillaPami
             dgPlanilla.AllowUserToResizeRows = false;
 
             DataGridViewCheckBoxColumn clm_Seleccionar = new DataGridViewCheckBoxColumn();
-            clm_Seleccionar.Width = 50;
+            clm_Seleccionar.Width = Convert.ToInt32(Convert.ToDouble(dgPlanilla.Size.Width * 0.03));
             clm_Seleccionar.ReadOnly = false;
             clm_Seleccionar.HeaderText = "";
             dgPlanilla.Columns.Add(clm_Seleccionar);
 
             DataGridViewTextBoxColumn clm_Fecha = new DataGridViewTextBoxColumn();
-            clm_Fecha.Width = 100;
+            clm_Fecha.Width = Convert.ToInt32(Convert.ToDouble(dgPlanilla.Size.Width * 0.06));
             clm_Fecha.ReadOnly = true;
             clm_Fecha.DataPropertyName = "planilla_fecha";
             clm_Fecha.HeaderText = "Fecha";
             dgPlanilla.Columns.Add(clm_Fecha);
 
             DataGridViewTextBoxColumn clm_Nombre = new DataGridViewTextBoxColumn();
-            clm_Nombre.Width = 400;
+            clm_Nombre.Width = Convert.ToInt32(Convert.ToDouble(dgPlanilla.Size.Width * 0.26));
             clm_Nombre.ReadOnly = true;
             clm_Nombre.DataPropertyName = "planilla_afiliado_nombre";
             clm_Nombre.HeaderText = "Apellido y Nombre";
             dgPlanilla.Columns.Add(clm_Nombre);
 
             DataGridViewTextBoxColumn clm_Beneficio = new DataGridViewTextBoxColumn();
-            clm_Beneficio.Width = 160;
+            clm_Beneficio.Width = Convert.ToInt32(Convert.ToDouble(dgPlanilla.Size.Width * 0.10));
             clm_Beneficio.ReadOnly = true;
             clm_Beneficio.DataPropertyName = "planilla_afiliado_beneficio";
             clm_Beneficio.HeaderText = "Nro Afiliado";
             dgPlanilla.Columns.Add(clm_Beneficio);
 
             DataGridViewTextBoxColumn clm_Diagnostico = new DataGridViewTextBoxColumn();
-            clm_Diagnostico.Width = 250;
+            clm_Diagnostico.Width = Convert.ToInt32(Convert.ToDouble(dgPlanilla.Size.Width * 0.06));
             clm_Diagnostico.ReadOnly = true;
             clm_Diagnostico.DataPropertyName = "planilla_diagnostico";
             clm_Diagnostico.HeaderText = "Diagnóstico";
             dgPlanilla.Columns.Add(clm_Diagnostico);
 
             DataGridViewTextBoxColumn clm_Practica = new DataGridViewTextBoxColumn();
-            clm_Practica.Width = 100;
+            clm_Practica.Width = Convert.ToInt32(Convert.ToDouble(dgPlanilla.Size.Width * 0.06));
             clm_Practica.ReadOnly = true;
             clm_Practica.DataPropertyName = "planilla_practica";
             clm_Practica.HeaderText = "Práctica";
             dgPlanilla.Columns.Add(clm_Practica);
 
             DataGridViewTextBoxColumn clm_Hora = new DataGridViewTextBoxColumn();
-            clm_Hora.Width = 100;
+            clm_Hora.Width = Convert.ToInt32(Convert.ToDouble(dgPlanilla.Size.Width * 0.06));
             clm_Hora.ReadOnly = true;
             clm_Hora.DataPropertyName = "planilla_hora";
             clm_Hora.HeaderText = "Hora";
             dgPlanilla.Columns.Add(clm_Hora);
 
             DataGridViewTextBoxColumn clm_Ambulatorio = new DataGridViewTextBoxColumn();
-            clm_Ambulatorio.Width = 405;
+            clm_Ambulatorio.Width = Convert.ToInt32(Convert.ToDouble(dgPlanilla.Size.Width * 0.37));
             clm_Ambulatorio.ReadOnly = true;
             clm_Ambulatorio.DefaultCellStyle.ForeColor = Color.DarkBlue;
             clm_Ambulatorio.DataPropertyName = "planilla_ambulatorio";
@@ -375,18 +380,7 @@ namespace PAMI.PlanillaPami
                     unaPlanilla.Medico = Convert.ToInt64(cmbMedico.SelectedValue);
                     unaPlanilla.Asociacion = Convert.ToInt64(cmbAsociacion.SelectedValue);
 
-
-                    DataSet ds = unaPlanilla.TraerTablasPlanilla();  
-                    /*el ds va a tener en TABLE
-                     * 0  beneficios afiliados
-                     * 1  Diagnosticos
-                     * 2  Nomenclador
-                     * 3  Fechas y horas ya cargadas para el medico este*/
-
-                    TablaAfiliados = ds.Tables[0];
-                    TablaDiagnosticos = ds.Tables[1];
-                    TablaNomenclador = ds.Tables[2];
-                    TablaFechaHora = ds.Tables[3];
+                    TraerTablas();
 
                     int estado = 0;
                     foreach (DataGridViewRow oneRow in dgPlanilla.Rows)
@@ -397,7 +391,7 @@ namespace PAMI.PlanillaPami
                         }
                         string strErrores = "";
                         strErrores = strErrores + Validator.ValidarFecha(oneRow.Cells[0].Value.ToString(), "Fecha");
-                        if (oneRow.Cells[0].Value.ToString().Substring(3, 2) != cmbMes.SelectedValue.ToString() && oneRow.Cells[0].Value.ToString().Substring(6, 4) != txtAnio.Text)
+                        if (oneRow.Cells[0].Value.ToString().Substring(3, 2) != cmbMes.SelectedValue.ToString() || oneRow.Cells[0].Value.ToString().Substring(6, 4) != txtAnio.Text)
                         {
                             strErrores = strErrores + "La fecha no corresponde al periodo seleccionado\n";
                         }
@@ -458,6 +452,21 @@ namespace PAMI.PlanillaPami
                     MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
+        }
+
+        private void TraerTablas()
+        {
+            DataSet ds = unaPlanilla.TraerTablasPlanilla();
+            /*el ds va a tener en TABLE
+             * 0  beneficios afiliados
+             * 1  Diagnosticos
+             * 2  Nomenclador
+             * 3  Fechas y horas ya cargadas para el medico este*/
+
+            TablaAfiliados = ds.Tables[0];
+            TablaDiagnosticos = ds.Tables[1];
+            TablaNomenclador = ds.Tables[2];
+            TablaFechaHora = ds.Tables[3];
         }
 
         private string ValidarExistenciaEnTablas(DataGridViewRow oneRow)
@@ -732,6 +741,39 @@ namespace PAMI.PlanillaPami
             unaAsociacion.Dispose();
 
             Utilities.DropDownListManager.CargarCombo(cmbMedico, ds.Tables[0], "profesional_matricula", "profesional_nombre", false, "");
+            
+
+            //TODO: COSAS QUE AGREGO PARA AUTOCOMPLETAR PLANILLA
+
+            if (cmbAsociacion.SelectedIndex != -1 && cmbAsociacion.Text != "")
+            {
+                //CARGAR DATASETS NOMENCLADOR/DIAGNOSTICOS/AFILIADOS DE LA ASOCIACION PARA IR AUTOCOMPLETANDO LA TABLA.
+                unaPlanilla.Asociacion = Convert.ToInt64(cmbAsociacion.SelectedValue);
+                TraerTablas();
+                /*el ds va a tener en TABLE
+                 * 0  beneficios afiliados
+                 * 1  Diagnosticos
+                 * 2  Nomenclador
+                 * 3  Fechas y horas ya cargadas para el medico este*/
+
+                foreach (DataRow dr in TablaNomenclador.Rows)
+                {
+                    scAutoCompleteNomenclador.Add(dr["Practica"].ToString());
+                }
+                foreach (DataRow dr in TablaDiagnosticos.Rows)
+                {
+                    scAutoCompleteDiagnosticos.Add(dr["Diagnostico_Descripcion"].ToString());
+                    scAutoCompleteDiagnosticos.Add(dr["Diagnostico_Codigo"].ToString());
+                }
+                foreach (DataRow dr in TablaAfiliados.Rows)
+                {
+                    scAutoCompleteAfiliados.Add(dr["Beneficio"].ToString());
+                    scAutoCompleteAfiliados.Add(dr["Documento"].ToString());
+                }
+            }
+            //TODO: COSAS QUE AGREGO PARA AUTOCOMPLETAR PLANILLA
+        
+        
         }
 
         private void btnCerrar_Click(object sender, EventArgs e)
@@ -835,6 +877,52 @@ namespace PAMI.PlanillaPami
             this.gbProfesional.Location = pt;
             pt.X += 4 + gbProfesional.Size.Width;
             this.gbPeriodo.Location = pt;
+        }
+
+        private void dgPlanilla_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
+        {
+            if (dgPlanilla.EditingControl.GetType() == typeof(DataGridViewTextBoxEditingControl))
+            {
+                TextBox prodCode = e.Control as TextBox;
+                if (dgPlanilla.CurrentCell.ColumnIndex == 4)
+                {
+                    if (prodCode != null)
+                    {
+                        prodCode.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+                        prodCode.AutoCompleteCustomSource = scAutoCompleteNomenclador;
+                        prodCode.AutoCompleteSource = AutoCompleteSource.CustomSource;
+                    }
+                }
+                else if (dgPlanilla.CurrentCell.ColumnIndex == 3)
+                {
+                    if (prodCode != null)
+                    {
+                        prodCode.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+                        prodCode.AutoCompleteCustomSource = scAutoCompleteDiagnosticos;
+                        prodCode.AutoCompleteSource = AutoCompleteSource.CustomSource;
+                    }
+                }
+                else if (dgPlanilla.CurrentCell.ColumnIndex == 2)
+                {
+                    if (prodCode != null)
+                    {
+                        prodCode.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+                        prodCode.AutoCompleteCustomSource = scAutoCompleteAfiliados;
+                        prodCode.AutoCompleteSource = AutoCompleteSource.CustomSource;
+                    }
+                }
+                else { prodCode.AutoCompleteCustomSource = null; }
+            }
+        }
+
+        private void btnLimpiarFiltros_Click(object sender, EventArgs e)
+        {
+            cmbAsociacion.SelectedIndex = -1;
+            cmbMedico.SelectedIndex = -1;
+            txtAnio.Text = "";
+            cmbMes.SelectedIndex = -1;
+            txtBeneficio.Text = "";
+            dgPlanilla.DataSource = null;
         }
     }
 }

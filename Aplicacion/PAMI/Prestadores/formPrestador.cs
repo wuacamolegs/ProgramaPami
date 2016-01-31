@@ -270,18 +270,19 @@ namespace PAMI.Prestadores
 
         private void btnEditar_Click(object sender, EventArgs e)
         {
-            if (cmbNombre.SelectedIndex != -1)
+            string strerrores = validarCampos();
+            if (cmbNombre.SelectedIndex != -1 && strerrores == "")
             {
                 cargarDatosAunPrestador();
                 unPrestador.UpdatePrestador();
                 MessageBox.Show("Se ha editado con éxito. \n\nNombre: " + unPrestador.NombrePrestador +
                         "\nCuit: " + unPrestador.Cuit + "\nCódigo SAP: " + unPrestador.CodigoSap +
                         "\nUsuario: " + unPrestador.Usuario, "Editar Prestador");
-                this.Close();
+                cmbNombre.SelectedIndex = -1;
             }
             else
             {
-                MessageBox.Show("Seleccione un Prestador a Editar");
+                MessageBox.Show(strerrores);
             }
         }
 

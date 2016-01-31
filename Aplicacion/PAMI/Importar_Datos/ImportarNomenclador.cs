@@ -36,14 +36,14 @@ namespace PAMI.Importar_Datos
         {
             if (txtRuta.Text != "" && Convert.ToInt64(cmbAsociacion.SelectedIndex) != -1)
             {
-            //    try
-             //   {
+               try
+                {
                     List<SqlParameter> parameterList = new List<SqlParameter>();
                     parameterList.Add(new SqlParameter("@Ruta", txtRuta.Text));
                     parameterList.Add(new SqlParameter("@Cuit", cmbAsociacion.SelectedIndex.ToString()));
                     Conexion.SQLHelper.ExecuteNonQuery("ImportarNomenclador", CommandType.StoredProcedure, parameterList);
                     MessageBox.Show("Nomenclador Importado Correctamente", "");
-             /*   }
+                }
                 catch (ErrorConsultaException ex)
                 {
                     MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -51,7 +51,7 @@ namespace PAMI.Importar_Datos
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }*/
+                }
             }
         }
 

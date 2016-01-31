@@ -320,7 +320,6 @@
             this.Name = "ListadoNomenclador";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Nomenclador";
-            this.Load += new System.EventHandler(this.ListadoNomenclador_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgNomenclador)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();

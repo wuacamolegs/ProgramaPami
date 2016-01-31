@@ -31,3 +31,14 @@ A:\Documents\PAMI\ProgramaPami\Aplicacion\ClassLibrary1\bin\Release\Excepciones.
 A:\Documents\PAMI\ProgramaPami\Aplicacion\ClassLibrary1\obj\Release\ResolveAssemblyReference.cache
 A:\Documents\PAMI\ProgramaPami\Aplicacion\ClassLibrary1\obj\Release\ClassLibrary1.dll
 A:\Documents\PAMI\ProgramaPami\Aplicacion\ClassLibrary1\obj\Release\ClassLibrary1.pdb
+A:\Documents\PAMI\ProgramaPami\Aplicacion\Aplicacion\ClassLibrary1\bin\Release\ClassLibrary1.dll
+A:\Documents\PAMI\ProgramaPami\Aplicacion\Aplicacion\ClassLibrary1\bin\Release\ClassLibrary1.pdb
+A:\Documents\PAMI\ProgramaPami\Aplicacion\Aplicacion\ClassLibrary1\bin\Release\Conexion.dll
+A:\Documents\PAMI\ProgramaPami\Aplicacion\Aplicacion\ClassLibrary1\bin\Release\Excepciones.dll
+A:\Documents\PAMI\ProgramaPami\Aplicacion\Aplicacion\ClassLibrary1\bin\Release\Validator.dll
+A:\Documents\PAMI\ProgramaPami\Aplicacion\Aplicacion\ClassLibrary1\bin\Release\Validator.pdb
+A:\Documents\PAMI\ProgramaPami\Aplicacion\Aplicacion\ClassLibrary1\bin\Release\Conexion.pdb
+A:\Documents\PAMI\ProgramaPami\Aplicacion\Aplicacion\ClassLibrary1\bin\Release\Excepciones.pdb
+A:\Documents\PAMI\ProgramaPami\Aplicacion\Aplicacion\ClassLibrary1\obj\Release\ResolveAssemblyReference.cache
+A:\Documents\PAMI\ProgramaPami\Aplicacion\Aplicacion\ClassLibrary1\obj\Release\ClassLibrary1.dll
+A:\Documents\PAMI\ProgramaPami\Aplicacion\Aplicacion\ClassLibrary1\obj\Release\ClassLibrary1.pdb

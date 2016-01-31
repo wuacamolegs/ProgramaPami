@@ -8,3 +8,8 @@ A:\Documents\PAMI\ProgramaPami\Aplicacion\Excepciones\bin\Debug\Excepciones.pdb
 A:\Documents\PAMI\ProgramaPami\Aplicacion\Excepciones\obj\Debug\ResolveAssemblyReference.cache
 A:\Documents\PAMI\ProgramaPami\Aplicacion\Excepciones\obj\Debug\Excepciones.dll
 A:\Documents\PAMI\ProgramaPami\Aplicacion\Excepciones\obj\Debug\Excepciones.pdb
+A:\Documents\PAMI\ProgramaPami\Aplicacion\Aplicacion\Excepciones\bin\Debug\Excepciones.dll
+A:\Documents\PAMI\ProgramaPami\Aplicacion\Aplicacion\Excepciones\bin\Debug\Excepciones.pdb
+A:\Documents\PAMI\ProgramaPami\Aplicacion\Aplicacion\Excepciones\obj\Debug\ResolveAssemblyReference.cache
+A:\Documents\PAMI\ProgramaPami\Aplicacion\Aplicacion\Excepciones\obj\Debug\Excepciones.dll
+A:\Documents\PAMI\ProgramaPami\Aplicacion\Aplicacion\Excepciones\obj\Debug\Excepciones.pdb

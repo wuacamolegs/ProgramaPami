@@ -229,17 +229,17 @@ namespace PAMI.Ambulatorio
             //dgAfiliados.ColumnHeadersVisible = false;
 
             DataGridViewTextBoxColumn clm_ApellidoNombre = new DataGridViewTextBoxColumn();
-            clm_ApellidoNombre.Width = Convert.ToInt32(Convert.ToDouble(dgAfiliados.Size.Width * 0.5));
+            clm_ApellidoNombre.Width = Convert.ToInt32(Convert.ToDouble(dgAfiliados.Size.Width * 0.45));
             clm_ApellidoNombre.ReadOnly = true;
             clm_ApellidoNombre.DataPropertyName = "apellido_nombre";
             clm_ApellidoNombre.HeaderText = "Afiliado";
             dgAfiliados.Columns.Add(clm_ApellidoNombre);
 
             DataGridViewTextBoxColumn clm_beneficio = new DataGridViewTextBoxColumn();
+            clm_beneficio.Width = Convert.ToInt32(Convert.ToDouble(dgAfiliados.Size.Width * 0.25));
             clm_beneficio.ReadOnly = true;
             clm_beneficio.DataPropertyName = "beneficio";
             clm_beneficio.HeaderText = "Beneficio";
-            clm_beneficio.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             dgAfiliados.Columns.Add(clm_beneficio);
 
             DataGridViewTextBoxColumn clm_parentesco = new DataGridViewTextBoxColumn();
@@ -257,10 +257,10 @@ namespace PAMI.Ambulatorio
             dgAfiliados.Columns.Add(clm_tipoDni);
 
             DataGridViewTextBoxColumn clm_numero_documento = new DataGridViewTextBoxColumn();
+            clm_numero_documento.Width = Convert.ToInt32(Convert.ToDouble(dgAfiliados.Size.Width * 0.20));
             clm_numero_documento.ReadOnly = true;
             clm_numero_documento.DataPropertyName = "documento_numero";
             clm_numero_documento.HeaderText = "Doc";
-            clm_numero_documento.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             dgAfiliados.Columns.Add(clm_numero_documento);
 
             //Achico tamanios letras
@@ -509,7 +509,7 @@ namespace PAMI.Ambulatorio
                             }
                             if (ds.Tables[0].Rows[0]["Existe"].ToString() == "2")
                             {
-                                importarAmbulatorio = importarAmbulatorio + row.Cells[1].Value.ToString() + " - " + extraerPractica(row.Cells[0].Value.ToString()) + " - Ya posee una Consulta en este mes\n";
+                                importarAmbulatorio = importarAmbulatorio + row.Cells[1].Value.ToString() + " - " + extraerPractica(row.Cells[0].Value.ToString()) + " - Ya posee una Consulta sen este mes\n";
                                 dgPracticas.Rows[row.Index].DefaultCellStyle.BackColor = Color.AliceBlue;
                             }
                         }
@@ -636,6 +636,7 @@ namespace PAMI.Ambulatorio
 
                         if (result == DialogResult.Yes || result == DialogResult.Ignore)
                         {
+                            unaPlanilla.CodigoAmbulatorio = Convert.ToInt64(ds.Tables[0].Rows[0]["codigo"]);
                             fechaEditar = txtFecha.Text;  //ACA GUARDO LA FECHA A EDITAR, SI ME DIJO QUE SI ES PORQUE YA EXISTE AMBULATORIO. GUARDO LA ANTERIOR POR SI QUIERO EDITAR LA FECHA!
                             medicoPosta = Convert.ToInt64(cmbMedico.SelectedValue); //ACA GUARDO EL MEDICO POSTA POR SI EL AMBULATORIO EXISTENTE ERA DE OTRO MEDICO
                             unaPlanilla.Medico = Convert.ToInt64(ds.Tables[0].Rows[0][0]);
@@ -697,7 +698,7 @@ namespace PAMI.Ambulatorio
             }
         }
 
-        private void btnEditar_Click(object sender, EventArgs e)
+        private void btnEditar_Click(object sender, EventArgs e)  //TODO: PODER EDITAR MEDICO
         {
             if (ValidarCampos() == "")
             {
@@ -705,6 +706,8 @@ namespace PAMI.Ambulatorio
                                                  // Y TAMBIEN CUANDO ABRI EL FORM PARA EDITAR AMBULATORIO DESDE LA BUSQUEDA.
 
                 //Hice este fechaEditar porque ya cuando sale del textbox fecha me lo guarda en la planilla fecha para buscar ambulatorios existentes!
+
+
                 //Elimina el ambulatorio que se eligio para editar. borro todo y lo vuelvo a cargar.
                 //Borro los que estan en esa fecha, asi puedo cambiar la fecha tmb!
                 unaPlanilla.Anio = Convert.ToInt64(txtFecha.Text.Substring(6, 4));

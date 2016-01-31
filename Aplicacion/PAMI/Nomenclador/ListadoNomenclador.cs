@@ -24,22 +24,6 @@ namespace PAMI.Nomenclador
             btnEliminar.Enabled = false;
         }
 
-        private void ListadoNomenclador_Load(object sender, EventArgs e)
-        {
-            /*
-             
-             PARA CUANDO HAGA LA GRILLA. ABAJO PONER
-            DataGridViewCellStyle miestilo = new DataGridViewCellStyle();
-            miestilo.Font = new Font("Agency FB", 11);
-
-            dgNomenclador.EnableHeadersVisualStyles = false;
-            dgNomenclador.ColumnHeadersDefaultCellStyle = miestilo;
-            dgNomenclador.ColumnHeadersDefaultCellStyle.ForeColor = Color.DarkCyan;
-            dgNomenclador.ColumnHeadersDefaultCellStyle.BackColor = Color.Gainsboro; 
-             
-             
-             */
-        }
 
         private void btnLimpiar_Click(object sender, EventArgs e)
         {
@@ -76,28 +60,28 @@ namespace PAMI.Nomenclador
             dgNomenclador.RowHeadersVisible = false;
 
             DataGridViewTextBoxColumn clm_codigo = new DataGridViewTextBoxColumn();
-            clm_codigo.Width = 100;
+            clm_codigo.Width = Convert.ToInt32(Convert.ToDouble(dgNomenclador.Size.Width * 0.15));
             clm_codigo.ReadOnly = true;
             clm_codigo.DataPropertyName = "practica_codigo";
             clm_codigo.HeaderText = "Código";
             dgNomenclador.Columns.Add(clm_codigo);
 
             DataGridViewTextBoxColumn clm_Descripcion = new DataGridViewTextBoxColumn();
-            clm_Descripcion.Width = Convert.ToInt32(Convert.ToDouble(dgNomenclador.Size.Width * 0.40));
+            clm_Descripcion.Width = Convert.ToInt32(Convert.ToDouble(dgNomenclador.Size.Width * 0.55));
             clm_Descripcion.ReadOnly = true;
             clm_Descripcion.DataPropertyName = "practica_descripcion";
             clm_Descripcion.HeaderText = "Práctica";
             dgNomenclador.Columns.Add(clm_Descripcion);
 
             DataGridViewTextBoxColumn clm_cantidad = new DataGridViewTextBoxColumn();
-            clm_cantidad.Width = 70;
+            clm_cantidad.Width = Convert.ToInt32(Convert.ToDouble(dgNomenclador.Size.Width * 0.15));
             clm_cantidad.ReadOnly = true;
             clm_cantidad.DataPropertyName = "cantidad_maxima";
             clm_cantidad.HeaderText = "Max Cant";
             dgNomenclador.Columns.Add(clm_cantidad);
 
             DataGridViewTextBoxColumn clm_modulo = new DataGridViewTextBoxColumn();
-            clm_modulo.Width = 58;
+            clm_modulo.Width = Convert.ToInt32(Convert.ToDouble(dgNomenclador.Size.Width * 0.15));
             clm_modulo.ReadOnly = true;
             clm_modulo.DataPropertyName = "codigo_modulo";
             clm_modulo.HeaderText = "Módulo";

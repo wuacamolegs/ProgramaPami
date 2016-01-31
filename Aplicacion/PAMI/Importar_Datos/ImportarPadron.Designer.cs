@@ -34,6 +34,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.txtRuta = new System.Windows.Forms.TextBox();
             this.cmbPadron = new System.Windows.Forms.ComboBox();
+            this.txtFecha = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label4
@@ -93,11 +95,32 @@
             this.cmbPadron.Size = new System.Drawing.Size(365, 32);
             this.cmbPadron.TabIndex = 30;
             // 
+            // txtFecha
+            // 
+            this.txtFecha.Font = new System.Drawing.Font("Calibri Light", 10.8F);
+            this.txtFecha.Location = new System.Drawing.Point(13, 169);
+            this.txtFecha.Name = "txtFecha";
+            this.txtFecha.Size = new System.Drawing.Size(182, 29);
+            this.txtFecha.TabIndex = 31;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Franklin Gothic Book", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.DarkCyan;
+            this.label1.Location = new System.Drawing.Point(12, 144);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(59, 24);
+            this.label1.TabIndex = 32;
+            this.label1.Text = "Fecha";
+            // 
             // ImportarPadron
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(391, 214);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.txtFecha);
             this.Controls.Add(this.cmbPadron);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.btnImportar);
@@ -119,5 +142,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtRuta;
         private System.Windows.Forms.ComboBox cmbPadron;
+        private System.Windows.Forms.TextBox txtFecha;
+        private System.Windows.Forms.Label label1;
     }
 }

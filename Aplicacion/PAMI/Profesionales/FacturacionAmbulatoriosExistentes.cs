@@ -47,56 +47,56 @@ namespace PAMI.Profesionales
             dgPlanilla.AllowUserToAddRows = false;
 
             DataGridViewTextBoxColumn clm_MedicoFacturado = new DataGridViewTextBoxColumn();
-            clm_MedicoFacturado.Width = 400;
+            clm_MedicoFacturado.Width = Convert.ToInt32(Convert.ToDouble(dgPlanilla.Size.Width * 0.15)); 
             clm_MedicoFacturado.ReadOnly = true;
             clm_MedicoFacturado.DataPropertyName = "profesional_facturado";
             clm_MedicoFacturado.HeaderText = "Profesional Facturado";
             dgPlanilla.Columns.Add(clm_MedicoFacturado);
 
             DataGridViewTextBoxColumn clm_Profesional = new DataGridViewTextBoxColumn();
-            clm_Profesional.Width = 400;
+            clm_Profesional.Width = Convert.ToInt32(Convert.ToDouble(dgPlanilla.Size.Width * 0.15));
             clm_Profesional.ReadOnly = true;
             clm_Profesional.DataPropertyName = "profesional_posta";
             clm_Profesional.HeaderText = "Profesional";
             dgPlanilla.Columns.Add(clm_Profesional);
 
             DataGridViewTextBoxColumn clm_Fecha = new DataGridViewTextBoxColumn();
-            clm_Fecha.Width = 100;
+            clm_Fecha.Width = Convert.ToInt32(Convert.ToDouble(dgPlanilla.Size.Width * 0.06));
             clm_Fecha.ReadOnly = true;
             clm_Fecha.DataPropertyName = "planilla_fecha";
             clm_Fecha.HeaderText = "Fecha";
             dgPlanilla.Columns.Add(clm_Fecha);
 
             DataGridViewTextBoxColumn clm_Nombre = new DataGridViewTextBoxColumn();
-            clm_Nombre.Width = 400;
+            clm_Nombre.Width = Convert.ToInt32(Convert.ToDouble(dgPlanilla.Size.Width * 0.20));
             clm_Nombre.ReadOnly = true;
             clm_Nombre.DataPropertyName = "planilla_afiliado_nombre";
             clm_Nombre.HeaderText = "Apellido y Nombre";
             dgPlanilla.Columns.Add(clm_Nombre);
 
             DataGridViewTextBoxColumn clm_Beneficio = new DataGridViewTextBoxColumn();
-            clm_Beneficio.Width = 160;
+            clm_Beneficio.Width = Convert.ToInt32(Convert.ToDouble(dgPlanilla.Size.Width * 0.15));
             clm_Beneficio.ReadOnly = true;
             clm_Beneficio.DataPropertyName = "planilla_afiliado_beneficio";
             clm_Beneficio.HeaderText = "Beneficio";
             dgPlanilla.Columns.Add(clm_Beneficio);
 
             DataGridViewTextBoxColumn clm_Diagnostico = new DataGridViewTextBoxColumn();
-            clm_Diagnostico.Width = 250;
+            clm_Diagnostico.Width = Convert.ToInt32(Convert.ToDouble(dgPlanilla.Size.Width * 0.10));
             clm_Diagnostico.ReadOnly = true;
             clm_Diagnostico.DataPropertyName = "planilla_diagnostico";
             clm_Diagnostico.HeaderText = "Diagnóstico";
             dgPlanilla.Columns.Add(clm_Diagnostico);
 
             DataGridViewTextBoxColumn clm_Practica = new DataGridViewTextBoxColumn();
-            clm_Practica.Width = 100;
+            clm_Practica.Width = Convert.ToInt32(Convert.ToDouble(dgPlanilla.Size.Width * 0.10));
             clm_Practica.ReadOnly = true;
             clm_Practica.DataPropertyName = "planilla_practica";
             clm_Practica.HeaderText = "Práctica";
             dgPlanilla.Columns.Add(clm_Practica);
 
             DataGridViewTextBoxColumn clm_Hora = new DataGridViewTextBoxColumn();
-            clm_Hora.Width = 100;
+            clm_Hora.Width = Convert.ToInt32(Convert.ToDouble(dgPlanilla.Size.Width * 0.10));
             clm_Hora.ReadOnly = true;
             clm_Hora.DataPropertyName = "planilla_hora";
             clm_Hora.HeaderText = "Hora";

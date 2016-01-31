@@ -15,3 +15,8 @@ A:\Documents\PAMI\ProgramaPami\Aplicacion\Validator\bin\Release\Validator.pdb
 A:\Documents\PAMI\ProgramaPami\Aplicacion\Validator\obj\Release\ResolveAssemblyReference.cache
 A:\Documents\PAMI\ProgramaPami\Aplicacion\Validator\obj\Release\Validator.dll
 A:\Documents\PAMI\ProgramaPami\Aplicacion\Validator\obj\Release\Validator.pdb
+A:\Documents\PAMI\ProgramaPami\Aplicacion\Aplicacion\Validator\bin\Release\Validator.dll
+A:\Documents\PAMI\ProgramaPami\Aplicacion\Aplicacion\Validator\bin\Release\Validator.pdb
+A:\Documents\PAMI\ProgramaPami\Aplicacion\Aplicacion\Validator\obj\Release\ResolveAssemblyReference.cache
+A:\Documents\PAMI\ProgramaPami\Aplicacion\Aplicacion\Validator\obj\Release\Validator.dll
+A:\Documents\PAMI\ProgramaPami\Aplicacion\Aplicacion\Validator\obj\Release\Validator.pdb
